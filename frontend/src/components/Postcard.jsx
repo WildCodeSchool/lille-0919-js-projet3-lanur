@@ -3,7 +3,7 @@ import "./style/postcard.scss";
 
 function Postcard() {
   return (
-    <div>
+    <div className="postContainer">
       <div className="post">
         {/* section with avatar and game logo */}
         <div className=" imgSection">

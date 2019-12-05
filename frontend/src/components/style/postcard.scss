@@ -4,6 +4,13 @@
 }
 $mainColor: #8d20ae;
 
+.postContainer {
+  width: 70vw;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 .post {
   font-family: "Sansation";
   background-color: white;
