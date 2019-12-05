@@ -63,10 +63,14 @@ class NavBar extends Component {
                 }}
               >
                 <li>
-                  <span className="FirstLetter">A</span>genda
+                  <a href="#">
+                    <span className="FirstLetter">A</span>genda
+                  </a>
                 </li>
                 <li>
-                  <span className="FirstLetter">R</span>ésultats
+                  <a href="#">
+                    <span className="FirstLetter">R</span>ésultats
+                  </a>
                 </li>
               </div>
             ) : null}
