@@ -9,7 +9,7 @@ export default function Carousel() {
       title: "John C.",
       role: " Pro-Player",
       description:
-        "Lorem ipsum fezokfoefpokmofkslkfpkpefkpkskkdpoazdkpoagtafdytfdgd_yèfdygyfuèe",
+        "Lorem ipsum fezokfoefpokm  ofkslkfpkpefkp kskkdpoazd kpoagta fdytfdgd_y èfdygyfuèe",
       image:
         "http://www.influencia.net/data/classes/actualite/actu_6082_image2012rectangle_petite.png"
     },
@@ -17,7 +17,7 @@ export default function Carousel() {
       title: "Harry D.",
       role: "Coach",
       description:
-        "Lorem ipsum fzeopzfkpzkefpoekfefzftydyazftydafauzdyfazytdfuyqfzdyufqzfdyu",
+        "Lorem ipsum fzeopzfkpzk efpoekfefzftydyazftydaf auzdyfazytdfuyqfz dyufqzfdyu",
       image:
         "http://getwallpapers.com/wallpaper/full/2/0/2/764295-black-purple-background-3200x1800-for-meizu.jpg"
     },
@@ -31,7 +31,7 @@ export default function Carousel() {
     }
   ];
   return (
-    <Slider autoplay={3000} className="slider">
+    <Slider className="slider">
       {content.map((item, index) => (
         <div
           key={index}
@@ -41,9 +41,11 @@ export default function Carousel() {
           }}
         >
           <div className="center">
-            <h1>{item.title}</h1>
-            <h2>{item.role}</h2>
-            <p>{item.description}</p>
+            <div className="content">
+              <h1>{item.title}</h1>
+              <h2>{item.role}</h2>
+              <p>{item.description}</p>
+            </div>
           </div>
         </div>
       ))}
