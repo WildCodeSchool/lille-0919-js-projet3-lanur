@@ -6,7 +6,7 @@ class NavBar extends Component {
     super();
 
     this.state = {
-      showMenu: true
+      showMenu: false
     };
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
@@ -50,10 +50,17 @@ class NavBar extends Component {
           <li onClick={this.showMenu}>
             <a href="#">
               <span className="FirstLetter">É</span>vènements
-              <img
-                className="triangle"
-                src="../images/Black_triangle.svg"
-              ></img>
+              {this.state.showMenu ? (
+                <img
+                  className="triangle"
+                  src="../images/Black_triangle_rotated.svg"
+                ></img>
+              ) : (
+                <img
+                  className="triangle"
+                  src="../images/Black_triangle.svg"
+                ></img>
+              )}
             </a>
             {this.state.showMenu ? (
               <div
