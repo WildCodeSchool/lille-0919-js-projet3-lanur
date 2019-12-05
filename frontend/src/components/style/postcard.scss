@@ -1,13 +1,28 @@
+@font-face {
+  font-family: "Sansation";
+  src: url("Sansation_Regular.ttf");
+}
+$mainColor: #8d20ae;
+
 .post {
+  font-family: "Sansation";
   background-color: black;
   color: white;
   width: 50%;
   height: auto;
   display: flex;
-  flex-direction: column;
+  //   flex-direction: column;
 
+  .imgSection {
+    height: 100%;
+    flex-direction: row;
+    .avatar {
+      height: 50px;
+    }
+  }
   .headpost {
     display: flex;
+    // flex-direction: column;
 
     .avatar {
       height: 50px;
@@ -16,6 +31,9 @@
 
   .contentpost {
     flex-direction: column;
+    .mediaContainer {
+      flex-direction: row;
+    }
 
     .postmedia {
       display: flex;
