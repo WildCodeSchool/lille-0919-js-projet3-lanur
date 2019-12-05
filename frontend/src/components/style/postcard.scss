@@ -12,6 +12,7 @@ $mainColor: #8d20ae;
   height: auto;
   display: flex;
   border: $mainColor solid;
+  border-radius: 5px;
   margin-left: 8vw;
   margin: 20px;
   .imgSection {
@@ -24,9 +25,12 @@ $mainColor: #8d20ae;
   }
   .headpost {
     display: flex;
+    font-size: 1.2em;
 
     justify-content: space-between;
-    padding: 5px;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 10px;
   }
 
   .contentpost {
@@ -49,12 +53,16 @@ $mainColor: #8d20ae;
   }
   .reaction {
     display: flex;
+    padding: 5%;
+    justify-content: space-around;
     .reaction-button {
-      justify-content: space-around;
-
       button {
         color: white;
         background-color: $mainColor;
+        height: 50px;
+        width: 200px;
+        font-size: 1.2em;
+        border-radius: 10px;
       }
     }
   }
