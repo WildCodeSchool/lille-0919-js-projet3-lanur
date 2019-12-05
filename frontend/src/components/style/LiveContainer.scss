@@ -6,7 +6,7 @@ $mainColor: #8d20ae;
 $secondColor: rgb(39, 39, 39);
 
 .allLive {
-  height: 92vh;
+  min-height: 92vh;
   background-color: white;
   width: 30vw;
   position: fixed;
@@ -28,9 +28,13 @@ $secondColor: rgb(39, 39, 39);
   }
 
   .streamingStatus {
+    display: flex;
+    padding: 3px;
     height: 40px;
     border-top: solid $mainColor;
-    margin: 0;
-    padding: 0;
+    align-items: center;
+    img {
+      height: 100%;
+    }
   }
 }
