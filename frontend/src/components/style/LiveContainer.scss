@@ -27,14 +27,18 @@ $secondColor: rgb(39, 39, 39);
     font-weight: bold;
   }
 
-  .streamingStatus {
-    display: flex;
-    padding: 3px;
-    height: 40px;
-    border-top: solid $mainColor;
-    align-items: center;
-    img {
-      height: 100%;
+  .liveContent {
+    overflow: scroll;
+    height: calc(92vh - 60px);
+    .streamingStatus {
+      display: flex;
+      padding: 3px;
+      height: 40px;
+      border-top: solid $mainColor;
+      align-items: center;
+      img {
+        height: 100%;
+      }
     }
   }
 }
