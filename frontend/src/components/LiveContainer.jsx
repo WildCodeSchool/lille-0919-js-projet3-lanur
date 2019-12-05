@@ -1,8 +1,8 @@
 import React from "react";
-import "./style/livecontainer.scss";
+import "./style/LiveContainer.scss";
 
 function LiveContainer() {
-  return <div></div>;
+  return <div className="allLive">Live</div>;
 }
 
 export default LiveContainer;

@@ -11,7 +11,11 @@ $mainColor: #8d20ae;
   display: flex;
   flex-direction: row;
   align-items: center;
-
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 5;
   h1 {
     margin-left: 10px;
     font-size: 30px;
