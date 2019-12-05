@@ -1,10 +1,13 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import NewsFeed from "./components/NewsFeed";
+import NavBar from "./components/NavBar";
+import "./components/style/Reset.css";
 
 function App() {
   return (
-    <div>
-
+    <div className="App">
+      <NavBar />
+      <NewsFeed />
     </div>
   );
 }

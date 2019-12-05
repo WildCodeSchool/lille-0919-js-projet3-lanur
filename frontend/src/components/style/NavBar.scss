@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "Sansation";
+  src: url("Sansation_Regular.ttf");
+}
+$mainColor: #8d20ae;
+
+.main-NavBar {
+  font-family: "Sansation";
+  background-color: rgb(253, 253, 253);
+  height: 8vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  h1 {
+    margin-left: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    .Lan {
+      color: $mainColor;
+    }
+  }
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    li {
+      margin-right: 30px;
+      font-size: 22px;
+      font-weight: 200;
+      a {
+        color: black;
+        text-decoration: none;
+        &:hover {
+          color: rgb(245, 16, 16);
+        }
+      }
+      img {
+        width: 10px;
+        margin-left: 2px;
+      }
+    }
+    .FirstLetter {
+      color: $mainColor;
+    }
+  }
+}
