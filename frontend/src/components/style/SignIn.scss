@@ -1,0 +1,43 @@
+@import "./variables";
+
+body {
+  height: 100vh;
+  background: url("/lolworlds.jpg") center center / cover no-repeat;
+}
+
+.SignIn {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: 10% 4% auto auto;
+  font-family: "Quicksand", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  color: white;
+  form,
+  > div {
+    border-radius: 7px;
+    background-color: rgba($color: black, $alpha: 0.5);
+  }
+  button {
+    width: 75%;
+    color: white;
+    background-color: $mainPurple;
+    // padding: ;
+    border: 0px;
+    border-radius: 5px;
+  }
+  h2 {
+    font-size: 24px;
+    margin-bottom: 2%;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 12px;
+  }
+  span {
+    color: $mainPurple;
+  }
+}

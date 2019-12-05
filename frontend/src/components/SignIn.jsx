@@ -1,4 +1,5 @@
 import React from "react";
+import "./style/SignIn.scss";
 
 const SignIn = () => {
   const handleSubmit = event => {
