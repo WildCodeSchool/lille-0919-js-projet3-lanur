@@ -6,27 +6,27 @@ $mainColor: #8d20ae;
 
 .post {
   font-family: "Sansation";
-  background-color: black;
-  color: white;
-  width: 50%;
+  background-color: white;
+  color: black;
+  max-width: 60%;
   height: auto;
   display: flex;
-  //   flex-direction: column;
-
+  border: $mainColor solid;
+  margin-left: 8vw;
+  margin: 20px;
   .imgSection {
     height: 100%;
     flex-direction: row;
     .avatar {
       height: 50px;
+      padding: 5px;
     }
   }
   .headpost {
     display: flex;
-    // flex-direction: column;
 
-    .avatar {
-      height: 50px;
-    }
+    justify-content: space-between;
+    padding: 5px;
   }
 
   .contentpost {
@@ -37,9 +37,25 @@ $mainColor: #8d20ae;
 
     .postmedia {
       display: flex;
-      width: 500px;
+      width: 90%;
       margin-left: auto;
       margin-right: auto;
+      padding: 5%;
+    }
+    .postComment {
+      padding: 5%;
+      text-align: justify;
+    }
+  }
+  .reaction {
+    display: flex;
+    .reaction-button {
+      justify-content: space-around;
+
+      button {
+        color: white;
+        background-color: $mainColor;
+      }
     }
   }
 }

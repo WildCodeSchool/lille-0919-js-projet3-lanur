@@ -1,4 +1,8 @@
 .main-NewsFeed {
   background-color: rgb(39, 39, 39);
-  height: 92vh;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 8vh;
+  z-index: -90;
 }

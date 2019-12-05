@@ -8,9 +8,11 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-
-      <Postcard />
       <NewsFeed />
+      <Postcard />
+      <Postcard />
+      <Postcard />
+
 
     </div>
   );
