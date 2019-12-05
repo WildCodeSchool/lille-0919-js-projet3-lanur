@@ -1,10 +1,10 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import SignIn from "./components/SignIn";
 
 function App() {
   return (
     <div>
-
+      <SignIn />
     </div>
   );
 }
