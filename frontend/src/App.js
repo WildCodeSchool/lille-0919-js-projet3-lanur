@@ -11,7 +11,7 @@ import Postcard from "./components/Postcard";
 function App() {
   return (
     <div className="App">
-
+      <NavBar />
     </div>
   );
 }

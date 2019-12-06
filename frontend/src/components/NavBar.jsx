@@ -6,27 +6,13 @@ class NavBar extends Component {
     super();
 
     this.state = {
-      showMenu: false
+      toggleMenu: false
     };
-    this.showMenu = this.showMenu.bind(this);
-    this.closeMenu = this.closeMenu.bind(this);
   }
 
-  showMenu(event) {
-    event.preventDefault();
-
-    this.setState({ showMenu: true }, () => {
-      document.addEventListener("click", this.closeMenu);
-    });
-  }
-
-  closeMenu(event) {
-    if (!this.dropdownMenu.contains(event.target)) {
-      this.setState({ showMenu: false }, () => {
-        document.removeEventListener("click", this.closeMenu);
-      });
-    }
-  }
+  toggleMenu = () => {
+    this.setState({ toggleMenu: !this.state.toggleMenu });
+  };
 
   render() {
     return (
@@ -47,10 +33,10 @@ class NavBar extends Component {
               <span className="FirstLetter">T</span>eams
             </a>
           </li>
-          <li onClick={this.showMenu}>
+          <li onClick={this.toggleMenu}>
             <a href="#">
               <span className="FirstLetter">É</span>vènements
-              {this.state.showMenu ? (
+              {this.state.toggleMenu ? (
                 <img
                   className="triangle"
                   src="../images/Black_triangle_rotated.svg"
@@ -62,7 +48,7 @@ class NavBar extends Component {
                 ></img>
               )}
             </a>
-            {this.state.showMenu ? (
+            {this.state.toggleMenu ? (
               <div
                 className="dropDownMenu"
                 ref={element => {
