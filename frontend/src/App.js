@@ -11,18 +11,7 @@ import Postcard from "./components/Postcard";
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      {/* <NewsFeed /> */}
-      <main>
-        <div className="timeline">
-          <Postcard />
-          <Postcard />
-          <Postcard />
-        </div>
-        <div className="timeline">
-          <LiveContainer />
-        </div>
-      </main>
+
     </div>
   );
 }
