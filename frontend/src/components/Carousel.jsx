@@ -31,7 +31,7 @@ export default function Carousel() {
     }
   ];
   return (
-    <Slider className="slider">
+    <Slider autoplay={5000} className="slider">
       {content.map((item, index) => (
         <div
           key={index}
