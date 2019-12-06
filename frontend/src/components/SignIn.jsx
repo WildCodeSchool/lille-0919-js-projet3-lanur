@@ -23,7 +23,7 @@ const SignIn = () => {
           <h3>Identifiant</h3>
           <input type="text" />
           <h3>Mot de passe</h3>
-          <input type="text" />
+          <input type="password" />
           <p>mot de passe oublié ?</p>
           <button type="submit" value="Envoyer">
             Se connecter
