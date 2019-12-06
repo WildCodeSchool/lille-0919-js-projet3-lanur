@@ -1,0 +1,39 @@
+body {
+  background-color: #8d20ae;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form {
+  background-color: #4620ae;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  height: 80vh;
+  margin-top: 5%;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+#sliderForm {
+  background-color: pink;
+  display: flex;
+  justify-content: center;
+  margin: 20%;
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+}

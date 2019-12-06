@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import IdForm1 from "./components/IdForm1";
+import IdForm2 from "./components/IdForm2";
+import IdForm3 from "./components/IdForm3";
+import IdForm4 from "./components/IdForm4";
+import IdForm5 from "./components/IdForm5";
+import "./App.css";
+import { Switch, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+        <Route path="/signIn" component={IdForm1} />
+        <Route path="/signIn2" component={IdForm2} />
+        <Route path="/signIn3" component={IdForm3} />
+        <Route path="/signIn4" component={IdForm4} />
+        <Route path="/signIn5" component={IdForm5} />
+      </Switch>
+      <IdForm1 />
+      <IdForm2 />
+      <IdForm3 />
+      <IdForm4 />
+      <IdForm5 />
     </div>
   );
 }
