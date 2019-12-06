@@ -2,19 +2,18 @@
 
 .SignIn {
   background: url("/lolworlds.jpg") bottom right / cover no-repeat;
-  height: inherit;
+  height: 100vh;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
   justify-content: space-around;
-  height: 100vh;
-  font-family: "Quicksand", sans-serif;
+  font-family: $mainFontFamily;
   font-style: normal;
   font-weight: 800;
   color: white;
   span {
-    color: $mainPurple;
+    color: $mainColor;
   }
   .catchPhrase {
     color: black;
@@ -75,7 +74,7 @@
       height: 50px;
       align-self: center;
       color: white;
-      background-color: $mainPurple;
+      background-color: $mainColor;
       padding: 5px 0px;
       border: 0px;
       border-radius: 18px;
