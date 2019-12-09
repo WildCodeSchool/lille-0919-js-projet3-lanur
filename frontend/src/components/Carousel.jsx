@@ -6,8 +6,16 @@ import "./style/Carousel.scss";
 export default function Carousel() {
   const content = [
     {
+      title: "Samuel N.",
+      role: "Player",
+      description:
+        "lorem ipsum tgee zerfz fz fzjn e o z zefzrf z z egfzgef grfed grfedz tgfrde tgrfde gtrf",
+      image:
+        "http://getwallpapers.com/wallpaper/full/2/0/2/764295-black-purple-background-3200x1800-for-meizu.jpg"
+    },
+    {
       title: "John C.",
-      role: " Pro-Player",
+      role: " Pro Player",
       description:
         "Lorem ipsum fezokfoefpokm  ofkslkfpkpefkp kskkdpoazd kpoagta fdytfdgd_y èfdygyfuèe",
       image:
@@ -22,8 +30,8 @@ export default function Carousel() {
         "http://getwallpapers.com/wallpaper/full/2/0/2/764295-black-purple-background-3200x1800-for-meizu.jpg"
     },
     {
-      title: "Samuel N.",
-      role: "Player",
+      title: "Robert Valles",
+      role: "Community Manager",
       description:
         "lorem ipsum tgee zerfz fz fzjn e o z zefzrf z z egfzgef grfed grfedz tgfrde tgrfde gtrf",
       image:
