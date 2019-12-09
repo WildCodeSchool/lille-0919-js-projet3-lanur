@@ -16,12 +16,8 @@ function App() {
         <Route path="/signIn3" component={IdForm3} />
         <Route path="/signIn4" component={IdForm4} />
         <Route path="/signIn5" component={IdForm5} />
+        <IdForm1 />
       </Switch>
-      <IdForm1 />
-      <IdForm2 />
-      <IdForm3 />
-      <IdForm4 />
-      <IdForm5 />
     </div>
   );
 }

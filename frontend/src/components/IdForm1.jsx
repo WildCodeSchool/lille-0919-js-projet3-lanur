@@ -8,7 +8,7 @@ class IdForm1 extends React.Component {
     this.state = {
       lastname: "",
       firstname: "",
-      age: 0,
+      age: "",
       gender: ""
     };
   }
@@ -26,7 +26,7 @@ class IdForm1 extends React.Component {
   render() {
     return (
       <container className="formContainer">
-        <form key={1} className="form" onSubmit={e => this.handleSubmit(e)}>
+        <form className="form" onSubmit={e => this.handleSubmit(e)}>
           <div className="inputContainer">
             <label className="label">Nom</label>
             <input
@@ -53,7 +53,7 @@ class IdForm1 extends React.Component {
             <label className="label">Age</label>
             <input
               className="idInput"
-              type="number"
+              type="text"
               value={this.state.age}
               onChange={event => {
                 this.setState({ age: event.target.value });
@@ -63,21 +63,21 @@ class IdForm1 extends React.Component {
           <div className="inputContainer">
             <label className="label">Sexe</label>
             <select
-              className="idInput"
+              className="idSelect"
               type="text"
               value={this.state.gender}
               onChange={event => {
                 this.setState({ gender: event.target.value });
               }}
             >
-              <option value="volvo">Homme</option>
-              <option value="saab">Femme</option>
+              <option value="homme">Homme</option>
+              <option value="femme">Femme</option>
             </select>
           </div>
         </form>
         <div>
           <button className="button" onClick={this.previous}>
-            Prédédent
+            Précédent
           </button>
           <Link to="signIn2">
             <button className="button" onClick={this.next}>

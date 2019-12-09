@@ -24,7 +24,7 @@ class IdForm2 extends React.Component {
   render() {
     return (
       <container className="formContainer">
-        <form key={1} className="form" onSubmit={e => this.handleSubmit(e)}>
+        <form className="form" onSubmit={e => this.handleSubmit(e)}>
           <div className="inputContainer">
             <label className="label">Pseudo</label>
             <input
@@ -40,7 +40,7 @@ class IdForm2 extends React.Component {
             <label className="label">E-mail</label>
             <input
               className="idInput"
-              type="text"
+              type="email"
               value={this.state.email}
               onChange={event => {
                 this.setState({ email: event.target.value });
@@ -51,7 +51,7 @@ class IdForm2 extends React.Component {
             <label className="label">Password</label>
             <input
               className="idInput"
-              type="text"
+              type="password"
               value={this.state.password}
               onChange={event => {
                 this.setState({ password: event.target.value });
@@ -62,7 +62,7 @@ class IdForm2 extends React.Component {
         <div>
           <Link to="signIn">
             <button className="button" onClick={this.previous}>
-              Prédédent
+              Précédent
             </button>
           </Link>
           <Link to="signIn3">

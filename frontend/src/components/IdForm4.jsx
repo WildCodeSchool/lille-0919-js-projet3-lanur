@@ -20,11 +20,11 @@ class IdForm4 extends React.Component {
   render() {
     return (
       <container className="formContainer">
-        <form key={1} className="form" onSubmit={e => this.handleSubmit(e)}>
+        <form className="form" onSubmit={e => this.handleSubmit(e)}>
           <div className="inputContainer">
-            <label className="label">Rôles</label>
+            <label className="labelTextarea">Rôles</label>
             <textarea
-              className="idInput"
+              className="idTextarea"
               type="text"
               value={this.state.role}
               onChange={event => {
@@ -36,7 +36,7 @@ class IdForm4 extends React.Component {
         <div>
           <Link to="signIn3">
             <button className="button" onClick={this.previous}>
-              Prédédent
+              Précédent
             </button>
           </Link>
           <Link to="signIn5">

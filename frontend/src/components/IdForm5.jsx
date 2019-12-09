@@ -22,7 +22,7 @@ class IdForm5 extends React.Component {
   render() {
     return (
       <container className="formContainer">
-        <form key={1} className="form" onSubmit={e => this.handleSubmit(e)}>
+        <form className="form" onSubmit={e => this.handleSubmit(e)}>
           <div className="inputContainer">
             <label className="label">LAN</label>
             <input
@@ -49,7 +49,7 @@ class IdForm5 extends React.Component {
         <div>
           <Link to="signIn4">
             <button className="button" onClick={this.previous}>
-              Prédédent
+              Précédent
             </button>
           </Link>
           <button className="button" onClick={this.next}>

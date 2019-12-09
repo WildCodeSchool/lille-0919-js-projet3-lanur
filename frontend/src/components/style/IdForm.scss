@@ -11,29 +11,81 @@ body {
 }
 
 .form {
-  background-color: #4620ae;
+  background-color: #330033;
+  color: white;
+  font-size: 1.5em;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: 90vw;
   height: 80vh;
   margin-top: 5%;
+  border-radius: 1%;
 }
 
 .inputContainer {
   display: flex;
   flex-direction: row;
-}
-
-#sliderForm {
-  background-color: pink;
-  display: flex;
-  justify-content: center;
-  margin: 20%;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .label {
   display: flex;
   justify-content: center;
+  margin-left: 5%;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
+
+.idInput {
+  width: 65%;
+  margin-right: 5%;
+}
+
+.idTextarea {
+  width: 80%;
+  border-radius: 4%;
+  margin-right: 5%;
+}
+
+.idSelect {
+  width: 66%;
+  margin-right: 5%;
+}
+
+.labelTextarea {
+  margin: 8%;
+}
+
+@media screen and (max-width: 1100px) and (min-width: 700px) {
+  .idSelect {
+    width: 67%;
+  }
+}
+
+@media screen and (max-width: 700px) and (min-width: 500px) {
+  .idSelect {
+    width: 68%;
+  }
+
+  .form {
+    height: 60vh;
+    margin-top: 10%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .idSelect {
+    width: 69%;
+  }
+
+  .form {
+    height: 60vh;
+    margin-top: 10%;
+  }
+}
+
