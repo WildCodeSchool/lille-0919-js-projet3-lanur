@@ -16,7 +16,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div className="main-NavBar">
+      <nav className="main-NavBar">
         <h1>
           <a href="#">
             <span className="Lan">LAN'</span>U.R
@@ -75,7 +75,7 @@ class NavBar extends Component {
             </a>
           </li>
         </ul>
-      </div>
+      </nav>
     );
   }
 }
