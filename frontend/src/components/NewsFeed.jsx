@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./style/NewsFeed.scss";
 import Postcard from "./Postcard";
 import LiveContainer from "./LiveContainer";
