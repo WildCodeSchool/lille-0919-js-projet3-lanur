@@ -1,0 +1,22 @@
+{
+  "name": "lanur-backend",
+  "version": "1.0.0",
+  "description": "express backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WildCodeSchool/lille-0919-js-projet3-lanur.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WildCodeSchool/lille-0919-js-projet3-lanur/issues"
+  },
+  "homepage": "https://github.com/WildCodeSchool/lille-0919-js-projet3-lanur#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
