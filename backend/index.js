@@ -52,6 +52,16 @@ app.post("/api/newuser", (req, res) => {
   });
 });
 
+app.get("/api/postslist", (req, res) => {
+  db.query("SELECT * from post", (err, results) => {
+    if (err) {
+      res.status(500).send("Erreur lors de la récupération des données");
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 app.listen(backendPort, err => {
   if (err) {
     throw new Error("Something bad happened...");
