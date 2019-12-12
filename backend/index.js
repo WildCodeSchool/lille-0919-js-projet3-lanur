@@ -40,6 +40,18 @@ app.get("/api/userslight", (req, res) => {
   );
 });
 
+app.post("/api/newuser", (req, res) => {
+  const formData = req.body;
+  db.query("INSERT INTO user SET ?", formData, (err, results) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("Erreur lors de la sauvegarde d'un utilisateur");
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
 app.listen(backendPort, err => {
   if (err) {
     throw new Error("Something bad happened...");
