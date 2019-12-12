@@ -27,6 +27,19 @@ app.get("/api/users", (req, res) => {
   );
 });
 
+app.get("/api/userslight", (req, res) => {
+  db.query(
+    "SELECT id, firstname, lastname, pseudo from user",
+    (err, results) => {
+      if (err) {
+        res.status(500).send("Erreur lors de la récupération des données");
+      } else {
+        res.json(results);
+      }
+    }
+  );
+});
+
 app.listen(backendPort, err => {
   if (err) {
     throw new Error("Something bad happened...");
