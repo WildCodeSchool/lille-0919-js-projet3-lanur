@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 // USERS || GET & POST
 app.get("/api/users", (req, res) => {
   db.query(
-    "SELECT id, firstname, lastname, team_id, pseudo, sexe, address, avatar, email, age, country, city, twitch, bio, mixer, youtube, LOL_pseudo, Fortnite_pseudo, CSGO_pseudo, OW_pseudo, HOTS_pseudo, SMITE_pseudo, APEX_pseudo, STARCRAFT2_pseudo, Hearstone_pseudo, KROSMAGA_pseudo, SSBU_pseudo, Tekken_pseudo, SF5_pseudo, ROCKETLEAGUE_pseudo, TFT_pseudo, PUBG_pseudo, R6S_pseudo, Paladins_pseudo from user",
+    "SELECT id, firstname, lastname, team_id, pseudo, sexe, address, avatar, email, age, country, city, creation_date, twitch, bio, mixer, youtube, LOL_pseudo, Fortnite_pseudo, CSGO_pseudo, OW_pseudo, HOTS_pseudo, SMITE_pseudo, APEX_pseudo, STARCRAFT2_pseudo, Hearstone_pseudo, KROSMAGA_pseudo, SSBU_pseudo, Tekken_pseudo, SF5_pseudo, ROCKETLEAGUE_pseudo, TFT_pseudo, PUBG_pseudo, R6S_pseudo, Paladins_pseudo from user",
     (err, results) => {
       if (err) {
         res.status(500).send("Erreur lors de la récupération des données");
@@ -30,7 +30,7 @@ app.get("/api/users", (req, res) => {
 
 app.get("/api/userslight", (req, res) => {
   db.query(
-    "SELECT id, firstname, lastname, pseudo from user",
+    "SELECT id, firstname, lastname, pseudo from user, creation_date",
     (err, results) => {
       if (err) {
         res.status(500).send("Erreur lors de la récupération des données");
