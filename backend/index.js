@@ -10,7 +10,16 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3001"); // update to match the domain you will make the request from
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
+app.get("/", (req, res, next) => {
   res.send("Bienvenue sur Express");
 });
 
@@ -54,7 +63,7 @@ app.post("/api/newuser", (req, res) => {
 });
 
 // FIL-ACTU || GET & POST
-app.get("/api/postslist", (req, res) => {
+app.get("/api/postslist", (req, res, next) => {
   db.query("SELECT * from post", (err, results) => {
     if (err) {
       res.status(500).send("Erreur lors de la récupération des données");
