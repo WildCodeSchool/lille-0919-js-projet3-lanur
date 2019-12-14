@@ -26,7 +26,7 @@ class PostField extends Component {
     };
 
     axios
-      .post("http://localhost:3000/api/newpost", postObject)
+      .post("http://localhost:3000/api/posts", postObject)
       .then(() => console.log("post created"))
       .catch(err => {
         console.error(err);
