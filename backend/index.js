@@ -50,7 +50,7 @@ app.get("/api/userslight", (req, res) => {
   );
 });
 
-app.post("/api/newuser", (req, res) => {
+app.post("/api/user", (req, res) => {
   const formData = req.body;
   db.query("INSERT INTO user SET ?", formData, (err, results) => {
     if (err) {
@@ -63,7 +63,7 @@ app.post("/api/newuser", (req, res) => {
 });
 
 // FIL-ACTU || GET & POST
-app.get("/api/postslist", (req, res, next) => {
+app.get("/api/posts", (req, res, next) => {
   db.query("SELECT * from post", (err, results) => {
     if (err) {
       res.status(500).send("Erreur lors de la récupération des données");
@@ -73,7 +73,7 @@ app.get("/api/postslist", (req, res, next) => {
   });
 });
 
-app.post("/api/newpost", (req, res) => {
+app.post("/api/posts", (req, res) => {
   const formData = req.body;
   db.query("INSERT INTO post SET ?", formData, (err, results) => {
     if (err) {
