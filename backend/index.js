@@ -31,20 +31,20 @@ app.get("/api/users", (req, res) => {
       if (err) {
         res.status(500).send("Erreur lors de la récupération des données");
       } else {
-        res.json(results);
+        res.status(200).json(results);
       }
     }
   );
 });
 
-app.post("/api/user", (req, res) => {
+app.post("/api/users", (req, res) => {
   const formData = req.body;
   db.query("INSERT INTO user SET ?", formData, (err, results) => {
     if (err) {
       console.log(err);
       res.status(500).send("Erreur lors de la sauvegarde d'un utilisateur");
     } else {
-      res.sendStatus(200);
+      res.sendStatus(201);
     }
   });
 });
@@ -55,7 +55,7 @@ app.get("/api/posts", (req, res, next) => {
     if (err) {
       res.status(500).send("Erreur lors de la récupération des données");
     } else {
-      res.json(results);
+      res.status(200).json(results);
     }
   });
 });
@@ -67,7 +67,7 @@ app.post("/api/posts", (req, res) => {
       console.log(err);
       res.status(500).send("Erreur lors de la sauvegarde du message");
     } else {
-      res.sendStatus(200);
+      res.sendStatus(201);
     }
   });
 });
