@@ -37,19 +37,6 @@ app.get("/api/users", (req, res) => {
   );
 });
 
-app.get("/api/userslight", (req, res) => {
-  db.query(
-    "SELECT id, firstname, lastname, pseudo, creation_date from user",
-    (err, results) => {
-      if (err) {
-        res.status(500).send("Erreur lors de la récupération des données");
-      } else {
-        res.json(results);
-      }
-    }
-  );
-});
-
 app.post("/api/user", (req, res) => {
   const formData = req.body;
   db.query("INSERT INTO user SET ?", formData, (err, results) => {
