@@ -9,6 +9,7 @@ import ScrollButton from "./components/ScrollButton";
 function App() {
   return (
     <div className="App">
+      <Form />
       <div className="bigGamePage">
         <ScrollButton />
       <div className="gamePage">

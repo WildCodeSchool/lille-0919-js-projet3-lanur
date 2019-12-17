@@ -160,7 +160,7 @@ class Form extends React.Component {
                 <input
                   className="idInput"
                   type="text"
-                  value={this.state.pays}
+                  value={this.state.country}
                   onChange={event => {
                     this.setState({ country: event.target.value });
                   }}
