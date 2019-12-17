@@ -23,6 +23,7 @@ class GameChoice extends React.Component {
                     <button className={this.state.click ? "status-on" : "status-off"}>
                         <img className="picture" src={this.props.picture} /></button>
             </div>
+           
         )
     }
 }
