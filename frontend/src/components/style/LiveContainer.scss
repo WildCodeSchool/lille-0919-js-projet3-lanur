@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "Sansation";
+  src: url("/Sansation_Regular.ttf");
+}
+$mainColor: #8d20ae;
+$secondColor: rgb(39, 39, 39);
+
+.allLive {
+  min-height: 92vh;
+  background-color: white;
+  width: 30vw;
+  position: fixed;
+  right: 0;
+  top: 8vh;
+  font-family: "Sansation";
+  display: flex;
+  flex-direction: column;
+
+  .liveTitle {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    background-color: $mainColor;
+    color: white;
+    font-weight: bold;
+  }
+
+  .liveContent {
+    overflow: scroll;
+    height: calc(92vh - 60px);
+    .streamingStatus {
+      display: flex;
+      padding: 3px;
+      height: 40px;
+      border-top: solid $mainColor;
+      align-items: center;
+      img {
+        height: 100%;
+      }
+    }
+  }
+}
