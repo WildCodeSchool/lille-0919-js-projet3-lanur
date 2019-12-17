@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const { backendPort, db } = require("./conf.js");
 
@@ -10,18 +11,7 @@ app.use(
   })
 );
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3001"); // update to match the domain you will make the request from
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
-
-app.get("/", (req, res, next) => {
-  res.send("Bienvenue sur Express");
-});
+app.use(cors());
 
 // USERS || GET & POST
 app.get("/api/users", (req, res) => {
@@ -37,27 +27,18 @@ app.get("/api/users", (req, res) => {
   );
 });
 
-app.post("/api/users", (req, res) => {
-  const formData = req.body;
-  db.query("INSERT INTO user SET ?", formData, (err, results) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send("Erreur lors de la sauvegarde d'un utilisateur");
-    } else {
-      res.sendStatus(201);
-    }
-  });
-});
-
 // FIL-ACTU || GET & POST
 app.get("/api/posts", (req, res, next) => {
-  db.query("SELECT * from post", (err, results) => {
-    if (err) {
-      res.status(500).send("Erreur lors de la récupération des données");
-    } else {
-      res.status(200).json(results);
+  db.query(
+    "SELECT id, circle_id, user_id, user_id_team, game_id, message, date from post",
+    (err, results) => {
+      if (err) {
+        res.status(500).send("Erreur lors de la récupération des données");
+      } else {
+        res.status(200).json(results);
+      }
     }
-  });
+  );
 });
 
 app.post("/api/posts", (req, res) => {
