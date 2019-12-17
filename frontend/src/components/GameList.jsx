@@ -86,7 +86,7 @@ const GameList = [
   },
   {
     name: 'Street Fighter V',
-    picture: '/pictures/street-fighter_v.png',
+    picture: '/pictures/street_fighter_v.png',
     click: true
   },
   {

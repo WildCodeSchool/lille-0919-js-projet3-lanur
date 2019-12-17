@@ -6,11 +6,13 @@ import GameList from "./components/GameList";
 
 function App() {
   return (
-    <div>
-      <GameChoice />
-    </div>
-  );
-}
+    <div className="App">
+      <div className="gamePage">
+      {GameList.map ((game) => {
+      return (<GameChoice name={game.name} picture={game.picture} click={game.click} />)})}
+      </div>
+    </div>)
+};
 
 
 export default App;
