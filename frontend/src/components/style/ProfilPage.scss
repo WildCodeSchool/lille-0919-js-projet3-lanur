@@ -40,6 +40,7 @@ html {
         justify-content: center;
         flex-flow: column;
         background-color: rgba(whitesmoke, 0.5);
+        border: 4px solid purple;
         border-radius: 15px;
         float: right;
         margin: 0.5vh 3vw;
@@ -57,9 +58,8 @@ html {
         }
       }
 
-      p {
-        width: 23vw;
-        font-size: 1.2em;
+      select {
+        height: 4.5vh;
       }
 
       .infos {
@@ -86,7 +86,6 @@ html {
         align-items: center;
 
         h1 {
-          text-align: center;
           font-size: 2em;
         }
 
@@ -104,13 +103,29 @@ html {
           font-size: 2em;
         }
         ul {
+          margin: 0 auto;
           display: flex;
-          flex-flow: wrap;
-        }
-        li {
-          margin-bottom: 4vh;
-          width: 14vw;
-          list-style: none;
+          flex-flow: row wrap;
+          justify-content: center;
+
+          li {
+            margin: 4vh 0.5rem 0;
+            padding: 10px;
+            width: 220px;
+            height: 130px;
+            list-style: none;
+            background: rgba(rgb(128, 105, 105), 0.7);
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid purple;
+            border-radius: 15px;
+
+            img {
+              width: 80%;
+            }
+          }
         }
       }
       .submit {
