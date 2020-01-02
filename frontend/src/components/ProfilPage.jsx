@@ -71,12 +71,12 @@ export default class ProfilePage extends React.Component {
                 <option value="female">Female</option>
                 <option value="other">Other</option>
               </select>
-              <p>Your genre will not be visible on the website.</p>
             </div>
+            <p>Your genre will not be visible on the website.</p>
           </div>
 
-          <div className="role" onClick={this.toggleMenuRole}>
-            <h1>Your role</h1>
+          <div className="role">
+            <h1 onClick={this.toggleMenuRole}>Your role</h1>
             {this.state.toggleMenuRole ? (
               <div
                 ref={element => {
@@ -95,14 +95,14 @@ export default class ProfilePage extends React.Component {
                 </div>
                 <div className="infoContainer">
                   <label>Your biography</label>
-                  <textarea type="text" placeholder="Describe you career " />
+                  <textarea type="text" placeholder="Describe you career" />
                 </div>
               </div>
             ) : null}
           </div>
 
-          <div className="links" onClick={this.toggleMenuLinks}>
-            <h1>Your links</h1>
+          <div className="links">
+            <h1 onClick={this.toggleMenuLinks}>Your links</h1>
             {this.state.toggleMenuLinks ? (
               <div
                 ref={element => {
@@ -125,8 +125,8 @@ export default class ProfilePage extends React.Component {
             ) : null}
           </div>
 
-          <div className="games" onClick={this.toggleMenuGames}>
-            <h1>Your Games</h1>
+          <div className="games">
+            <h1 onClick={this.toggleMenuGames}>Your Games</h1>
             {this.state.toggleMenuGames ? (
               <div
                 ref={element => {
@@ -135,63 +135,87 @@ export default class ProfilePage extends React.Component {
               >
                 <ul>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img src="/pictures/apex.png" alt="Apex Legends" />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img
+                      src="/pictures/csgo.png"
+                      alt="Counter Strike Global Offensive"
+                    />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img src="/pictures/dota_2.png" alt="Dota 2" />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img src="/pictures/fortnite.png" alt="Fortnite" />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img
+                      src="/pictures/heroes_of_the_storm.png"
+                      alt="Heroes of the Storm"
+                    />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img src="/pictures/hearthstone.png" alt="Hearthstone" />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img src="/pictures/krosmaga.png" alt="Krosmaga" />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img
+                      src="/pictures/league_of_legends.png"
+                      alt="League of Legends"
+                    />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img src="/pictures/overwatch.png" alt="Overwatch" />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img src="/pictures/paladins.png" alt="Paladins" />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img src="/pictures/pubg.png" alt="PUBG" />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img
+                      src="/pictures/rainbow_six_siege.png"
+                      alt="Rainbow Six Siege"
+                    />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img
+                      src="/pictures/rocket_league.png"
+                      alt="Rocket League"
+                    />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img src="/pictures/smite.png" alt="Smite" />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img src="/pictures/starcraft.png" alt="Starcraft 2" />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img
+                      src="/pictures/street_fighter_v.png"
+                      alt="Street Fighter 5"
+                    />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img
+                      src="/pictures/super_smash_bros_ultimate.png"
+                      alt="Super Smash Bros Ultimate"
+                    />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img
+                      src="/pictures/teamfight_tactics.png"
+                      alt="Teamfight Tactics"
+                    />
                   </li>
                   <li>
-                    <img src="https://via.placeholder.com/200" alt="" />
+                    <img src="/pictures/tekken7.png" alt="tekken 7" />
                   </li>
-                </ul>{" "}
+                </ul>
               </div>
             ) : null}
           </div>
