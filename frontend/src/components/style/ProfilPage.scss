@@ -1,0 +1,125 @@
+html {
+  background-color: #3a3a3a;
+  color: white;
+
+  .container {
+    .infoContainer {
+      display: flex;
+      align-items: center;
+    }
+    label {
+      font-size: 1.5em;
+      margin: 2vh 0;
+      width: 20vw;
+      display: block;
+    }
+
+    textarea {
+      height: 4vh;
+      width: 36vw;
+      display: block;
+      border-radius: 7px;
+      text-align: center;
+      font-size: 1.3em;
+    }
+
+    margin: 0 auto;
+    text-align: center;
+    width: 98vw;
+    height: 80vh;
+    border-radius: 30px;
+
+    h1 {
+      margin: revert;
+      font-size: 3em;
+    }
+
+    form {
+      .avatar {
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+        background-color: rgba(whitesmoke, 0.5);
+        border-radius: 15px;
+        float: right;
+        margin: 0.5vh 3vw;
+        height: 45vh;
+        width: 30vw;
+        h1 {
+          font-size: 2em;
+        }
+        img {
+          margin: auto;
+          width: 250px;
+        }
+        input {
+          margin: auto 5vw;
+        }
+      }
+
+      p {
+        width: 23vw;
+        font-size: 1.2em;
+      }
+
+      .infos {
+        height: 50vh;
+        width: 65vw;
+        display: block;
+
+        input {
+          height: 3vh;
+          width: 35vw;
+          display: block;
+          font-size: 1.3em;
+        }
+      }
+
+      .role {
+        h1 {
+          font-size: 2em;
+        }
+      }
+
+      .links {
+        display: block;
+        align-items: center;
+
+        h1 {
+          text-align: center;
+          font-size: 2em;
+        }
+
+        input {
+          height: 3vh;
+          width: 35vw;
+          display: block;
+          font-size: 1.3em;
+        }
+      }
+
+      .games {
+        display: block;
+        h1 {
+          font-size: 2em;
+        }
+        ul {
+          display: flex;
+          flex-flow: wrap;
+        }
+        li {
+          margin-bottom: 4vh;
+          width: 14vw;
+          list-style: none;
+        }
+      }
+      .submit {
+        margin: 5vh;
+        width: 20vw;
+        height: 5vh;
+        font-size: larger;
+        text-align: center;
+      }
+    }
+  }
+}
