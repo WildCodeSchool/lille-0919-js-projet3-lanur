@@ -1,17 +1,14 @@
 import React from 'react';
 import Form from "./components/Form";
 import GameChoice from "./components/GameChoice";
-import GameList from "./components/GameList";
-import ScrollButton from "./components/ScrollButton";
+import GameList from "./GameList";
 
 
 
 function App() {
   return (
     <div className="App">
-      <Form />
       <div className="bigGamePage">
-        <ScrollButton />
       <div className="gamePage">
       {GameList.map ((game) => {
       return (<GameChoice name={game.name} picture={game.picture} click={game.click} />)})}
