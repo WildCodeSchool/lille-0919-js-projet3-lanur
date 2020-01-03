@@ -18,7 +18,8 @@ class GameChoice extends React.Component {
                     this.setState({click: newClick});
                 }}> 
                 <button className={this.state.click ? "status-on" : "status-off"}> 
-                <img className="picture" src={this.props.picture} /></button>
+                <img className="picture" src={this.props.picture} />
+                <img className="checkbox" src="/pictures/checkbox.png" /></button>
             </div>
         )
     }
