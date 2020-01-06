@@ -11,7 +11,7 @@ function App() {
       <div className="bigGamePage">
       <div className="gamePage">
       {GameList.map ((game) => {
-      return (<GameChoice name={game.name} picture={game.picture} click={game.click} />)})}
+      return (<GameChoice name={game.name} picture={game.picture} />)})}
       </div>
       </div>
     </div>)

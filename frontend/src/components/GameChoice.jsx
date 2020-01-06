@@ -11,7 +11,7 @@ class GameChoice extends React.Component {
     }
 
     render() {
-        return  ( 
+        return  (
             <div className="gameChoice"
                 onClick={event => {
                     const newClick = !this.state.click;
