@@ -1,6 +1,12 @@
+@font-face {
+  font-family: "Sansation";
+  src: url("/Sansation_Regular.ttf");
+}
+
 html {
   background-color: #3a3a3a;
   color: white;
+  font-family: "Sansation";
 
   .container {
     .infoContainer {

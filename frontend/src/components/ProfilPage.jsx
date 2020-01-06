@@ -121,6 +121,10 @@ export default class ProfilePage extends React.Component {
                   <label>Mixer</label>
                   <input type="link" placeholder="Your Mixer channel" />
                 </div>
+                <div className="infoContainer">
+                  <label>Discord</label>
+                  <input type="link" placeholder="Your Discord pseudo" />
+                </div>
               </div>
             ) : null}
           </div>
