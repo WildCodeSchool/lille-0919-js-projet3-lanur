@@ -1,7 +1,8 @@
 .main-NewsFeed {
   background-color: rgb(39, 39, 39);
-  height: 300%;
+  height: 100vh;
   width: 100%;
+
   position: absolute;
   top: 8vh;
 
@@ -9,7 +10,6 @@
 }
 
 .wip {
-  height: 100px;
   border-color: red($color: #000000);
   color: white;
   width: 100%;
