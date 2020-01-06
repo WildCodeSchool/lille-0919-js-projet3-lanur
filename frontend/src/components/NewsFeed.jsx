@@ -6,33 +6,36 @@ import LiveContainer from "./LiveContainer";
 
 function NewsFeed() {
   const [posts, setPosts] = useState([]);
-  const [loadedposts, setLoadedPosts] = useState(0);
+  const [loadedposts, setLoadedPosts] = useState(10);
 
   useEffect(() => {
-    if (posts.length === loadedposts) {
+    if (posts.length != loadedposts) {
       axios
-        .get("http://localhost:5050/api/posts")
+        .get(`http://localhost:5050/api/posts/${loadedposts}`)
         .then(response => {
-          setLoadedPosts(loadedposts + 10);
+          // setLoadedPosts(loadedposts + 10);
           let newPosts = response.data;
           setPosts(newPosts);
-          console.log(newPosts);
+          console.log(
+            "api ok --------------------------------------------------------------"
+          );
         })
         .catch(error => {
           console.log("oups it did not work" + error);
         });
     }
-  });
+  }, loadedposts);
 
   return (
     <div className="main-NewsFeed">
       {posts.map(post => (
-        <div>{post.message}</div>
+        <div className="wip">
+          {post.id} - {post.message}
+        </div>
       ))}
-      <Postcard />
-      <Postcard />
-      <Postcard />
-      <Postcard />
+
+      {console.log(window.scroll)}
+
       <LiveContainer />
     </div>
   );
