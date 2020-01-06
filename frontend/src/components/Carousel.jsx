@@ -11,7 +11,7 @@ export default function Carousel() {
       description:
         "lorem ipsum tgee zerfz fz fzjn e o z zefzrf z z egfzgef grfed grfedz tgfrde tgrfde gtrf",
       image:
-        "http://getwallpapers.com/wallpaper/full/2/0/2/764295-black-purple-background-3200x1800-for-meizu.jpg"
+        "http://www.influencia.net/data/classes/actualite/actu_6082_image2012rectangle_petite.png"
     },
     {
       title: "John C.",
@@ -27,7 +27,7 @@ export default function Carousel() {
       description:
         "Lorem ipsum fzeopzfkpzk efpoekfefzftydyazftydaf auzdyfazytdfuyqfz dyufqzfdyu",
       image:
-        "http://getwallpapers.com/wallpaper/full/2/0/2/764295-black-purple-background-3200x1800-for-meizu.jpg"
+        "http://www.influencia.net/data/classes/actualite/actu_6082_image2012rectangle_petite.png"
     },
     {
       title: "Robert Valles",
