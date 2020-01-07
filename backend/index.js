@@ -30,7 +30,7 @@ app.get("/api/users", (req, res) => {
 // FIL-ACTU || GET & POST
 app.get("/api/posts", (req, res, next) => {
   db.query(
-    "SELECT id, circle_id, user_id, user_id_team, game_id, message, date from post",
+    "SELECT id, circle_id, user_id, user_id_team, game_id, message, date from post ORDER by date DESC",
     (err, results) => {
       if (err) {
         res.status(500).send("Erreur lors de la récupération des données");
