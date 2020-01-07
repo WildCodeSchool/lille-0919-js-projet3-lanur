@@ -1,7 +1,8 @@
 import React from "react";
 import "./style/postcard.scss";
+import Moment from "react-moment";
 
-function Postcard() {
+function Postcard(props) {
   return (
     <div className="postContainer">
       <div className="post">
@@ -31,7 +32,10 @@ function Postcard() {
           <div className="headpost">
             <div>Pseudo</div>
             <div>TeamName</div>
-            <div>postTime</div>
+            <div>
+              <Moment format="L" date={props.date} />
+              <Moment format="h:mm" date={props.date} />
+            </div>
           </div>
 
           {/* section with the content of the post*/}
@@ -44,12 +48,7 @@ function Postcard() {
               />
             </div>
             {/* section with the media*/}
-            <div className="postComment ">
-              comment - content - Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Repellat cupiditate nesciunt dignissimos ratione
-              voluptate tempora tempore porro ipsam perferendis et eaque id
-              autem facere, architecto, at sunt quisquam dolorum ullam.
-            </div>
+            <div className="postComment ">{props.message}</div>
           </div>
           <div className="reaction">
             <div className="reaction-button">
