@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style/postfield.scss";
+import "./style/PostField.scss";
 import axios from "axios";
 
 class PostField extends Component {
