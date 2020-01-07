@@ -1,21 +1,26 @@
-import React from 'react';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import Carousel from "./components/Carousel";
+import SignIn from "./components/SignIn";
 import Form from "./components/Form";
-import GameChoice from "./components/GameChoice";
-import GameList from "./GameList";
-
-
+import NewsFeed from "./components/NewsFeed";
 
 function App() {
   return (
     <div className="App">
-      <div className="bigGamePage">
-      <div className="gamePage">
-      {GameList.map ((game) => {
-      return (<GameChoice name={game.name} picture={game.picture} />)})}
-      </div>
-      </div>
-    </div>)
-};
-
+      <Switch>
+        <Route exact path="/" component={NavBar} />
+        <Route path="/NewsFeed" component={NavBar} />
+      </Switch>
+      <Switch>
+        <Route exact path="/" component={Carousel} />
+        <Route exact path="/Signin" component={SignIn} />
+        <Route path="/Signin/Form" component={Form} />
+        <Route path="/NewsFeed" component={NewsFeed} />
+      </Switch>
+    </div>
+  );
+}
 
 export default App;
