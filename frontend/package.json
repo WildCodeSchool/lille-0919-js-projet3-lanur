@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cloudinary-react": "^1.3.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-animated-slider": "^2.0.0",

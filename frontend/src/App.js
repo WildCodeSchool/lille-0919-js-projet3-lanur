@@ -5,11 +5,13 @@ import Carousel from "./components/Carousel";
 import SignIn from "./components/SignIn";
 import Form from "./components/Form";
 import NewsFeed from "./components/NewsFeed";
+import UploadImg from "./components/UploadImg";
 
 function App() {
   return (
     <div className="App">
-      <Switch>
+      <UploadImg />
+      {/* <Switch>
         <Route exact path="/" component={NavBar} />
         <Route path="/NewsFeed" component={NavBar} />
       </Switch>
@@ -18,7 +20,7 @@ function App() {
         <Route exact path="/Signin" component={SignIn} />
         <Route path="/Signin/Form" component={Form} />
         <Route path="/NewsFeed" component={NewsFeed} />
-      </Switch>
+      </Switch> */}
     </div>
   );
 }
