@@ -1,22 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const { backendPort, db } = require("./conf.js");
-const cloudinary = require("cloudinary")
+const { backendPort, db, cloudinary } = require("./conf.js");
 
+const multer = require("multer");
 const bodyParser = require("body-parser");
 
-cloudinary.config({
-  cloud_name: 'lanur',
-  api_key: '275875865423731',
-  api_secret: 'P1mQ0l-H9hoMHPv5QqKi4xcwmOc'
-});
-app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
+
+const upload = multer({ dest: 'tmp/' })
+
+
 
 app.use(cors());
 
@@ -60,27 +53,12 @@ app.post("/api/posts", (req, res) => {
   });
 });
 
-// app.post("/imgupload", (req, res) => {
-//   const formData = req.body;
-//   console.log(formData)
-//   cloudinary.v2.uploader.upload(req.body.imagePreviewUrl.data, { public_id: "sample_id", file: req.body.imagePreviewUrl.data, },
-//     // { public_id: "sample_id", file: formData, },
-//     function (err, result) {
-//       if (err) {
-//         console.log(err);
-//         res.status(500).send("Erreur lors de la sauvegarde de l'image");
-//       } else {
-//         res.send(result);
-//         console.log(result);
-//       }
-//     });
-// });
 
-app.post("/imgupload", (req, res) => {
-  const formData = req.body;
+
+app.post("/imgupload", upload.single('monfichier'), (req, res) => {
+  const formData = req.file;
   console.log(formData)
-  cloudinary.v2.uploader.upload(formData.imagePreviewUrl,
-    // { public_id: "sample_id", file: formData, },
+  cloudinary.v2.uploader.upload(formData.path,
     function (err, result) {
       if (err) {
         console.log(err);

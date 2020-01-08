@@ -10,17 +10,29 @@ import {
 class UploadImg extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { file: null, imagePreviewUrl: "" };
+    this.state = {
+      file: null,
+      imagePreviewUrl: ""
+    };
   }
 
   handleSubmit(e) {
     e.preventDefault();
     // TODO: do something with -> this.state.file
-    let data = this.state;
-    console.log("handle uploading-", data);
+    let data = new FormData();
+    data.append("monfichier", this.state.file);
     axios
-      .post("http://localhost:5050/imgupload", data)
+      .post(
+        "http://localhost:5050/imgupload",
+        data
+        //, {
+        // headers: {
+        //   "content-type": "multipart/form-data"
+        // }
+        //}
+      )
       .then(response => {
+        console.log(response.data);
         alert("image added with success");
       })
       .then(() => window.location.reload(true))
@@ -31,6 +43,8 @@ class UploadImg extends React.Component {
 
   handleImageChange(e) {
     e.preventDefault();
+    console.log(e.target.files);
+    console.log("----------------------");
 
     let reader = new FileReader();
     let selectedFile = e.target.files[0];
@@ -40,7 +54,10 @@ class UploadImg extends React.Component {
         file: selectedFile,
         imagePreviewUrl: reader.result
       });
+      console.log(this.state.file);
     };
+    console.log(e.target.files[0]);
+    console.log("----------------------");
 
     reader.readAsDataURL(selectedFile);
   }
