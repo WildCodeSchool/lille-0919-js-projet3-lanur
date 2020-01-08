@@ -1,21 +1,15 @@
-import React from 'react';
-import Form from "./components/Form";
+import React from "react";
 import GameChoice from "./components/GameChoice";
 import GameList from "./GameList";
-
-
+import NavBar from "./components/NavBar";
+import Form from "./components/Form";
 
 function App() {
   return (
-    <div className="App">
-      <div className="bigGamePage">
-      <div className="gamePage">
-      {GameList.map ((game) => {
-      return (<GameChoice name={game.name} picture={game.picture} />)})}
-      </div>
-      </div>
-    </div>)
-};
-
+    <div>
+      <Form />
+    </div>
+  );
+}
 
 export default App;
