@@ -27,35 +27,37 @@ function Postcard(props) {
             />
           </div>
         </div>
-        <div className="contentPost">
-          {/* section with name and information about the post */}
-          <div className="headpost">
-            <div>Pseudo</div>
-            <div>TeamName</div>
-            <div>
-              <Moment format="L" date={props.date} />
-              <Moment format="h:mm" date={props.date} />
+        <div className="contentPostContainer">
+          <div className="contentPost">
+            {/* section with name and information about the post */}
+            <div className="headpost">
+              <div>Pseudo</div>
+              <div>TeamName</div>
+              <div>
+                <Moment format="L" date={props.date} />
+                <Moment format="h:mm" date={props.date} />
+              </div>
             </div>
-          </div>
 
-          {/* section with the content of the post*/}
-          <div className="contentpost">
-            <div className=" mediaContainer">
+            {/* section with the content of the post*/}
+            <div className="contentpost">
+              <div className="mediaContainer">
+                {/* section with the media*/}
+                <img
+                  className="postmedia"
+                  src="https://via.placeholder.com/500x300"
+                />
+              </div>
               {/* section with the media*/}
-              <img
-                className="postmedia"
-                src="https://via.placeholder.com/500x300"
-              />
+              <div className="postComment ">{props.message}</div>
             </div>
-            {/* section with the media*/}
-            <div className="postComment ">{props.message}</div>
-          </div>
-          <div className="reaction">
-            <div className="reaction-button">
-              <button>Like</button>
-            </div>
-            <div className="reaction-button">
-              <button>Comment</button>
+            <div className="reaction">
+              <div className="reaction-button">
+                <button>Like</button>
+              </div>
+              <div className="reaction-button">
+                <button>Comment</button>
+              </div>
             </div>
           </div>
         </div>
