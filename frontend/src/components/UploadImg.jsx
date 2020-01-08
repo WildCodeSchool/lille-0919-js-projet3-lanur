@@ -18,19 +18,10 @@ class UploadImg extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // TODO: do something with -> this.state.file
     let data = new FormData();
     data.append("monfichier", this.state.file);
     axios
-      .post(
-        "http://localhost:5050/imgupload",
-        data
-        //, {
-        // headers: {
-        //   "content-type": "multipart/form-data"
-        // }
-        //}
-      )
+      .post("http://localhost:5050/imgupload", data)
       .then(response => {
         console.log(response.data);
         alert("image added with success");
@@ -74,17 +65,14 @@ class UploadImg extends React.Component {
     }
 
     return (
-      //     <input name="file" type="file"
-      //  class="file-upload" data-cloudinary-field="image_id"
-      //  data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"/>
+      // code to use to call an image from cloudinary:
+      // <CloudinaryContext cloudName="lanur">
+      //           <div>
+      //             <Image publicId="o9vv0q0kfyn5jbjst9gm" width="50" />
+      //           </div>
+      //         </CloudinaryContext>
 
       <div className="previewComponent">
-        <CloudinaryContext cloudName="lanur">
-          <div>
-            <Image publicId="o9vv0q0kfyn5jbjst9gm" width="50" />
-          </div>
-        </CloudinaryContext>
-
         <form onSubmit={e => this.handleSubmit(e)}>
           <input
             className="fileInput"
