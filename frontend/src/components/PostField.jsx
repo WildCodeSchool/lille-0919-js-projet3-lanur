@@ -1,25 +1,13 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./style/PostField.scss";
 import axios from "axios";
 
-class PostField extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { user_id: "", message: "" };
-  }
+function PostField() {
+  const user_id = 4;
+  const [message, setMessage] = useState("");
 
-  onChangeMessage = e => {
-    this.setState({
-      message: e.target.value,
-      user_id: "4"
-    });
-  };
-
-  onSubmit = e => {
+  const onSubmit = e => {
     e.preventDefault();
-
-    const { user_id, message } = this.state;
-
     const postObject = {
       user_id,
       message
@@ -33,30 +21,30 @@ class PostField extends Component {
       });
   };
 
-  render() {
-    return (
-      <div className="postFieldContainer">
-        <div className="postField">
-          <div className="avatar">
-            <img
-              className="avatarImg"
-              src="https://pickaface.net/gallery/avatar/unr_fake_180910_2220_9vd5qy.png"
-            ></img>
-          </div>
-          <form onSubmit={this.onSubmit}>
-            <textarea
-              type="text"
-              name="message"
-              placeholder="Exprimez-vous !"
-              onChange={this.onChangeMessage}
-              className="headPost"
-            />
-            <button type="submit">post</button>
-          </form>
+  return (
+    <div className="postFieldContainer">
+      <div className="postField">
+        <div className="avatar">
+          <img
+            className="avatarImg"
+            src="https://pickaface.net/gallery/avatar/unr_fake_180910_2220_9vd5qy.png"
+          ></img>
         </div>
+        <form onSubmit={e => onSubmit(e)}>
+          <textarea
+            type="text"
+            name="message"
+            placeholder="Exprimez-vous !"
+            onChange={e => {
+              setMessage(e.target.value);
+            }}
+            className="headPost"
+          />
+          <button type="submit">post</button>
+        </form>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default PostField;

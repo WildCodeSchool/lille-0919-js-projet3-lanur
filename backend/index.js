@@ -44,6 +44,7 @@ app.get("/api/posts", (req, res, next) => {
 app.post("/api/posts", (req, res) => {
   const formData = req.body;
   db.query("INSERT INTO post SET ?", formData, (err, results) => {
+    console.log(formData);
     if (err) {
       console.log(err);
       res.status(500).send("Erreur lors de la sauvegarde du message");
