@@ -1,5 +1,16 @@
 .slider {
   height: 100vh;
+
+  .previousButton {
+    background: url("../../assets/arrowLeft.svg") no-repeat center center / 6em;
+    width: 32px;
+    height: 32px;
+  }
+  .nextButton {
+    background: url("../../assets/arrowRight.svg") no-repeat center center / 6em;
+    width: 32px;
+    height: 32px;
+  }
 }
 .center {
   background-color: rgba($color: #ffffff, $alpha: 0.3);
