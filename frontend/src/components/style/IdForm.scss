@@ -1,5 +1,12 @@
-body {
-  background-color: #8d20ae;
+@import "./variables";
+
+.formulaire-appear {
+  opacity: 0.01;
+}
+
+.formulaire-appear.formulaire-appear-active {
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
 }
 
 .formContainer {
@@ -10,7 +17,9 @@ body {
   width: 100%;
 
   .form {
-    background-color: #330033;
+    border: 10px solid $mainColor;
+    border-radius: 15px;
+    background-color: rgba($color: #222222, $alpha: 0.8);
     color: white;
     font-size: 1.5em;
     display: flex;
@@ -20,7 +29,6 @@ body {
     width: 90vw;
     height: 80vh;
     margin-top: 5%;
-    border-radius: 1%;
 
     .inputContainer {
       display: flex;
@@ -41,18 +49,18 @@ body {
         width: 65%;
         margin-right: 5%;
       }
-      
+
       .idTextarea {
         width: 80%;
         border-radius: 4%;
         margin-right: 5%;
       }
-      
+
       .idSelect {
         width: 66%;
         margin-right: 5%;
       }
-      
+
       .labelTextarea {
         margin: 8%;
       }
