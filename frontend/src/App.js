@@ -9,10 +9,7 @@ import NewsFeed from "./components/NewsFeed";
 function App() {
   return (
     <div className="App">
-      <Switch>
-        <Route exact path="/" component={NavBar} />
-        <Route path="/NewsFeed" component={NavBar} />
-      </Switch>
+      <NavBar />
       <Switch>
         <Route exact path="/" component={Carousel} />
         <Route exact path="/Signin" component={SignIn} />
