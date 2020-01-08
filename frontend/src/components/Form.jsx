@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import GameChoice from "./GameChoice";
+import GameList from "../GameList";
 import "./style/IdForm.scss";
-
 
 class Form extends React.Component {
   constructor(props) {
@@ -184,9 +186,24 @@ class Form extends React.Component {
           ) : (
             ""
           )}
-          {/* Role -------------------------------------------------------------------------------------------- */}
           {this.state.page === 4 ? (
             <div className="page4">
+              <div className="bigGamePage">
+                <div className="gamePage">
+                  {GameList.map(game => {
+                    return (
+                      <GameChoice name={game.name} picture={game.picture} />
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+          {/* Role -------------------------------------------------------------------------------------------- */}
+          {this.state.page === 5 ? (
+            <div className="page5">
               <div className="inputContainer">
                 <label className="labelTextarea">Rôles</label>
                 <textarea
@@ -237,17 +254,19 @@ class Form extends React.Component {
           ) : (
             ""
           )}
-          {this.state.page != 4 ? (
+          {this.state.page != 5 ? (
             <button className="button" onClick={this.nextPage}>
               Suivant
             </button>
           ) : (
             ""
           )}
-          {this.state.page === 4 ? (
-            <button className="button" type="submit">
-              Valider!
-            </button>
+          {this.state.page === 5 ? (
+            <Link to="/NewsFeed">
+              <button className="button" type="submit">
+                Valider!
+              </button>
+            </Link>
           ) : (
             ""
           )}
