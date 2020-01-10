@@ -1,7 +1,9 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "./style/SignIn.scss";
 
 const SignIn = () => {
+  const history = useHistory();
   const handleSubmit = event => {
     event.preventDefault();
   };
@@ -33,7 +35,13 @@ const SignIn = () => {
           Vous n'avez <span>PAS</span> de compte ?
         </h3>
         <div className="noAccount">
-          <button>Créer un compte</button>
+          <button
+            onClick={() => {
+              history.push("/Signin/Form");
+            }}
+          >
+            Créer un compte
+          </button>
           <p>Continuer sans créer de compte</p>
         </div>
       </div>

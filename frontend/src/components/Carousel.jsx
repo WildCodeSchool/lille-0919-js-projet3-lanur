@@ -1,9 +1,11 @@
+import React from "react";
+import { useHistory } from "react-router-dom";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
-import React from "react";
 import "./style/Carousel.scss";
 
 export default function Carousel() {
+  const history = useHistory();
   const content = [
     {
       title: "Samuel N.",
@@ -39,7 +41,7 @@ export default function Carousel() {
     }
   ];
   return (
-    <Slider autoplay={5000} className="slider">
+    <Slider autoplay={5000} className="slider" previousButton nextButton>
       {content.map((item, index) => (
         <div
           key={index}
@@ -48,7 +50,12 @@ export default function Carousel() {
             backgroundSize: "cover"
           }}
         >
-          <div className="center">
+          <div
+            className="center"
+            onClick={() => {
+              history.push("/SignIn");
+            }}
+          >
             <div className="content">
               <h1>{item.title}</h1>
               <h2>{item.role}</h2>

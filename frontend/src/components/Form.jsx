@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import GameChoice from "./GameChoice";
+import GameList from "../GameList";
 import "./style/IdForm.scss";
 
 function Form() {
@@ -193,8 +196,23 @@ function Form() {
           ""
         )}
         {/* Role -------------------------------------------------------------------------------------------- */}
+
         {page === 4 ? (
           <div className="page4">
+            <div className="bigGamePage">
+              <div className="gamePage">
+                {GameList.map(game => {
+                  return <GameChoice name={game.name} picture={game.picture} />;
+                })}
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+        {/* Role -------------------------------------------------------------------------------------------- */}
+        {page === 5 ? (
+          <div className="page5">
             <div className="inputContainer">
               <label className="labelTextarea">Rôles</label>
               <textarea
@@ -251,17 +269,19 @@ function Form() {
         ) : (
           ""
         )}
-        {page != 4 ? (
+        {page != 5 ? (
           <button className="button" onClick={() => setPage(page + 1)}>
             Suivant
           </button>
         ) : (
           ""
         )}
-        {page === 4 ? (
-          <button className="button" type="submit">
-            Valider!
-          </button>
+        {page === 5 ? (
+          <Link to="/NewsFeed">
+            <button className="button" type="submit">
+              Valider!
+            </button>
+          </Link>
         ) : (
           ""
         )}
