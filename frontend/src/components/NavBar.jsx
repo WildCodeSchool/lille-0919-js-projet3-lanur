@@ -68,7 +68,6 @@ class NavBar extends Component {
               </div>
             ) : null}
           </li>
-
           <li>
             <a href="#">
               <span className="FirstLetter">P</span>rofil
