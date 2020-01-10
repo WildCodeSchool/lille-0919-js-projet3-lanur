@@ -55,7 +55,11 @@ export default function Carousel() {
               <div className="content">
                 <h2>{item.title}</h2>
                 <h3>{item.role}</h3>
-                <p>{item.description}</p>
+                <p>
+                  <span className="quotes">"</span>
+                  {item.description}
+                  <span className="quotes">"</span>
+                </p>
               </div>
             </div>
           </div>
