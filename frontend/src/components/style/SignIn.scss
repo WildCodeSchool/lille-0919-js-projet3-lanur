@@ -82,6 +82,11 @@
       font-size: 1.5em;
       cursor: pointer;
     }
+
+    button:hover {
+      background-color: white;
+      color: $mainColor;
+    }
     h2 {
       font-size: 2em;
       margin-bottom: 3%;
