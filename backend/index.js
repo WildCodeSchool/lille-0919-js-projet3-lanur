@@ -45,9 +45,7 @@ app.get("/api/posts/:limit", (req, res) => {
 app.post("/api/posts", (req, res) => {
   const formData = req.body;
   db.query("INSERT INTO post SET ?", formData, (err, results) => {
-    console.log(formData);
     if (err) {
-      console.log(err);
       res.status(500).send("Erreur lors de la sauvegarde du message");
     } else {
       res.sendStatus(201);
@@ -59,6 +57,4 @@ app.listen(backendPort, err => {
   if (err) {
     throw new Error("Something bad happened...");
   }
-
-  console.log(`Server is listening on ${backendPort}`);
 });

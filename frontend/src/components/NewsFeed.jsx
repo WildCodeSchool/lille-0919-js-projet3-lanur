@@ -4,34 +4,28 @@ import "./style/NewsFeed.scss";
 import Postcard from "./Postcard";
 import LiveContainer from "./LiveContainer";
 import PostField from "./PostField";
+import { backend } from "../conf.js";
 
 function NewsFeed() {
   const [posts, setPosts] = useState([]);
   const [offsetPosts, setoffsetPosts] = useState(0);
-  // il faut ajouter une limite de recharge pour le nombre de post. Sinon l'appel axios se fait même s'il n'y a plus rien à afficher
+
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/api/posts/${offsetPosts}`)
-      .then(response => {
-        let newPosts = response.data;
-        setPosts(posts.concat(newPosts));
-      })
-      .catch(error => {
-        console.log(`oups it did not work ${offsetPosts}` + error);
-      });
+    axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
+      setPosts(posts.concat(data));
+    });
   }, [offsetPosts]);
-  window.addEventListener(
-    "scroll",
-    () => {
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
       if (
         window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.scrollHeight
       ) {
         setoffsetPosts(offsetPosts + 10);
       }
-    },
-    [offsetPosts]
-  );
+    });
+  }, [document.documentElement.scrollTop]);
 
   return (
     <div className="main-NewsFeed">

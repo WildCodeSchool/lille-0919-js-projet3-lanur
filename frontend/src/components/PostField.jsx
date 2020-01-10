@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import "./style/PostField.scss";
 import axios from "axios";
+import { backend } from "../conf.js";
 
 function PostField() {
   const user_id = 4;
@@ -14,11 +15,8 @@ function PostField() {
     };
 
     axios
-      .post("http://localhost:3000/api/posts", postObject)
-      .then(() => console.log("post created"))
-      .catch(err => {
-        console.error(err);
-      });
+      .post(`${backend}/api/posts`, postObject)
+      .then(document.location.reload());
   };
 
   return (
