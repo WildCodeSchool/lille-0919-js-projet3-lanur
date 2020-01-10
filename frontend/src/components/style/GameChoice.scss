@@ -20,7 +20,7 @@
       background-color: rgba(0, 0, 0, 0);
       border-radius: 2%;
       border: none;
-      width: 25vw;
+      width: calc(100vh / 3);
       height: 35vh;
       margin: 1%;
       display: flex;
@@ -28,22 +28,21 @@
       align-items: center;
 
       .picture {
-        width: 15vw;
-        position: absolute;
+        width: 80%;
+        margin: auto;
       }
 
       .checkbox {
         width: 30px;
-        margin-bottom: 50%;
-        position: relative;
-        margin-left: 85%;
+
+        position: absolute;
       }
     }
     .status-off {
       background-color: rgba(0, 0, 0, 0);
       border-radius: 2%;
       border: none;
-      width: 25vw;
+      width: calc(100vh / 3);
       height: 35vh;
       margin: 1%;
       display: flex;
@@ -51,8 +50,8 @@
       align-items: center;
 
       .picture {
-        width: 15vw;
-        position: absolute;
+        width: 80%;
+        margin: auto;
       }
       .checkbox {
         display: none;
