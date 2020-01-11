@@ -33,7 +33,6 @@ function Postcard() {
             <div>TeamName</div>
             <div>postTime</div>
           </div>
-
           {/* section with the content of the post*/}
           <div className="contentpost">
             <div className=" mediaContainer">
