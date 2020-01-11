@@ -45,6 +45,7 @@
       border-radius: 7px;
       background-color: rgba($color: #222222, $alpha: 0.6);
     }
+
     form {
       padding: 10% 5% 5% 5%;
       margin-bottom: 10%;
@@ -79,6 +80,12 @@
       border: 0px;
       border-radius: 18px;
       font-size: 1.5em;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: white;
+      color: $mainColor;
     }
     h2 {
       font-size: 2em;

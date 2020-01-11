@@ -92,6 +92,15 @@ $mainColor: #8d20ae;
         border-radius: 10px;
       }
     }
+    .reaction-button:hover {
+      button {
+        background-color: white;
+        color: $mainColor;
+        border: solid 5px;
+        border-color: $mainColor;
+        cursor: pointer;
+      }
+    }
   }
 }
 

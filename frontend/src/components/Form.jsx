@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import GameChoice from "./GameChoice";
 import GameList from "../GameList";
 import "./style/IdForm.scss";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 function Form() {
   const [registration, setRegistration] = useState({
@@ -28,6 +29,13 @@ function Form() {
   };
 
   return (
+     <ReactCSSTransitionGroup
+        transitionName="formulaire"
+        transitionAppear={true}
+        transitionAppearTimeout={1500}
+        transitionEnter={true}
+        transitionLeave={true}
+      >
     <container className="formContainer">
       <form className="form" onSubmit={e => handleSubmit(e)}>
         {/* LastName -------------------------------------------------------------------------------------------- */}
@@ -48,7 +56,6 @@ function Form() {
               />
             </div>
             {/* FirstName -------------------------------------------------------------------------------------------- */}
-
             <div className="inputContainer">
               <label className="label">Prénom</label>
               <input
@@ -64,7 +71,6 @@ function Form() {
               />
             </div>
             {/* Age -------------------------------------------------------------------------------------------- */}
-
             <div className="inputContainer">
               <label className="label">Date of birth</label>
               <input
@@ -77,7 +83,6 @@ function Form() {
               />
             </div>
             {/* Sexe -------------------------------------------------------------------------------------------- */}
-
             <div className="inputContainer">
               <label className="label">Sexe</label>
               <select
@@ -102,8 +107,7 @@ function Form() {
         {page === 2 ? (
           <div className="page2">
             <div>
-              {/* Pseudo -------------------------------------------------------------------------------------------- */}
-
+              {/* Pseudo -------------------------------------------------------------------------------------------- */}           
               <div className="inputContainer">
                 <label className="label">Pseudo</label>
                 <input
@@ -118,9 +122,7 @@ function Form() {
                   }}
                 />
               </div>
-
               {/* email -------------------------------------------------------------------------------------------- */}
-
               <div className="inputContainer">
                 <label className="label">E-mail</label>
                 <input
@@ -136,7 +138,6 @@ function Form() {
                 />
               </div>
               {/* Password -------------------------------------------------------------------------------------------- */}
-
               <div className="inputContainer">
                 <label className="label">Password</label>
                 <input
@@ -174,9 +175,7 @@ function Form() {
                 }}
               />
             </div>
-
             {/* City -------------------------------------------------------------------------------------------- */}
-
             <div className="inputContainer">
               <label className="label">Ville</label>
               <input
@@ -196,7 +195,6 @@ function Form() {
           ""
         )}
         {/* Role -------------------------------------------------------------------------------------------- */}
-
         {page === 4 ? (
           <div className="page4">
             <div className="bigGamePage">
@@ -227,9 +225,7 @@ function Form() {
                 }}
               />
             </div>
-
             {/* Lan -------------------------------------------------------------------------------------------- */}
-
             <div className="inputContainer">
               <label className="label">LAN</label>
               <input
@@ -241,9 +237,7 @@ function Form() {
                 }}
               />
             </div>
-
             {/* Events -------------------------------------------------------------------------------------------- */}
-
             <div className="inputContainer">
               <label className="label">Events</label>
               <input
@@ -287,6 +281,7 @@ function Form() {
         )}
       </form>
     </container>
+        </ReactCSSTransitionGroup>
   );
 }
 

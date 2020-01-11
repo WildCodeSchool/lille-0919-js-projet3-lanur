@@ -65,5 +65,4 @@ function Postcard(props) {
     </div>
   );
 }
-
 export default Postcard;
