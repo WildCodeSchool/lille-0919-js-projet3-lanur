@@ -1,7 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const { backendPort, db } = require("./conf.js");
+const passport = require("passport");
+
+const {
+  CONFIG: { backendPort },
+  db
+} = require("./conf");
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
@@ -10,8 +15,11 @@ app.use(
     extended: true
   })
 );
-
 app.use(cors());
+app.use(passport.initialize());
+
+// Authentification
+app.use("/api/auth", require("./auth"));
 
 // USERS || GET & POST
 app.get("/api/users", (req, res) => {

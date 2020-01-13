@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import "./style/SignIn.scss";
+import axios from "axios";
 
 const SignIn = () => {
   const history = useHistory();
-  const handleSubmit = event => {
-    event.preventDefault();
+  const dispatch = useDispatch();
+  const [credentialsState, updateCredentialsState] = useState(true);
+  const [pseudo, pseudoUpdate] = useState("");
+  const [password, passwordUpdate] = useState("");
+
+  const handleSubmit = () => {
+    axios
+      .post("http://localhost:5050/api/auth/login", { pseudo, password })
+      .then(
+        response => {
+          console.log(response.data);
+
+          dispatch({ type: "SAVE_JWT", value: response.data });
+          history.push("/NewsFeed");
+        },
+        error => {
+          console.log(error);
+          updateCredentialsState(false);
+        }
+      );
   };
   return (
     <div className="SignIn">
@@ -21,13 +41,38 @@ const SignIn = () => {
         <h2>
           <span>Vous avez</span> un compte ?
         </h2>
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+          }}
+        >
+          {!credentialsState && (
+            <p className="wrong">
+              vos informations semblent fausses, veuillez réesayer
+            </p>
+          )}
           <h3>Identifiant</h3>
-          <input type="text" />
+          <input
+            type="text"
+            value={pseudo}
+            onChange={e => {
+              updateCredentialsState(true);
+              pseudoUpdate(e.target.value);
+            }}
+            className={credentialsState ? "" : "wrong"}
+          />
           <h3>Mot de passe</h3>
-          <input type="password" />
+          <input
+            type="password"
+            value={password}
+            onChange={e => {
+              updateCredentialsState(true);
+              passwordUpdate(e.target.value);
+            }}
+            className={credentialsState ? "" : "wrong"}
+          />
           <p>mot de passe oublié ?</p>
-          <button type="submit" value="Envoyer">
+          <button type="submit" onClick={handleSubmit}>
             Se connecter
           </button>
         </form>
@@ -37,7 +82,7 @@ const SignIn = () => {
         <div className="noAccount">
           <button
             onClick={() => {
-              history.push("/Signin/Form");
+              history.push("/signin/form");
             }}
           >
             Créer un compte

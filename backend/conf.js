@@ -1,6 +1,13 @@
 require("dotenv").config();
 const mysql = require("mysql");
-const backendPort = process.env.BACKEND_PORT || "4200";
+
+let CONFIG = {
+  backendPort: process.env.BACKEND_PORT || "4200",
+  jwtSecret: process.env.JWT_SECRET || "jwt_please_change",
+  saltRounds: process.env.SALT_ROUNDS || "10",
+  jwtExpiration: process.env.JWT_EXPIRATION || "10000"
+};
+
 const db = mysql.createPool({
   connectionLimit: 10,
   host: process.env.DB_HOST || "example.org", // adresse du serveur
@@ -10,6 +17,6 @@ const db = mysql.createPool({
 });
 
 module.exports = {
-  backendPort,
+  CONFIG,
   db
 };
