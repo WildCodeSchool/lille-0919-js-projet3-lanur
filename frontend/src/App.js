@@ -1,5 +1,5 @@
 import React from "react";
-import ProfilPage from "./components/ProfilPage";
+import ProfilPage from "./components/EditProfile/ContainerEditProfile";
 
 const App = () => {
   return (
