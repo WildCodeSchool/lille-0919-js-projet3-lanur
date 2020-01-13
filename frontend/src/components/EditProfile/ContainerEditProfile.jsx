@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "../style/ProfilPage.scss";
 
 import Profile from "./Profile";
 import Links from "./Links";

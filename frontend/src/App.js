@@ -1,10 +1,10 @@
 import React from "react";
-import ProfilPage from "./components/ProfilPage";
+import ContainerEditProfile from "./components/EditProfile/ContainerEditProfile";
 
 const App = () => {
   return (
     <div>
-      <ProfilPage />
+      <ContainerEditProfile />
     </div>
   );
 };

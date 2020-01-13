@@ -8,10 +8,6 @@ html {
   color: white;
   font-family: "Sansation";
 
-  nav {
-    background-color: red($color: red);
-  }
-
   .container {
     .infoContainer {
       display: flex;
@@ -76,28 +72,6 @@ html {
         height: 50vh;
         width: 65vw;
         display: block;
-
-        input {
-          height: 3vh;
-          width: 35vw;
-          display: block;
-          font-size: 1.3em;
-        }
-      }
-
-      .role {
-        h1 {
-          font-size: 2em;
-        }
-      }
-
-      .linkInput {
-        display: block;
-        align-items: center;
-
-        h1 {
-          font-size: 2em;
-        }
 
         input {
           height: 3vh;

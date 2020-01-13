@@ -1,12 +1,13 @@
 import React from "react";
+import "../style/EditProfileStyles/EditRole.scss";
 
 const Role = () => {
   return (
-    <form className="container">
+    <form className="role">
       <h1>Your role</h1>
 
-      <div className="role">
-        <div className="infoContainer">
+      <div>
+        <div>
           <label htmlFor="role-select">Your role</label>
           <select name="role" id="role-select">
             <option value="">-- Please choose your role --</option>
@@ -16,7 +17,7 @@ const Role = () => {
             <option value="Team manager">Team Manager</option>
           </select>
         </div>
-        <div className="infoContainer">
+        <div>
           <label>Your biography</label>
           <textarea type="text" placeholder="Describe you career" />
         </div>

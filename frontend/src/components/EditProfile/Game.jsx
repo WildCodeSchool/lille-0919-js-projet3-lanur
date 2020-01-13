@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../style/Games.scss";
+import "../style/EditProfileStyles/Games.scss";
 
 const Games = () => {
   const [selectedGames, setSelectedGames] = useState([]);
