@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React, { useState, useEffect } from "react";
 import "./style/PostField.scss";
 import axios from "axios";
 import { backend } from "../conf.js";
@@ -9,6 +9,14 @@ function PostField() {
   const [message, setMessage] = useState("");
   const [file, setFile] = useState(null);
   const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
+  const [gamelist, setGamelist] = useState([]);
+  const [game_id, setGame_id] = useState(null);
+
+  useEffect(() => {
+    axios.get(`${backend}/api/gamelist/`).then(({ data }) => {
+      setGamelist(data);
+    });
+  }, []);
 
   const handleImageChange = e => {
     e.preventDefault();
@@ -31,13 +39,13 @@ function PostField() {
       imageUpload.append("file", file);
       axios.post(`${backend}/api/postimg`, imageUpload).then(response => {
         let image_url = response.data.public_id;
-        const postObject = { image_url, message, user_id };
+        const postObject = { image_url, message, user_id, game_id };
         axios
           .post(`${backend}/api/posts`, postObject)
           .then(() => document.location.reload());
       });
     } else if (message) {
-      const postObject = { message, user_id };
+      const postObject = { message, user_id, game_id };
       axios
         .post(`${backend}/api/posts`, postObject)
         .then(() => document.location.reload());
@@ -66,6 +74,21 @@ function PostField() {
             maxlength="500"
           />
           <input type="file" onChange={e => handleImageChange(e)} />
+          <div className="gameSelection">
+            Jeu concerné:
+            <select
+              name="game"
+              onChange={e => {
+                setGame_id(e.target.value);
+                console.log(e.target.value);
+              }}
+            >
+              <option value="null">Choisis ton jeu</option>>
+              {gamelist.map(game => (
+                <option value={game.id}>{game.name}</option>
+              ))}
+            </select>
+          </div>
           <button type="submit">Poster</button>
         </form>
       </div>

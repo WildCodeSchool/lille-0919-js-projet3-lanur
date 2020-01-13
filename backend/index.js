@@ -44,6 +44,19 @@ app.get("/api/posts/:limit", (req, res) => {
   );
 });
 
+app.get("/api/gamelist/", (req, res) => {
+  db.query(
+    "SELECT * from game",
+    (err, results) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  );
+});
+
 app.post("/api/postimg", upload.single('file'), (req, res) => {
 
   const formData = req.file;

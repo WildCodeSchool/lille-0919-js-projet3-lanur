@@ -69,6 +69,13 @@ $mainColor: #8d20ae;
     p {
       margin: 10px;
     }
+
+    .gameSelection {
+      flex-direction: row;
+      select {
+        margin-left: 10px;
+      }
+    }
   }
   button {
     color: white;
