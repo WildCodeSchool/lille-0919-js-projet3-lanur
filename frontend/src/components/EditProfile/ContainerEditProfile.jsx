@@ -44,6 +44,13 @@ export default function App() {
             <Games />
           </Route>
         </Switch>
+        <div>
+          <input
+            className="submit"
+            type="submit"
+            value="Submit your modifications"
+          />
+        </div>
       </div>
     </Router>
   );

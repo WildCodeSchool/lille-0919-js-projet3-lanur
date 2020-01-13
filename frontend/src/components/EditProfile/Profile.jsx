@@ -81,11 +81,6 @@ const Profile = () => {
           </div>
           <p>Your genre will not be visible on the website.</p>
         </div>
-        <input
-          type="submit"
-          value="Submit your modifications"
-          className="submit"
-        />
       </form>
     </div>
   );

@@ -22,11 +22,6 @@ const Role = () => {
           <textarea type="text" placeholder="Describe you career" />
         </div>
       </div>
-      <input
-        type="submit"
-        value="Submit your modifications"
-        className="submit"
-      />
     </form>
   );
 };

@@ -39,11 +39,6 @@ const Links = () => {
           />
         </div>
       </div>
-      <input
-        type="submit"
-        value="Submit your modifications"
-        className="submit"
-      />
     </form>
   );
 };

@@ -147,13 +147,6 @@ const Games = () => {
           </li>
         </ul>
       </div>
-
-      <input
-        className="submit"
-        type="submit"
-        value="Submit your modifications"
-        className="submit"
-      />
     </div>
   );
 };
