@@ -1,23 +1,25 @@
+import React from "react";
+import { useHistory } from "react-router-dom";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
-import React from "react";
 import "./style/Carousel.scss";
 
 export default function Carousel() {
+  const history = useHistory();
   const content = [
     {
       title: "Samuel N.",
       role: "Player",
       description:
-        "lorem ipsum tgee zerfz fz fzjn e o z zefzrf z z egfzgef grfed grfedz tgfrde tgrfde gtrf",
+        "Sur Lan'U.R , je peux suivre tous mes joueurs préférés et mieux comprendre le foncitonnement d'un Team Pro",
       image:
-        "http://getwallpapers.com/wallpaper/full/2/0/2/764295-black-purple-background-3200x1800-for-meizu.jpg"
+        "http://www.influencia.net/data/classes/actualite/actu_6082_image2012rectangle_petite.png"
     },
     {
       title: "John C.",
       role: " Pro Player",
       description:
-        "Lorem ipsum fezokfoefpokm  ofkslkfpkpefkp kskkdpoazd kpoagta fdytfdgd_y èfdygyfuèe",
+        "J'adore Lan'U.R!  Ce réseau me permet de rencontrer d'autres joueurs et de m'entraîner pour passer pro",
       image:
         "http://www.influencia.net/data/classes/actualite/actu_6082_image2012rectangle_petite.png"
     },
@@ -25,38 +27,53 @@ export default function Carousel() {
       title: "Harry D.",
       role: "Coach",
       description:
-        "Lorem ipsum fzeopzfkpzk efpoekfefzftydyazftydaf auzdyfazytdfuyqfz dyufqzfdyu",
+        "Grâce à LAN'U.R j'ai pu rencontrer des joueurs ayant les capacités de devenir professionnel. J'ai pu les accompagner pour rejoindre ma team",
       image:
-        "http://getwallpapers.com/wallpaper/full/2/0/2/764295-black-purple-background-3200x1800-for-meizu.jpg"
+        "http://www.influencia.net/data/classes/actualite/actu_6082_image2012rectangle_petite.png"
     },
     {
       title: "Robert Valles",
       role: "Community Manager",
       description:
-        "lorem ipsum tgee zerfz fz fzjn e o z zefzrf z z egfzgef grfed grfedz tgfrde tgrfde gtrf",
+        "J'utilise Lan'U.R pour être au courant de tous les évenements et les résultats de chacun des joueurs",
       image:
-        "http://getwallpapers.com/wallpaper/full/2/0/2/764295-black-purple-background-3200x1800-for-meizu.jpg"
+        "http://www.influencia.net/data/classes/actualite/actu_6082_image2012rectangle_petite.png"
     }
   ];
   return (
-    <Slider autoplay={5000} className="slider">
-      {content.map((item, index) => (
-        <div
-          key={index}
-          style={{
-            background: `url('${item.image}') no-repeat center`,
-            backgroundSize: "cover"
-          }}
-        >
-          <div className="center">
-            <div className="content">
-              <h1>{item.title}</h1>
-              <h2>{item.role}</h2>
-              <p>{item.description}</p>
+    <div>
+      <Slider autoplay={5000} className="slider" previousButton nextButton>
+        {content.map((item, index) => (
+          <div
+            key={index}
+            style={{
+              background: `url('${item.image}') no-repeat center`,
+              backgroundSize: "cover"
+            }}
+          >
+            <div className="center">
+              <div className="content">
+                <h2>{item.title}</h2>
+                <h3>{item.role}</h3>
+                <p>
+                  <span className="quotes">"</span>
+                  {item.description}
+                  <span className="quotes">"</span>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-    </Slider>
+        ))}
+      </Slider>
+      <div
+        className="passer"
+        onClick={() => {
+          history.push("/SignIn");
+        }}
+      >
+        {" "}
+        Passer{" "}
+      </div>
+    </div>
   );
 }

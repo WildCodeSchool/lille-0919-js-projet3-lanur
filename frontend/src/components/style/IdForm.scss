@@ -1,0 +1,113 @@
+@import "./variables";
+
+.formulaire-appear {
+  opacity: 0.01;
+}
+
+.formulaire-appear.formulaire-appear-active {
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .form {
+    border: 10px solid $mainColor;
+    border-radius: 15px;
+    background-color: rgba($color: #222222, $alpha: 0.8);
+    color: white;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 80vh;
+    margin-top: 5%;
+
+    .inputContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 70vw;
+      margin-top: 2%;
+      margin-bottom: 2%;
+
+      .label {
+        display: flex;
+        justify-content: center;
+        margin-left: 5%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+      }
+      .idInput {
+        width: 65%;
+        margin-right: 5%;
+      }
+
+      .idTextarea {
+        width: 80%;
+        border-radius: 4%;
+        margin-right: 5%;
+      }
+
+      .idSelect {
+        width: 66%;
+        margin-right: 5%;
+      }
+
+      .labelTextarea {
+        margin: 8%;
+      }
+    }
+  }
+  button {
+    flex-direction: row;
+    width: 200px;
+    height: 50px;
+    align-self: center;
+    color: white;
+    background-color: $mainColor;
+
+    border-radius: 18px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: white;
+    color: $mainColor;
+  }
+}
+
+@media screen and (max-width: 1100px) and (min-width: 700px) {
+  .idSelect {
+    width: 67%;
+  }
+}
+
+@media screen and (max-width: 700px) and (min-width: 500px) {
+  .idSelect {
+    width: 68%;
+  }
+
+  .form {
+    height: 60vh;
+    margin-top: 10%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .idSelect {
+    width: 69%;
+  }
+
+  .form {
+    height: 60vh;
+    margin-top: 10%;
+  }
+}
