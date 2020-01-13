@@ -13,9 +13,11 @@ function NavBar() {
       </h1>
       <ul>
         <li>
-          <a href="#">
-            <span className="FirstLetter">A</span>ctus
-          </a>
+          <div className="link">
+            <a href="#">
+              <span className="FirstLetter">A</span>ctus
+            </a>
+          </div>
         </li>
         <li>
           <a href="#">
