@@ -100,7 +100,7 @@ function PostField() {
           <button type="submit">Poster</button>
         </form>
       </div>
-      {message || imagePreviewUrl ? (
+      {message || imagePreviewUrl || (game_id && game_id !== "noGame") ? (
         <div className="preview-container">
           <div className="preview">Aperçu de votre post:</div>
           <Postcard

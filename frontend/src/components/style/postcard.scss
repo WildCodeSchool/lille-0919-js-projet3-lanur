@@ -26,8 +26,10 @@ $mainColor: #8d20ae;
   margin: 20px;
 
   .imgSection {
+    display: flex;
     height: 100%;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     .avatar {
       height: 50px;
       padding: 5px;
