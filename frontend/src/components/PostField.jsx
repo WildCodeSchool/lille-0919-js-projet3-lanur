@@ -39,13 +39,22 @@ function PostField() {
       imageUpload.append("file", file);
       axios.post(`${backend}/api/postimg`, imageUpload).then(response => {
         let image_url = response.data.public_id;
-        const postObject = { image_url, message, user_id, game_id };
+        if (game_id) {
+          var postObject = { image_url, message, user_id, game_id };
+        } else {
+          var postObject = { image_url, message, user_id };
+        }
+
         axios
           .post(`${backend}/api/posts`, postObject)
           .then(() => document.location.reload());
       });
     } else if (message) {
-      const postObject = { message, user_id, game_id };
+      if (game_id !== "noGame") {
+        var postObject = { message, user_id, game_id };
+      } else {
+        var postObject = { message, user_id };
+      }
       axios
         .post(`${backend}/api/posts`, postObject)
         .then(() => document.location.reload());
@@ -80,10 +89,9 @@ function PostField() {
               name="game"
               onChange={e => {
                 setGame_id(e.target.value);
-                console.log(e.target.value);
               }}
             >
-              <option value="null">Choisis ton jeu</option>>
+              <option value="noGame">Choisis ton jeu</option>>
               {gamelist.map(game => (
                 <option value={game.id}>{game.name}</option>
               ))}
@@ -95,7 +103,11 @@ function PostField() {
       {message || imagePreviewUrl ? (
         <div className="preview-container">
           <div className="preview">Aperçu de votre post:</div>
-          <Postcard image_preview_url={imagePreviewUrl} message={message} />
+          <Postcard
+            image_preview_url={imagePreviewUrl}
+            message={message}
+            game_id={game_id}
+          />
         </div>
       ) : null}
     </div>

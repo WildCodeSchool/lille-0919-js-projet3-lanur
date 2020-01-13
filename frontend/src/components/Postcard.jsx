@@ -15,12 +15,14 @@ function Postcard(props) {
               className="avatar"
             />
           </div>
-          <div>
-            <img
-              src="https://steamuserimages-a.akamaihd.net/ugc/2438013375545542318/66E1CB5FBE2D04901F697975545A88D6B412192C/"
-              className="avatar"
-            />
-          </div>
+          {props.game_id > 0 ? (
+            <div>
+              <img
+                src={`/games_icons/${props.game_id}.jpg`}
+                className="avatar"
+              />
+            </div>
+          ) : null}
           <div>
             <img
               src="https://i.pinimg.com/236x/f6/92/99/f6929980e929991bc8ff186a9aeca8b0.jpg"
