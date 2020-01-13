@@ -1,7 +1,8 @@
 import React from "react";
 import "./style/postcard.scss";
+import Moment from "react-moment";
 
-function Postcard() {
+function Postcard(props) {
   return (
     <div className="postContainer">
       <div className="post">
@@ -26,36 +27,37 @@ function Postcard() {
             />
           </div>
         </div>
-        <div className="contentPost">
-          {/* section with name and information about the post */}
-          <div className="headpost">
-            <div>Pseudo</div>
-            <div>TeamName</div>
-            <div>postTime</div>
-          </div>
-          {/* section with the content of the post*/}
-          <div className="contentpost">
-            <div className=" mediaContainer">
-              {/* section with the media*/}
-              <img
-                className="postmedia"
-                src="https://via.placeholder.com/500x300"
-              />
+        <div className="contentPostContainer">
+          <div className="contentPost">
+            {/* section with name and information about the post */}
+            <div className="headpost">
+              <div>Pseudo</div>
+              <div>TeamName</div>
+              <div>
+                <Moment format="L" date={props.date} />
+                <Moment format="h:mm" date={props.date} />
+              </div>
             </div>
-            {/* section with the media*/}
-            <div className="postComment ">
-              comment - content - Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Repellat cupiditate nesciunt dignissimos ratione
-              voluptate tempora tempore porro ipsam perferendis et eaque id
-              autem facere, architecto, at sunt quisquam dolorum ullam.
+
+            {/* section with the content of the post*/}
+            <div className="contentpost">
+              {/* section with the postcomment*/}
+              <div className="postComment ">{props.message}</div>
+              <div className="mediaContainer">
+                {/* section with the media*/}
+                <img
+                  className="postmedia"
+                  src="https://via.placeholder.com/500x300"
+                />
+              </div>
             </div>
-          </div>
-          <div className="reaction">
-            <div className="reaction-button">
-              <button>Like</button>
-            </div>
-            <div className="reaction-button">
-              <button>Comment</button>
+            <div className="reaction">
+              <div className="reaction-button">
+                <button>Like</button>
+              </div>
+              <div className="reaction-button">
+                <button>Comment</button>
+              </div>
             </div>
           </div>
         </div>
@@ -63,5 +65,4 @@ function Postcard() {
     </div>
   );
 }
-
 export default Postcard;
