@@ -1,0 +1,36 @@
+html {
+  background-color: rgba(79, 59, 87, 0.842);
+  color: white;
+  font-family: "Sansation";
+
+  a {
+    text-decoration: none;
+    font-size: 2em;
+    color: white;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: black;
+  }
+  ul {
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    li {
+      margin: 4vh 0.5rem 0;
+      padding: 10px;
+      width: 17vw;
+      height: 3vh;
+      list-style: none;
+      background: rgba(rgb(128, 105, 105), 0.7);
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+      border: 4px solid purple;
+      border-radius: 15px;
+    }
+  }
+}

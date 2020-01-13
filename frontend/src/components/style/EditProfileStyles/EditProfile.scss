@@ -3,91 +3,86 @@
   src: url("/Sansation_Regular.ttf");
 }
 
-html {
-  background-color: rgba(79, 59, 87, 0.842);
-  color: white;
-  font-family: "Sansation";
+.container {
+  margin: 0 auto;
+  text-align: center;
+  width: 98vw;
+  height: 80vh;
+  border-radius: 30px;
 
-  .container {
-    .infoContainer {
-      display: flex;
-      align-items: center;
-    }
-    label {
-      font-size: 1.5em;
-      margin: 2vh 0;
-      width: 20vw;
-      display: block;
-    }
+  .infoContainer {
+    display: flex;
+    align-items: center;
+  }
+  label {
+    font-size: 1.5em;
+    margin: 2vh 0;
+    width: 20vw;
+    display: block;
+  }
 
-    textarea {
-      height: 4vh;
-      width: 36vw;
-      display: block;
-      border-radius: 7px;
-      text-align: center;
-      font-size: 1.3em;
-    }
-
-    margin: 0 auto;
+  textarea {
+    height: 4vh;
+    width: 36vw;
+    display: block;
+    border-radius: 7px;
     text-align: center;
-    width: 98vw;
-    height: 80vh;
-    border-radius: 30px;
+    font-size: 1.3em;
+  }
 
-    h1 {
-      margin: revert;
-      font-size: 3em;
+  h1 {
+    margin: revert;
+    font-size: 3em;
+  }
+
+  form {
+    .avatar {
+      display: flex;
+      justify-content: center;
+      flex-flow: column;
+      background-color: rgba(whitesmoke, 0.5);
+      border: 4px solid purple;
+      border-radius: 15px;
+      float: right;
+      margin: 0.5vh 3vw;
+      height: 45vh;
+      width: 30vw;
+      h1 {
+        font-size: 2em;
+      }
+      img {
+        margin: auto;
+        width: 250px;
+      }
+      input {
+        margin: auto 5vw;
+      }
     }
 
-    form {
-      .avatar {
-        display: flex;
-        justify-content: center;
-        flex-flow: column;
-        background-color: rgba(whitesmoke, 0.5);
-        border: 4px solid purple;
-        border-radius: 15px;
-        float: right;
-        margin: 0.5vh 3vw;
-        height: 45vh;
-        width: 30vw;
-        h1 {
-          font-size: 2em;
-        }
-        img {
-          margin: auto;
-          width: 250px;
-        }
-        input {
-          margin: auto 5vw;
-        }
-      }
+    select {
+      height: 4.25vh;
+      width: 36vw;
+    }
 
-      select {
-        height: 4.5vh;
-      }
+    .infos {
+      height: 50vh;
+      width: 65vw;
+      display: block;
 
-      .infos {
-        height: 50vh;
-        width: 65vw;
+      input {
+        height: 3vh;
+        width: 35vw;
         display: block;
-
-        input {
-          height: 3vh;
-          width: 35vw;
-          display: block;
-          font-size: 1.3em;
-        }
+        font-size: 1.3em;
       }
+    }
 
-      .submit {
-        margin: 5vh;
-        width: 20vw;
-        height: 5vh;
-        font-size: larger;
-        text-align: center;
-      }
+    .submit {
+      margin: 5vh;
+      width: 20vw;
+      height: 5vh;
+      font-size: larger;
+      text-align: center;
     }
   }
 }

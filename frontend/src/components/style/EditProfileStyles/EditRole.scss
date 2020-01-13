@@ -1,29 +1,38 @@
-.infoContain {
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  text-align: center;
-  width: 98vw;
-  height: 80vh;
-  border-radius: 30px;
+.container {
+  .infoContainer {
+    display: flex;
+    align-items: center;
+  }
+  label {
+    font-size: 1.5em;
+    margin: 2vh 0;
+    width: 20vw;
+    display: block;
+  }
+
+  textarea {
+    height: 4vh;
+    width: 36vw;
+    display: block;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 1.3em;
+  }
+
+  h1 {
+    margin: revert;
+    font-size: 3em;
+  }
+  select {
+    width: 36.25vw;
+    height: 5vh;
+  }
 }
-label {
-  font-size: 1.5em;
-  margin: 2vh 0;
+
+.submit {
+  margin: 5vh;
   width: 20vw;
-  display: block;
-}
-
-textarea {
-  height: 4vh;
-  width: 36vw;
-  display: block;
-  border-radius: 7px;
+  height: 5vh;
+  font-size: larger;
   text-align: center;
-  font-size: 1.3em;
-}
-
-h1 {
-  margin: revert;
-  font-size: 3em;
 }
