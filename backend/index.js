@@ -1,9 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const { backendPort, db } = require("./conf.js");
-
+const { backendPort, db, cloudinary } = require("./conf.js");
+const multer = require("multer");
 const bodyParser = require("body-parser");
+const upload = multer({ dest: 'tmp/' });
+
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -42,16 +44,33 @@ app.get("/api/posts/:limit", (req, res) => {
   );
 });
 
-app.post("/api/posts", (req, res) => {
-  const formData = req.body;
-  db.query("INSERT INTO post SET ?", formData, (err, results) => {
-    if (err) {
-      res.status(500).send("Erreur lors de la sauvegarde du message");
-    } else {
-      res.sendStatus(201);
-    }
-  });
+app.post("/imgupload", upload.single('monfichier'), (req, res) => {
+  const formData = req.file;
+  console.log(formData)
+  cloudinary.v2.uploader.upload(formData.path,
+    function (err, result) {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Erreur lors de la sauvegarde de l'image");
+      } else {
+        res.send(result);
+        console.log(result);
+        app.post("/api/posts", (req, res) => {
+          const formData = req.body;
+          db.query("INSERT INTO post SET ?", formData, (err, results) => {
+            if (err) {
+              res.status(500).send("Erreur lors de la sauvegarde du message");
+            } else {
+              res.sendStatus(201);
+            }
+          });
+        });
+      }
+    });
 });
+
+
+
 
 app.listen(backendPort, err => {
   if (err) {

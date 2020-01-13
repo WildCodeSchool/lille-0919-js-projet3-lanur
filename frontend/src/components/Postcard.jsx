@@ -45,10 +45,7 @@ function Postcard(props) {
               <div className="postComment ">{props.message}</div>
               <div className="mediaContainer">
                 {/* section with the media*/}
-                <img
-                  className="postmedia"
-                  src="https://via.placeholder.com/500x300"
-                />
+                <img className="postmedia" src={props.imageUrl} />
               </div>
             </div>
             <div className="reaction">
