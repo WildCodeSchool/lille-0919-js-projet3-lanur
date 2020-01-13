@@ -54,7 +54,7 @@ $mainColor: #8d20ae;
     width: 100%;
     display: flex;
     flex-direction: column;
-
+    align-items: center;
     textarea {
       resize: none;
       width: 90%;
@@ -63,6 +63,27 @@ $mainColor: #8d20ae;
       min-height: 100px;
       overflow: scroll;
     }
+    input {
+      margin: 10px;
+    }
+  }
+  button {
+    color: white;
+    background-color: $mainColor;
+    height: 30px;
+    width: 100%;
+    max-width: 200px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    margin: 10px;
+    justify-content: center;
+  }
+  button:hover {
+    background-color: white;
+    color: $mainColor;
+    border: solid 5px;
+    border-color: $mainColor;
+    cursor: pointer;
   }
 }
 

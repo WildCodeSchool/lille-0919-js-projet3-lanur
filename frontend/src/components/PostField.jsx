@@ -65,7 +65,7 @@ function PostField() {
             maxlength="500"
           />
           <input type="file" onChange={e => handleImageChange(e)} />
-          <button type="submit">post</button>
+          <button type="submit">Poster</button>
         </form>
       </div>
       {message || imagePreviewUrl ? (
