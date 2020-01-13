@@ -62,6 +62,7 @@ function PostField() {
               setMessage(e.target.value);
             }}
             className="headPost"
+            maxlength="500"
           />
           <input type="file" onChange={e => handleImageChange(e)} />
           <button type="submit">post</button>
