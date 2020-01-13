@@ -54,6 +54,7 @@ function PostField() {
           ></img>
         </div>
         <form onSubmit={e => onSubmit(e)}>
+          <p>Quoi de neuf aujourd'hui?</p>
           <textarea
             type="text"
             name="message"
