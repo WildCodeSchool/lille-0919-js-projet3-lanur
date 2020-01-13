@@ -4,13 +4,27 @@ import axios from "axios";
 import LiveCard from "./LiveCard";
 
 function LiveContainer() {
+  const [lives, setLives] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`https://api.twitch.tv/helix/streams?first=20`, {
+        headers: {
+          "Client-ID": "nx23qj7nrc53xzxdm1bqhsg3yiqytn"
+        }
+      })
+      .then(({ data }) => {
+        setLives(data.data);
+      });
+  }, []);
+
   return (
     <div className="allLive">
       <div className="liveTitle">
         <h2> Live</h2>
       </div>
       <div className="liveContent">
-        <LiveCard />
+        {lives.length > 1 ? lives.map(live => <LiveCard />) : null}
 
         {/* <div className="streamingStatus">
           <img src="https://steamuserimages-a.akamaihd.net/ugc/2438013375545542318/66E1CB5FBE2D04901F697975545A88D6B412192C/" />
