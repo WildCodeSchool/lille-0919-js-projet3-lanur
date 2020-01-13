@@ -1,15 +1,52 @@
+<<<<<<< HEAD
 import React from "react";
 import "../style/EditProfileStyles/EditProfile.scss";
+=======
+import React, { useState } from "react";
+import axios from "axios";
+>>>>>>> 5a2832fde8bc385065a7ace9d1229cc7032ab392
 
 const Profile = () => {
+  const [file, setFile] = useState("https://via.placeholder.com/250");
+  const [imagePreviewUrl, setImagePreviewUrl] = useState(
+    "https://via.placeholder.com/250"
+  );
+
+  const handleImageChange = e => {
+    e.preventDefault();
+    console.log(e.target.files);
+    console.log("----------------------");
+
+    let reader = new FileReader();
+    let selectedFile = e.target.files[0];
+
+    reader.onloadend = () => {
+      setFile(selectedFile);
+      setImagePreviewUrl(reader.result);
+    };
+
+    reader.readAsDataURL(selectedFile);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    // post of profile picture
+    let data = new FormData();
+    data.append("monfichier", file);
+    axios.post("http://localhost:5050/imgupload", data).then(response => {
+      alert("image added with success");
+    });
+  };
+
   return (
     <div className="container">
       <h1 id="Profile">Your Profile</h1>
       <form>
         <div className="avatar">
           <h1>Avatar</h1>
-          <img src="https://via.placeholder.com/250" alt="" />
-          <input type="file" />
+
+          <img src={imagePreviewUrl} alt="" />
+          <input type="file" onChange={e => handleImageChange(e)} />
         </div>
 
         <div className="infos">
