@@ -1,4 +1,5 @@
 import React from "react";
+import "../style/EditProfileStyles/EditLinks.scss";
 
 const Links = () => {
   return (

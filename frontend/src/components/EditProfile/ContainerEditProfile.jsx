@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "../style/EditProfileStyles/ContainerEditProfile.scss";
 
 import Profile from "./Profile";
 import Links from "./Links";
@@ -10,7 +11,7 @@ export default function App() {
   return (
     <Router>
       <div>
-        <nav>
+        <nav className="navProfile">
           <ul>
             <li>
               <Link to="/">Profile</Link>

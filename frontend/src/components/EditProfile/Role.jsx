@@ -3,11 +3,11 @@ import "../style/EditProfileStyles/EditRole.scss";
 
 const Role = () => {
   return (
-    <form className="role">
+    <form className="container">
       <h1>Your role</h1>
 
       <div>
-        <div>
+        <div className="infoContainer">
           <label htmlFor="role-select">Your role</label>
           <select name="role" id="role-select">
             <option value="">-- Please choose your role --</option>
@@ -17,7 +17,7 @@ const Role = () => {
             <option value="Team manager">Team Manager</option>
           </select>
         </div>
-        <div>
+        <div className="infoContainer">
           <label>Your biography</label>
           <textarea type="text" placeholder="Describe you career" />
         </div>

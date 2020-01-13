@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-import React from "react";
 import "../style/EditProfileStyles/EditProfile.scss";
-=======
 import React, { useState } from "react";
 import axios from "axios";
->>>>>>> 5a2832fde8bc385065a7ace9d1229cc7032ab392
 
 const Profile = () => {
   const [file, setFile] = useState("https://via.placeholder.com/250");

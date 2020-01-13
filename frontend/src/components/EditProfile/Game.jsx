@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../style/EditProfileStyles/Games.scss";
+import "../style/EditProfileStyles/EditGames.scss";
 
 const Games = () => {
   const [selectedGames, setSelectedGames] = useState([]);
@@ -143,11 +143,13 @@ const Games = () => {
             className={selectedGames === "tekken 7" ? "selected" : ""}
             onClick={() => setSelectedGames("tekken 7")}
           >
-            <img src="/pictures/tekken7.png" alt="tekken 7" />
+            <img src="/pictures/tekken7.png" alt="Tekken 7" />
           </li>
         </ul>
       </div>
+
       <input
+        className="submit"
         type="submit"
         value="Submit your modifications"
         className="submit"
