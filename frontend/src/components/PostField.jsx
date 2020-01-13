@@ -12,8 +12,6 @@ function PostField() {
 
   const handleImageChange = e => {
     e.preventDefault();
-    console.log(e.target.files);
-    console.log("----------------------");
 
     let reader = new FileReader();
     let selectedFile = e.target.files[0];
@@ -28,13 +26,22 @@ function PostField() {
 
   const onSubmit = e => {
     e.preventDefault();
-    const postObject = {
-      user_id,
-      message
-    };
-    axios
-      .post(`${backend}/api/posts`, postObject)
-      .then(document.location.reload());
+    if (file) {
+      let imageUpload = new FormData();
+      imageUpload.append("file", file);
+      axios.post(`${backend}/api/postimg`, imageUpload).then(response => {
+        let image_url = response.data.public_id;
+        const postObject = { image_url, message, user_id };
+        axios
+          .post(`${backend}/api/posts`, postObject)
+          .then(() => document.location.reload());
+      });
+    } else if (message) {
+      const postObject = { message, user_id };
+      axios
+        .post(`${backend}/api/posts`, postObject)
+        .then(() => document.location.reload());
+    }
   };
 
   return (
@@ -60,7 +67,12 @@ function PostField() {
           <button type="submit">post</button>
         </form>
       </div>
-      <Postcard imageUrl={imagePreviewUrl} message={message} />
+      {message || imagePreviewUrl ? (
+        <div className="preview-container">
+          <div className="preview">Aperçu de votre post:</div>
+          <Postcard image_preview_url={imagePreviewUrl} message={message} />
+        </div>
+      ) : null}
     </div>
   );
 }

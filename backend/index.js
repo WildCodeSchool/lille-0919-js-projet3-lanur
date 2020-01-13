@@ -32,7 +32,7 @@ app.get("/api/users", (req, res) => {
 // FIL-ACTU || GET & POST
 app.get("/api/posts/:limit", (req, res) => {
   db.query(
-    "SELECT id, circle_id, user_id, user_id_team, game_id, message, date from post ORDER BY id DESC LIMIT 4 OFFSET ?  ",
+    "SELECT id, circle_id, user_id, user_id_team, game_id, message, date, image_url from post ORDER BY id DESC LIMIT 4 OFFSET ?  ",
     [Number(req.params.limit)],
     (err, results) => {
       if (err) {
@@ -44,30 +44,33 @@ app.get("/api/posts/:limit", (req, res) => {
   );
 });
 
-app.post("/imgupload", upload.single('monfichier'), (req, res) => {
+app.post("/api/postimg", upload.single('file'), (req, res) => {
+
   const formData = req.file;
-  console.log(formData)
+
+
+
   cloudinary.v2.uploader.upload(formData.path,
     function (err, result) {
       if (err) {
-        console.log(err);
         res.status(500).send("Erreur lors de la sauvegarde de l'image");
       } else {
+
         res.send(result);
-        console.log(result);
-        app.post("/api/posts", (req, res) => {
-          const formData = req.body;
-          db.query("INSERT INTO post SET ?", formData, (err, results) => {
-            if (err) {
-              res.status(500).send("Erreur lors de la sauvegarde du message");
-            } else {
-              res.sendStatus(201);
-            }
-          });
-        });
       }
     });
 });
+
+app.post("/api/posts", (req, res) => {
+  const formData = req.body;
+  db.query("INSERT INTO post SET ?", formData, (err, results) => {
+    if (err) {
+      res.status(500).send("Erreur lors de la sauvegarde du message");
+    } else {
+      res.sendStatus(201);
+    }
+  });
+})
 
 
 

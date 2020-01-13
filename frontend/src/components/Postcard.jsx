@@ -1,6 +1,7 @@
 import React from "react";
 import "./style/postcard.scss";
 import Moment from "react-moment";
+import { Image, CloudinaryContext } from "cloudinary-react";
 
 function Postcard(props) {
   return (
@@ -43,10 +44,20 @@ function Postcard(props) {
             <div className="contentpost">
               {/* section with the postcomment*/}
               <div className="postComment ">{props.message}</div>
-              <div className="mediaContainer">
-                {/* section with the media*/}
-                <img className="postmedia" src={props.imageUrl} />
-              </div>
+              {props.image_url ? (
+                <div className="mediaContainer">
+                  {/* section with the media*/}
+                  <CloudinaryContext cloudName="lanur">
+                    <Image publicId={props.image_url} className="postmedia" />
+                  </CloudinaryContext>
+                  {/* <img className="postmedia" src={props.image_url} /> */}
+                </div>
+              ) : null}
+              {props.image_preview_url ? (
+                <div className="mediaContainer">
+                  <img className="postmedia" src={props.image_preview_url} />
+                </div>
+              ) : null}
             </div>
             <div className="reaction">
               <div className="reaction-button">

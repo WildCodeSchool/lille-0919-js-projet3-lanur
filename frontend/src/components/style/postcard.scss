@@ -67,9 +67,9 @@ $mainColor: #8d20ae;
         }
       }
       .postComment {
-        padding-left: 5%;
-        padding-right: 5%;
+        padding: 5%;
         text-align: justify;
+        overflow-wrap: break-word;
       }
     }
   }

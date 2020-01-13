@@ -31,7 +31,11 @@ function NewsFeed() {
     <div className="main-NewsFeed">
       <PostField />
       {posts.map(post => (
-        <Postcard message={post.message} date={post.date} />
+        <Postcard
+          message={post.message}
+          date={post.date}
+          image_url={post.image_url}
+        />
       ))}
       <LiveContainer />
     </div>

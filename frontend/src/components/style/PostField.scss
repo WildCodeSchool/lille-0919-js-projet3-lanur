@@ -8,7 +8,21 @@ $mainColor: #8d20ae;
   width: 70vw;
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+}
+.preview-container {
+  background-color: $mainColor;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-family: "Sansation";
+  padding-top: 10px;
+  .preview-text {
+    width: 70vw;
+  }
 }
 
 .postField {
