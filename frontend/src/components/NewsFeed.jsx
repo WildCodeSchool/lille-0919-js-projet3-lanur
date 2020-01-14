@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 function NewsFeed() {
   const [posts, setPosts] = useState([]);
-  // const [offsetPosts, setoffsetPosts] = useState(0);
   const offsetPosts = useSelector(state => state.offsetPosts);
   const dispatch = useDispatch();
 
