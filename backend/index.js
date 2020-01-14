@@ -67,7 +67,6 @@ app.post("/api/postimg", upload.single('file'), (req, res) => {
     function (err, result) {
       if (err) {
         res.status(500).send("Erreur lors de la sauvegarde de l'image");
-        console.log("1" + err)
       } else {
 
         res.send(result);
@@ -79,7 +78,6 @@ app.post("/api/posts", (req, res) => {
   const formData = req.body;
   db.query("INSERT INTO post SET ?", formData, (err, results) => {
     if (err) {
-      console.log("2" + err)
       res.status(500).send("Erreur lors de la sauvegarde du message");
     } else {
       res.sendStatus(201);
