@@ -17,7 +17,6 @@ router.post("/signup", (req, res) => {
     const newUser = formData;
     db.query("INSERT INTO user SET ?", [newUser], (err, results) => {
       if (err) {
-        console.error("Failure! " + err);
         return res.status(400).send("Invalid User creation request");
       }
       newUser.password = undefined;
