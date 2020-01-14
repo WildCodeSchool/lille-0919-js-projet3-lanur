@@ -32,8 +32,8 @@ const Modal = ({ isShowing, hide, user_name }) =>
                   frameborder="0"
                   allowfullscreen="true"
                   scrolling="no"
-                  height="378"
-                  width="620"
+                  height="500px"
+                  width="1000px"
                 ></iframe>
               </div>
             </div>
