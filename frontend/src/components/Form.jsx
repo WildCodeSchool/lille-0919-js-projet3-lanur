@@ -23,7 +23,6 @@ function Form() {
     axios
       .post("http://localhost:5050/api/auth/signup", newUser)
       .then(response => {
-        console.log(response.data);
         dispatch({ type: "SAVE_JWT", value: response.data.token });
         history.push("/newsfeed");
       });
