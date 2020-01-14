@@ -1,7 +1,8 @@
-.container {
+.role {
   .infoContainer {
     display: flex;
     align-items: center;
+    text-align: center;
   }
   label {
     font-size: 1.5em;
@@ -27,12 +28,4 @@
     width: 36.25vw;
     height: 5vh;
   }
-}
-
-.submit {
-  margin: 5vh;
-  width: 20vw;
-  height: 5vh;
-  font-size: larger;
-  text-align: center;
 }

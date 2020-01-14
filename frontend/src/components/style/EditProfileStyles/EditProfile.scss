@@ -1,13 +1,7 @@
-@font-face {
-  font-family: "Sansation";
-  src: url("/Sansation_Regular.ttf");
-}
-
-.container {
+.profile {
   margin: 0 auto;
   text-align: center;
   width: 98vw;
-  height: 80vh;
   border-radius: 30px;
 
   .infoContainer {
@@ -28,11 +22,6 @@
     border-radius: 7px;
     text-align: center;
     font-size: 1.3em;
-  }
-
-  h1 {
-    margin: revert;
-    font-size: 3em;
   }
 
   form {

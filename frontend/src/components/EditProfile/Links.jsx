@@ -3,9 +3,9 @@ import "../style/EditProfileStyles/EditLinks.scss";
 
 const Links = () => {
   return (
-    <form className="container">
+    <form>
       <h1>Your links</h1>
-      <div className="links">
+      <div>
         <div className="infoContainer">
           <label>Twitch</label>
           <input

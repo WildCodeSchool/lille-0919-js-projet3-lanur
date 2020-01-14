@@ -1,5 +1,6 @@
 .games {
   h1 {
+    margin-bottom: 0;
     text-align: center;
   }
   .selected {
@@ -19,8 +20,7 @@
   display: block;
 
   ul {
-    margin: -1vh auto;
-
+    margin: auto;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -44,11 +44,4 @@
       }
     }
   }
-}
-.submit {
-  margin: 5vh;
-  width: 20vw;
-  height: 5vh;
-  font-size: larger;
-  text-align: center;
 }

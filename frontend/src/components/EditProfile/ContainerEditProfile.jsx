@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import "../style/EditProfileStyles/ContainerEditProfile.scss";
 
 import Profile from "./Profile";
@@ -7,51 +7,41 @@ import Links from "./Links";
 import Role from "./Role";
 import Games from "./Game";
 
-export default function App() {
+export default function ContainerEditProfile() {
   return (
-    <Router>
-      <div>
-        <nav className="navProfile">
-          <ul>
-            <li>
-              <Link to="/">Profile</Link>
-            </li>
-            <li>
-              <Link to="/role">Role</Link>
-            </li>
-            <li>
-              <Link to="/links">Links</Link>
-            </li>
-            <li>
-              <Link to="/games">Games</Link>
-            </li>
-          </ul>
-        </nav>
+    <div className="ContainerEditProfile">
+      <ul>
+        <li>
+          <Link to="/editprofile">Profile</Link>
+        </li>
+        <li>
+          <Link to="/editprofile/role">Role</Link>
+        </li>
+        <li>
+          <Link to="/editprofile/links">Links</Link>
+        </li>
+        <li>
+          <Link to="/editprofile/games">Games</Link>
+        </li>
+      </ul>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route exact path="/">
-            <Profile />
-          </Route>
-          <Route path="/role">
-            <Role />
-          </Route>
-          <Route path="/links">
-            <Links />
-          </Route>
-          <Route path="/games">
-            <Games />
-          </Route>
-        </Switch>
-        <div>
-          <input
-            className="submit"
-            type="submit"
-            value="Submit your modifications"
-          />
-        </div>
+      <Switch>
+        <Route exact path="/editprofile">
+          <Profile />
+        </Route>
+        <Route path="/editprofile/role">
+          <Role />
+        </Route>
+        <Route path="/editprofile/links">
+          <Links />
+        </Route>
+        <Route path="/editprofile/games">
+          <Games />
+        </Route>
+      </Switch>
+      <div className="submit">
+        <button>Submit your modifications</button>
       </div>
-    </Router>
+    </div>
   );
 }

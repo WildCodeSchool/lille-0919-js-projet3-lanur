@@ -35,8 +35,8 @@ const Profile = () => {
   };
 
   return (
-    <div className="container">
-      <h1 id="Profile">Your Profile</h1>
+    <div className="profile">
+      <h1>Your Profile</h1>
       <form>
         <div className="avatar">
           <h1>Avatar</h1>

@@ -3,7 +3,7 @@ import "../style/EditProfileStyles/EditRole.scss";
 
 const Role = () => {
   return (
-    <form className="container">
+    <form className="role">
       <h1>Your role</h1>
 
       <div>
