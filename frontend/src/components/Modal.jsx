@@ -26,15 +26,16 @@ const Modal = ({ isShowing, hide, user_name }) =>
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              {user_name}
-              <iframe
-                src={`https://player.twitch.tv/?channel=${user_name}`}
-                frameborder="0"
-                allowfullscreen="true"
-                scrolling="no"
-                height="378"
-                width="620"
-              ></iframe>
+              <div className="StreamPlayer">
+                <iframe
+                  src={`https://player.twitch.tv/?channel=${user_name}`}
+                  frameborder="0"
+                  allowfullscreen="true"
+                  scrolling="no"
+                  height="378"
+                  width="620"
+                ></iframe>
+              </div>
             </div>
           </div>
         </React.Fragment>,

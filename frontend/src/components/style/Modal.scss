@@ -1,8 +1,10 @@
 .Modal {
   text-align: center;
   padding-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
 }
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -13,7 +15,6 @@
   background-color: #000;
   opacity: 0.5;
 }
-
 .modal-wrapper {
   position: fixed;
   top: 0;
@@ -24,29 +25,31 @@
   overflow-x: hidden;
   overflow-y: auto;
   outline: 0;
-}
-
-.modal {
-  z-index: 100;
-  background: white;
-  position: relative;
-  margin: 1.75rem auto;
-  border-radius: 3px;
-  max-width: 500px;
-  padding: 2rem;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.modal-close-button {
-  font-size: 1.4rem;
-  font-weight: 700;
-  line-height: 1;
-  color: #000;
-  opacity: 0.3;
-  cursor: pointer;
-  border: none;
+  .modal {
+    z-index: 100;
+    background: black;
+    position: relative;
+    margin: 1.75rem auto;
+    border-radius: 3px;
+    max-width: 700px;
+    padding: 2rem;
+    .modal-header {
+      display: flex;
+      justify-content: flex-end;
+      .modal-close-button {
+        font-size: 1.4rem;
+        font-weight: 700;
+        line-height: 1;
+        color: #000;
+        opacity: 0.3;
+        cursor: pointer;
+        border: none;
+      }
+    }
+    .StreamPlayer {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
 }
