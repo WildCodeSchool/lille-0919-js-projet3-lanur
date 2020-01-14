@@ -32,7 +32,7 @@ app.get("/api/users", (req, res) => {
 // FIL-ACTU || GET & POST
 app.get("/api/posts/:limit", (req, res) => {
   db.query(
-    "SELECT id, circle_id, user_id, user_id_team, game_id, message, date, image_url from post ORDER BY id DESC LIMIT 4 OFFSET ?  ",
+    "SELECT id, circle_id, user_id, user_id_team, game_id, message, date, image_url from post ORDER BY id DESC LIMIT 10 OFFSET ?  ",
     [Number(req.params.limit)],
     (err, results) => {
       if (err) {

@@ -5,27 +5,30 @@ import Postcard from "./Postcard";
 import LiveContainer from "./LiveContainer";
 import PostField from "./PostField";
 import { backend } from "../conf.js";
+import { useSelector, useDispatch } from "react-redux";
 
 function NewsFeed() {
   const [posts, setPosts] = useState([]);
-  const [offsetPosts, setoffsetPosts] = useState(0);
+  // const [offsetPosts, setoffsetPosts] = useState(0);
+  const offsetPosts = useSelector(state => state.offsetPosts);
+  const dispatch = useDispatch();
+
+  window.onscroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.documentElement.scrollHeight
+    ) {
+      dispatch({ type: "PLUS_TEN" });
+    }
+  };
 
   useEffect(() => {
     axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
       setPosts(posts.concat(data));
+      console.log(posts);
+      console.log(offsetPosts);
     });
   }, [offsetPosts]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (
-        window.innerHeight + document.documentElement.scrollTop ===
-        document.documentElement.scrollHeight
-      ) {
-        setoffsetPosts(offsetPosts + 10);
-      }
-    });
-  }, [document.documentElement.scrollTop]);
 
   return (
     <div className="main-NewsFeed">
@@ -36,6 +39,7 @@ function NewsFeed() {
           date={post.date}
           image_url={post.image_url}
           game_id={post.game_id}
+          id={post.id}
         />
       ))}
       <LiveContainer />

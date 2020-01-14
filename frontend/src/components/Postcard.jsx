@@ -45,7 +45,9 @@ function Postcard(props) {
             {/* section with the content of the post*/}
             <div className="contentpost">
               {/* section with the postcomment*/}
-              <div className="postComment ">{props.message}</div>
+              <div className="postComment ">
+                {props.id} - {props.message}
+              </div>
               {props.image_url ? (
                 <div className="mediaContainer">
                   {/* section with the media*/}
