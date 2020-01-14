@@ -25,8 +25,6 @@ function NewsFeed() {
   useEffect(() => {
     axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
       setPosts(posts.concat(data));
-      console.log(posts);
-      console.log(offsetPosts);
     });
   }, [offsetPosts]);
 
