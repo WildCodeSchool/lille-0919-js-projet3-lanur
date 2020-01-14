@@ -7,7 +7,7 @@ function GameChoice(props) {
     <div className="gameChoice" onClick={() => setClick(!click)}>
       <button className={click ? "status-on" : "status-off"}>
         <img className="picture" src={props.picture} />
-        {click && <img className="checkbox" src="/pictures/checkbox.png" />}
+        {click && <img className="checkbox" src="/pictures/checkboxpurple.png" />}
       </button>
     </div>
   );

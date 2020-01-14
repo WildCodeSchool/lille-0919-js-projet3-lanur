@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import "./style/SignIn.scss";
 import axios from "axios";
+import Form from "./Form";
+import "./style/SignIn.scss";
 
 const SignIn = () => {
   const history = useHistory();
@@ -16,8 +17,6 @@ const SignIn = () => {
       .post("http://localhost:5050/api/auth/login", { pseudo, password })
       .then(
         response => {
-          console.log(response.data);
-
           dispatch({ type: "SAVE_JWT", value: response.data });
           history.push("/NewsFeed");
         },
@@ -27,7 +26,14 @@ const SignIn = () => {
         }
       );
   };
-  return (
+
+  const [divCreation, showDivCreation] = useState(false);
+
+  const accountCreation = () => {
+    showDivCreation(!divCreation);
+  };
+
+  return !divCreation ? (
     <div className="SignIn">
       <div className="catchPhrase">
         <h1>
@@ -80,16 +86,16 @@ const SignIn = () => {
           Vous n'avez <span>PAS</span> de compte ?
         </h3>
         <div className="noAccount">
-          <button
-            onClick={() => {
-              history.push("/signin/form");
-            }}
-          >
+          <button onClick={accountCreation} className="accountCreation">
             Créer un compte
           </button>
           <p>Continuer sans créer de compte</p>
         </div>
       </div>
+    </div>
+  ) : (
+    <div className="SignIn">
+      <Form />
     </div>
   );
 };

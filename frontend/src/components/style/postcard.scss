@@ -17,13 +17,14 @@ $mainColor: #8d20ae;
   color: black;
   width: 70%;
   min-width: 350px;
-  max-width: 900px;
+  max-width: 700px;
   height: auto;
   display: flex;
   border: $mainColor solid;
   border-radius: 5px;
   margin-left: 8vw;
   margin: 20px;
+
   .imgSection {
     height: 100%;
     flex-direction: row;
@@ -34,6 +35,7 @@ $mainColor: #8d20ae;
   }
   .headpost {
     display: flex;
+    width: 90%;
     font-size: 1.2em;
     padding-bottom: 10px;
     justify-content: space-between;
@@ -42,28 +44,33 @@ $mainColor: #8d20ae;
     margin-top: 10px;
     border-bottom: solid $mainColor;
   }
-
-  .contentpost {
-    flex-direction: column;
-
-    .mediaContainer {
-      flex-direction: row;
-    }
-
-    .postmedia {
-      display: flex;
-      width: auto;
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 5%;
-      max-height: 300px;
-    }
-    .postComment {
-      padding-left: 5%;
-      padding-right: 5%;
-
-      text-align: justify;
+  .contentPostContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-width: 280px;
+    .contentPost {
+      margin: auto;
+      width: 100%;
+      flex-direction: column;
+      .mediaContainer {
+        flex-direction: row;
+        .postmedia {
+          display: flex;
+          width: auto;
+          max-width: 90%;
+          max-height: 300px;
+          margin-left: auto;
+          margin-right: auto;
+          padding-top: 5%;
+          padding-bottom: 5%;
+        }
+      }
+      .postComment {
+        padding-left: 5%;
+        padding-right: 5%;
+        text-align: justify;
+      }
     }
   }
   .reaction {
@@ -83,6 +90,15 @@ $mainColor: #8d20ae;
         max-width: 200px;
         font-size: 1.2em;
         border-radius: 10px;
+      }
+    }
+    .reaction-button:hover {
+      button {
+        background-color: white;
+        color: $mainColor;
+        border: solid 5px;
+        border-color: $mainColor;
+        cursor: pointer;
       }
     }
   }
