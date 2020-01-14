@@ -36,6 +36,7 @@ function NewsFeed() {
           date={post.date}
           image_url={post.image_url}
           game_id={post.game_id}
+          user_avatar={post.user_avatar}
         />
       ))}
       <LiveContainer />
