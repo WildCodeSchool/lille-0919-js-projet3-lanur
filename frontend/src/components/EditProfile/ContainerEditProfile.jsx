@@ -5,7 +5,7 @@ import "../style/EditProfileStyles/ContainerEditProfile.scss";
 import Profile from "./Profile";
 import Links from "./Links";
 import Role from "./Role";
-import Games from "./Game";
+import Games from "./Games";
 
 export default function ContainerEditProfile() {
   return (
