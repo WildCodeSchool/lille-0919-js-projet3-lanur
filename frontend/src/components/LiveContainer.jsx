@@ -29,6 +29,7 @@ function LiveContainer() {
               <LiveCard
                 streamer_name={live.user_name}
                 stream_title={live.title}
+                viewer_count={live.viewer_count}
               />
             ))
           : null}

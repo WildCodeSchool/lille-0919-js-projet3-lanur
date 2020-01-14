@@ -7,8 +7,17 @@ function LiveCard(props) {
     <div className="streamingStatus">
       <img src="https://steamuserimages-a.akamaihd.net/ugc/2438013375545542318/66E1CB5FBE2D04901F697975545A88D6B412192C/" />
       <img src="https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c540.png" />
-      {props.streamer_name} -{" "}
-      {streamTitle.length > 20 ? streamTitle.slice(0, 16) + "..." : streamTitle}
+      <div className="streamCountainer">
+        <div>
+          <span className="streamerName">{props.streamer_name}</span> -{" "}
+          {streamTitle.length > 15 ? (
+            <span title={streamTitle}>{streamTitle.slice(0, 12) + "..."}</span>
+          ) : (
+            streamTitle
+          )}
+        </div>
+        <div className="viewersCount">Viewers : {props.viewer_count}</div>
+      </div>
     </div>
   );
 }
