@@ -14,7 +14,7 @@ function NewsFeed() {
     axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
       setPosts(posts.concat(data));
     });
-  }, [offsetPosts]);
+  }, [offsetPosts, backend]);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
