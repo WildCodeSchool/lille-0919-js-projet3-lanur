@@ -19,7 +19,6 @@ passport.use(
         [formPseudo],
         (err, results) => {
           if (err) {
-            console.log(err);
             return done(err);
           }
           let user;
