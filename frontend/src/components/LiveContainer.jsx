@@ -24,7 +24,14 @@ function LiveContainer() {
         <h2> Live</h2>
       </div>
       <div className="liveContent">
-        {lives.length > 1 ? lives.map(live => <LiveCard />) : null}
+        {lives.length > 1
+          ? lives.map(live => (
+              <LiveCard
+                streamer_name={live.user_name}
+                stream_title={live.title}
+              />
+            ))
+          : null}
 
         {/* <div className="streamingStatus">
           <img src="https://steamuserimages-a.akamaihd.net/ugc/2438013375545542318/66E1CB5FBE2D04901F697975545A88D6B412192C/" />
