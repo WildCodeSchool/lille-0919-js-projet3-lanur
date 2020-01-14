@@ -21,7 +21,6 @@ const SignIn = () => {
           history.push("/NewsFeed");
         },
         error => {
-          console.log(error);
           updateCredentialsState(false);
         }
       );
