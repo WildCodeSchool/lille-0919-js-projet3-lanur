@@ -6,6 +6,8 @@ $mainColor: #8d20ae;
 $secondColor: rgb(39, 39, 39);
 
 .streamingStatus {
+  transition-duration: 0.4s;
+  cursor: pointer;
   display: flex;
   padding: 3px;
   height: 40px;
@@ -20,6 +22,7 @@ $secondColor: rgb(39, 39, 39);
     width: 100%;
     height: 100%;
     justify-content: space-around;
+    align-content: flex-start;
 
     .streamerName {
       font-weight: bold;
@@ -29,4 +32,7 @@ $secondColor: rgb(39, 39, 39);
       color: rgb(100, 100, 100);
     }
   }
+}
+.streamingStatus:hover {
+  background-color: rgb(177, 127, 243);
 }

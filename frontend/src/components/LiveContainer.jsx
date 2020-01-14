@@ -30,6 +30,7 @@ function LiveContainer() {
                 streamer_name={live.user_name}
                 stream_title={live.title}
                 viewer_count={live.viewer_count}
+                user_name={live.user_name}
               />
             ))
           : null}
