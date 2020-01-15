@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const mysql = require("mysql");
 
 let CONFIG = {
@@ -16,7 +17,17 @@ const db = mysql.createPool({
   database: process.env.DB_DATABASE || "my_db" // le nom de la base de données
 });
 
+const cloudinary = require("cloudinary");
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME || "cloud_name",
+  api_key: process.env.API_KEY || "api_key",
+  api_secret: process.env.API_SECRET || "api_secret"
+});
+
+
 module.exports = {
   CONFIG,
-  db
+  db,
+  backendPort,
+  cloudinary
 };
