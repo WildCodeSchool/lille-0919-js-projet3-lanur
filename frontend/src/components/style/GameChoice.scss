@@ -1,13 +1,11 @@
 .bigGamePage {
   width: 100%;
-  height: 72vh;
-  margin-top: 10vh;
-  overflow-x: scroll;
+  height: 76vh;
+  overflow-y: scroll;
 }
 
 .gamePage {
   display: flex;
-  overflow-x: scroll;
   position: relative;
   flex-wrap: wrap;
   justify-content: center;

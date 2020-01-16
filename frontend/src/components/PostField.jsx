@@ -5,7 +5,7 @@ import { backend } from "../conf.js";
 import Postcard from "./Postcard";
 
 function PostField() {
-  const user_id = 4;
+  const user_id = 5;
   const [message, setMessage] = useState("");
   const [file, setFile] = useState(null);
   const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
@@ -39,25 +39,23 @@ function PostField() {
       imageUpload.append("file", file);
       axios.post(`${backend}/api/postimg`, imageUpload).then(response => {
         let image_url = response.data.public_id;
+        let postObject;
         if (game_id) {
-          var postObject = { image_url, message, user_id, game_id };
+          postObject = { image_url, message, user_id, game_id };
         } else {
-          var postObject = { image_url, message, user_id };
+          postObject = { image_url, message, user_id };
         }
 
-        axios
-          .post(`${backend}/api/posts`, postObject)
-          .then(() => document.location.reload());
+        axios.post(`${backend}/api/posts`, postObject);
       });
     } else if (message) {
+      let postObject;
       if (game_id !== "noGame") {
-        var postObject = { message, user_id, game_id };
+        postObject = { message, user_id, game_id };
       } else {
-        var postObject = { message, user_id };
+        postObject = { message, user_id };
       }
-      axios
-        .post(`${backend}/api/posts`, postObject)
-        .then(() => document.location.reload());
+      axios.post(`${backend}/api/posts`, postObject);
     }
   };
 
