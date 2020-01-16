@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./style/LiveContainer.scss";
 import axios from "axios";
 import LiveCard from "./LiveCard";
+import { twitch_Client_ID } from "../conf.js";
 
 function LiveContainer() {
   const [lives, setLives] = useState([]);
@@ -12,7 +13,7 @@ function LiveContainer() {
         `https://api.twitch.tv/helix/streams?first=30&language=en&language=fr`,
         {
           headers: {
-            "Client-ID": "nx23qj7nrc53xzxdm1bqhsg3yiqytn"
+            "Client-ID": twitch_Client_ID
           }
         }
       )
