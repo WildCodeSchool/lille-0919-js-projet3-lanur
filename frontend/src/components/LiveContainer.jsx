@@ -8,11 +8,14 @@ function LiveContainer() {
 
   useEffect(() => {
     axios
-      .get(`https://api.twitch.tv/helix/streams?first=20`, {
-        headers: {
-          "Client-ID": "nx23qj7nrc53xzxdm1bqhsg3yiqytn"
+      .get(
+        `https://api.twitch.tv/helix/streams?first=30&language=en&language=fr`,
+        {
+          headers: {
+            "Client-ID": "nx23qj7nrc53xzxdm1bqhsg3yiqytn"
+          }
         }
-      })
+      )
       .then(({ data }) => {
         setLives(data.data);
       });
