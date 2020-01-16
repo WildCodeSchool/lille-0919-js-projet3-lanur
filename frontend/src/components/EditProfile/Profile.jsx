@@ -1,6 +1,7 @@
 import "../style/EditProfileStyles/EditProfile.scss";
 import React, { useState } from "react";
 import axios from "axios";
+import { backend } from "../conf.js";
 
 const Profile = () => {
   const [file, setFile] = useState("https://via.placeholder.com/250");
@@ -10,8 +11,6 @@ const Profile = () => {
 
   const handleImageChange = e => {
     e.preventDefault();
-    console.log(e.target.files);
-    console.log("----------------------");
 
     let reader = new FileReader();
     let selectedFile = e.target.files[0];
@@ -29,9 +28,7 @@ const Profile = () => {
     // post of profile picture
     let data = new FormData();
     data.append("monfichier", file);
-    axios.post("http://localhost:5050/imgupload", data).then(response => {
-      alert("image added with success");
-    });
+    axios.post(`${backend}/imgupload`, data).then();
   };
 
   return (
@@ -40,11 +37,9 @@ const Profile = () => {
       <form>
         <div className="avatar">
           <h1>Avatar</h1>
-
           <img src={imagePreviewUrl} alt="" />
           <input type="file" onChange={e => handleImageChange(e)} />
         </div>
-
         <div className="infos">
           <div className="infoContainer">
             <label for="pseudo">Pseudo</label>
