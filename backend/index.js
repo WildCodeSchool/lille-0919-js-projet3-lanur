@@ -43,7 +43,6 @@ app.get("/api/posts/:limit", (req, res) => {
     [Number(req.params.limit)],
     (err, results) => {
       if (err) {
-        console.log(err)
         res.status(500).send(err);
       } else {
         res.status(200).json(results);
