@@ -20,15 +20,12 @@ function PostField() {
 
   const handleImageChange = e => {
     e.preventDefault();
-
     let reader = new FileReader();
     let selectedFile = e.target.files[0];
-
     reader.onloadend = () => {
       setFile(selectedFile);
       setImagePreviewUrl(reader.result);
     };
-
     reader.readAsDataURL(selectedFile);
   };
 
@@ -45,7 +42,6 @@ function PostField() {
         } else {
           postObject = { image_url, message, user_id };
         }
-
         axios.post(`${backend}/api/posts`, postObject);
       });
     } else if (message) {
