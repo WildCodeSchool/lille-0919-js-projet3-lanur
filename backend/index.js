@@ -71,7 +71,6 @@ app.post("/api/postimg", upload.single('file'), (req, res) => {
       if (err) {
         res.status(500).send("Erreur lors de la sauvegarde de l'image");
       } else {
-
         res.send(result);
       }
     });
