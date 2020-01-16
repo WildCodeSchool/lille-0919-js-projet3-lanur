@@ -54,7 +54,6 @@ function Postcard(props) {
                   <CloudinaryContext cloudName="lanur">
                     <Image publicId={props.image_url} className="postmedia" />
                   </CloudinaryContext>
-                  {/* <img className="postmedia" src={props.image_url} /> */}
                 </div>
               ) : null}
               {props.image_preview_url ? (

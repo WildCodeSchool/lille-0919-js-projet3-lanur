@@ -53,9 +53,18 @@
       margin-bottom: 10%;
       input {
         height: 30px;
-        border: 3px solid white;
+        border: 2px solid white;
         border-radius: 10px;
         padding-left: 6px;
+        &:focus {
+          outline: none;
+          border-radius: 10px;
+          border: 2px solid purple;
+        }
+        &.wrong {
+          color: rgb(255, 100, 73);
+          border-color: rgb(255, 100, 73);
+        }
       }
       input:first-of-type {
         margin-bottom: 10%;
@@ -73,6 +82,7 @@
       }
     }
     button {
+      outline: none;
       width: 75%;
       height: 50px;
       align-self: center;

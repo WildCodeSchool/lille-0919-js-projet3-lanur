@@ -1,8 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const { backendPort, db, cloudinary } = require("./conf.js");
 const multer = require("multer");
+const passport = require("passport");
+const {
+  CONFIG: { backendPort },
+  db, cloudinary
+} = require("./conf");
 const bodyParser = require("body-parser");
 const upload = multer({ dest: 'tmp/' });
 
@@ -12,8 +16,11 @@ app.use(
     extended: true
   })
 );
-
 app.use(cors());
+app.use(passport.initialize());
+
+// Authentification
+app.use("/api/auth", require("./auth"));
 
 // USERS || GET & POST
 app.get("/api/users", (req, res) => {
@@ -58,17 +65,12 @@ app.get("/api/gamelist/", (req, res) => {
 });
 
 app.post("/api/postimg", upload.single('file'), (req, res) => {
-
   const formData = req.file;
-
-
-
   cloudinary.v2.uploader.upload(formData.path,
     function (err, result) {
       if (err) {
         res.status(500).send("Erreur lors de la sauvegarde de l'image");
       } else {
-
         res.send(result);
       }
     });
@@ -84,9 +86,6 @@ app.post("/api/posts", (req, res) => {
     }
   });
 })
-
-
-
 
 app.listen(backendPort, err => {
   if (err) {
