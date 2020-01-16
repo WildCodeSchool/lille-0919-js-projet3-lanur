@@ -1,6 +1,7 @@
 const initialState = {
     offsetPosts: 0,
-    jwt: null
+    jwt: null,
+    reload: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,6 +12,7 @@ const reducer = (state = initialState, action) => {
             return newState
         case 'RESET':
             newState.offsetPosts = 0
+            newState.reload = newState.reload + 1
             return newState
         case "SAVE_JWT":
             return {

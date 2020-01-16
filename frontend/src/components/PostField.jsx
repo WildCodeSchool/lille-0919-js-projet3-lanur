@@ -44,9 +44,9 @@ function PostField() {
         } else {
           postObject = { image_url, message, user_id };
         }
-        axios
-          .post(`${backend}/api/posts`, postObject)
-          .then(() => dispatch({ type: "RESET" }));
+        axios.post(`${backend}/api/posts`, postObject).then(() => {
+          dispatch({ type: "RESET" });
+        });
       });
     } else if (message) {
       let postObject;
@@ -55,9 +55,9 @@ function PostField() {
       } else {
         postObject = { message, user_id };
       }
-      axios
-        .post(`${backend}/api/posts`, postObject)
-        .then(() => dispatch({ type: "RESET" }));
+      axios.post(`${backend}/api/posts`, postObject).then(() => {
+        dispatch({ type: "RESET" });
+      });
     }
   };
 

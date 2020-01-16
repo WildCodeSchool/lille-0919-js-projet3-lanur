@@ -17,8 +17,7 @@ function App() {
         <Route exact path="/" component={Carousel} />
         <Route exact path="/signin" component={SignIn} />
         <Route path="/signin/form" component={Form} />
-        {/* <Route path="/newsfeed" render={() => checkJWT(<NewsFeed />)} /> */}
-        <Route path="/newsfeed" component={NewsFeed} />
+        <Route path="/newsfeed" render={() => checkJWT(<NewsFeed />)} />
       </Switch>
     </div>
   );

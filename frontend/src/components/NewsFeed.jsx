@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 function NewsFeed() {
   const [posts, setPosts] = useState([]);
   const offsetPosts = useSelector(state => state.offsetPosts);
+  const reload = useSelector(state => state.reload);
   const dispatch = useDispatch();
 
   window.onscroll = () => {
@@ -23,15 +24,15 @@ function NewsFeed() {
 
   useEffect(() => {
     if (offsetPosts === 0) {
-      setPosts([]);
-    }
-    axios
-      .get(`${backend}/api/posts/${offsetPosts}`)
-      .then(({ data }) => {
+      axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
+        setPosts(data);
+      });
+    } else {
+      axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(posts.concat(data));
-      })
-      .then();
-  }, [offsetPosts]);
+      });
+    }
+  }, [offsetPosts, reload]);
 
   return (
     <div className="main-NewsFeed">
