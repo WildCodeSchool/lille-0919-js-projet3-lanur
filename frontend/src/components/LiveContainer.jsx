@@ -34,6 +34,7 @@ function LiveContainer() {
                 stream_title={live.title}
                 viewer_count={live.viewer_count}
                 user_name={live.user_name}
+                game_id={live.game_id}
               />
             ))
           : null}
