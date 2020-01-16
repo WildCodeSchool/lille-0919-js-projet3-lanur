@@ -5,6 +5,7 @@ import Carousel from "./components/Carousel";
 import SignIn from "./components/SignIn";
 import Form from "./components/Form";
 import NewsFeed from "./components/NewsFeed";
+import UserPage from "./components/UserPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/Signin" component={SignIn} />
         <Route path="/Signin/Form" component={Form} />
         <Route path="/NewsFeed" component={NewsFeed} />
+        <Route path="/userpage" component={UserPage} />
       </Switch>
     </div>
   );
