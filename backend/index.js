@@ -42,6 +42,31 @@ app.get("/api/posts/:limit", (req, res) => {
   );
 });
 
+app.get("/api/gamelist/", (req, res) => {
+  db.query("SELECT * from game", (err, results) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).json(results);
+    }
+  });
+});
+
+app.get("/api/gamelist/:id", (req, res) => {
+  const game = req.params.id;
+  db.query(
+    "SELECT * from game WHERE twitch_game_id = ?",
+    [game],
+    (err, results) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  );
+});
+
 app.post("/api/posts", (req, res) => {
   const formData = req.body;
   db.query("INSERT INTO post SET ?", formData, (err, results) => {
