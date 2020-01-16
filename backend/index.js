@@ -59,18 +59,13 @@ app.get("/api/gamelist/", (req, res) => {
 });
 
 app.post("/api/postimg", upload.single('file'), (req, res) => {
-
   const formData = req.file;
-
-
-
   cloudinary.v2.uploader.upload(formData.path,
     function (err, result) {
       if (err) {
         res.status(500).send("Erreur lors de la sauvegarde de l'image");
         console.log("1" + err)
       } else {
-
         res.send(result);
       }
     });
