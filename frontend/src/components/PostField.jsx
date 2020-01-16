@@ -3,8 +3,10 @@ import "./style/PostField.scss";
 import axios from "axios";
 import { backend } from "../conf.js";
 import Postcard from "./Postcard";
+import { useDispatch } from "react-redux";
 
 function PostField() {
+  const dispatch = useDispatch();
   const user_id = 5;
   const [message, setMessage] = useState("");
   const [file, setFile] = useState(null);
@@ -42,7 +44,9 @@ function PostField() {
         } else {
           postObject = { image_url, message, user_id };
         }
-        axios.post(`${backend}/api/posts`, postObject);
+        axios
+          .post(`${backend}/api/posts`, postObject)
+          .then(() => dispatch({ type: "RESET" }));
       });
     } else if (message) {
       let postObject;
@@ -51,7 +55,9 @@ function PostField() {
       } else {
         postObject = { message, user_id };
       }
-      axios.post(`${backend}/api/posts`, postObject);
+      axios
+        .post(`${backend}/api/posts`, postObject)
+        .then(() => dispatch({ type: "RESET" }));
     }
   };
 

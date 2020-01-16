@@ -1,8 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const { backendPort, db, cloudinary } = require("./conf.js");
 const multer = require("multer");
+const passport = require("passport");
+const {
+  CONFIG: { backendPort },
+  db, cloudinary
+} = require("./conf");
 const bodyParser = require("body-parser");
 const upload = multer({ dest: 'tmp/' });
 
@@ -12,8 +16,11 @@ app.use(
     extended: true
   })
 );
-
 app.use(cors());
+app.use(passport.initialize());
+
+// Authentification
+app.use("/api/auth", require("./auth"));
 
 // USERS || GET & POST
 app.get("/api/users", (req, res) => {
@@ -32,7 +39,7 @@ app.get("/api/users", (req, res) => {
 // FIL-ACTU || GET & POST
 app.get("/api/posts/:limit", (req, res) => {
   db.query(
-    "SELECT post.id, circle_id, user_id, user_id_team, game_id, message, date, image_url, user.avatar AS user_avatar from post JOIN user on user_id=user.id ORDER BY id DESC LIMIT 4 OFFSET ?  ",
+    "SELECT post.id, circle_id, user_id, user_id_team, game_id, message, date, image_url, user.avatar AS user_avatar from post JOIN user on user_id=user.id ORDER BY id DESC LIMIT 10 OFFSET ?  ",
     [Number(req.params.limit)],
     (err, results) => {
       if (err) {
@@ -64,7 +71,6 @@ app.post("/api/postimg", upload.single('file'), (req, res) => {
     function (err, result) {
       if (err) {
         res.status(500).send("Erreur lors de la sauvegarde de l'image");
-        console.log("1" + err)
       } else {
         res.send(result);
       }
@@ -75,16 +81,12 @@ app.post("/api/posts", (req, res) => {
   const formData = req.body;
   db.query("INSERT INTO post SET ?", formData, (err, results) => {
     if (err) {
-      console.log("2" + err)
       res.status(500).send("Erreur lors de la sauvegarde du message");
     } else {
       res.sendStatus(201);
     }
   });
 })
-
-
-
 
 app.listen(backendPort, err => {
   if (err) {
