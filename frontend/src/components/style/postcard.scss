@@ -104,6 +104,15 @@ $mainColor: #8d20ae;
   }
 }
 
+@media screen and (max-width: 740px) {
+  .postContainer {
+    width: 100vw;
+    .post {
+      width: 90%;
+    }
+  }
+}
+
 .wpi {
   border: dashed green;
 }
