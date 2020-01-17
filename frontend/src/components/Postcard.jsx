@@ -1,6 +1,7 @@
 import React from "react";
 import "./style/postcard.scss";
 import Moment from "react-moment";
+import { Image, CloudinaryContext } from "cloudinary-react";
 
 function Postcard(props) {
   return (
@@ -14,12 +15,14 @@ function Postcard(props) {
               className="avatar"
             />
           </div>
-          <div>
-            <img
-              src="https://steamuserimages-a.akamaihd.net/ugc/2438013375545542318/66E1CB5FBE2D04901F697975545A88D6B412192C/"
-              className="avatar"
-            />
-          </div>
+          {props.game_id > 0 ? (
+            <div>
+              <img
+                src={`/games_icons/${props.game_id}.jpg`}
+                className="avatar"
+              />
+            </div>
+          ) : null}
           <div>
             <img
               src="https://i.pinimg.com/236x/f6/92/99/f6929980e929991bc8ff186a9aeca8b0.jpg"
@@ -42,14 +45,22 @@ function Postcard(props) {
             {/* section with the content of the post*/}
             <div className="contentpost">
               {/* section with the postcomment*/}
-              <div className="postComment ">{props.message}</div>
-              <div className="mediaContainer">
-                {/* section with the media*/}
-                <img
-                  className="postmedia"
-                  src="https://via.placeholder.com/500x300"
-                />
+              <div className="postComment ">
+                {props.id} - {props.message}
               </div>
+              {props.image_url ? (
+                <div className="mediaContainer">
+                  {/* section with the media*/}
+                  <CloudinaryContext cloudName="lanur">
+                    <Image publicId={props.image_url} className="postmedia" />
+                  </CloudinaryContext>
+                </div>
+              ) : null}
+              {props.image_preview_url ? (
+                <div className="mediaContainer">
+                  <img className="postmedia" src={props.image_preview_url} />
+                </div>
+              ) : null}
             </div>
             <div className="reaction">
               <div className="reaction-button">
