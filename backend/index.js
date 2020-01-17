@@ -1,8 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const { backendPort, db, cloudinary } = require("./conf.js");
 const multer = require("multer");
+const passport = require("passport");
+const {
+  CONFIG: { backendPort },
+  db, cloudinary
+} = require("./conf");
 const bodyParser = require("body-parser");
 const upload = multer({ dest: 'tmp/' });
 
@@ -12,8 +16,11 @@ app.use(
     extended: true
   })
 );
-
 app.use(cors());
+app.use(passport.initialize());
+
+// Authentification
+app.use("/api/auth", require("./auth"));
 
 // USERS || GET & POST
 app.get("/api/users", (req, res) => {
@@ -32,7 +39,7 @@ app.get("/api/users", (req, res) => {
 // FIL-ACTU || GET & POST
 app.get("/api/posts/:limit", (req, res) => {
   db.query(
-    "SELECT id, circle_id, user_id, user_id_team, game_id, message, date, image_url from post ORDER BY id DESC LIMIT 4 OFFSET ?  ",
+    "SELECT id, circle_id, user_id, user_id_team, game_id, message, date, image_url from post ORDER BY id DESC LIMIT 10 OFFSET ?  ",
     [Number(req.params.limit)],
     (err, results) => {
       if (err) {
@@ -79,9 +86,6 @@ app.post("/api/posts", (req, res) => {
     }
   });
 })
-
-
-
 
 app.listen(backendPort, err => {
   if (err) {
