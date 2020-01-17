@@ -28,6 +28,5 @@ cloudinary.config({
 module.exports = {
   CONFIG,
   db,
-  backendPort,
   cloudinary
 };

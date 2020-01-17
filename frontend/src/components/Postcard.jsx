@@ -10,10 +10,13 @@ function Postcard(props) {
         {/* section with avatar and game logo */}
         <div className=" imgSection">
           <div>
-            <img
-              src="https://pickaface.net/gallery/avatar/unr_fake_180910_2220_9vd5qy.png"
-              className="avatar"
-            />
+            {props.user_avatar ? (
+              <CloudinaryContext cloudName="lanur">
+                <Image publicId={props.user_avatar} className="avatar" />
+              </CloudinaryContext>
+            ) : (
+              <img src="noob.jpg" className="avatar" />
+            )}
           </div>
           {props.game_id > 0 ? (
             <div>
