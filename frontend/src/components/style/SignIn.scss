@@ -28,6 +28,7 @@
     }
   }
   .connect {
+    margin-top: 5%;
     width: 25%;
     min-width: 430px;
     border-radius: 7px;
@@ -47,13 +48,22 @@
     }
 
     form {
-      padding: 10% 5% 5% 5%;
+      padding: 5% 5% 5% 5%;
       margin-bottom: 10%;
       input {
         height: 30px;
-        border: 3px solid white;
+        border: 2px solid white;
         border-radius: 10px;
         padding-left: 6px;
+        &:focus {
+          outline: none;
+          border-radius: 10px;
+          border: 2px solid purple;
+        }
+        &.wrong {
+          color: rgb(255, 100, 73);
+          border-color: rgb(255, 100, 73);
+        }
       }
       input:first-of-type {
         margin-bottom: 10%;
@@ -66,11 +76,12 @@
     .noAccount {
       padding: 5%;
       p {
-        margin-top: 10%;
+        margin-top: 5%;
         align-self: center;
       }
     }
     button {
+      outline: none;
       width: 75%;
       height: 50px;
       align-self: center;
