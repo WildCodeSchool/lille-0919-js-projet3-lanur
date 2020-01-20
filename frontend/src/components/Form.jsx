@@ -18,6 +18,7 @@ function Form() {
   });
 
   const [page, setPage] = useState(1);
+  const [error, setError] = useState();
 
   const handleSubmit = () => {
     const newUser = registration;
@@ -28,7 +29,14 @@ function Form() {
         history.push("/newsfeed");
       })
       .catch(err => {
-        console.log(err);
+        let response = err.response.data;
+        if (response.includes("email_UNIQUE")) {
+          setPage(1);
+          setError("email");
+        } else if (response.includes("pseudo_UNIQUE")) {
+          setPage(1);
+          setError("pseudo");
+        }
       });
   };
 
@@ -58,7 +66,7 @@ function Form() {
                 <div className="inputContainer">
                   <label className="label">Pseudo</label>
                   <input
-                    className="idInput"
+                    className={error === "pseudo" ? "error" : "idInput"}
                     type="text"
                     value={registration.pseudo}
                     onChange={event => {
@@ -75,7 +83,7 @@ function Form() {
                 <div className="inputContainer">
                   <label className="label">E-mail</label>
                   <input
-                    className="idInput"
+                    className={error === "email" ? "error" : "idInput"}
                     type="email"
                     value={registration.email}
                     onChange={event => {
