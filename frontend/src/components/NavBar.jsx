@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./style/NavBar.scss";
 
 function NavBar() {
@@ -54,9 +55,9 @@ function NavBar() {
         </li>
 
         <li>
-          <a href="#">
+          <Link to="/EditProfile">
             <span className="FirstLetter">P</span>rofil
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
