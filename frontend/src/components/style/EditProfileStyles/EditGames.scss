@@ -1,0 +1,47 @@
+.games {
+  h1 {
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .selected {
+    margin: 4vh 0.5rem 0;
+    padding: 10px;
+    width: 220px;
+    height: 130px;
+    list-style: none;
+    background: rgba(rgba(32, 201, 10, 0.685), 0.7);
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid purple;
+    border-radius: 15px;
+  }
+  display: block;
+
+  ul {
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    li {
+      margin: 4vh 0.5rem 0;
+      padding: 10px;
+      width: 220px;
+      height: 130px;
+      list-style: none;
+      background: rgba(rgb(128, 105, 105), 0.7);
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+      border: 4px solid purple;
+      border-radius: 15px;
+
+      img {
+        width: 80%;
+      }
+    }
+  }
+}
