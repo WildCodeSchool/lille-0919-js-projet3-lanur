@@ -35,7 +35,9 @@ $mainColor: #8d20ae;
     position: fixed;
     display: flex;
     justify-content: flex-end;
-    width: 90%;
+    width: 80%;
+    left: 140px;
+
     .dropDownMenu {
       margin-top: 4px;
       padding-left: 8px;
@@ -96,5 +98,74 @@ $mainColor: #8d20ae;
     .FirstLetter {
       color: $mainColor;
     }
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .main-NavBar {
+    display: none;
+  }
+
+  .toggle_btn {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+    float: right;
+    right: 10px;
+    z-index: 10;
+  }
+  .toggle_btn span {
+    height: 3px;
+    background-color: black;
+    width: 100%;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+  }
+  .toggle_btn span:before {
+    content: "";
+    height: 3px;
+    background-color: black;
+    width: 100%;
+    position: absolute;
+    top: -10px;
+  }
+
+  .toggle_btn span:after {
+    content: "";
+    height: 3px;
+    background-color: black;
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    left: 0;
+  }
+  .menu {
+    height: 100vh;
+    background-color: white;
+    width: 100%;
+    transition-duration: 0.4s;
+    position: absolute;
+    z-index: 9;
+    ul {
+      font-size: 24px;
+      .FirstLetter {
+        color: $mainColor;
+      }
+    }
+    a {
+      color: black;
+      text-align: center;
+      display: block;
+      padding-top: 30px;
+      text-decoration: none;
+    }
+  }
+
+  .menu2 {
+    margin-left: -800px;
+    transition-duration: 0.4s;
   }
 }
