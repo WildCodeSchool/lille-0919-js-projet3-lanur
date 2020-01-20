@@ -20,7 +20,6 @@ router.post("/signup", (req, res) => {
         return res.status(400).send("Invalid User creation request");
       }
       newUser.password = undefined;
-      console.log(newUser)
       return res.status(201).send({
         user: newUser,
         token: jwt.sign(JSON.stringify(newUser), jwtSecret)
