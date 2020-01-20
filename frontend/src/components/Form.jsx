@@ -45,6 +45,9 @@ function Form() {
         >
           {page === 1 ? (
             <div className="page1">
+              <div className="introText">
+                On a besoin de quelques infos pour démarrer:
+              </div>
               <div>
                 {/* Pseudo -------------------------------------------------------------------------------------------- */}
 
@@ -102,6 +105,10 @@ function Form() {
           )}
           {page === 2 ? (
             <div className="page2">
+              <div className="introText">
+                Choisis les jeux pour lesquels tu souhaites avoir des news
+                (penses à scroller):
+              </div>
               <div className="bigGamePage">
                 <div className="gamePage">
                   {GameList.map(game => {

@@ -16,6 +16,16 @@
   align-items: center;
   width: 100%;
 
+  ::-webkit-scrollbar {
+    width: 300px;
+  }
+
+  .introText {
+    justify-content: center;
+    text-align: center;
+    font-size: 3vh;
+    margin-top: 8vh;
+  }
   .form {
     border: 10px solid $mainColor;
     border-radius: 15px;
