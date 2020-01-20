@@ -31,7 +31,6 @@ function Form() {
       .post(`${backend}/api/auth/signup`, newUser)
       .then(response => {
         dispatch({ type: "SAVE_JWT", value: response.data.token });
-        notify("Compte créé");
         history.push("/newsfeed");
       })
       .catch(err => {
