@@ -7,6 +7,9 @@ import GameList from "../GameList";
 import "./style/IdForm.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import { backend } from "../conf.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./style/Tag.scss";
 
 function Form() {
   const history = useHistory();
@@ -19,6 +22,8 @@ function Form() {
 
   const [page, setPage] = useState(1);
   const [error, setError] = useState();
+
+  const notify = error => toast(error);
 
   const handleSubmit = () => {
     const newUser = registration;
@@ -33,9 +38,14 @@ function Form() {
         if (response.includes("email_UNIQUE")) {
           setPage(1);
           setError("email");
+          notify("Email déjà utilisé");
         } else if (response.includes("pseudo_UNIQUE")) {
           setPage(1);
           setError("pseudo");
+          notify("Pseudo déjà utilisé");
+        } else {
+          setError("inconnu");
+          notify("Erreur inconnue");
         }
       });
   };
@@ -55,6 +65,10 @@ function Form() {
             e.preventDefault();
           }}
         >
+          <ToastContainer
+            position={toast.POSITION.BOTTOM_LEFT}
+            hideProgressBar={true}
+          />
           {page === 1 ? (
             <div className="page1">
               <div className="introText">
