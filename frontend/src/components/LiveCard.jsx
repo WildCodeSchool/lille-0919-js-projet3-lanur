@@ -12,10 +12,7 @@ function LiveCard(props) {
 
   useEffect(() => {
     axios.get(`${backend}/api/gamelist/${props.game_id}`).then(({ data }) => {
-      let tmpGames = gameId;
-      const results = data;
-      tmpGames.push(...results);
-      setGameId(results);
+      setGameId(data);
     });
   }, []);
 
