@@ -6,6 +6,7 @@ import GameChoice from "./GameChoice";
 import GameList from "../GameList";
 import "./style/IdForm.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import { backend } from "../conf.js";
 
 function Form() {
   const history = useHistory();
@@ -21,10 +22,13 @@ function Form() {
   const handleSubmit = () => {
     const newUser = registration;
     axios
-      .post("http://localhost:5050/api/auth/signup", newUser)
+      .post(`${backend}/api/auth/signup`, newUser)
       .then(response => {
         dispatch({ type: "SAVE_JWT", value: response.data.token });
         history.push("/newsfeed");
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 
