@@ -12,7 +12,7 @@ function NavBar() {
         <span></span>
       </div>
       {burgerMenu ? (
-        <div className="menu">
+        <div className="burgerMenuOn">
           <ul>
             <li onClick={() => setBurgerMenu(!burgerMenu)}>
               <Link to="/newsfeed">
@@ -47,7 +47,7 @@ function NavBar() {
           </ul>
         </div>
       ) : (
-        <div className="menu2"></div>
+        <div className="burgerMenuOff"></div>
       )}
       <nav className="main-NavBar">
         <h1>

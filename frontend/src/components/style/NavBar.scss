@@ -141,7 +141,7 @@ $mainColor: #8d20ae;
     top: 10px;
     left: 0;
   }
-  .menu {
+  .burgerMenuOn {
     height: 100vh;
     background-color: white;
     width: 100%;
@@ -163,7 +163,7 @@ $mainColor: #8d20ae;
     }
   }
 
-  .menu2 {
+  .burgerMenuOff {
     margin-left: -800px;
     transition-duration: 0.4s;
   }
