@@ -21,7 +21,6 @@ function LiveContainer() {
         setLives(data.data);
       });
   }, []);
-  console.log(lives);
   return (
     <div className="allLive">
       <div className="liveTitle">
@@ -50,7 +49,7 @@ function LiveContainer() {
                   game_id === "488615" ||
                   game_id === "32399"
               )
-              .map(live => (
+              .map((live) => (
                 <LiveCard
                   streamer_name={live.user_name}
                   stream_title={live.title}

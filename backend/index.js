@@ -5,10 +5,11 @@ const multer = require("multer");
 const passport = require("passport");
 const {
   CONFIG: { backendPort },
-  db, cloudinary
+  db,
+  cloudinary
 } = require("./conf");
 const bodyParser = require("body-parser");
-const upload = multer({ dest: 'tmp/' });
+const upload = multer({ dest: "tmp/" });
 
 app.use(bodyParser.json());
 app.use(
@@ -76,19 +77,16 @@ app.get("/api/gamelist/:id", (req, res) => {
   );
 });
 
-
-app.post("/api/postimg", upload.single('file'), (req, res) => {
+app.post("/api/postimg", upload.single("file"), (req, res) => {
   const formData = req.file;
-  cloudinary.v2.uploader.upload(formData.path,
-    function (err, result) {
-      if (err) {
-        res.status(500).send("Erreur lors de la sauvegarde de l'image");
-      } else {
-        res.send(result);
-      }
-    });
+  cloudinary.v2.uploader.upload(formData.path, function(err, result) {
+    if (err) {
+      res.status(500).send("Erreur lors de la sauvegarde de l'image");
+    } else {
+      res.send(result);
+    }
+  });
 });
-
 
 app.post("/api/posts", (req, res) => {
   const formData = req.body;
@@ -99,9 +97,9 @@ app.post("/api/posts", (req, res) => {
       res.sendStatus(201);
     }
   });
-})
+});
 
-app.listen(backendPort, err => {
+app.listen(backendPort, (err) => {
   if (err) {
     throw new Error("Something bad happened...");
   }
