@@ -48,7 +48,7 @@ function LiveContainer() {
         <h2> Live</h2>
       </div>
       <div className="liveContent">
-        {lives.length > 1
+        {lives.length > 0
           ? lives.map((live) => (
               <LiveCard
                 streamer_name={live.user_name}
