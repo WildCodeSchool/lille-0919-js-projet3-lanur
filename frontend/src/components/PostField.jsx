@@ -4,6 +4,8 @@ import axios from "axios";
 import { backend } from "../conf.js";
 import Postcard from "./Postcard";
 import { useDispatch, useSelector } from "react-redux";
+import Tag from "./Tag";
+
 
 function PostField() {
   const dispatch = useDispatch();
@@ -80,8 +82,9 @@ function PostField() {
               setMessage(e.target.value);
             }}
             className="headPost"
-            maxlength="500"
+            maxLength="500"
           />
+          <Tag />
           <input type="file" onChange={e => handleImageChange(e)} />
           <div className="gameSelection">
             Jeu concerné:
