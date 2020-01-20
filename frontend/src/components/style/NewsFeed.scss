@@ -3,6 +3,11 @@
   width: 100%;
   position: absolute;
   top: 8vh;
-
   z-index: -90;
+}
+
+@media screen and (max-width: 740px) {
+  .main-NewsFeed {
+    top: 0vh;
+  }
 }
