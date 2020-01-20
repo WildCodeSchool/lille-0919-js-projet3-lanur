@@ -2,7 +2,7 @@
 
 .SignIn {
   background: url("/lolworlds.jpg") bottom right / cover no-repeat;
-  height: 100vh;
+  height: 92vh;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -12,6 +12,7 @@
   font-style: normal;
   font-weight: 800;
   color: white;
+  margin-top: 8vh;
   span {
     color: $mainColor;
   }

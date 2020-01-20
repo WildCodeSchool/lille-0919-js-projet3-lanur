@@ -3,6 +3,7 @@ const initialState = {
   jwt: null,
   reload: 0
 };
+
 const reducer = (state = initialState, action) => {
   const newState = { ...state };
   switch (action.type) {
@@ -22,4 +23,5 @@ const reducer = (state = initialState, action) => {
       return newState;
   }
 };
+
 export default reducer;
