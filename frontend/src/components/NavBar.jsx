@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./style/NavBar.scss";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   const [displayMenu, setDisplayMenu] = useState(false);
@@ -54,9 +55,9 @@ function NavBar() {
         </li>
 
         <li>
-          <a href="#">
+          <Link to="/userpage">
             <span className="FirstLetter">P</span>rofil
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
