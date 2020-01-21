@@ -133,24 +133,27 @@ function Postcard(props) {
                 ></textarea>
                 <button onClick={e => onSubmit(e)}>Envoyer</button>
                 <div className="comments">
-                  Afficher les commentaires
-                  {comments.map(comment => (
-                    <div className="comment">
-                      <div>
-                        {comment.avatar ? (
-                          <CloudinaryContext cloudName="lanur">
-                            <Image
-                              publicId={comment.avatar}
-                              className="avatar"
-                            />
-                          </CloudinaryContext>
-                        ) : (
-                          <img src="noob.jpg" className="avatar" />
-                        )}
+                  {comments.length > 0 ? (
+                    comments.map(comment => (
+                      <div className="comment">
+                        <div>
+                          {comment.avatar ? (
+                            <CloudinaryContext cloudName="lanur">
+                              <Image
+                                publicId={comment.avatar}
+                                className="avatar"
+                              />
+                            </CloudinaryContext>
+                          ) : (
+                            <img src="noob.jpg" className="avatar" />
+                          )}
+                        </div>
+                        {comment.pseudo} - {comment.content}
                       </div>
-                      {comment.pseudo} - {comment.content}
-                    </div>
-                  ))}
+                    ))
+                  ) : (
+                    <p>Pas encore de commentaires. Soit le premier!</p>
+                  )}
                 </div>
               </div>
             ) : null}
