@@ -1,7 +1,7 @@
 import "../style/EditProfileStyles/EditProfile.scss";
 import React, { useState } from "react";
 import axios from "axios";
-import { backend } from "../conf.js";
+import { backend } from "../../conf.js";
 
 const Profile = () => {
   const [file, setFile] = useState("https://via.placeholder.com/250");

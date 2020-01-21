@@ -1,7 +1,8 @@
 const initialState = {
     offsetPosts: 0,
     jwt: null,
-    reload: 0
+    reload: 0,
+    filters: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,6 +19,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 jwt: action.value
+            };
+        case "FILTER":
+            return {
+                ...state,
+                filters: action.value
             };
         default:
             return newState
