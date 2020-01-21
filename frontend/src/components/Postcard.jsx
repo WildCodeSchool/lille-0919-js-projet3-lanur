@@ -132,7 +132,6 @@ function Postcard(props) {
                   value={comment}
                 ></textarea>
                 <button onClick={e => onSubmit(e)}>Envoyer</button>
-                <div>comment 1</div>
                 <div className="comments">
                   Afficher les commentaires
                   {comments.map(comment => (
