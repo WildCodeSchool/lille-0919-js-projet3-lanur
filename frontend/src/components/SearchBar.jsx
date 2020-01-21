@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./style/SearchBar.scss";
 import axios from "axios";
+import { backend } from "../conf.js"
 
   function SearchBar(props) {
      const [search, setSearch] = useState("");
 
      const handleSubmit = (e) => {
       e.preventDefault()
-      axios.get('/api/user', search)
+      axios.get(`${backend}/api/users`, search)
         .then(function (response) {
           console.log(response)
         })
