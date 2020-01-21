@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Form from "./Form";
 import "./style/SignIn.scss";
+import { backend } from "../conf";
 
 const SignIn = () => {
   const history = useHistory();
@@ -13,18 +14,15 @@ const SignIn = () => {
   const [password, passwordUpdate] = useState("");
 
   const handleSubmit = () => {
-    axios
-      .post("http://localhost:5050/api/auth/login", { pseudo, password })
-      .then(
-        response => {
-          dispatch({ type: "SAVE_JWT", value: response.data });
-          history.push("/NewsFeed");
-          console.log(response);
-        },
-        error => {
-          updateCredentialsState(false);
-        }
-      );
+    axios.post(`${backend}/api/auth/login`, { pseudo, password }).then(
+      response => {
+        dispatch({ type: "SAVE_JWT", value: response.data });
+        history.push("/NewsFeed");
+      },
+      error => {
+        updateCredentialsState(false);
+      }
+    );
   };
 
   const [divCreation, showDivCreation] = useState(false);

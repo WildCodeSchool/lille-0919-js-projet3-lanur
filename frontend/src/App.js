@@ -6,6 +6,8 @@ import Carousel from "./components/Carousel";
 import SignIn from "./components/SignIn";
 import NewsFeed from "./components/NewsFeed";
 import UserPage from "./components/UserPage";
+import ContainerEditProfile from "./components/EditProfile/ContainerEditProfile";
+
 
 function App() {
   const jwt = useSelector(state => state.jwt);
@@ -15,9 +17,12 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/" component={Carousel} />
-        <Route path="/signin" component={SignIn} />
+        <Route exact path="/signin" component={SignIn} />
+        <Route path="/signin/form" component={Form} />
         <Route path="/newsfeed" render={() => checkJWT(<NewsFeed />)} />
         <Route path="/userpage" render={() => checkJWT(<UserPage />)} />
+        <Route path="/editprofile" component={ContainerEditProfile} />
+
       </Switch>
     </div>
   );

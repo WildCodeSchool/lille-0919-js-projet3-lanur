@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./style/NavBar.scss";
 import { Link } from "react-router-dom";
 
@@ -53,7 +54,6 @@ function NavBar() {
             </div>
           ) : null}
         </li>
-
         <li>
           <Link to="/userpage">
             <span className="FirstLetter">P</span>rofil
