@@ -3,8 +3,11 @@ import "./style/PostField.scss";
 import axios from "axios";
 import { backend } from "../conf.js";
 import Postcard from "./Postcard";
+import Tag from "./Tag";
+import { useDispatch } from "react-redux";
 
 function PostField() {
+  const dispatch = useDispatch();
   const user_id = 5;
   const [message, setMessage] = useState("");
   const [file, setFile] = useState(null);
@@ -20,15 +23,12 @@ function PostField() {
 
   const handleImageChange = e => {
     e.preventDefault();
-
     let reader = new FileReader();
     let selectedFile = e.target.files[0];
-
     reader.onloadend = () => {
       setFile(selectedFile);
       setImagePreviewUrl(reader.result);
     };
-
     reader.readAsDataURL(selectedFile);
   };
 
@@ -45,8 +45,9 @@ function PostField() {
         } else {
           postObject = { image_url, message, user_id };
         }
-
-        axios.post(`${backend}/api/posts`, postObject);
+        axios.post(`${backend}/api/posts`, postObject).then(() => {
+          dispatch({ type: "RESET" });
+        });
       });
     } else if (message) {
       let postObject;
@@ -55,7 +56,9 @@ function PostField() {
       } else {
         postObject = { message, user_id };
       }
-      axios.post(`${backend}/api/posts`, postObject);
+      axios.post(`${backend}/api/posts`, postObject).then(() => {
+        dispatch({ type: "RESET" });
+      });
     }
   };
 
@@ -78,8 +81,9 @@ function PostField() {
               setMessage(e.target.value);
             }}
             className="headPost"
-            maxlength="500"
+            maxLength="500"
           />
+          <Tag />
           <input type="file" onChange={e => handleImageChange(e)} />
           <div className="gameSelection">
             Jeu concerné:
