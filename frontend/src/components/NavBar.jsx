@@ -13,9 +13,9 @@ function NavBar() {
   return (
     <nav className="main-NavBar">
       <h1>
-        <a href="#">
+        <Link to="/newsfeed">
           <span className="Lan">LAN'</span>U.R
-        </a>
+        </Link>
       </h1>
       <ul>
         <li>

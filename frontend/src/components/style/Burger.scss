@@ -8,6 +8,12 @@ $mainColor: #8d20ae;
   #MenuBurger {
     display: none;
   }
+  .bm-burger-button {
+    display: none;
+  }
+  .bm-overlay {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 740px) {
