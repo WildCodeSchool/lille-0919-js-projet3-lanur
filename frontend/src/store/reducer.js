@@ -16,7 +16,6 @@ const reducer = (state = initialState, action) => {
             newState.reload = newState.reload + 1
             return newState
         case "SAVE_JWT":
-            console.log(action.value)
             return {
                 ...state,
                 jwt: action.value.token,
