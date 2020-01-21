@@ -9,7 +9,7 @@ const Profile = () => {
     "https://via.placeholder.com/250"
   );
 
-  const handleImageChange = e => {
+  const handleImageChange = (e) => {
     e.preventDefault();
 
     let reader = new FileReader();
@@ -23,7 +23,7 @@ const Profile = () => {
     reader.readAsDataURL(selectedFile);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // post of profile picture
     let data = new FormData();
@@ -38,7 +38,7 @@ const Profile = () => {
         <div className="avatar">
           <h1>Avatar</h1>
           <img src={imagePreviewUrl} alt="" />
-          <input type="file" onChange={e => handleImageChange(e)} />
+          <input type="file" onChange={(e) => handleImageChange(e)} />
         </div>
         <div className="infos">
           <div className="infoContainer">
