@@ -5,10 +5,11 @@ const multer = require("multer");
 const passport = require("passport");
 const {
   CONFIG: { backendPort },
-  db, cloudinary
+  db,
+  cloudinary
 } = require("./conf");
 const bodyParser = require("body-parser");
-const upload = multer({ dest: 'tmp/' });
+const upload = multer({ dest: "tmp/" });
 
 app.use(bodyParser.json());
 app.use(
@@ -52,8 +53,20 @@ app.get("/api/posts/:limit", (req, res) => {
 });
 
 app.get("/api/gamelist/", (req, res) => {
+  db.query("SELECT * from game", (err, results) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).json(results);
+    }
+  });
+});
+
+app.get("/api/gamelist/:id", (req, res) => {
+  const game = req.params.id;
   db.query(
-    "SELECT * from game",
+    "SELECT * from game WHERE twitch_game_id = ?",
+    [game],
     (err, results) => {
       if (err) {
         res.status(500).send(err);
@@ -64,16 +77,15 @@ app.get("/api/gamelist/", (req, res) => {
   );
 });
 
-app.post("/api/postimg", upload.single('file'), (req, res) => {
+app.post("/api/postimg", upload.single("file"), (req, res) => {
   const formData = req.file;
-  cloudinary.v2.uploader.upload(formData.path,
-    function (err, result) {
-      if (err) {
-        res.status(500).send("Erreur lors de la sauvegarde de l'image");
-      } else {
-        res.send(result);
-      }
-    });
+  cloudinary.v2.uploader.upload(formData.path, function(err, result) {
+    if (err) {
+      res.status(500).send("Erreur lors de la sauvegarde de l'image");
+    } else {
+      res.send(result);
+    }
+  });
 });
 
 app.post("/api/posts", (req, res) => {
@@ -85,7 +97,8 @@ app.post("/api/posts", (req, res) => {
       res.sendStatus(201);
     }
   });
-})
+});
+
 
 app.get("/api/comments/post/:id", (req, res) => {
   db.query(
