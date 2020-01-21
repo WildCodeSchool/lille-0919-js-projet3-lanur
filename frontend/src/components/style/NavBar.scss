@@ -7,7 +7,7 @@ $mainColor: #8d20ae;
 .main-NavBar {
   font-family: "Sansation";
   background-color: rgb(253, 253, 253);
-  height: 8vh;
+  height: 54px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -96,6 +96,14 @@ $mainColor: #8d20ae;
     }
     .FirstLetter {
       color: $mainColor;
+    }
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .main-NavBar {
+    ul {
+      display: none;
     }
   }
 }
