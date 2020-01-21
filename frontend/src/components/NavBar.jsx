@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./style/NavBar.scss";
-import { Link } from "react-router-dom";
 
 function NavBar() {
   const [displayMenu, setDisplayMenu] = useState(false);
