@@ -136,12 +136,12 @@ $mainColor: #8d20ae;
       min-height: 100px;
       overflow: scroll;
     }
-    .commenttext {
-    }
+
     .comments {
       display: flex;
       flex-direction: column;
-      height: 300px;
+      padding-top: 50px;
+      max-height: 300px;
       overflow: scroll;
       scrollbar-color: $mainColor white;
       scrollbar-width: 10px;
@@ -150,10 +150,14 @@ $mainColor: #8d20ae;
         display: flex;
         flex-direction: row;
         height: auto;
-        border: solid grey;
+        border-bottom: solid $mainColor;
         .avatar {
           height: 50px;
           padding: 5px;
+        }
+        .pseudo {
+          color: $mainColor;
+          font-weight: bold;
         }
       }
     }

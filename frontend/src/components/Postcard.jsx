@@ -148,7 +148,10 @@ function Postcard(props) {
                             <img src="noob.jpg" className="avatar" />
                           )}
                         </div>
-                        {comment.pseudo} - {comment.content}
+                        <p>
+                          <span className="pseudo">{comment.pseudo}</span> -{" "}
+                          {comment.content}
+                        </p>
                       </div>
                     ))
                   ) : (
