@@ -97,16 +97,15 @@ app.get("/api/gamelist/", (req, res) => {
   });
 });
 
-app.post("/api/postimg", upload.single('file'), (req, res) => {
+app.post("/api/postimg", upload.single("file"), (req, res) => {
   const formData = req.file;
-  cloudinary.v2.uploader.upload(formData.path,
-    function (err, result) {
-      if (err) {
-        res.status(500).send("Erreur lors de la sauvegarde de l'image");
-      } else {
-        res.send(result);
-      }
-    });
+  cloudinary.v2.uploader.upload(formData.path, function(err, result) {
+    if (err) {
+      res.status(500).send("Erreur lors de la sauvegarde de l'image");
+    } else {
+      res.send(result);
+    }
+  });
 });
 
 app.post("/api/posts", (req, res) => {
@@ -118,7 +117,7 @@ app.post("/api/posts", (req, res) => {
       res.sendStatus(201);
     }
   });
-})
+});
 
 app.listen(backendPort, err => {
   if (err) {
