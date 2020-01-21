@@ -104,69 +104,70 @@ $mainColor: #8d20ae;
   .main-NavBar {
     display: none;
   }
+  .burgerMenu {
+    .toggle_btn {
+      display: flex;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      position: absolute;
+      top: 10px;
+      cursor: pointer;
+      float: right;
+      right: 10px;
+      z-index: 10;
+      background-color: white;
+      border-radius: 6px;
+    }
+    .toggle_btn span {
+      height: 3px;
+      background-color: black;
+      width: 70%;
+      position: absolute;
+      top: 20px;
+    }
+    .toggle_btn span:before {
+      content: "";
+      height: 3px;
+      background-color: black;
+      width: 100%;
+      position: absolute;
+      top: -10px;
+    }
 
-  .toggle_btn {
-    display: flex;
-    justify-content: center;
-    height: 40px;
-    width: 40px;
-    position: absolute;
-    top: 10px;
-    cursor: pointer;
-    float: right;
-    right: 10px;
-    z-index: 10;
-    background-color: white;
-    border-radius: 6px;
-  }
-  .toggle_btn span {
-    height: 3px;
-    background-color: black;
-    width: 70%;
-    position: absolute;
-    top: 20px;
-  }
-  .toggle_btn span:before {
-    content: "";
-    height: 3px;
-    background-color: black;
-    width: 100%;
-    position: absolute;
-    top: -10px;
-  }
-
-  .toggle_btn span:after {
-    content: "";
-    height: 3px;
-    background-color: black;
-    width: 100%;
-    position: absolute;
-    top: 10px;
-  }
-  .burgerMenuOn {
-    height: 100vh;
-    background-color: white;
-    width: 100%;
-    transition-duration: 0.4s;
-    position: absolute;
-    z-index: 9;
-    ul {
-      font-size: 24px;
-      .FirstLetter {
-        color: $mainColor;
+    .toggle_btn span:after {
+      content: "";
+      height: 3px;
+      background-color: black;
+      width: 100%;
+      position: absolute;
+      top: 10px;
+    }
+    .burgerMenuOn {
+      height: 100vh;
+      background-color: white;
+      width: 100%;
+      transition-duration: 0.4s;
+      position: absolute;
+      z-index: 9;
+      ul {
+        font-size: 24px;
+        .FirstLetter {
+          color: $mainColor;
+        }
+      }
+      a {
+        color: black;
+        text-align: center;
+        display: block;
+        padding-top: 30px;
+        text-decoration: none;
       }
     }
-    a {
-      color: black;
-      text-align: center;
-      display: block;
-      padding-top: 30px;
-      text-decoration: none;
-    }
-  }
 
-  .burgerMenuOff {
-    margin-left: -800px;
-    transition-duration: 0.4s;
+    .burgerMenuOff {
+      margin-left: -800px;
+      transition-duration: 0.4s;
+    }
   }
 }
