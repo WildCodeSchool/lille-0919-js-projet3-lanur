@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style/postcard.scss";
 import Moment from "react-moment";
 import { Image, CloudinaryContext } from "cloudinary-react";
 
 function Postcard(props) {
+  const [like, setLike] = useState(false);
+
   return (
     <div className="postContainer">
       <div className="post">
@@ -66,8 +68,10 @@ function Postcard(props) {
               ) : null}
             </div>
             <div className="reaction">
-              <div className="reaction-button">
-                <button>Like</button>
+              <div
+                className={like ? "reaction-button-clicked" : "reaction-button"}
+              >
+                <button onClick={() => setLike(!like)}>+1</button>
               </div>
               <div className="reaction-button">
                 <button>Comment</button>
