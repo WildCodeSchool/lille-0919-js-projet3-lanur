@@ -1,22 +1,23 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 import NavBar from "./components/NavBar";
 import Carousel from "./components/Carousel";
 import SignIn from "./components/SignIn";
-import Form from "./components/Form";
 import NewsFeed from "./components/NewsFeed";
 import UserPage from "./components/UserPage";
 
 function App() {
+  const jwt = useSelector(state => state.jwt);
+  const checkJWT = component => (jwt ? component : <Redirect to="/signin" />);
   return (
     <div className="App">
       <NavBar />
       <Switch>
         <Route exact path="/" component={Carousel} />
-        <Route exact path="/Signin" component={SignIn} />
-        <Route path="/Signin/Form" component={Form} />
-        <Route path="/NewsFeed" component={NewsFeed} />
-        <Route path="/userpage" component={UserPage} />
+        <Route path="/signin" component={SignIn} />
+        <Route path="/newsfeed" render={() => checkJWT(<NewsFeed />)} />
+        <Route path="/userpage" render={() => checkJWT(<UserPage />)} />
       </Switch>
     </div>
   );
