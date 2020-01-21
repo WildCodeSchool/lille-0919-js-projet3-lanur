@@ -12,6 +12,7 @@ $mainColor: #8d20ae;
   flex-direction: row;
   align-items: center;
   position: fixed;
+  justify-content: space-between;
   left: 0;
   top: 0;
   width: 100%;
@@ -35,7 +36,7 @@ $mainColor: #8d20ae;
     position: fixed;
     display: flex;
     justify-content: flex-end;
-    width: 90%;
+    width: 100%;
     .dropDownMenu {
       margin-top: 4px;
       padding-left: 8px;
