@@ -5,6 +5,7 @@ import { backend } from "../../conf.js";
 import { useSelector } from "react-redux";
 import { Image, CloudinaryContext } from "cloudinary-react";
 
+
 const Profile = () => {
   const user_avatar = useSelector(state => state.user_avatar);
   const [file, setFile] = useState();
@@ -18,7 +19,7 @@ const Profile = () => {
     }
   }, []);
 
-  const handleImageChange = e => {
+  const handleImageChange = (e) => {
     e.preventDefault();
 
     let reader = new FileReader();
@@ -32,7 +33,7 @@ const Profile = () => {
     reader.readAsDataURL(selectedFile);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // post of profile picture
     let data = new FormData();
