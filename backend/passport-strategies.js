@@ -15,7 +15,7 @@ passport.use(
     },
     (formPseudo, formPassword, done) => {
       db.query(
-        "SELECT pseudo, password FROM user WHERE pseudo=?",
+        "SELECT pseudo, id, password, avatar FROM user WHERE pseudo=?",
         [formPseudo],
         (err, results) => {
           if (err) {
