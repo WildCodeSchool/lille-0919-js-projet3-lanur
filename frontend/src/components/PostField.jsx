@@ -4,7 +4,7 @@ import axios from "axios";
 import { backend } from "../conf.js";
 import Postcard from "./Postcard";
 import Tag from "./Tag";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function PostField() {
   const dispatch = useDispatch();
@@ -14,6 +14,7 @@ function PostField() {
   const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
   const [gamelist, setGamelist] = useState([]);
   const [game_id, setGame_id] = useState(null);
+  const tags = useSelector(state => state.tags);
 
   useEffect(() => {
     axios.get(`${backend}/api/gamelist/`).then(({ data }) => {
@@ -41,9 +42,9 @@ function PostField() {
         let image_url = response.data.public_id;
         let postObject;
         if (game_id) {
-          postObject = { image_url, message, user_id, game_id };
+          postObject = { image_url, message, user_id, game_id, tags };
         } else {
-          postObject = { image_url, message, user_id };
+          postObject = { image_url, message, user_id, tags };
         }
         axios.post(`${backend}/api/posts`, postObject).then(() => {
           dispatch({ type: "RESET" });
@@ -52,9 +53,11 @@ function PostField() {
     } else if (message) {
       let postObject;
       if (game_id !== "noGame") {
-        postObject = { message, user_id, game_id };
+        console.log(tags);
+        postObject = { message, user_id, game_id, tags };
       } else {
-        postObject = { message, user_id };
+        console.log("test6");
+        postObject = { message, user_id, tags };
       }
       axios.post(`${backend}/api/posts`, postObject).then(() => {
         dispatch({ type: "RESET" });
@@ -102,12 +105,16 @@ function PostField() {
           <button type="submit">Poster</button>
         </form>
       </div>
-      {message || imagePreviewUrl || (game_id && game_id !== "noGame") ? (
+      {message ||
+      tags ||
+      imagePreviewUrl ||
+      (game_id && game_id !== "noGame") ? (
         <div className="preview-container">
           <div className="preview">Aperçu de votre post:</div>
           <Postcard
             image_preview_url={imagePreviewUrl}
             message={message}
+            tags={tags + " "}
             game_id={game_id}
           />
         </div>
