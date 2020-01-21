@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style/postcard.scss";
 import Moment from "react-moment";
 import { Image, CloudinaryContext } from "cloudinary-react";
+import { backend } from "../conf.js";
+import axios from "axios";
 
 function Postcard(props) {
+  const [comment, setComment] = useState("");
+  const [displayComments, setDisplayComments] = useState(false);
+  const [comments, setComments] = useState([]);
+
+  const commentClick = id => {
+    setDisplayComments(!displayComments);
+    axios.get(`${backend}/api/comments/post/${props.id}`).then(({ data }) => {
+      setComments(data);
+    });
+  };
+
   return (
     <div className="postContainer">
       <div className="post">
@@ -48,9 +61,7 @@ function Postcard(props) {
             {/* section with the content of the post*/}
             <div className="contentpost">
               {/* section with the postcomment*/}
-              <div className="postComment ">
-                {props.id} - {props.message}
-              </div>
+              <div className="postComment ">{props.message}</div>
               {props.image_url ? (
                 <div className="mediaContainer">
                   {/* section with the media*/}
@@ -65,14 +76,54 @@ function Postcard(props) {
                 </div>
               ) : null}
             </div>
-            <div className="reaction">
-              <div className="reaction-button">
-                <button>Like</button>
+            {props.id ? (
+              <div className="reaction">
+                <div className="reaction-button">
+                  <button>+1</button>
+                </div>
+                <div className="reaction-button">
+                  <button onClick={() => commentClick()}>Comment</button>
+                </div>
               </div>
-              <div className="reaction-button">
-                <button>Comment</button>
+            ) : null}
+            {displayComments && props.id ? (
+              <div className="commentContainer">
+                Commentaire
+                <textarea
+                  type="text"
+                  name="message"
+                  placeholder="Exprimez-vous !"
+                  onChange={e => {
+                    setComment(e.target.value);
+                  }}
+                  className="commenttext"
+                  maxLength="500"
+                />
+                <button>Envoyer</button>
+                <div>comment 1</div>
+                <div className="comments">
+                  Afficher les commentaires
+                  {comments.map(comment => (
+                    <div className="comment">
+                      <div>
+                        {comment.avatar ? (
+                          <CloudinaryContext cloudName="lanur">
+                            <Image
+                              publicId={comment.avatar}
+                              className="avatar"
+                            />
+                          </CloudinaryContext>
+                        ) : (
+                          <img src="noob.jpg" className="avatar" />
+                        )}
+                      </div>
+                      {comment.id} - {comment.post_id} - {comment.user_id} -{" "}
+                      {comment.content}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : null}
           </div>
         </div>
       </div>

@@ -87,6 +87,19 @@ app.post("/api/posts", (req, res) => {
   });
 })
 
+app.get("/api/comments/post/:id", (req, res) => {
+  db.query(
+    "SELECT comment.id, comment.user_id, comment.content, comment.post_id, user.pseudo, user.avatar AS avatar from comment JOIN user on comment.user_id=user.id ORDER BY comment.date DESC",
+    (err, results) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  );
+});
+
 app.listen(backendPort, err => {
   if (err) {
     throw new Error("Something bad happened...");

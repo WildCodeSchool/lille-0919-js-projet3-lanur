@@ -104,6 +104,57 @@ $mainColor: #8d20ae;
       }
     }
   }
+  .commentContainer {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      color: white;
+      background-color: $mainColor;
+      height: 30px;
+      width: 100%;
+      max-width: 200px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      margin: 10px;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+    }
+    button:hover {
+      background-color: white;
+      color: $mainColor;
+      border: solid 5px;
+      border-color: $mainColor;
+      cursor: pointer;
+    }
+    textarea {
+      resize: none;
+      width: 90%;
+      height: 10vh;
+      margin: 10px;
+      min-height: 100px;
+      overflow: scroll;
+    }
+    .commenttext {
+    }
+    .comments {
+      display: flex;
+      flex-direction: column;
+      height: 300px;
+      overflow: scroll;
+      .comment {
+        display: flex;
+        flex-direction: row;
+        height: auto;
+        border: solid grey;
+        .avatar {
+          height: 50px;
+          padding: 5px;
+        }
+      }
+    }
+  }
 }
 
 .wpi {
