@@ -25,7 +25,6 @@ function NewsFeed() {
   };
 
   useEffect(() => {
-    console.log(filters);
     if (offsetPosts === 0) {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(data);
