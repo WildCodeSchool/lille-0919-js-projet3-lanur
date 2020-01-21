@@ -114,7 +114,7 @@ function PostField() {
           <Postcard
             image_preview_url={imagePreviewUrl}
             message={message}
-            tags={tags + " "}
+            tags={tags.join(" ")}
             game_id={game_id}
           />
         </div>

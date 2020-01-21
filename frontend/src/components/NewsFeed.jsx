@@ -40,7 +40,7 @@ function NewsFeed() {
       {posts.map(post => (
         <Postcard
           message={post.message}
-          tags={post.tags ? post.tags.split(" ") : null}
+          tags={post.tags ? post.tags.split(" ").join(" ") : null}
           date={post.date}
           image_url={post.image_url}
           game_id={post.game_id}
