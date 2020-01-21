@@ -143,6 +143,9 @@ $mainColor: #8d20ae;
       flex-direction: column;
       height: 300px;
       overflow: scroll;
+      scrollbar-color: $mainColor white;
+      scrollbar-width: 10px;
+      width: 95%;
       .comment {
         display: flex;
         flex-direction: row;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./style/postcard.scss";
+import { useSelector } from "react-redux";
 import Moment from "react-moment";
 import { Image, CloudinaryContext } from "cloudinary-react";
 import { backend } from "../conf.js";
@@ -9,11 +10,24 @@ function Postcard(props) {
   const [comment, setComment] = useState("");
   const [displayComments, setDisplayComments] = useState(false);
   const [comments, setComments] = useState([]);
+  const user_id = useSelector(state => state.user_id);
 
   const commentClick = id => {
     setDisplayComments(!displayComments);
     axios.get(`${backend}/api/comments/post/${props.id}`).then(({ data }) => {
       setComments(data);
+    });
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+    let commentContent = {
+      content: comment,
+      post_id: props.id,
+      user_id: user_id
+    };
+    axios.post(`${backend}/api/comments`, commentContent).then(response => {
+      setComment("");
     });
   };
 
@@ -99,7 +113,7 @@ function Postcard(props) {
                   className="commenttext"
                   maxLength="500"
                 />
-                <button>Envoyer</button>
+                <button onClick={e => onSubmit(e)}>Envoyer</button>
                 <div>comment 1</div>
                 <div className="comments">
                   Afficher les commentaires
@@ -117,7 +131,7 @@ function Postcard(props) {
                           <img src="noob.jpg" className="avatar" />
                         )}
                       </div>
-                      {comment.id} - {comment.post_id} - {comment.user_id} -{" "}
+                      {comment.id} - {comment.post_id} - {comment.pseudo} -{" "}
                       {comment.content}
                     </div>
                   ))}

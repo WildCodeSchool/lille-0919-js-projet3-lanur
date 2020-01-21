@@ -89,7 +89,8 @@ app.post("/api/posts", (req, res) => {
 
 app.get("/api/comments/post/:id", (req, res) => {
   db.query(
-    "SELECT comment.id, comment.user_id, comment.content, comment.post_id, user.pseudo, user.avatar AS avatar from comment JOIN user on comment.user_id=user.id ORDER BY comment.date DESC",
+    "SELECT comment.id, comment.user_id, comment.content, comment.post_id, user.pseudo, user.avatar from comment JOIN user on comment.user_id=user.id where comment.post_id = ? ",
+    [Number(req.params.id)],
     (err, results) => {
       if (err) {
         res.status(500).send(err);
@@ -99,6 +100,17 @@ app.get("/api/comments/post/:id", (req, res) => {
     }
   );
 });
+
+app.post("/api/comments", (req, res) => {
+  const formData = req.body;
+  db.query("INSERT INTO comment SET ?", formData, (err, results) => {
+    if (err) {
+      res.status(500).send("Erreur lors de la sauvegarde du post");
+    } else {
+      res.sendStatus(201);
+    }
+  });
+})
 
 app.listen(backendPort, err => {
   if (err) {
