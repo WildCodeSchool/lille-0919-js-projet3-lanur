@@ -11,11 +11,8 @@ function Tag() {
   const [tags, setTags] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (tags) {
-      dispatch({ type: "TAG", value: tags });
-    }
+    dispatch({ type: "TAG", value: tags });
   }, [tags]);
-  //const dispatch2 = () => useDispatch({ action: "TAG", value: tags });
 
   const notify = () => toast("Ne pas utiliser d'espace dans les tags.");
   return (
@@ -32,11 +29,7 @@ function Tag() {
         }}
         onChange={newTags => setTags(newTags)}
       />
-      <ToastContainer
-        position={toast.POSITION.BOTTOM_LEFT}
-        autoClose={5000}
-        enableMultiContainer={false}
-      />
+      <ToastContainer position={toast.POSITION.BOTTOM_LEFT} autoClose={5000} />
     </div>
   );
 }
