@@ -3,41 +3,80 @@ import "./style/UserPage.scss";
 import { Link } from "react-router-dom";
 import { backend } from "../conf.js";
 import axios from "axios";
+import { useSelector, useStore } from "react-redux";
+import Postcard from "./Postcard";
 
 export default function UserPage() {
-  const [info, getInfo] = useState();
-
-  const useEffect = () => {
-    axios.get(`${backend}/api/users/:id `).then(({ data }) => {
-      getInfo(data);
-    });
+  const token = useSelector(state => state.jwt);
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token.token
+    }
   };
+  const [user, getUser] = useState();
+  const [posts, setPosts] = useState([]);
+  const offsetPosts = useSelector(state => state.offsetPosts);
+
+  useEffect(() => {
+    let params = { config };
+    axios
+      .get(`${backend}/api/profile`, config)
+      .then(({ data }) => {
+        getUser(data[0]);
+      })
+      .catch(err => {});
+  }, [offsetPosts]);
+
+  useEffect(() => {
+    console.log("avant if");
+    if (user) {
+      console.log("après if");
+
+      axios
+        .get(`${backend}/api/user/posts/${user.id}`)
+        .then(({ data }) => {
+          setPosts(posts.concat(data));
+          console.log(data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }, [user]);
 
   return (
     <div className="userProfile">
       <h1>Ton profil</h1>
-      <div className="profile">
-        <div className="avatar">
-          <img src="https://via.placeholder.com/200" alt="Image de profil" />
+      {user ? (
+        <div className="profile">
+          <div className="avatar">
+            <img src={user.avatar} alt="Image de profil" />
+          </div>
+          <div className="info">
+            <p>{user.pseudo}</p>
+            <p>{user.age + " ans"}</p>
+            <p>{user.role}</p>
+            <p>
+              {user.city}, {user.country}
+            </p>
+            <p>Ma bio : {user.bio}</p>
+            <Link to="">
+              <button>Editer</button>
+            </Link>
+          </div>
         </div>
-        <div className="info">
-          <p>Paladinium</p>
-          <p>33 ans</p>
-          <p>Pro-Player</p>
-          <p>GamesUnity Team</p>
-          <p>France</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-            aspernatur molestias laudantium perferendis vero, aut corporis
-            reprehenderit iusto vel atque fuga quos vitae culpa nostrum ea
-            molestiae. A, quidem blanditiis?
-          </p>
-          <Link to="">
-            <button>Editer</button>
-          </Link>
-        </div>
+      ) : null}
+      <div className="posts">
+        {posts.map(post => (
+          <Postcard
+            message={post.message}
+            date={post.date}
+            image_url={post.image_url}
+            game_id={post.game_id}
+            id={post.id}
+          />
+        ))}
       </div>
-      <div className="posts"></div>
     </div>
   );
 }
