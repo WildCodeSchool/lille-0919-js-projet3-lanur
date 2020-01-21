@@ -5,20 +5,27 @@ import Moment from "react-moment";
 import { Image, CloudinaryContext } from "cloudinary-react";
 import { backend } from "../conf.js";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Postcard(props) {
   const [comment, setComment] = useState("");
   const [displayComments, setDisplayComments] = useState(false);
   const [comments, setComments] = useState([]);
   const user_id = useSelector(state => state.user_id);
-
+  const notifyComment = () => toast("Commentaire envoyé!");
+  const wrongComment = () =>
+    toast("Oups, impossible d'envoyer un commentaire vide");
   const commentClick = id => {
     setDisplayComments(!displayComments);
+    getComments();
+  };
+
+  const getComments = () => {
     axios.get(`${backend}/api/comments/post/${props.id}`).then(({ data }) => {
       setComments(data);
     });
   };
-
   const onSubmit = e => {
     e.preventDefault();
     let commentContent = {
@@ -26,13 +33,23 @@ function Postcard(props) {
       post_id: props.id,
       user_id: user_id
     };
-    axios.post(`${backend}/api/comments`, commentContent).then(response => {
-      setComment("");
-    });
+    if (comment) {
+      axios.post(`${backend}/api/comments`, commentContent).then(response => {
+        setComment("");
+        notifyComment();
+        getComments();
+      });
+    } else {
+      wrongComment();
+    }
   };
 
   return (
     <div className="postContainer">
+      <ToastContainer
+        position={toast.POSITION.BOTTOM_LEFT}
+        hideProgressBar={true}
+      />
       <div className="post">
         {/* section with avatar and game logo */}
         <div className=" imgSection">
@@ -112,7 +129,8 @@ function Postcard(props) {
                   }}
                   className="commenttext"
                   maxLength="500"
-                />
+                  value={comment}
+                ></textarea>
                 <button onClick={e => onSubmit(e)}>Envoyer</button>
                 <div>comment 1</div>
                 <div className="comments">
