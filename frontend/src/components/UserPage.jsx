@@ -28,19 +28,13 @@ export default function UserPage() {
   }, [offsetPosts]);
 
   useEffect(() => {
-    console.log("avant if");
     if (user) {
-      console.log("après if");
-
       axios
         .get(`${backend}/api/user/posts/${user.id}`)
         .then(({ data }) => {
           setPosts(posts.concat(data));
-          console.log(data);
         })
-        .catch(err => {
-          console.log(err);
-        });
+        .catch(err => {});
     }
   }, [user]);
 
