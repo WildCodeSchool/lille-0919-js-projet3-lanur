@@ -64,11 +64,8 @@ app.get("/api/user/posts/:id", (req, res) => {
     [req.params.id],
     (err, results) => {
       if (err) {
-        console.log(err);
         res.status(500).send(err);
       } else {
-        console.log(req.query.id);
-
         res.status(200).json(results);
       }
     }
@@ -82,7 +79,6 @@ app.get("/api/posts/:limit", (req, res) => {
     [Number(req.params.limit)],
     (err, results) => {
       if (err) {
-        console.log(err);
         res.status(500).send(err);
       } else {
         res.status(200).json(results);
@@ -124,7 +120,6 @@ app.post("/api/posts", (req, res) => {
 });
 
 app.listen(backendPort, err => {
-  console.log(backendPort + "Marche");
   if (err) {
     throw new Error("Something bad happened...");
   }
