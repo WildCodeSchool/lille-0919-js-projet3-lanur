@@ -2,9 +2,30 @@ import React, { useState } from "react";
 import "./style/postcard.scss";
 import Moment from "react-moment";
 import { Image, CloudinaryContext } from "cloudinary-react";
+import Axios from "axios";
+import { backend } from "../conf.js";
+import { useSelector } from "react-redux";
 
 function Postcard(props) {
+  const token = useSelector((state) => state.jwt.token);
   const [like, setLike] = useState(false);
+
+  const handleLike = (like) => {
+    const config = { headers: { Authorization: "Bearer " + token } };
+    Axios.put(
+      `${backend}/api/posts/${props.id}/like`,
+      {
+        userLike: like ? 1 : 0
+      },
+      config
+    )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="postContainer">
@@ -71,7 +92,14 @@ function Postcard(props) {
               <div
                 className={like ? "reaction-button-clicked" : "reaction-button"}
               >
-                <button onClick={() => setLike(!like)}>+1</button>
+                <button
+                  onClick={() => {
+                    handleLike(!like);
+                    setLike(!like);
+                  }}
+                >
+                  +1
+                </button>
               </div>
               <div className="reaction-button">
                 <button>Comment</button>
