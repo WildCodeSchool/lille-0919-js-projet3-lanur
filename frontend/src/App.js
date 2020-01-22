@@ -9,8 +9,8 @@ import NewsFeed from "./components/NewsFeed";
 import ContainerEditProfile from "./components/EditProfile/ContainerEditProfile";
 
 function App() {
-  const jwt = useSelector(state => state.jwt);
-  const checkJWT = component => (jwt ? component : <Redirect to="/signin" />);
+  const jwt = useSelector((state) => state.jwt.token);
+  const checkJWT = (component) => (jwt ? component : <Redirect to="/signin" />);
   return (
     <div className="App">
       <NavBar />
