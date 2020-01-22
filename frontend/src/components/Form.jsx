@@ -30,22 +30,26 @@ function Form() {
     axios
       .post(`${backend}/api/auth/signup`, newUser)
       .then(response => {
-        dispatch({ type: "SAVE_JWT", value: response.data.token });
+        dispatch({ type: "SAVE_JWT", value: response.data });
         history.push("/newsfeed");
       })
       .catch(err => {
-        let response = err.response.data;
-        if (response.includes("email_UNIQUE")) {
-          setPage(1);
-          setError("email");
-          notify("Email déjà utilisé");
-        } else if (response.includes("pseudo_UNIQUE")) {
-          setPage(1);
-          setError("pseudo");
-          notify("Pseudo déjà utilisé");
+        console.log(err);
+        if (err.response) {
+          let response = err.response.data;
+          if (response.includes("email_UNIQUE")) {
+            setPage(1);
+            setError("email");
+            notify("Email déjà utilisé");
+          } else if (response.includes("pseudo_UNIQUE")) {
+            setPage(1);
+            setError("pseudo");
+            notify("Pseudo déjà utilisé");
+          }
         } else {
+          setPage(1);
           setError("inconnu");
-          notify("Erreur inconnue");
+          notify("Erreur inconnue, merci de réessayer");
         }
       });
   };
