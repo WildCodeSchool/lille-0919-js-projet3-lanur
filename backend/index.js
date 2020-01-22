@@ -5,10 +5,11 @@ const multer = require("multer");
 const passport = require("passport");
 const {
   CONFIG: { backendPort },
-  db, cloudinary
+  db,
+  cloudinary
 } = require("./conf");
 const bodyParser = require("body-parser");
-const upload = multer({ dest: 'tmp/' });
+const upload = multer({ dest: "tmp/" });
 
 app.use(bodyParser.json());
 app.use(
@@ -52,28 +53,24 @@ app.get("/api/posts/:limit", (req, res) => {
 });
 
 app.get("/api/gamelist/", (req, res) => {
-  db.query(
-    "SELECT * from game",
-    (err, results) => {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.status(200).json(results);
-      }
+  db.query("SELECT * from game", (err, results) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).json(results);
     }
-  );
+  });
 });
 
-app.post("/api/postimg", upload.single('file'), (req, res) => {
+app.post("/api/postimg", upload.single("file"), (req, res) => {
   const formData = req.file;
-  cloudinary.v2.uploader.upload(formData.path,
-    function (err, result) {
-      if (err) {
-        res.status(500).send("Erreur lors de la sauvegarde de l'image");
-      } else {
-        res.send(result);
-      }
-    });
+  cloudinary.v2.uploader.upload(formData.path, function(err, result) {
+    if (err) {
+      res.status(500).send("Erreur lors de la sauvegarde de l'image");
+    } else {
+      res.send(result);
+    }
+  });
 });
 
 app.post("/api/posts", (req, res) => {
@@ -85,9 +82,49 @@ app.post("/api/posts", (req, res) => {
       res.sendStatus(201);
     }
   });
-})
+});
 
-app.listen(backendPort, err => {
+app.put(
+  "/api/posts/:id/like",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const postId = parseInt(req.params.id);
+    const formData = req.body;
+    console.log(req.user);
+
+    const userId = req.user.id;
+    const userLike = formData.userLike;
+    if (userLike)
+      db.query(
+        "INSERT INTO `like` (user_id,post_id) VALUES (?,?)",
+        [userId, postId],
+        (err, results) => {
+          if (err) {
+            console.log(err);
+
+            res.status(500).send("Erreur lors de la sauvegarde du like");
+          } else {
+            res.sendStatus(201);
+          }
+        }
+      );
+    else
+      db.query(
+        "DELETE FROM `like` WHERE user_id=? AND post_id=?",
+        [userId, postId],
+        (err, results) => {
+          if (err) {
+            console.log(err);
+            res.status(500).send("Erreur lors de la suppression du message");
+          } else {
+            res.sendStatus(201);
+          }
+        }
+      );
+  }
+);
+
+app.listen(backendPort, (err) => {
   if (err) {
     throw new Error("Something bad happened...");
   }
