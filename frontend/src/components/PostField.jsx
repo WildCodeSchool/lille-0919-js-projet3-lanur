@@ -53,10 +53,8 @@ function PostField() {
     } else if (message) {
       let postObject;
       if (game_id !== "noGame") {
-        console.log(tags);
         postObject = { message, user_id, game_id, tags };
       } else {
-        console.log("test6");
         postObject = { message, user_id, tags };
       }
       axios.post(`${backend}/api/posts`, postObject).then(() => {
@@ -86,8 +84,8 @@ function PostField() {
             className="headPost"
             maxLength="500"
           />
-          <Tag />
           <input type="file" onChange={e => handleImageChange(e)} />
+          <Tag />
           <div className="gameSelection">
             Jeu concerné:
             <select
@@ -106,15 +104,15 @@ function PostField() {
         </form>
       </div>
       {message ||
-      tags ||
       imagePreviewUrl ||
+      tags ||
       (game_id && game_id !== "noGame") ? (
         <div className="preview-container">
           <div className="preview">Aperçu de votre post:</div>
           <Postcard
             image_preview_url={imagePreviewUrl}
             message={message}
-            tags={tags.join(" ")}
+            tags={"#" + tags.join(" #")}
             game_id={game_id}
           />
         </div>
