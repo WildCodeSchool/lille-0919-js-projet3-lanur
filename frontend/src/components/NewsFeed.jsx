@@ -6,8 +6,10 @@ import LiveContainer from "./LiveContainer";
 import PostField from "./PostField";
 import { backend } from "../conf.js";
 import { useSelector, useDispatch } from "react-redux";
+import Filter from "./Filter";
 
 function NewsFeed() {
+  const filters = useSelector(state => state.filters);
   const [posts, setPosts] = useState([]);
   const offsetPosts = useSelector(state => state.offsetPosts);
   const reload = useSelector(state => state.reload);
@@ -48,6 +50,31 @@ function NewsFeed() {
           id={post.id}
         />
       ))}
+      <Filter />
+      {filters.length > 0
+        ? posts
+            .filter(post => filters.includes(post.game_id))
+            .map(post => (
+              <Postcard
+                message={post.message}
+                date={post.date}
+                image_url={post.image_url}
+                game_id={post.game_id}
+                user_avatar={post.user_avatar}
+                id={post.id}
+              />
+            ))
+        : posts.map(post => (
+            <Postcard
+              message={post.message}
+              tags={post.tags ? "#" + post.tags.split(" ").join(" #") : null}
+              date={post.date}
+              image_url={post.image_url}
+              game_id={post.game_id}
+              user_avatar={post.user_avatar}
+              id={post.id}
+            />
+          ))}
       <LiveContainer />
     </div>
   );

@@ -3,7 +3,8 @@ const initialState = {
     jwt: null,
     reload: 0,
     user_id: null,
-    tags: []
+    tags: [],
+    filters: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -27,6 +28,11 @@ const reducer = (state = initialState, action) => {
         case "TAG":
             newState.tags = action.value;
             return newState;
+        case "FILTER":
+            return {
+                ...state,
+                filters: action.value
+            };
         default:
             return newState
     }
