@@ -38,19 +38,30 @@ app.get("/api/users", (req, res) => {
 });
 
 // FIL-ACTU || GET & POST
-app.get("/api/posts/:limit", (req, res) => {
-  db.query(
-    "SELECT post.id, circle_id, user_id, user_id_team, game_id, message, date, image_url, user.avatar AS user_avatar from post JOIN user on user_id=user.id ORDER BY id DESC LIMIT 10 OFFSET ?  ",
-    [Number(req.params.limit)],
-    (err, results) => {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.status(200).json(results);
+app.get(
+  "/api/posts/:limit",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    db.query(
+      "SELECT post.id, post.circle_id, post.user_id, post.user_id_team, post.game_id, post.message, post.date, post.image_url, COUNT(`like`.post_id) AS nbLike, \
+    CASE WHEN post.id IN (SELECT `like`.post_id from `like` WHERE `like`.user_id=?) THEN 1 ELSE 0 END AS liked \
+    FROM post \
+    LEFT JOIN `like` \
+    ON post.id=`like`.post_id \
+    GROUP BY post.id \
+    ORDER BY post.id DESC \
+    LIMIT 10 OFFSET ?",
+      [req.user.id, parseInt(req.params.limit)],
+      (err, results) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.status(200).json(results);
+        }
       }
-    }
-  );
-});
+    );
+  }
+);
 
 app.get("/api/gamelist/", (req, res) => {
   db.query("SELECT * from game", (err, results) => {
