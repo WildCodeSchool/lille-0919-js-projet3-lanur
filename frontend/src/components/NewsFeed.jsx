@@ -9,8 +9,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 function NewsFeed() {
   const [posts, setPosts] = useState([]);
-  const offsetPosts = useSelector(state => state.offsetPosts);
-  const reload = useSelector(state => state.reload);
+  const offsetPosts = useSelector((state) => state.offsetPosts);
+  const reload = useSelector((state) => state.reload);
   const dispatch = useDispatch();
 
   window.onscroll = () => {
@@ -26,6 +26,7 @@ function NewsFeed() {
     if (offsetPosts === 0) {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(data);
+        console.log(data);
       });
     } else {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
@@ -37,7 +38,7 @@ function NewsFeed() {
   return (
     <div className="main-NewsFeed">
       <PostField />
-      {posts.map(post => (
+      {posts.map((post) => (
         <Postcard
           message={post.message}
           date={post.date}
@@ -45,6 +46,8 @@ function NewsFeed() {
           game_id={post.game_id}
           user_avatar={post.user_avatar}
           id={post.id}
+          nblike={post.nbLike}
+          statuslike={post.liked}
         />
       ))}
       <LiveContainer />

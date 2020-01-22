@@ -1,24 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style/postcard.scss";
 import Moment from "react-moment";
 import { Image, CloudinaryContext } from "cloudinary-react";
 import Axios from "axios";
 import { backend } from "../conf.js";
-import { useSelector } from "react-redux";
 
 function Postcard(props) {
-  const token = useSelector((state) => state.jwt.token);
   const [like, setLike] = useState(false);
 
+  useEffect(() => {
+    setLike(props.statuslike ? true : false);
+  }, [props.statuslike]);
+
   const handleLike = (like) => {
-    const config = { headers: { Authorization: "Bearer " + token } };
-    Axios.put(
-      `${backend}/api/posts/${props.id}/like`,
-      {
-        userLike: like ? 1 : 0
-      },
-      config
-    )
+    Axios.put(`${backend}/api/posts/${props.id}/like`, {
+      userLike: like ? 1 : 0
+    })
       .then((res) => {
         console.log(res);
       })
@@ -92,6 +89,7 @@ function Postcard(props) {
               <div
                 className={like ? "reaction-button-clicked" : "reaction-button"}
               >
+                {props.nblike}
                 <button
                   onClick={() => {
                     handleLike(!like);
