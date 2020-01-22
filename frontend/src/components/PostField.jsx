@@ -5,7 +5,9 @@ import { backend } from "../conf.js";
 import Postcard from "./Postcard";
 import { useDispatch, useSelector } from "react-redux";
 import Tag from "./Tag";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./style/Tag.scss";
 
 function PostField() {
   const dispatch = useDispatch();
@@ -15,6 +17,8 @@ function PostField() {
   const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
   const [gamelist, setGamelist] = useState([]);
   const [game_id, setGame_id] = useState(null);
+
+  const notify = () => toast("Post envoyé!");
 
   useEffect(() => {
     axios.get(`${backend}/api/gamelist/`).then(({ data }) => {
@@ -48,6 +52,7 @@ function PostField() {
         }
         axios.post(`${backend}/api/posts`, postObject).then(() => {
           dispatch({ type: "RESET" });
+          notify();
         });
       });
     } else if (message) {
@@ -59,12 +64,17 @@ function PostField() {
       }
       axios.post(`${backend}/api/posts`, postObject).then(() => {
         dispatch({ type: "RESET" });
+        notify();
       });
     }
   };
 
   return (
     <div className="postFieldContainer">
+      <ToastContainer
+        position={toast.POSITION.BOTTOM_LEFT}
+        hideProgressBar={true}
+      />
       <div className="postField">
         <div className="avatar">
           <img

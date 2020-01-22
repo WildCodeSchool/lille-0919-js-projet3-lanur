@@ -16,6 +16,12 @@
   align-items: center;
   width: 100%;
 
+  .introText {
+    justify-content: center;
+    text-align: center;
+    font-size: 3vh;
+    margin-top: 8vh;
+  }
   .form {
     border: 10px solid $mainColor;
     border-radius: 15px;
@@ -48,6 +54,14 @@
       .idInput {
         width: 65%;
         margin-right: 5%;
+      }
+      .error {
+        width: 65%;
+        margin-right: 5%;
+        border-radius: 8%;
+        padding: 1px;
+        border: solid red;
+        border-width: 5px 7px;
       }
 
       .idTextarea {
