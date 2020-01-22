@@ -34,7 +34,6 @@ function Form() {
         history.push("/newsfeed");
       })
       .catch(err => {
-        console.log(err);
         if (err.response) {
           let response = err.response.data;
           if (response.includes("email_UNIQUE")) {
