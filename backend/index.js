@@ -58,6 +58,24 @@ app.get("/api/gamelist/", (req, res) => {
       res.status(500).send(err);
     } else {
       res.status(200).json(results);
+
+
+    }
+  });
+});
+
+app.get("/api/gamelist/:id", (req, res) => {
+  const game = req.params.id;
+  db.query(
+    "SELECT * from game WHERE twitch_game_id = ?",
+    [game],
+    (err, results) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).json(results);
+      }
+
     }
   });
 });
@@ -85,6 +103,34 @@ app.post("/api/posts", (req, res) => {
     }
   });
 });
+
+
+
+app.get("/api/comments/post/:id", (req, res) => {
+  db.query(
+    "SELECT comment.id, comment.user_id, comment.content, comment.post_id, user.pseudo, user.avatar from comment JOIN user on comment.user_id=user.id where comment.post_id = ? ",
+    [Number(req.params.id)],
+    (err, results) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  );
+});
+
+app.post("/api/comments", (req, res) => {
+  const formData = req.body;
+  db.query("INSERT INTO comment SET ?", formData, (err, results) => {
+    if (err) {
+      res.status(500).send("Erreur lors de la sauvegarde du post");
+    } else {
+      res.sendStatus(201);
+    }
+  });
+})
+
 
 app.listen(backendPort, err => {
   if (err) {
