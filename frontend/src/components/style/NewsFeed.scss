@@ -7,3 +7,11 @@
 
   z-index: -90;
 }
+
+@media screen and (max-width: 740px) {
+  .main-NewsFeed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
