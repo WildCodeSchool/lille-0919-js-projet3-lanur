@@ -64,6 +64,9 @@ $mainColor: #8d20ae;
 
   /* General sidebar styles */
   .bm-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: #373a47;
     padding: 2.5em 1.5em 0;
     font-size: 1.15em;
@@ -72,6 +75,7 @@ $mainColor: #8d20ae;
     .bm-item-list {
       height: 20px;
       display: flex;
+      width: 30%;
       flex-direction: column;
       align-items: center;
       color: #b8b7ad;
@@ -91,7 +95,7 @@ $mainColor: #8d20ae;
       flex-direction: column;
       align-items: center;
       text-decoration: none;
-      height: 40px;
+      height: 60px;
     }
   }
 

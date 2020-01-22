@@ -9,7 +9,7 @@ function NavBar() {
   const [burgerMenu, setBurgerMenu] = useState(false);
   return (
     <nav className="main-NavBar">
-      <h1 onClick={() => setBurgerMenu(!burgerMenu)}>
+      <h1 onClick={() => setBurgerMenu(false)}>
         <Link to="/newsfeed">
           <span className="Lan">LAN'</span>U.R
         </Link>
