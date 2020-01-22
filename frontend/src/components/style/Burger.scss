@@ -109,6 +109,9 @@ $mainColor: #8d20ae;
         margin-right: 0px;
         a {
           color: white;
+          &::after {
+            height: 0px;
+          }
         }
       }
     }
