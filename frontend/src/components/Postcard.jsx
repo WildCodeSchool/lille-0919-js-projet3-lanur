@@ -51,7 +51,6 @@ function Postcard(props) {
               <div className="postComment ">
                 {props.id} - {props.message}
               </div>
-              <div className="tag">{props.tags}</div>
               {props.image_url ? (
                 <div className="mediaContainer">
                   {/* section with the media*/}
@@ -66,6 +65,7 @@ function Postcard(props) {
                 </div>
               ) : null}
             </div>
+            <div className="tag">{props.tags}</div>
             <div className="reaction">
               <div className="reaction-button">
                 <button>Like</button>
