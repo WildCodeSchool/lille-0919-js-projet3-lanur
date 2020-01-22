@@ -9,7 +9,7 @@ function NavBar() {
   const [burgerMenu, setBurgerMenu] = useState(false);
   return (
     <nav className="main-NavBar">
-      <h1>
+      <h1 onClick={() => setBurgerMenu(!burgerMenu)}>
         <Link to="/newsfeed">
           <span className="Lan">LAN'</span>U.R
         </Link>
@@ -69,18 +69,31 @@ function NavBar() {
           isOpen={burgerMenu ? false : true}
           id="MenuBurger"
         >
-          <Link to="/" onClick={() => setBurgerMenu(!burgerMenu)}>
-            <span className="FirstLetter">A</span>ctus
-          </Link>
-          <Link to="/" onClick={() => setBurgerMenu(!burgerMenu)}>
-            <span className="FirstLetter">T</span>eams
-          </Link>
-          <Link to="/" onClick={() => setBurgerMenu(!burgerMenu)}>
-            <span className="FirstLetter">É</span>vènements
-          </Link>
-          <Link to="/EditProfile" onClick={() => setBurgerMenu(!burgerMenu)}>
-            Profil
-          </Link>
+          <ul>
+            <li>
+              <Link to="/" onClick={() => setBurgerMenu(!burgerMenu)}>
+                Actus
+              </Link>
+            </li>
+            <li>
+              <Link to="/" onClick={() => setBurgerMenu(!burgerMenu)}>
+                Teams
+              </Link>
+            </li>
+            <li>
+              <Link to="/" onClick={() => setBurgerMenu(!burgerMenu)}>
+                Évènements
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/EditProfile"
+                onClick={() => setBurgerMenu(!burgerMenu)}
+              >
+                Profil
+              </Link>
+            </li>
+          </ul>
         </MenuBurger>
       </div>
     </nav>
