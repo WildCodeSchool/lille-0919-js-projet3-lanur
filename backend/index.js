@@ -27,6 +27,24 @@ app.get("/api/users", (req, res) => {
   );
 });
 
+app.get("/api/search/users/", (req, res) => {
+  const request = req.query.pseudo;
+  db.query(
+    'SELECT id, pseudo, team_id from user where pseudo like concat("%"?"%")', request,
+    (err, results) => {
+      if (err) {
+        console.log(err)
+        console.log(request)
+        res.status(500).send("Erreur lors de la récupération des données");
+      } else {
+        console.log(request)
+        // console.log(results)
+        res.status(200).json(results);
+      }
+    }
+  );
+});
+
 // FIL-ACTU || GET & POST
 app.get("/api/posts/:limit", (req, res) => {
   db.query(
