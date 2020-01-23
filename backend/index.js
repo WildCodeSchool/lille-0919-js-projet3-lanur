@@ -33,12 +33,8 @@ app.get("/api/search/users/", (req, res) => {
     'SELECT id, pseudo, team_id from user where pseudo like concat("%"?"%")', request,
     (err, results) => {
       if (err) {
-        console.log(err)
-        console.log(request)
         res.status(500).send("Erreur lors de la récupération des données");
       } else {
-        console.log(request)
-        // console.log(results)
         res.status(200).json(results);
       }
     }
