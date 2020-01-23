@@ -7,24 +7,22 @@ import { useSelector, useStore } from "react-redux";
 import Postcard from "./Postcard";
 
 export default function UserPage() {
-  const token = useSelector(state => state.jwt);
-  const config = {
-    headers: {
-      Authorization: "Bearer " + token.token
-    }
-  };
   const [user, getUser] = useState();
   const [posts, setPosts] = useState([]);
   const offsetPosts = useSelector(state => state.offsetPosts);
+  const user_id = useSelector(state => state.user_id);
 
   useEffect(() => {
-    let params = { config };
     axios
-      .get(`${backend}/api/profile`, config)
+      .get(`${backend}/api/profile/${user_id}`)
       .then(({ data }) => {
+        console.log(data);
+
         getUser(data[0]);
       })
-      .catch(err => {});
+      .catch(err => {
+        console.log(err);
+      });
   }, [offsetPosts]);
 
   useEffect(() => {
@@ -54,7 +52,7 @@ export default function UserPage() {
               {user.city}, {user.country}
             </p>
             <p>Ma bio : {user.bio}</p>
-            <Link to="">
+            <Link to="/editprofile">
               <button>Editer</button>
             </Link>
           </div>
