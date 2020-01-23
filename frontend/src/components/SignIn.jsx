@@ -89,7 +89,7 @@ const SignIn = () => {
             Créer un compte
           </button>
           <Link to="/Discover">
-            <p>Continuer sans créer de compte</p>
+            <p className="discover">Continuer sans créer de compte</p>
           </Link>
         </div>
       </div>
