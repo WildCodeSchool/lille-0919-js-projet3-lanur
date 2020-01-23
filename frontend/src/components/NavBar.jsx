@@ -16,31 +16,28 @@ function NavBar() {
       </h1>
 
       <ul>
-        <li>
-          <a href="#">
+        <li onClick={() => setDisplayMenu(!displayMenu)}>
+          <Link to="/newsfeed">
             <span className="FirstLetter">A</span>ctus
-          </a>
+          </Link>
         </li>
         <li>
           <a href="#">
             <span className="FirstLetter">T</span>eams
           </a>
         </li>
-        <li onClick={() => setDisplayMenu(!displayMenu)}>
-          <a href="#">
+        <li className="dropDown" onClick={() => setDisplayMenu(!displayMenu)}>
+          <span>
             <span className="FirstLetter">É</span>vènements
-            {displayMenu ? (
-              <img
-                className="triangle"
-                src="../images/Black_triangle_rotated.svg"
-              ></img>
-            ) : (
-              <img
-                className="triangle"
-                src="../images/Black_triangle.svg"
-              ></img>
-            )}
-          </a>
+          </span>
+          {displayMenu ? (
+            <img
+              className="triangle"
+              src="../images/Black_triangle_rotated.svg"
+            ></img>
+          ) : (
+            <img className="triangle" src="../images/Black_triangle.svg"></img>
+          )}
           {displayMenu ? (
             <div className="dropDownMenu">
               <li>
@@ -71,7 +68,7 @@ function NavBar() {
         >
           <ul>
             <li>
-              <Link to="/" onClick={() => setBurgerMenu(!burgerMenu)}>
+              <Link to="/newsfeed" onClick={() => setBurgerMenu(!burgerMenu)}>
                 Actus
               </Link>
             </li>
