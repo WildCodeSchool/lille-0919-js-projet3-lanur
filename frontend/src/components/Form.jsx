@@ -53,8 +53,10 @@ function Form() {
   return (
     <ReactCSSTransitionGroup
       transitionName="formulaire"
+      transitionEnterTimeout={0}
+      transitionLeaveTimeout={0}
       transitionAppear={true}
-      transitionAppearTimeout={1500}
+      transitionAppearTimeout={500}
       transitionEnter={true}
       transitionLeave={true}
     >
