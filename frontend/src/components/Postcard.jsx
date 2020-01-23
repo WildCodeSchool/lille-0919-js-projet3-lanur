@@ -57,7 +57,7 @@ function Postcard(props) {
               setLike(!like);
             }}
           >
-            {nbLike}
+            +{nbLike}
           </div>
         </div>
         <div className="contentPostContainer">
