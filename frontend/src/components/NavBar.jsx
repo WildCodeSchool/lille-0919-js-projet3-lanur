@@ -27,9 +27,7 @@ function NavBar() {
           </a>
         </li>
         <li className="dropDown" onClick={() => setDisplayMenu(!displayMenu)}>
-          <span>
-            <span className="FirstLetter">É</span>vènements
-          </span>
+          <span className="FirstLetter">É</span>vènements
           {displayMenu ? (
             <img
               className="triangle"
