@@ -80,6 +80,7 @@ function PostField() {
           <img
             className="avatarImg"
             src="https://pickaface.net/gallery/avatar/unr_fake_180910_2220_9vd5qy.png"
+            alt=""
           ></img>
         </div>
         <form onSubmit={e => onSubmit(e)}>
