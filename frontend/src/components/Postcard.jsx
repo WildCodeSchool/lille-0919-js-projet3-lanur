@@ -57,7 +57,7 @@ function Postcard(props) {
           <div className="contentPost">
             {/* section with name and information about the post */}
             <div className="headpost">
-              <div>Pseudo</div>
+              <div>{props.userPseudo}</div>
               <div>TeamName</div>
               <div>
                 <Moment format="L" date={props.date} />

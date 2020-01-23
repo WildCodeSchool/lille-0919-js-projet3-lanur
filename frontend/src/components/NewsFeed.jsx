@@ -48,6 +48,7 @@ function NewsFeed() {
           id={post.id}
           nblike={post.nbLike}
           statuslike={post.liked}
+          userPseudo={post.pseudo}
         />
       ))}
       <LiveContainer />
