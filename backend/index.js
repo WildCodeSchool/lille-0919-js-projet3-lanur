@@ -43,11 +43,13 @@ app.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     db.query(
-      "SELECT post.id, post.circle_id, post.user_id, post.user_id_team, post.game_id, post.message, post.date, post.image_url, COUNT(`like`.post_id) AS nbLike, \
+      "SELECT post.id, post.circle_id, post.user_id, user.pseudo, post.user_id_team, post.game_id, post.message, post.date, post.image_url, COUNT(`like`.post_id) AS nbLike, \
     CASE WHEN post.id IN (SELECT `like`.post_id from `like` WHERE `like`.user_id=?) THEN 1 ELSE 0 END AS liked \
     FROM post \
     LEFT JOIN `like` \
     ON post.id=`like`.post_id \
+    JOIN user \
+    ON post.user_id=user.id \
     GROUP BY post.id \
     ORDER BY post.id DESC \
     LIMIT 10 OFFSET ?",
