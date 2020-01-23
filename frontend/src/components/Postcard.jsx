@@ -59,13 +59,14 @@ function Postcard(props) {
                 <Image publicId={props.user_avatar} className="avatar" />
               </CloudinaryContext>
             ) : (
-              <img src="noob.jpg" className="avatar" />
+              <img src="noob.jpg" className="avatar" alt="noob" />
             )}
           </div>
           {props.game_id > 0 ? (
             <div>
               <img
                 src={`/games_icons/${props.game_id}.jpg`}
+                alt={props.name}
                 className="avatar"
               />
             </div>
@@ -73,6 +74,7 @@ function Postcard(props) {
           <div>
             <img
               src="https://i.pinimg.com/236x/f6/92/99/f6929980e929991bc8ff186a9aeca8b0.jpg"
+              alt=""
               className="avatar"
             />
           </div>
@@ -103,7 +105,11 @@ function Postcard(props) {
               ) : null}
               {props.image_preview_url ? (
                 <div className="mediaContainer">
-                  <img className="postmedia" src={props.image_preview_url} />
+                  <img
+                    className="postmedia"
+                    src={props.image_preview_url}
+                    alt={props.name}
+                  />
                 </div>
               ) : null}
             </div>
@@ -145,7 +151,7 @@ function Postcard(props) {
                               />
                             </CloudinaryContext>
                           ) : (
-                            <img src="noob.jpg" className="avatar" />
+                            <img src="noob.jpg" alt="noob" className="avatar" />
                           )}
                         </div>
                         <p>
