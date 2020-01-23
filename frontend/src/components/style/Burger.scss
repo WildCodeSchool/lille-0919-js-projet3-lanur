@@ -1,8 +1,4 @@
-@font-face {
-  font-family: "Sansation";
-  src: url("/Sansation_Regular.ttf");
-}
-$mainColor: #8d20ae;
+@import "./variables";
 
 @media screen and (min-width: 740px) {
   #MenuBurger {
