@@ -10,11 +10,11 @@ function LiveCard(props) {
   const streamTitle = props.stream_title;
   const [gameId, setGameId] = useState([]);
 
-  useEffect(() => {
-    axios.get(`${backend}/api/gamelist/${props.game_id}`).then(({ data }) => {
-      setGameId(data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get(`${backend}/api/gamelist/${props.game_id}`).then(({ data }) => {
+  //     setGameId(data);
+  //   });
+  // }, []);
 
   return (
     <div className="streamingStatus" onClick={toggle}>

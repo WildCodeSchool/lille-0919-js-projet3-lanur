@@ -1,22 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Switch, Route, Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import "../style/EditProfileStyles/ContainerEditProfile.scss";
 import axios from "axios";
 import { backend } from "../../conf.js";
-import { useSelector } from "react-redux";
 import Profile from "./Profile";
 import Links from "./Links";
 import Role from "./Role";
 import Games from "./Games";
 
 export default function ContainerEditProfile() {
-  const [user, getUser] = useState();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
   const user_id = useSelector(state => state.user_id);
+
   useEffect(() => {
     axios
       .get(`${backend}/api/profile/${user_id}`)
       .then(({ data }) => {
-        getUser(data[0]);
+        console.log(data[0]);
+        dispatch({ type: "SAVE_PROFILE_DATA", value: data[0] });
       })
       .catch(err => {});
   }, []);
@@ -24,8 +28,10 @@ export default function ContainerEditProfile() {
   const onSubmit = e => {
     e.preventDefault();
     axios
-      .put(`${backend}/api/user/`)
-      .then()
+      .put(`${backend}/api/user/`, user)
+      .then(() => {
+        toast("Succesfully saved your data " + user.pseudo);
+      })
       .catch();
   };
 
@@ -61,7 +67,7 @@ export default function ContainerEditProfile() {
         </Route>
       </Switch>
       <div className="submit">
-        <button>Submit your modifications</button>
+        <button onClick={onSubmit}>Submit your modifications</button>
       </div>
     </div>
   );

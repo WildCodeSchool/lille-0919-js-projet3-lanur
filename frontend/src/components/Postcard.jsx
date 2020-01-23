@@ -5,7 +5,7 @@ import Moment from "react-moment";
 import { Image, CloudinaryContext } from "cloudinary-react";
 import { backend } from "../conf.js";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Postcard(props) {
@@ -46,10 +46,6 @@ function Postcard(props) {
 
   return (
     <div className="postContainer">
-      <ToastContainer
-        position={toast.POSITION.BOTTOM_LEFT}
-        hideProgressBar={true}
-      />
       <div className="post">
         {/* section with avatar and game logo */}
         <div className=" imgSection">

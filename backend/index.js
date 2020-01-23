@@ -63,7 +63,7 @@ app.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     db.query(
-      "SELECT user.avatar, user.id, user.pseudo, user.age, user.country, user.city, user.bio, user.team_id, user.role, user.mixer, user.youtube, user.twitch, user.lastname, user.firstname, user.discord_pseudo FROM user WHERE user.id=?",
+      "SELECT user.avatar, user.id, user.pseudo, user.age, user.country, user.city, user.bio, user.team_id,user.gender, user.role, user.mixer, user.youtube, user.twitch, user.lastname, user.firstname, user.discord_pseudo FROM user WHERE user.id=?",
       [req.params.id],
       (err, results) => {
         if (err) {
