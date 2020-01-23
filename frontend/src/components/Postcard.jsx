@@ -107,7 +107,7 @@ function Postcard(props) {
                 </div>
               ) : null}
             </div>
-            {props.id ? (
+            {props.id && user_id ? (
               <div className="reaction">
                 <div className="reaction-button">
                   <button>+1</button>
