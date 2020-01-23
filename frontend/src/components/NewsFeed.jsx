@@ -6,8 +6,10 @@ import LiveContainer from "./LiveContainer";
 import PostField from "./PostField";
 import { backend } from "../conf.js";
 import { useSelector, useDispatch } from "react-redux";
+import Filter from "./Filter";
 
 function NewsFeed() {
+  const filters = useSelector(state => state.filters);
   const [posts, setPosts] = useState([]);
   const offsetPosts = useSelector((state) => state.offsetPosts);
   const reload = useSelector((state) => state.reload);
@@ -38,19 +40,36 @@ function NewsFeed() {
   return (
     <div className="main-NewsFeed">
       <PostField />
-      {posts.map((post) => (
-        <Postcard
-          message={post.message}
-          date={post.date}
-          image_url={post.image_url}
-          game_id={post.game_id}
-          user_avatar={post.user_avatar}
-          id={post.id}
-          nblike={post.nbLike}
-          statuslike={post.liked}
-          userPseudo={post.pseudo}
-        />
-      ))}
+      <Filter />
+      {filters.length > 0
+        ? posts
+            .filter(post => filters.includes(post.game_id))
+            .map(post => (
+              <Postcard
+                message={post.message}
+                date={post.date}
+                image_url={post.image_url}
+                game_id={post.game_id}
+                user_avatar={post.user_avatar}
+                id={post.id}
+                nblike={post.nbLike}
+                statuslike={post.liked}
+                userPseudo={post.pseudo}
+              />
+            ))
+        : posts.map(post => (
+            <Postcard
+              message={post.message}
+              date={post.date}
+              image_url={post.image_url}
+              game_id={post.game_id}
+              user_avatar={post.user_avatar}
+              id={post.id}
+              nblike={post.nbLike}
+              statuslike={post.liked}
+              userPseudo={post.pseudo}
+            />
+          ))}
       <LiveContainer />
     </div>
   );

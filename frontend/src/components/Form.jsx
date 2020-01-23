@@ -6,6 +6,10 @@ import GameChoice from "./GameChoice";
 import GameList from "../GameList";
 import "./style/IdForm.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import { backend } from "../conf.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./style/Tag.scss";
 
 function Form() {
   const history = useHistory();
@@ -17,14 +21,35 @@ function Form() {
   });
 
   const [page, setPage] = useState(1);
+  const [error, setError] = useState();
+
+  const notify = error => toast(error);
 
   const handleSubmit = () => {
     const newUser = registration;
     axios
-      .post("http://localhost:5050/api/auth/signup", newUser)
+      .post(`${backend}/api/auth/signup`, newUser)
       .then(response => {
-        dispatch({ type: "SAVE_JWT", value: response.data.token });
+        dispatch({ type: "SAVE_JWT", value: response.data });
         history.push("/newsfeed");
+      })
+      .catch(err => {
+        if (err.response) {
+          let response = err.response.data;
+          if (response.includes("email_UNIQUE")) {
+            setPage(1);
+            setError("email");
+            notify("Email déjà utilisé");
+          } else if (response.includes("pseudo_UNIQUE")) {
+            setPage(1);
+            setError("pseudo");
+            notify("Pseudo déjà utilisé");
+          }
+        } else {
+          setPage(1);
+          setError("inconnu");
+          notify("Erreur inconnue, merci de réessayer");
+        }
       });
   };
 
@@ -43,15 +68,22 @@ function Form() {
             e.preventDefault();
           }}
         >
+          <ToastContainer
+            position={toast.POSITION.BOTTOM_LEFT}
+            hideProgressBar={true}
+          />
           {page === 1 ? (
             <div className="page1">
+              <div className="introText">
+                On a besoin de quelques infos pour démarrer:
+              </div>
               <div>
                 {/* Pseudo -------------------------------------------------------------------------------------------- */}
 
                 <div className="inputContainer">
                   <label className="label">Pseudo</label>
                   <input
-                    className="idInput"
+                    className={error === "pseudo" ? "error" : "idInput"}
                     type="text"
                     value={registration.pseudo}
                     onChange={event => {
@@ -68,7 +100,7 @@ function Form() {
                 <div className="inputContainer">
                   <label className="label">E-mail</label>
                   <input
-                    className="idInput"
+                    className={error === "email" ? "error" : "idInput"}
                     type="email"
                     value={registration.email}
                     onChange={event => {
@@ -102,6 +134,10 @@ function Form() {
           )}
           {page === 2 ? (
             <div className="page2">
+              <div className="introText">
+                Choisis les jeux pour lesquels tu souhaites avoir des news
+                (penses à scroller):
+              </div>
               <div className="bigGamePage">
                 <div className="gamePage">
                   {GameList.map(game => {

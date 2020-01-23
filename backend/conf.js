@@ -24,7 +24,6 @@ cloudinary.config({
   api_secret: process.env.API_SECRET || "api_secret"
 });
 
-
 module.exports = {
   CONFIG,
   db,
