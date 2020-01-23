@@ -30,11 +30,13 @@ function NavBar() {
               <img
                 className="triangle"
                 src="../images/Black_triangle_rotated.svg"
+                alt="v"
               ></img>
             ) : (
               <img
                 className="triangle"
                 src="../images/Black_triangle.svg"
+                alt=">"
               ></img>
             )}
           </a>
