@@ -105,9 +105,14 @@ function PostField() {
                 setGame_id(e.target.value);
               }}
             >
-              <option value="noGame">Choisis ton jeu</option>>
+              <option value="noGame" key={"noGame"}>
+                Choisis ton jeu
+              </option>
+              >
               {gamelist.map(game => (
-                <option value={game.id}>{game.name}</option>
+                <option value={game.id} key={game.id}>
+                  {game.name}
+                </option>
               ))}
             </select>
           </div>
