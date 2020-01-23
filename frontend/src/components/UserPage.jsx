@@ -17,7 +17,6 @@ export default function UserPage() {
       .get(`${backend}/api/profile/${user_id}`)
       .then(({ data }) => {
         console.log(data);
-
         getUser(data[0]);
       })
       .catch(err => {
