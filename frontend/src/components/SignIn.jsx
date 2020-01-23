@@ -32,7 +32,7 @@ const SignIn = () => {
   };
 
   return !divCreation ? (
-    <div className="SignIn">
+    <div className="SignIn" key={"initialSign"}>
       <div className="catchPhrase">
         <h1>
           <span>LAN'</span>U.R
@@ -92,7 +92,7 @@ const SignIn = () => {
       </div>
     </div>
   ) : (
-    <div className="SignIn">
+    <div className="SignIn" key={"accesForm"}>
       <Form />
     </div>
   );
