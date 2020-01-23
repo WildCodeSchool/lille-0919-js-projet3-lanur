@@ -9,7 +9,6 @@
   .filterButton {
     display: flex;
     padding-left: 30px;
-
     font-family: "Sansation";
     background-color: white;
     color: black;
@@ -22,10 +21,20 @@
     border: $mainColor solid;
     border-radius: 5px;
     text-align: right;
+    align-items: baseline;
+    cursor: pointer;
+    p {
+      width: 60%;
+      text-align: left;
+      margin-left: 10%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
     .filterPlus {
-      width: 100%;
+      width: 30%;
       text-align: right;
       padding-right: 30px;
+      font-size: 2em;
     }
   }
 
@@ -39,12 +48,25 @@
     width: calc(70% - 30px);
     padding-top: 20px;
     padding-bottom: 20px;
-    min-width: 320px;
-    max-width: 700px;
     height: auto;
     border: $mainColor solid;
     border-radius: 5px;
-    // margin-left: 8vw;
-    // margin: 20px;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .filtercontainer {
+    width: 100vw;
+    margin: 30px;
+    .filterButton {
+      width: 90%;
+      padding: 0;
+    }
+    .filter {
+      width: 90%;
+      padding: 0;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
   }
 }
