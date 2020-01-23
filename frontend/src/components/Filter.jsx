@@ -31,7 +31,10 @@ function Filter() {
 
   return (
     <div className="filtercontainer">
-      <form>
+      <div className="filterButton">
+        Filtrer<div className="filterPlus">+</div>
+      </div>
+      <form className="filter">
         {gamelist.map(game => (
           <div>
             <input

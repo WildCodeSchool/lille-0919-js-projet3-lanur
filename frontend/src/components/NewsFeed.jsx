@@ -23,28 +23,17 @@ function NewsFeed() {
         document.documentElement.scrollHeight &&
       totalPosts >= offsetPosts
     ) {
-      console.log("scroll");
       dispatch({ type: "PLUS_TEN" });
     }
   };
 
   useEffect(() => {
-    console.log("useeffect");
-    console.log("totalPosts:" + totalPosts);
-    console.log("offsetposts:" + offsetPosts);
-    console.log("charged posts:" + posts.length);
-    console.log("reload:" + reload);
-    console.log("filter result:" + filterResult.length);
-    console.log("filters.length " + filters.length);
-
     if (!totalPosts) {
-      console.log("!totalPosts");
       axios.get(`${backend}/api/totalposts`).then(({ data }) => {
         setTotalPosts(data[0].totalpost);
       });
     }
     if (offsetPosts === 0) {
-      console.log("offsetPosts === 0");
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(data);
         dispatch({ type: "PLUS_TEN" });
@@ -54,31 +43,15 @@ function NewsFeed() {
       filters.length > 0 &&
       totalPosts >= offsetPosts
     ) {
-      console.log(
-        "filterResult.length < 10 && \
-      filters.length > 0 &&\
-      totalPosts >= offsetPosts"
-      );
-
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(posts.concat(data));
         dispatch({ type: "PLUS_TEN" });
-        console.log("plus 10");
       });
     } else if (totalPosts >= offsetPosts) {
-      console.log("totalPosts >= offsetPosts");
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(posts.concat(data));
       });
     }
-    // if (
-    //   filterResult.length < 10 &&
-    //   filters.length > 0 &&
-    //   totalPosts >= offsetPosts
-    // ) {
-    //   dispatch({ type: "PLUS_TEN" });
-    //   console.log("plus 10");
-    // }
   }, [offsetPosts, reload]);
 
   return (
@@ -108,7 +81,11 @@ function NewsFeed() {
               id={post.id}
             />
           ))}
-
+      {offsetPosts >= totalPosts ? (
+        <div className="endPageContainer">
+          <div className="endPage">Pas de posts à afficher"</div>
+        </div>
+      ) : null}
       <LiveContainer />
     </div>
   );

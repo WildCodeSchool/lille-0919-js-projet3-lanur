@@ -1,5 +1,50 @@
 @import "./variables";
 
 .filtercontainer {
-  background-color: white;
+  width: 70vw;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .filterButton {
+    display: flex;
+    padding-left: 30px;
+
+    font-family: "Sansation";
+    background-color: white;
+    color: black;
+    width: calc(70% - 30px);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-width: 320px;
+    max-width: 700px;
+    height: auto;
+    border: $mainColor solid;
+    border-radius: 5px;
+    text-align: right;
+    .filterPlus {
+      width: 100%;
+      text-align: right;
+      padding-right: 30px;
+    }
+  }
+
+  .filter {
+    display: flex;
+    padding-left: 30px;
+    flex-direction: column;
+    font-family: "Sansation";
+    background-color: white;
+    color: black;
+    width: calc(70% - 30px);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-width: 320px;
+    max-width: 700px;
+    height: auto;
+    border: $mainColor solid;
+    border-radius: 5px;
+    // margin-left: 8vw;
+    // margin: 20px;
+  }
 }
