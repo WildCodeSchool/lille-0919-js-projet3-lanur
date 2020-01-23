@@ -52,6 +52,20 @@ app.get("/api/posts/:limit", (req, res) => {
   );
 });
 
+//Récupérer le nombre total de post
+app.get("/api/totalposts", (req, res) => {
+  db.query(
+    "SELECT count(post.id) as totalpost from post",
+    (err, results) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  );
+});
+
 app.get("/api/gamelist/", (req, res) => {
   db.query("SELECT * from game", (err, results) => {
     if (err) {
@@ -79,7 +93,7 @@ app.get("/api/gamelist/:id", (req, res) => {
 
 app.post("/api/postimg", upload.single("file"), (req, res) => {
   const formData = req.file;
-  cloudinary.v2.uploader.upload(formData.path, function(err, result) {
+  cloudinary.v2.uploader.upload(formData.path, function (err, result) {
     if (err) {
       res.status(500).send("Erreur lors de la sauvegarde de l'image");
     } else {
