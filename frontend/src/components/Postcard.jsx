@@ -7,28 +7,23 @@ import { backend } from "../conf.js";
 
 function Postcard(props) {
   const [like, setLike] = useState(false);
-
+  const [nbLike, nbLikeUpdate] = useState(0);
   useEffect(() => {
     setLike(props.statuslike ? true : false);
+    nbLikeUpdate(props.nblike);
   }, [props.statuslike]);
 
   const handleLike = (like) => {
     Axios.put(`${backend}/api/posts/${props.id}/like`, {
       userLike: like ? 1 : 0
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    });
   };
 
   return (
     <div className="postContainer">
       <div className="post">
-        {/* section with avatar and game logo */}
-        <div className=" imgSection">
+        {/* section with avatar, game logo and Like counter */}
+        <div className="imgSection">
           <div>
             {props.user_avatar ? (
               <CloudinaryContext cloudName="lanur">
@@ -51,6 +46,18 @@ function Postcard(props) {
               src="https://i.pinimg.com/236x/f6/92/99/f6929980e929991bc8ff186a9aeca8b0.jpg"
               className="avatar"
             />
+          </div>
+
+          <div
+            className="nbLike"
+            onClick={() => {
+              if (like) nbLikeUpdate(nbLike - 1);
+              else nbLikeUpdate(nbLike + 1);
+              handleLike(!like);
+              setLike(!like);
+            }}
+          >
+            {nbLike}
           </div>
         </div>
         <div className="contentPostContainer">
@@ -89,9 +96,10 @@ function Postcard(props) {
               <div
                 className={like ? "reaction-button-clicked" : "reaction-button"}
               >
-                {props.nblike}
                 <button
                   onClick={() => {
+                    if (like) nbLikeUpdate(nbLike - 1);
+                    else nbLikeUpdate(nbLike + 1);
                     handleLike(!like);
                     setLike(!like);
                   }}
