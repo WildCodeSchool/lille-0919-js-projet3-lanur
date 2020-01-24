@@ -7,6 +7,7 @@ import SignIn from "./components/SignIn";
 import Form from "./components/Form";
 import NewsFeed from "./components/NewsFeed";
 import ContainerEditProfile from "./components/EditProfile/ContainerEditProfile";
+import Teams from "./components/Teams";
 
 function App() {
   const jwt = useSelector(state => state.jwt);
@@ -20,6 +21,7 @@ function App() {
         <Route path="/signin/form" component={Form} />
         <Route path="/newsfeed" render={() => checkJWT(<NewsFeed />)} />
         <Route path="/editprofile" component={ContainerEditProfile} />
+        <Route path="/teams" component={Teams} />
       </Switch>
     </div>
   );
