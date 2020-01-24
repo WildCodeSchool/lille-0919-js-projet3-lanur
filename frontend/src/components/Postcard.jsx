@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./style/postcard.scss";
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
@@ -9,6 +10,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Postcard(props) {
+  const history = useHistory();
   const [comment, setComment] = useState("");
   const [displayComments, setDisplayComments] = useState(false);
   const [comments, setComments] = useState([]);
@@ -49,13 +51,17 @@ function Postcard(props) {
       <div className="post">
         {/* section with avatar and game logo */}
         <div className=" imgSection">
-          <div>
+          <div
+            onClick={() => {
+              history.push("/userpage/" + props.user_id);
+            }}
+          >
             {props.user_avatar ? (
               <CloudinaryContext cloudName="lanur">
                 <Image publicId={props.user_avatar} className="avatar" />
               </CloudinaryContext>
             ) : (
-              <img src="noob.jpg" className="avatar" />
+              <img src="/noob.jpg" className="avatar" />
             )}
           </div>
           {props.game_id > 0 ? (

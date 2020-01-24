@@ -47,7 +47,6 @@ app.put(
       [formData, req.user.id],
       (err, result) => {
         if (err) {
-          console.log(err);
           res.status(500).send("Erreur lors de la sauvegarde du message");
         } else {
           res.sendStatus(201);
@@ -78,10 +77,10 @@ app.get(
   }
 );
 
-app.get("/api/user/posts/:id", (req, res) => {
+app.get("/api/user/posts/:id/:offset", (req, res) => {
   db.query(
-    "SELECT post.id, user_id, user_id_team, game_id, message, date, image_url from post WHERE post.user_id = ?",
-    [req.params.id],
+    "SELECT post.id, post.user_id, user.avatar as user_avatar, post.user_id_team, post.game_id, post.message, post.date, post.image_url FROM post JOIN user ON post.user_id = user.id WHERE post.user_id = ? ORDER BY id DESC LIMIT 10 OFFSET ?",
+    [parseInt(req.params.id), parseInt(req.params.offset)],
     (err, results) => {
       if (err) {
         res.status(500).send(err);
@@ -95,7 +94,7 @@ app.get("/api/user/posts/:id", (req, res) => {
 // FIL-ACTU || GET & POST
 app.get("/api/posts/:limit", (req, res) => {
   db.query(
-    "SELECT id, circle_id, user_id, user_id_team, game_id, message, date, image_url from post ORDER BY id DESC LIMIT 10 OFFSET ?  ",
+    "SELECT post.id, circle_id, user_id, user_id_team, game_id, message, date, image_url, user.avatar AS user_avatar from post JOIN user on user_id=user.id ORDER BY id DESC LIMIT 10 OFFSET ?  ",
     [Number(req.params.limit)],
     (err, results) => {
       if (err) {

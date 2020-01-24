@@ -19,7 +19,6 @@ export default function ContainerEditProfile() {
     axios
       .get(`${backend}/api/profile/${user_id}`)
       .then(({ data }) => {
-        console.log(data[0]);
         dispatch({ type: "SAVE_PROFILE_DATA", value: data[0] });
       })
       .catch(err => {});
