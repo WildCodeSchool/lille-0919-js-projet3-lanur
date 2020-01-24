@@ -3,15 +3,15 @@ import "./style/PostField.scss";
 import axios from "axios";
 import { backend } from "../conf.js";
 import Postcard from "./Postcard";
+import { useDispatch, useSelector } from "react-redux";
 import Tag from "./Tag";
-import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./style/Tag.scss";
 
 function PostField() {
   const dispatch = useDispatch();
-  const user_id = 5;
+  const user_id = useSelector(state => state.user_id);
   const [message, setMessage] = useState("");
   const [file, setFile] = useState(null);
   const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
