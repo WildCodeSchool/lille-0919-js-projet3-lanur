@@ -1,9 +1,10 @@
 const initialState = {
-  offsetPosts: 0,
-  jwt: null,
-  reload: 0,
-  user_id: null,
-  filters: []
+    offsetPosts: 0,
+    jwt: null,
+    reload: 0,
+    user_id: null,
+    tags: [],
+    filters: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,10 +25,13 @@ const reducer = (state = initialState, action) => {
                 user_avatar: action.value.user.avatar,
                 user_pseudo: action.value.user.pseudo
             };
-    case "FILTER":
-         return {
-             ...state,
-             filters: action.value
+        case "TAG":
+            newState.tags = action.value;
+            return newState;
+        case "FILTER":
+            return {
+                ...state,
+                filters: action.value
             };
     case "DISCONNECT":
       return {

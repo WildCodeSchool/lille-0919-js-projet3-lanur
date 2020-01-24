@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./style/Tag.scss";
 
+
 function PostField() {
   const dispatch = useDispatch();
   const user_id = useSelector(state => state.user_id);
@@ -17,6 +18,7 @@ function PostField() {
   const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
   const [gamelist, setGamelist] = useState([]);
   const [game_id, setGame_id] = useState(null);
+  const tags = useSelector(state => state.tags);
 
   const notify = () => toast("Post envoyé!");
 
@@ -46,9 +48,9 @@ function PostField() {
         let image_url = response.data.public_id;
         let postObject;
         if (game_id) {
-          postObject = { image_url, message, user_id, game_id };
+          postObject = { image_url, message, user_id, game_id, tags };
         } else {
-          postObject = { image_url, message, user_id };
+          postObject = { image_url, message, user_id, tags };
         }
         axios.post(`${backend}/api/posts`, postObject).then(() => {
           dispatch({ type: "RESET" });
@@ -58,9 +60,9 @@ function PostField() {
     } else if (message) {
       let postObject;
       if (game_id !== "noGame") {
-        postObject = { message, user_id, game_id };
+        postObject = { message, user_id, game_id, tags };
       } else {
-        postObject = { message, user_id };
+        postObject = { message, user_id, tags };
       }
       axios.post(`${backend}/api/posts`, postObject).then(() => {
         dispatch({ type: "RESET" });
@@ -94,8 +96,8 @@ function PostField() {
             className="headPost"
             maxLength="500"
           />
-          <Tag />
           <input type="file" onChange={e => handleImageChange(e)} />
+          <Tag />
           <div className="gameSelection">
             Jeu concerné:
             <select
@@ -113,12 +115,16 @@ function PostField() {
           <button type="submit">Poster</button>
         </form>
       </div>
-      {message || imagePreviewUrl || (game_id && game_id !== "noGame") ? (
+      {message ||
+      imagePreviewUrl ||
+      tags ||
+      (game_id && game_id !== "noGame") ? (
         <div className="preview-container">
           <div className="preview">Aperçu de votre post:</div>
           <Postcard
             image_preview_url={imagePreviewUrl}
             message={message}
+            tags={"#" + tags.join(" #")}
             game_id={game_id}
           />
         </div>
