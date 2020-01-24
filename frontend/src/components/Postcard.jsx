@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style/postcard.scss";
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
 import { Image, CloudinaryContext } from "cloudinary-react";
+import Axios from "axios";
 import { backend } from "../conf.js";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Postcard(props) {
+  const [like, setLike] = useState(false);
+  const [nbLike, nbLikeUpdate] = useState(0);
   const [comment, setComment] = useState("");
   const [displayComments, setDisplayComments] = useState(false);
   const [comments, setComments] = useState([]);
@@ -20,7 +22,16 @@ function Postcard(props) {
     setDisplayComments(!displayComments);
     getComments();
   };
+  useEffect(() => {
+    setLike(props.statuslike ? true : false);
+    nbLikeUpdate(props.nblike);
+  }, [props.statuslike]);
 
+  const handleLike = (like) => {
+    Axios.put(`${backend}/api/posts/${props.id}/like`, {
+      userLike: like ? 1 : 0
+    });
+  };
   const getComments = () => {
     axios.get(`${backend}/api/comments/post/${props.id}`).then(({ data }) => {
       setComments(data);
@@ -51,8 +62,8 @@ function Postcard(props) {
         hideProgressBar={true}
       />
       <div className="post">
-        {/* section with avatar and game logo */}
-        <div className=" imgSection">
+        {/* section with avatar, game logo and Like counter */}
+        <div className="imgSection">
           <div>
             {props.user_avatar ? (
               <CloudinaryContext cloudName="lanur">
@@ -76,12 +87,24 @@ function Postcard(props) {
               className="avatar"
             />
           </div>
+
+          <div
+            className="nbLike"
+            onClick={() => {
+              if (like) nbLikeUpdate(nbLike - 1);
+              else nbLikeUpdate(nbLike + 1);
+              handleLike(!like);
+              setLike(!like);
+            }}
+          >
+            +{nbLike}
+          </div>
         </div>
         <div className="contentPostContainer">
           <div className="contentPost">
             {/* section with name and information about the post */}
             <div className="headpost">
-              <div>Pseudo</div>
+              <div>{props.userPseudo}</div>
               <div>TeamName</div>
               <div>
                 <Moment format="L" date={props.date} />
@@ -111,8 +134,17 @@ function Postcard(props) {
             </div>
             {props.id ? (
               <div className="reaction">
-                <div className="reaction-button">
-                  <button>+1</button>
+                <div className={like ? "reaction-button-clicked" : "reaction-button"}>
+                  <button
+                    onClick={() => {
+                    if (like) nbLikeUpdate(nbLike - 1);
+                    else nbLikeUpdate(nbLike + 1);
+                    handleLike(!like);
+                    setLike(!like);
+                  }}
+                 >
+                    +1
+                  </button>
                 </div>
                 <div className="reaction-button">
                   <button onClick={() => commentClick()}>Comment</button>

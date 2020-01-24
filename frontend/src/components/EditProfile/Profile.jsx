@@ -5,7 +5,6 @@ import { backend } from "../../conf.js";
 import { useSelector } from "react-redux";
 import { Image, CloudinaryContext } from "cloudinary-react";
 
-
 const Profile = () => {
   const user_avatar = useSelector(state => state.user_avatar);
   const [file, setFile] = useState();
