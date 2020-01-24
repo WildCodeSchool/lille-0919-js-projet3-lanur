@@ -39,6 +39,17 @@ function NewsFeed() {
   return (
     <div className="main-NewsFeed">
       <PostField />
+      {posts.map(post => (
+        <Postcard
+          message={post.message}
+          tags={post.tags ? "#" + post.tags.split(" ").join(" #") : null}
+          date={post.date}
+          image_url={post.image_url}
+          game_id={post.game_id}
+          user_avatar={post.user_avatar}
+          id={post.id}
+        />
+      ))}
       <Filter />
       {filters.length > 0
         ? posts
@@ -59,6 +70,7 @@ function NewsFeed() {
         : posts.map(post => (
             <Postcard
               message={post.message}
+              tags={post.tags ? "#" + post.tags.split(" ").join(" #") : null}
               date={post.date}
               image_url={post.image_url}
               game_id={post.game_id}

@@ -26,7 +26,7 @@ app.use("/api/auth", require("./auth"));
 // USERS || GET & POST
 app.get("/api/users", (req, res) => {
   db.query(
-    "SELECT id, firstname, lastname, team_id, pseudo, sexe, address, avatar, email, age, country, city, creation_date, twitch, bio, mixer, youtube, LOL_pseudo, Fortnite_pseudo, CSGO_pseudo, OW_pseudo, HOTS_pseudo, SMITE_pseudo, APEX_pseudo, STARCRAFT2_pseudo, Hearstone_pseudo, KROSMAGA_pseudo, SSBU_pseudo, Tekken_pseudo, SF5_pseudo, ROCKETLEAGUE_pseudo, TFT_pseudo, PUBG_pseudo, R6S_pseudo, Paladins_pseudo from user",
+    "SELECT id, firstname, lastname, team_id, pseudo, gender, address, avatar, email, age, country, city, creation_date, twitch, bio, mixer, youtube, LOL_pseudo, Fortnite_pseudo, CSGO_pseudo, OW_pseudo, HOTS_pseudo, SMITE_pseudo, APEX_pseudo, STARCRAFT2_pseudo, Hearstone_pseudo, KROSMAGA_pseudo, SSBU_pseudo, Tekken_pseudo, SF5_pseudo, ROCKETLEAGUE_pseudo, TFT_pseudo, PUBG_pseudo, R6S_pseudo, Paladins_pseudo from user",
     (err, results) => {
       if (err) {
         res.status(500).send("Erreur lors de la récupération des données");
@@ -38,6 +38,7 @@ app.get("/api/users", (req, res) => {
 });
 
 // FIL-ACTU || GET & POST
+
 app.get(
   "/api/posts/:limit",
   passport.authenticate("jwt", { session: false }),
@@ -71,6 +72,8 @@ app.get("/api/gamelist/", (req, res) => {
       res.status(500).send(err);
     } else {
       res.status(200).json(results);
+
+
     }
   });
 });
@@ -86,6 +89,7 @@ app.get("/api/gamelist/:id", (req, res) => {
       } else {
         res.status(200).json(results);
       }
+
     }
   });
 });
@@ -103,6 +107,7 @@ app.post("/api/postimg", upload.single("file"), (req, res) => {
 
 app.post("/api/posts", (req, res) => {
   const formData = req.body;
+  formData.tags = formData.tags.join(" ");
   db.query("INSERT INTO post SET ?", formData, (err, results) => {
     if (err) {
       res.status(500).send("Erreur lors de la sauvegarde du message");
@@ -147,6 +152,7 @@ app.put(
   }
 );
 
+
 app.get("/api/comments/post/:id", (req, res) => {
   db.query(
     "SELECT comment.id, comment.user_id, comment.content, comment.post_id, user.pseudo, user.avatar from comment JOIN user on comment.user_id=user.id where comment.post_id = ? ",
@@ -172,7 +178,9 @@ app.post("/api/comments", (req, res) => {
   });
 })
 
-app.listen(backendPort, (err) => {
+
+
+app.listen(backendPort, err => {
   if (err) {
     throw new Error("Something bad happened...");
   }
