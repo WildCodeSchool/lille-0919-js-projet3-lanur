@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { scaleDown as MenuBurger } from "react-burger-menu";
 import { Link } from "react-router-dom";
 import "./style/NavBar.scss";
@@ -8,6 +9,7 @@ function NavBar() {
   const [displayMenu, setDisplayMenu] = useState(false);
   const [paramsMenu, setParamsMenu] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
+  const dispatch = useDispatch();
   return (
     <nav className="main-NavBar">
       <h1 onClick={() => setBurgerMenu(false)}>
@@ -74,10 +76,8 @@ function NavBar() {
                   <span className="FirstLetter">P</span>rofil
                 </Link>
               </li>
-              <li>
-                <a href="#">
-                  <span className="FirstLetter">D</span>éconnection
-                </a>
+              <li onClick={() => dispatch({ type: "DISCONNECT" })}>
+                <span className="FirstLetter">D</span>éconnection
               </li>
             </div>
           ) : null}
@@ -112,6 +112,9 @@ function NavBar() {
               >
                 Profil
               </Link>
+            </li>
+            <li onClick={() => dispatch({ type: "DISCONNECT" })}>
+              Déconnection
             </li>
           </ul>
         </MenuBurger>
