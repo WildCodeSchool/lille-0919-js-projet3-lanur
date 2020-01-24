@@ -130,7 +130,9 @@ function Postcard(props) {
                 </div>
               ) : null}
             </div>
+            <div className="tag">{props.tags}</div>
             {props.id && user_id ? (
+
               <div className="reaction">
                 <div className={like ? "reaction-button-clicked" : "reaction-button"}>
                   <button
