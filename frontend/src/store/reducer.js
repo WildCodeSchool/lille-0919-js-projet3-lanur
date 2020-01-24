@@ -3,7 +3,8 @@ const initialState = {
     jwt: null,
     reload: 0,
     filters: [],
-    user_id: null
+    user_id: null,
+    searchResults: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,6 +29,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 filters: action.value
+            };
+        case "SEARCH":
+            return {
+                ...state,
+                searchResults: action.value
             };
         default:
             return newState

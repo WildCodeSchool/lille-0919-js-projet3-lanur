@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./style/NavBar.scss";
+import SearchBar from "./SearchBar";
 
 function NavBar() {
   const [displayMenu, setDisplayMenu] = useState(false);
@@ -12,6 +13,7 @@ function NavBar() {
           <span className="Lan">LAN'</span>U.R
         </a>
       </h1>
+      <SearchBar />
       <ul>
         <li>
           <a href="#">

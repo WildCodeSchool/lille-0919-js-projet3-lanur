@@ -37,6 +37,21 @@ app.get("/api/users", (req, res) => {
   );
 });
 
+app.get("/api/search/users/", (req, res) => {
+  const request = req.query.pseudo;
+  db.query(
+    'SELECT id, pseudo, avatar AS user_avatar, team_id from user where pseudo like concat("%"?"%")', request,
+    (err, results) => {
+      if (err) {
+        res.status(500).send("Erreur lors de la récupération des données");
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  );
+});
+
+
 // FIL-ACTU || GET & POST
 app.get("/api/posts/:limit", (req, res) => {
   db.query(
@@ -79,7 +94,7 @@ app.get("/api/gamelist/:id", (req, res) => {
 
 app.post("/api/postimg", upload.single("file"), (req, res) => {
   const formData = req.file;
-  cloudinary.v2.uploader.upload(formData.path, function(err, result) {
+  cloudinary.v2.uploader.upload(formData.path, function (err, result) {
     if (err) {
       res.status(500).send("Erreur lors de la sauvegarde de l'image");
     } else {

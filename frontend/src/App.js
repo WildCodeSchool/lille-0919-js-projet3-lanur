@@ -6,6 +6,7 @@ import Carousel from "./components/Carousel";
 import SignIn from "./components/SignIn";
 import Form from "./components/Form";
 import NewsFeed from "./components/NewsFeed";
+import SearchResult from "./components/SearchResult";
 import ContainerEditProfile from "./components/EditProfile/ContainerEditProfile";
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
         <Route path="/signin/form" component={Form} />
         <Route path="/newsfeed" render={() => checkJWT(<NewsFeed />)} />
         <Route path="/editprofile" component={ContainerEditProfile} />
+        <Route path="/search" component={SearchResult} />
+
       </Switch>
     </div>
   );
