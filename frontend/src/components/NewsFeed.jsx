@@ -53,6 +53,9 @@ function NewsFeed() {
                 user_avatar={post.user_avatar}
                 id={post.id}
                 user_id={post.user_id}
+                nblike={post.nbLike}
+                statuslike={post.liked}
+                userPseudo={post.pseudo}
               />
             ))
         : posts.map(post => (
@@ -64,9 +67,11 @@ function NewsFeed() {
               user_avatar={post.user_avatar}
               id={post.id}
               user_id={post.user_id}
+              nblike={post.nbLike}
+              statuslike={post.liked}
+              userPseudo={post.pseudo}
             />
           ))}
-
       <LiveContainer />
     </div>
   );

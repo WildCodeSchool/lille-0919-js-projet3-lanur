@@ -18,6 +18,7 @@ function App() {
   useEffect(() => {
     if (jwt) Axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;
   }, [jwt]);
+
   return (
     <div className="App">
       <NavBar />
