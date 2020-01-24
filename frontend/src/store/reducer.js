@@ -4,6 +4,7 @@ const initialState = {
   reload: 0,
   filters: [],
   user_id: null,
+  tags: [],
   user_avatar: null,
   user_pseudo: null,
   user: {
@@ -45,6 +46,9 @@ const reducer = (state = initialState, action) => {
       };
     case "SAVE_PROFILE_DATA":
       newState.user = { ...newState.user, ...action.value };
+      return newState;
+    case "TAG":
+      newState.tags = action.value;
       return newState;
     case "FILTER":
       return {

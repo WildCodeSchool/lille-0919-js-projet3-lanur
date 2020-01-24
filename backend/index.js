@@ -126,6 +126,8 @@ app.get("/api/gamelist/", (req, res) => {
       res.status(500).send(err);
     } else {
       res.status(200).json(results);
+
+
     }
   });
 });
@@ -141,6 +143,7 @@ app.get("/api/gamelist/:id", (req, res) => {
       } else {
         res.status(200).json(results);
       }
+
     }
   });
 });
@@ -158,6 +161,7 @@ app.post("/api/postimg", upload.single("file"), (req, res) => {
 
 app.post("/api/posts", (req, res) => {
   const formData = req.body;
+  formData.tags = formData.tags.join(" ");
   db.query("INSERT INTO post SET ?", formData, (err, results) => {
     if (err) {
       res.status(500).send("Erreur lors de la sauvegarde du message");
@@ -202,6 +206,7 @@ app.put(
   }
 );
 
+
 app.get("/api/comments/post/:id", (req, res) => {
   db.query(
     "SELECT comment.id, comment.user_id, comment.content, comment.post_id, user.pseudo, user.avatar from comment JOIN user on comment.user_id=user.id where comment.post_id = ? ",
@@ -227,7 +232,9 @@ app.post("/api/comments", (req, res) => {
   });
 });
 
-app.listen(backendPort, (err) => {
+
+
+app.listen(backendPort, err => {
   if (err) {
     throw new Error("Something bad happened...");
   }
