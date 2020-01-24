@@ -13,7 +13,6 @@ function NavBar() {
           <span className="Lan">LAN'</span>U.R
         </a>
       </h1>
-      <SearchBar />
       <ul>
         <li>
           <a href="#">

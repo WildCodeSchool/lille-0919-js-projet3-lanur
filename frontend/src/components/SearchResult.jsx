@@ -10,32 +10,39 @@ function SearchResult() {
   const history = useHistory();
 
   return (
-    <div className="containerComponent">
-      <div className="results">
-        Voici les résultats
-        {searchResults.length > 0 ? (
-          searchResults.map(result => (
-            <Link to={`/userpage/${result.id}`}>
-              <div className="userContainer">
-                <div className="imgSection">
-                  {result.user_avatar ? (
-                    <CloudinaryContext cloudName="lanur">
-                      <Image publicId={result.user_avatar} className="avatar" />
-                    </CloudinaryContext>
-                  ) : (
-                    <img src="noob.jpg" className="avatar" />
-                  )}
+    <div className="main-search">
+      <div className="containerComponent">
+        <div className="results">
+          <h3>Résultats de la recherche</h3>
+          {searchResults.length > 0 ? (
+            searchResults.map(result => (
+              <Link to={`/userpage/${result.id}`}>
+                <div className="userContainer">
+                  <div className="imgSection">
+                    {result.user_avatar ? (
+                      <CloudinaryContext cloudName="lanur">
+                        <Image
+                          publicId={result.user_avatar}
+                          className="avatar"
+                        />
+                      </CloudinaryContext>
+                    ) : (
+                      <img src="noob.jpg" className="avatar" />
+                    )}
+                  </div>
+                  <div className="infoSection">
+                    <div className="infoResult">Pseudo: {result.pseudo}</div>
+                    {result.team_id ? (
+                      <div className="infoResult">Team: {result.team_id}</div>
+                    ) : null}
+                  </div>
                 </div>
-                <div className="infoSection">
-                  <div className="infoResult">Pseudo: {result.pseudo}</div>
-                  {result.team_id ? <div>{result.team_id}</div> : null}
-                </div>
-              </div>
-            </Link>
-          ))
-        ) : (
-          <div>Pas de résultats</div>
-        )}
+              </Link>
+            ))
+          ) : (
+            <div>Pas de résultats</div>
+          )}
+        </div>
       </div>
     </div>
   );
