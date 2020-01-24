@@ -2,6 +2,7 @@ const initialState = {
   offsetPosts: 0,
   jwt: null,
   reload: 0,
+  filters: [],
   user_id: null,
   user_avatar: null,
   user_pseudo: null,
@@ -45,7 +46,11 @@ const reducer = (state = initialState, action) => {
     case "SAVE_PROFILE_DATA":
       newState.user = { ...newState.user, ...action.value };
       return newState;
-
+    case "FILTER":
+      return {
+        ...state,
+        filters: action.value
+      };  
     default:
       return newState;
   }

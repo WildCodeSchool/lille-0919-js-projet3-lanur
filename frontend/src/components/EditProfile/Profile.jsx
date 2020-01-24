@@ -3,15 +3,22 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { backend } from "../../conf.js";
 import { useSelector, useDispatch } from "react-redux";
+import { Image, CloudinaryContext } from "cloudinary-react";
 
 const Profile = () => {
   const dispatch = useDispatch();
   const [file, setFile] = useState("https://via.placeholder.com/250");
-  const [imagePreviewUrl, setImagePreviewUrl] = useState(
-    "https://via.placeholder.com/250"
-  );
+  const [imagePreviewUrl, setImagePreviewUrl] = useState("./noob.jpg"); 
   const user = useSelector(state => state.user);
-  const user_id = user.id;
+  const user_avatar = useSelector(state => state.user_avatar);
+ 
+  useEffect(() => {
+    if (user_avatar) {
+      setImagePreviewUrl(user_avatar);
+    } else {
+      setImagePreviewUrl("./noob.jpg");
+    }
+  }, []);
 
   const handleImageChange = e => {
     e.preventDefault();
@@ -40,7 +47,13 @@ const Profile = () => {
       <form>
         <div className="avatar">
           <h1>Avatar</h1>
-          <img src={imagePreviewUrl} alt="" />
+            {imagePreviewUrl === "./noob.jpg" ? (
+            <img src={imagePreviewUrl} alt="" />
+          ) : (
+            <CloudinaryContext cloudName="lanur">
+              <Image publicId={user_avatar} />
+            </CloudinaryContext>
+          )}
           <input type="file" onChange={e => handleImageChange(e)} />
         </div>
         <div className="infos">
