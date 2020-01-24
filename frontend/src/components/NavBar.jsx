@@ -19,9 +19,9 @@ function NavBar() {
           </a>
         </li>
         <li>
-          <a href="#">
+          <Link to="/teams">
             <span className="FirstLetter">T</span>eams
-          </a>
+          </Link>
         </li>
         <li onClick={() => setDisplayMenu(!displayMenu)}>
           <a href="#">
