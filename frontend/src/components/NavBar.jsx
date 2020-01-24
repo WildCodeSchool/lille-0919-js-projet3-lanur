@@ -6,6 +6,7 @@ import "./style/Burger.scss";
 
 function NavBar() {
   const [displayMenu, setDisplayMenu] = useState(false);
+  const [paramsMenu, setParamsMenu] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
   return (
     <nav className="main-NavBar">
@@ -26,7 +27,13 @@ function NavBar() {
             <span className="FirstLetter">T</span>eams
           </a>
         </li>
-        <li className="dropDown" onClick={() => setDisplayMenu(!displayMenu)}>
+        <li
+          className="dropDown"
+          onClick={() => {
+            setDisplayMenu(!displayMenu);
+            setParamsMenu(false);
+          }}
+        >
           <span className="FirstLetter">É</span>vènements
           {displayMenu ? (
             <img
@@ -51,11 +58,29 @@ function NavBar() {
             </div>
           ) : null}
         </li>
-
-        <li>
-          <Link to="/EditProfile">
-            <span className="FirstLetter">P</span>rofil
-          </Link>
+        <li
+          onClick={() => {
+            setParamsMenu(!paramsMenu);
+            setDisplayMenu(false);
+          }}
+        >
+          <button>
+            <img className="gearIcon" src="../images/gear_logo2.png"></img>
+          </button>
+          {paramsMenu ? (
+            <div className="dropDownParamsMenu">
+              <li>
+                <Link to="/EditProfile">
+                  <span className="FirstLetter">P</span>rofil
+                </Link>
+              </li>
+              <li>
+                <a href="#">
+                  <span className="FirstLetter">D</span>éconnection
+                </a>
+              </li>
+            </div>
+          ) : null}
         </li>
       </ul>
       <div onClick={() => setBurgerMenu(!burgerMenu)}>

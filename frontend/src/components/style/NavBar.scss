@@ -38,7 +38,7 @@ $mainColor: #8d20ae;
     width: 100%;
     .dropDownMenu {
       margin-top: 110px;
-      padding-left: 8px;
+      padding: 4px;
       background-color: white;
       display: flex;
       flex-direction: column;
@@ -46,6 +46,18 @@ $mainColor: #8d20ae;
       position: absolute;
       width: 130px;
       height: 70px;
+    }
+    .dropDownParamsMenu {
+      margin-top: 10px;
+      right: 0px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      position: absolute;
+      width: 150px;
+      height: 70px;
+      padding: 4px;
     }
     .dropDown {
       display: flex;
@@ -97,6 +109,15 @@ $mainColor: #8d20ae;
       img {
         width: 10px;
         margin-left: 2px;
+      }
+      button {
+        background: none;
+        .gearIcon {
+          width: 26px;
+          height: 26px;
+          cursor: pointer;
+          background: none;
+        }
       }
     }
     .FirstLetter {
