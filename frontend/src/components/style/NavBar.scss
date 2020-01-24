@@ -48,7 +48,7 @@ $mainColor: #8d20ae;
       height: 70px;
     }
     .dropDownParamsMenu {
-      margin-top: 10px;
+      margin-top: 0px;
       right: 0px;
       background-color: white;
       display: flex;
@@ -61,6 +61,7 @@ $mainColor: #8d20ae;
     }
     .dropDown {
       display: flex;
+      margin-bottom: 3px;
       flex-direction: row;
       justify-content: center;
       align-items: center;
