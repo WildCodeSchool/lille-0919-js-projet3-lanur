@@ -108,7 +108,6 @@ app.post("/api/postimg", upload.single("file"), (req, res) => {
 app.post("/api/posts", (req, res) => {
   const formData = req.body;
   formData.tags = formData.tags.join(" ");
-  console.log(formData);
   db.query("INSERT INTO post SET ?", formData, (err, results) => {
     if (err) {
       res.status(500).send("Erreur lors de la sauvegarde du message");
