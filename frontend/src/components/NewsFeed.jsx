@@ -11,8 +11,8 @@ import Filter from "./Filter";
 function NewsFeed() {
   const filters = useSelector(state => state.filters);
   const [posts, setPosts] = useState([]);
-  const offsetPosts = useSelector(state => state.offsetPosts);
-  const reload = useSelector(state => state.reload);
+  const offsetPosts = useSelector((state) => state.offsetPosts);
+  const reload = useSelector((state) => state.reload);
   const dispatch = useDispatch();
 
   window.onscroll = () => {
@@ -39,6 +39,17 @@ function NewsFeed() {
   return (
     <div className="main-NewsFeed">
       <PostField />
+      {posts.map(post => (
+        <Postcard
+          message={post.message}
+          tags={post.tags ? "#" + post.tags.split(" ").join(" #") : null}
+          date={post.date}
+          image_url={post.image_url}
+          game_id={post.game_id}
+          user_avatar={post.user_avatar}
+          id={post.id}
+        />
+      ))}
       <Filter />
       {filters.length > 0
         ? posts
@@ -51,19 +62,25 @@ function NewsFeed() {
                 game_id={post.game_id}
                 user_avatar={post.user_avatar}
                 id={post.id}
+                nblike={post.nbLike}
+                statuslike={post.liked}
+                userPseudo={post.pseudo}
               />
             ))
         : posts.map(post => (
             <Postcard
               message={post.message}
+              tags={post.tags ? "#" + post.tags.split(" ").join(" #") : null}
               date={post.date}
               image_url={post.image_url}
               game_id={post.game_id}
               user_avatar={post.user_avatar}
               id={post.id}
+              nblike={post.nbLike}
+              statuslike={post.liked}
+              userPseudo={post.pseudo}
             />
           ))}
-
       <LiveContainer />
     </div>
   );

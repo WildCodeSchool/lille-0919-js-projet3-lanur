@@ -4,7 +4,8 @@ const initialState = {
     reload: 0,
     filters: [],
     user_id: null,
-    searchResults: []
+    searchResults: [],
+    tags: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,6 +26,9 @@ const reducer = (state = initialState, action) => {
                 user_avatar: action.value.user.avatar,
                 user_pseudo: action.value.user.pseudo
             };
+        case "TAG":
+            newState.tags = action.value;
+            return newState;
         case "FILTER":
             return {
                 ...state,
