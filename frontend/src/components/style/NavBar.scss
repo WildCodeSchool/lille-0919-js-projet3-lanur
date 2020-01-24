@@ -38,7 +38,7 @@ $mainColor: #8d20ae;
     width: 100%;
     .dropDownMenu {
       margin-top: 110px;
-      padding-left: 8px;
+      padding: 4px;
       background-color: white;
       display: flex;
       flex-direction: column;
@@ -47,8 +47,21 @@ $mainColor: #8d20ae;
       width: 130px;
       height: 70px;
     }
+    .dropDownParamsMenu {
+      margin-top: 0px;
+      right: 0px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      position: absolute;
+      width: 150px;
+      height: 70px;
+      padding: 4px;
+    }
     .dropDown {
       display: flex;
+      margin-bottom: 3px;
       flex-direction: row;
       justify-content: center;
       align-items: center;
@@ -59,6 +72,7 @@ $mainColor: #8d20ae;
       font-size: 22px;
       font-weight: 200;
       text-decoration: none;
+      cursor: pointer;
       a {
         position: relative;
         display: block;
@@ -97,6 +111,15 @@ $mainColor: #8d20ae;
       img {
         width: 10px;
         margin-left: 2px;
+      }
+      button {
+        background: none;
+        .gearIcon {
+          width: 26px;
+          height: 26px;
+          cursor: pointer;
+          background: none;
+        }
       }
     }
     .FirstLetter {

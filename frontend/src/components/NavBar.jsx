@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { scaleDown as MenuBurger } from "react-burger-menu";
 import { Link } from "react-router-dom";
 import "./style/NavBar.scss";
@@ -6,7 +7,9 @@ import "./style/Burger.scss";
 
 function NavBar() {
   const [displayMenu, setDisplayMenu] = useState(false);
+  const [paramsMenu, setParamsMenu] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
+  const dispatch = useDispatch();
   return (
     <nav className="main-NavBar">
       <h1 onClick={() => setBurgerMenu(false)}>
@@ -26,7 +29,13 @@ function NavBar() {
             <span className="FirstLetter">T</span>eams
           </a>
         </li>
-        <li className="dropDown" onClick={() => setDisplayMenu(!displayMenu)}>
+        <li
+          className="dropDown"
+          onClick={() => {
+            setDisplayMenu(!displayMenu);
+            setParamsMenu(false);
+          }}
+        >
           <span className="FirstLetter">É</span>vènements
           {displayMenu ? (
             <img
@@ -51,11 +60,27 @@ function NavBar() {
             </div>
           ) : null}
         </li>
-
-        <li>
-          <Link to="/EditProfile">
-            <span className="FirstLetter">P</span>rofil
-          </Link>
+        <li
+          onClick={() => {
+            setParamsMenu(!paramsMenu);
+            setDisplayMenu(false);
+          }}
+        >
+          <button>
+            <img className="gearIcon" src="../images/gear_logo2.png"></img>
+          </button>
+          {paramsMenu ? (
+            <div className="dropDownParamsMenu">
+              <li>
+                <Link to="/EditProfile">
+                  <span className="FirstLetter">P</span>rofil
+                </Link>
+              </li>
+              <li onClick={() => dispatch({ type: "DISCONNECT" })}>
+                <span className="FirstLetter">D</span>éconnection
+              </li>
+            </div>
+          ) : null}
         </li>
       </ul>
       <div onClick={() => setBurgerMenu(!burgerMenu)}>
@@ -87,6 +112,9 @@ function NavBar() {
               >
                 Profil
               </Link>
+            </li>
+            <li onClick={() => dispatch({ type: "DISCONNECT" })}>
+              Déconnection
             </li>
           </ul>
         </MenuBurger>
