@@ -118,8 +118,6 @@ app.put(
   (req, res) => {
     const postId = parseInt(req.params.id);
     const formData = req.body;
-    console.log(req.user);
-
     const userId = req.user.id;
     const userLike = formData.userLike;
     if (userLike)
@@ -128,8 +126,6 @@ app.put(
         [userId, postId],
         (err, results) => {
           if (err) {
-            console.log(err);
-
             res.status(500).send("Erreur lors de la sauvegarde du like");
           } else {
             res.sendStatus(201);
@@ -142,7 +138,6 @@ app.put(
         [userId, postId],
         (err, results) => {
           if (err) {
-            console.log(err);
             res.status(500).send("Erreur lors de la suppression du message");
           } else {
             res.sendStatus(201);
