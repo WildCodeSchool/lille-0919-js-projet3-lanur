@@ -94,7 +94,7 @@ app.get("/api/user/posts/:id/:offset", (req, res) => {
 // FIL-ACTU || GET & POST
 app.get("/api/posts/:limit", (req, res) => {
   db.query(
-    "SELECT post.id, circle_id, user_id, user_id_team, game_id, message, date, image_url, user.avatar AS user_avatar from post JOIN user on user_id=user.id ORDER BY id DESC LIMIT 10 OFFSET ?  ",
+    "SELECT id, circle_id, user_id, user_id_team, game_id, message, date, image_url from post ORDER BY id DESC LIMIT 10 OFFSET ?  ",
     [Number(req.params.limit)],
     (err, results) => {
       if (err) {
@@ -114,6 +114,21 @@ app.get("/api/gamelist/", (req, res) => {
       res.status(200).json(results);
     }
   });
+});
+
+app.get("/api/gamelist/:id", (req, res) => {
+  const game = req.params.id;
+  db.query(
+    "SELECT * from game WHERE twitch_game_id = ?",
+    [game],
+    (err, results) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  );
 });
 
 app.post("/api/postimg", upload.single("file"), (req, res) => {
