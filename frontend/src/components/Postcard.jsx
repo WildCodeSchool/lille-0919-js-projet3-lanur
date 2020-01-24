@@ -4,7 +4,7 @@ import "./style/postcard.scss";
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
 import { Image, CloudinaryContext } from "cloudinary-react";
-import Axios from "axios";
+import axios from "axios";
 import { backend } from "../conf.js";
 import { toast } from "react-toastify";
 
@@ -29,7 +29,7 @@ function Postcard(props) {
   }, [props.statuslike]);
 
   const handleLike = (like) => {
-    Axios.put(`${backend}/api/posts/${props.id}/like`, {
+    axios.put(`${backend}/api/posts/${props.id}/like`, {
       userLike: like ? 1 : 0
     });
   };
