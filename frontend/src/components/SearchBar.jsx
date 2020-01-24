@@ -3,7 +3,7 @@ import "./style/SearchBar.scss";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { backend } from "../conf.js";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function SearchBar(props) {
   const history = useHistory();
@@ -15,17 +15,13 @@ function SearchBar(props) {
       .get(`${backend}/api/search/users/?pseudo=${search}`)
       .then(function(response) {
         dispatch({ type: "SEARCH", value: response.data });
-        console.log(search);
-        console.log(response.data);
       })
       .then(() => {
-        console.log("history");
         history.push("/search");
       });
   };
 
   const change = e => {
-    console.log(search);
     setSearch(e.target.value);
   };
   return (

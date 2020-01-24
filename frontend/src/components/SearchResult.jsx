@@ -2,7 +2,7 @@ import React from "react";
 import "./style/SearchResults.scss";
 import { useHistory } from "react-router-dom";
 import { Image, CloudinaryContext } from "cloudinary-react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function SearchResult() {
