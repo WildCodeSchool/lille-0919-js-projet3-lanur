@@ -9,8 +9,8 @@ import NewsFeed from "./components/NewsFeed";
 import ContainerEditProfile from "./components/EditProfile/ContainerEditProfile";
 
 function App() {
-  const jwt = useSelector(state => state.jwt);
-  const checkJWT = component => (jwt ? component : <Redirect to="/signin" />);
+  const jwt = useSelector((state) => state.jwt);
+  const checkJWT = (component) => (jwt ? component : <Redirect to="/signin" />);
   return (
     <div className="App">
       <NavBar />
@@ -19,7 +19,10 @@ function App() {
         <Route exact path="/signin" component={SignIn} />
         <Route path="/signin/form" component={Form} />
         <Route path="/newsfeed" render={() => checkJWT(<NewsFeed />)} />
-        <Route path="/editprofile" component={ContainerEditProfile} />
+        <Route
+          path="/editprofile"
+          render={() => checkJWT(<ContainerEditProfile />)}
+        />
       </Switch>
     </div>
   );
