@@ -28,7 +28,6 @@ function NewsFeed() {
     if (offsetPosts === 0) {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(data);
-        console.log(data);
       });
     } else {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
