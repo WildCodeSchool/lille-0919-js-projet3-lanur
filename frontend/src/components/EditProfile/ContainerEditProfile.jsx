@@ -39,16 +39,16 @@ export default function ContainerEditProfile() {
     <div className="ContainerEditProfile">
       <ul>
         <li>
-          <Link to="/editprofile">Profile</Link>
+          <Link to="/editprofile">Profil</Link>
         </li>
         <li>
-          <Link to="/editprofile/role">Role</Link>
+          <Link to="/editprofile/role">Rôle</Link>
         </li>
         <li>
-          <Link to="/editprofile/links">Links</Link>
+          <Link to="/editprofile/links">Liens</Link>
         </li>
         <li>
-          <Link to="/editprofile/games">Games</Link>
+          <Link to="/editprofile/games">Jeux favoris</Link>
         </li>
       </ul>
 
