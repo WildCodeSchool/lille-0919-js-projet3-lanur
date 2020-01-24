@@ -99,7 +99,6 @@ app.post("/api/posts", (req, res) => {
   });
 });
 
-
 app.get("/api/comments/post/:id", (req, res) => {
   db.query(
     "SELECT comment.id, comment.user_id, comment.content, comment.post_id, user.pseudo, user.avatar from comment JOIN user on comment.user_id=user.id where comment.post_id = ? ",
@@ -123,7 +122,23 @@ app.post("/api/comments", (req, res) => {
       res.sendStatus(201);
     }
   });
-})
+});
+
+//team GET & POST
+app.get("/api/teams", (req, res) => {
+  const team = req.params.id;
+  db.query(
+    "SELECT name, image_team, description FROM team",
+    [team],
+    (err, results) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  );
+});
 
 app.listen(backendPort, err => {
   if (err) {
