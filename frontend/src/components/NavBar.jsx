@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./style/NavBar.scss";
 import SearchBar from "./SearchBar";
 
 function NavBar() {
   const [displayMenu, setDisplayMenu] = useState(false);
-
+  const user_id = useSelector(state => state.user_id);
   return (
     <nav className="main-NavBar">
       <h1>
@@ -54,9 +55,8 @@ function NavBar() {
             </div>
           ) : null}
         </li>
-
         <li>
-          <Link to="/EditProfile">
+          <Link to={`/userpage/${user_id}`}>
             <span className="FirstLetter">P</span>rofil
           </Link>
         </li>

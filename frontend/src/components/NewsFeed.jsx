@@ -11,16 +11,17 @@ import Filter from "./Filter";
 function NewsFeed() {
   const filters = useSelector(state => state.filters);
   const [posts, setPosts] = useState([]);
-  const offsetPosts = useSelector((state) => state.offsetPosts);
-  const reload = useSelector((state) => state.reload);
+  const [offsetPosts, setOffsetPosts] = useState(0);
+  const reload = useSelector(state => state.reload);
   const dispatch = useDispatch();
 
   window.onscroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop ===
-      document.documentElement.scrollHeight
+        document.documentElement.scrollHeight &&
+      posts.length >= 10
     ) {
-      dispatch({ type: "PLUS_TEN" });
+      setOffsetPosts(offsetPosts + 10);
     }
   };
 
@@ -62,6 +63,7 @@ function NewsFeed() {
                 game_id={post.game_id}
                 user_avatar={post.user_avatar}
                 id={post.id}
+                user_id={post.user_id}
                 nblike={post.nbLike}
                 statuslike={post.liked}
                 userPseudo={post.pseudo}
@@ -76,6 +78,7 @@ function NewsFeed() {
               game_id={post.game_id}
               user_avatar={post.user_avatar}
               id={post.id}
+              user_id={post.user_id}
               nblike={post.nbLike}
               statuslike={post.liked}
               userPseudo={post.pseudo}
