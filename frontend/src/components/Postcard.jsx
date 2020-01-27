@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import "./style/postcard.scss";
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
 import { Image, CloudinaryContext } from "cloudinary-react";
-import Axios from "axios";
+import axios from "axios";
 import { backend } from "../conf.js";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 function Postcard(props) {
+  const history = useHistory();
   const [like, setLike] = useState(false);
   const [nbLike, nbLikeUpdate] = useState(0);
   const [comment, setComment] = useState("");
@@ -28,7 +29,7 @@ function Postcard(props) {
   }, [props.statuslike]);
 
   const handleLike = (like) => {
-    Axios.put(`${backend}/api/posts/${props.id}/like`, {
+    axios.put(`${backend}/api/posts/${props.id}/like`, {
       userLike: like ? 1 : 0
     });
   };
@@ -57,20 +58,20 @@ function Postcard(props) {
 
   return (
     <div className="postContainer">
-      <ToastContainer
-        position={toast.POSITION.BOTTOM_LEFT}
-        hideProgressBar={true}
-      />
       <div className="post">
-        {/* section with avatar, game logo and Like counter */}
-        <div className="imgSection">
-          <div>
+        {/* section with avatar and game logo */}
+        <div className=" imgSection">
+          <div
+            onClick={() => {
+              history.push("/userpage/" + props.user_id);
+            }}
+          >
             {props.user_avatar ? (
               <CloudinaryContext cloudName="lanur">
                 <Image publicId={props.user_avatar} className="avatar" />
               </CloudinaryContext>
             ) : (
-              <img src="noob.jpg" className="avatar" />
+              <img src="/noob.jpg" className="avatar" />
             )}
           </div>
           {props.game_id > 0 ? (
