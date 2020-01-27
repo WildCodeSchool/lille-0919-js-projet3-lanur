@@ -15,6 +15,7 @@ import Axios from "axios";
 function App() {
   const jwt = useSelector(state => state.jwt);
   const checkJWT = component => (jwt ? component : <Redirect to="/signin" />);
+
   useEffect(() => {
     if (jwt) Axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;
   }, [jwt]);
