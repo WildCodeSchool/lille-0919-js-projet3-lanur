@@ -11,6 +11,7 @@ import NewsFeed from "./components/NewsFeed";
 import SearchResult from "./components/SearchResult";
 import UserPage from "./components/UserPage";
 import ContainerEditProfile from "./components/EditProfile/ContainerEditProfile";
+import Discover from "./components/Discover";
 import Axios from "axios";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/" component={Carousel} />
         <Route exact path="/signin" component={SignIn} />
         <Route path="/newsfeed" render={() => checkJWT(<NewsFeed />)} />
+        <Route path="/discover" component={Discover} />
         <Route path="/search" component={SearchResult} />
         <Route path="/userpage/:id" render={() => checkJWT(<UserPage />)} />
         <Route

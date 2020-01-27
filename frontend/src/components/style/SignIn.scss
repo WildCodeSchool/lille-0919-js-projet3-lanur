@@ -109,6 +109,20 @@
     }
     p {
       font-size: 1em;
+      text-decoration: none;
+    }
+    .discover {
+      text-align: center;
+      text-decoration: none;
+      color: white;
+    }
+    a {
+      text-decoration: none;
+    }
+    .discover:visited {
+      text-align: center;
+      text-decoration: none;
+      color: white;
     }
   }
 }
