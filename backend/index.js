@@ -135,6 +135,20 @@ app.get(
   }
 );
 
+//Récupérer le nombre total de post
+app.get("/api/totalposts", (req, res) => {
+  db.query(
+    "SELECT count(post.id) as totalpost from post",
+    (err, results) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  );
+});
+
 app.get("/api/gamelist/", (req, res) => {
   db.query("SELECT * from game", (err, results) => {
     if (err) {
