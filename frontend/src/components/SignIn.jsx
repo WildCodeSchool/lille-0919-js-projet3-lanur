@@ -5,6 +5,7 @@ import axios from "axios";
 import Form from "./Form";
 import "./style/SignIn.scss";
 import { backend } from "../conf";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   const history = useHistory();
@@ -87,7 +88,9 @@ const SignIn = () => {
           <button onClick={accountCreation} className="accountCreation">
             Créer un compte
           </button>
-          <p>Continuer sans créer de compte</p>
+          <Link to="/Discover">
+            <p className="discover">Continuer sans créer de compte</p>
+          </Link>
         </div>
       </div>
     </div>

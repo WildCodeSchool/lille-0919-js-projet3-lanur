@@ -12,7 +12,7 @@
   font-style: normal;
   font-weight: 800;
   color: white;
-  margin-top: 8vh;
+  margin-top: 4vh;
   span {
     color: $mainColor;
   }
@@ -109,6 +109,20 @@
     }
     p {
       font-size: 1em;
+      text-decoration: none;
+    }
+    .discover {
+      text-align: center;
+      text-decoration: none;
+      color: white;
+    }
+    a {
+      text-decoration: none;
+    }
+    .discover:visited {
+      text-align: center;
+      text-decoration: none;
+      color: white;
     }
   }
 }

@@ -8,15 +8,18 @@ import NavBar from "./components/NavBar";
 import Carousel from "./components/Carousel";
 import SignIn from "./components/SignIn";
 import NewsFeed from "./components/NewsFeed";
+import SearchResult from "./components/SearchResult";
 import UserPage from "./components/UserPage";
 import ContainerEditProfile from "./components/EditProfile/ContainerEditProfile";
 import Teams from "./components/Teams";
 import axios from "axios";
+import Discover from "./components/Discover";
 
 
 function App() {
   const jwt = useSelector(state => state.jwt);
   const checkJWT = component => (jwt ? component : <Redirect to="/signin" />);
+
   useEffect(() => {
     if (jwt) axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;
   }, [jwt]);
@@ -28,7 +31,9 @@ function App() {
         <Route exact path="/" component={Carousel} />
         <Route exact path="/signin" component={SignIn} />
         <Route path="/newsfeed" render={() => checkJWT(<NewsFeed />)} />
+        <Route path="/discover" component={Discover} />
         <Route path="/teams" component={Teams} />
+        <Route path="/search" component={SearchResult} />
         <Route path="/userpage/:id" render={() => checkJWT(<UserPage />)} />
         <Route
           path="/editprofile"

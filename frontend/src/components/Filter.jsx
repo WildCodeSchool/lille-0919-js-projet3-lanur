@@ -8,12 +8,17 @@ function Filter() {
   const dispatch = useDispatch();
   const [gamelist, setGamelist] = useState([]);
   const filters = useSelector(state => state.filters);
+  const [filterDisplay, setFilterDisplay] = useState(false);
 
   useEffect(() => {
     axios.get(`${backend}/api/gamelist/`).then(({ data }) => {
       setGamelist(data);
     });
   }, []);
+
+  const displayFilter = () => {
+    setFilterDisplay(!filterDisplay);
+  };
 
   const insertValue = e => {
     if (e.target.checked) {
@@ -31,20 +36,26 @@ function Filter() {
 
   return (
     <div className="filtercontainer">
-      <form>
-        {gamelist.map(game => (
-          <div>
-            <input
-              id={game.id}
-              type="checkbox"
-              onChange={e => {
-                insertValue(e);
-              }}
-            />
-            <label for={game.id}>{game.name}</label>
-          </div>
-        ))}
-      </form>
+      <div className="filterButton" onClick={() => displayFilter()}>
+        <p>Filtrer les posts</p>
+        <div className="filterPlus">{filterDisplay ? "-" : "+"}</div>
+      </div>
+      {filterDisplay ? (
+        <form className="filter">
+          {gamelist.map(game => (
+            <div>
+              <input
+                id={game.id}
+                type="checkbox"
+                onChange={e => {
+                  insertValue(e);
+                }}
+              />
+              <label for={game.id}>{game.name}</label>
+            </div>
+          ))}
+        </form>
+      ) : null}
     </div>
   );
 }
