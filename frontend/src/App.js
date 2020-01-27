@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 import Carousel from "./components/Carousel";
 import SignIn from "./components/SignIn";
 import NewsFeed from "./components/NewsFeed";
+import SearchResult from "./components/SearchResult";
 import UserPage from "./components/UserPage";
 import ContainerEditProfile from "./components/EditProfile/ContainerEditProfile";
 import Axios from "axios";
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/" component={Carousel} />
         <Route exact path="/signin" component={SignIn} />
         <Route path="/newsfeed" render={() => checkJWT(<NewsFeed />)} />
+        <Route path="/search" component={SearchResult} />
         <Route path="/userpage/:id" render={() => checkJWT(<UserPage />)} />
         <Route
           path="/editprofile"

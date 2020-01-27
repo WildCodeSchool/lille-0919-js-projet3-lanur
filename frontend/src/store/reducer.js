@@ -4,6 +4,7 @@ const initialState = {
   reload: 0,
   filters: [],
   user_id: null,
+  searchResults: [],
   tags: [],
   user_avatar: null,
   user_pseudo: null,
@@ -54,6 +55,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         filters: action.value
+      };  
+    case "SEARCH":
+      return {
+           ...state,
+           searchResults: action.value
       }; 
     case "DISCONNECT":
     return {

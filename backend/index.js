@@ -37,6 +37,21 @@ app.get("/api/users", (req, res) => {
   );
 });
 
+
+app.get("/api/search/users/", (req, res) => {
+  const request = req.query.pseudo;
+  db.query(
+    'SELECT id, pseudo, avatar AS user_avatar, team_id from user where pseudo like concat("%"?"%")', request,
+    (err, results) => {
+      if (err) {
+        res.status(500).send("Erreur lors de la récupération des données");
+        } else {
+        res.status(200).json(results);
+      }
+    }
+  );
+});
+
 app.put(
   "/api/user/",
   passport.authenticate("jwt", { session: false }),
@@ -140,8 +155,6 @@ app.get("/api/gamelist/", (req, res) => {
       res.status(500).send(err);
     } else {
       res.status(200).json(results);
-
-
     }
   });
 });
@@ -157,7 +170,6 @@ app.get("/api/gamelist/:id", (req, res) => {
       } else {
         res.status(200).json(results);
       }
-
     }
   });
 });

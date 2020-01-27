@@ -3,6 +3,7 @@ import { useDispatch, useSelector  } from "react-redux";
 import { scaleDown as MenuBurger } from "react-burger-menu";
 import { Link } from "react-router-dom";
 import "./style/NavBar.scss";
+import SearchBar from "./SearchBar";
 import "./style/Burger.scss";
 
 function NavBar() {
