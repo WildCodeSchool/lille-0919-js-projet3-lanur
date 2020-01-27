@@ -134,6 +134,16 @@
         text-align: justify;
         overflow-wrap: break-word;
       }
+      .tag {
+        padding: 5%;
+        box-sizing: border-box;
+        min-height: 2.375em;
+        overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        font-size: 1rem;
+      }
     }
   }
   .reaction {
@@ -236,4 +246,14 @@
 
 .wpi {
   border: dashed green;
+}
+
+.react-tag-input__tag {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 0.85em;
+  line-height: 1;
+  background: #e1e1e1;
+  border-radius: 3px;
 }
