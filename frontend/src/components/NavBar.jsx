@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector  } from "react-redux";
 import { scaleDown as MenuBurger } from "react-burger-menu";
 import { Link } from "react-router-dom";
 import "./style/NavBar.scss";
@@ -10,6 +10,7 @@ function NavBar() {
   const [paramsMenu, setParamsMenu] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
   const dispatch = useDispatch();
+  const user_id = useSelector(state => state.user_id);
   return (
     <nav className="main-NavBar">
       <h1 onClick={() => setBurgerMenu(false)}>
@@ -72,7 +73,7 @@ function NavBar() {
           {paramsMenu ? (
             <div className="dropDownParamsMenu">
               <li>
-                <Link to="/EditProfile">
+                <Link to={`/userpage/${user_id}`}>
                   <span className="FirstLetter">P</span>rofil
                 </Link>
               </li>
@@ -106,11 +107,8 @@ function NavBar() {
               </Link>
             </li>
             <li>
-              <Link
-                to="/EditProfile"
-                onClick={() => setBurgerMenu(!burgerMenu)}
-              >
-                Profil
+              <Link to={`/userpage/${user_id}`}>
+                <span className="FirstLetter">P</span>rofil
               </Link>
             </li>
             <li onClick={() => dispatch({ type: "DISCONNECT" })}>

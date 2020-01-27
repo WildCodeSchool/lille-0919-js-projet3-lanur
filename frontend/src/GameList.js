@@ -74,10 +74,6 @@ const GameList = [
   {
     name: "Rocket League",
     picture: "/pictures/rocket_league.png"
-  },
-  {
-    name: "",
-    picture: ""
   }
 ];
 
