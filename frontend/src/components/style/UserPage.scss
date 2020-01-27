@@ -1,0 +1,54 @@
+@import "./variables";
+
+.userProfile {
+  height: 92vh;
+  margin-top: 8vh;
+  color: white;
+  background-color: rgba($color: #222222, $alpha: 0.6);
+  font-family: $mainFontFamily;
+  h1 {
+    text-align: center;
+    padding: 2vh 0;
+    font-size: 3em;
+  }
+
+  .profile {
+    display: flex;
+    justify-items: right;
+    .avatar {
+      display: flex;
+      justify-content: center;
+      flex-flow: column;
+      float: left;
+      margin: 0.5vh 3vw;
+      height: 30vh;
+      width: 15vw;
+
+      img {
+        margin: auto;
+        width: 250px;
+        border: 4px solid purple;
+        border-radius: 15px;
+      }
+      button {
+        width: 5vw;
+        height: 3vh;
+        font-size: larger;
+        text-align: center;
+        border-radius: 12px;
+        transition-duration: 0.4s;
+      }
+      button:hover {
+        background-color: $mainColor;
+        color: white;
+      }
+    }
+    .info {
+      p {
+        font-size: 1.5em;
+        margin-bottom: 1vh;
+      }
+      margin: auto 5vw;
+    }
+  }
+}
