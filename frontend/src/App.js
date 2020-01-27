@@ -29,7 +29,6 @@ function App() {
         <Route exact path="/" component={Carousel} />
         <Route exact path="/signin" component={SignIn} />
         <Route path="/newsfeed" render={() => checkJWT(<NewsFeed />)} />
-        <Route path="/editprofile" component={ContainerEditProfile} />
         <Route path="/discover" component={Discover} />
         <Route path="/search" component={SearchResult} />
         <Route path="/userpage/:id" render={() => checkJWT(<UserPage />)} />
