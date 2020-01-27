@@ -1,44 +1,52 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector  } from "react-redux";
+import { scaleDown as MenuBurger } from "react-burger-menu";
 import { Link } from "react-router-dom";
 import "./style/NavBar.scss";
+import SearchBar from "./SearchBar";
+import "./style/Burger.scss";
 
 function NavBar() {
   const [displayMenu, setDisplayMenu] = useState(false);
+  const [paramsMenu, setParamsMenu] = useState(false);
+  const [burgerMenu, setBurgerMenu] = useState(false);
+  const dispatch = useDispatch();
   const user_id = useSelector(state => state.user_id);
   return (
     <nav className="main-NavBar">
-      <h1>
-        <a href="#">
+      <h1 onClick={() => setBurgerMenu(false)}>
+        <Link to="/newsfeed">
           <span className="Lan">LAN'</span>U.R
-        </a>
+        </Link>
       </h1>
+
       <ul>
-        <li>
-          <a href="#">
+        <li onClick={() => setDisplayMenu(!displayMenu)}>
+          <Link to="/newsfeed">
             <span className="FirstLetter">A</span>ctus
-          </a>
+          </Link>
         </li>
         <li>
           <a href="#">
             <span className="FirstLetter">T</span>eams
           </a>
         </li>
-        <li onClick={() => setDisplayMenu(!displayMenu)}>
-          <a href="#">
-            <span className="FirstLetter">É</span>vènements
-            {displayMenu ? (
-              <img
-                className="triangle"
-                src="../images/Black_triangle_rotated.svg"
-              ></img>
-            ) : (
-              <img
-                className="triangle"
-                src="../images/Black_triangle.svg"
-              ></img>
-            )}
-          </a>
+        <li
+          className="dropDown"
+          onClick={() => {
+            setDisplayMenu(!displayMenu);
+            setParamsMenu(false);
+          }}
+        >
+          <span className="FirstLetter">É</span>vènements
+          {displayMenu ? (
+            <img
+              className="triangle"
+              src="../images/Black_triangle_rotated.svg"
+            ></img>
+          ) : (
+            <img className="triangle" src="../images/Black_triangle.svg"></img>
+          )}
           {displayMenu ? (
             <div className="dropDownMenu">
               <li>
@@ -54,12 +62,62 @@ function NavBar() {
             </div>
           ) : null}
         </li>
-        <li>
-          <Link to={`/userpage/${user_id}`}>
-            <span className="FirstLetter">P</span>rofil
-          </Link>
+        <li
+          onClick={() => {
+            setParamsMenu(!paramsMenu);
+            setDisplayMenu(false);
+          }}
+        >
+          <button>
+            <img className="gearIcon" src="../images/gear_logo2.png"></img>
+          </button>
+          {paramsMenu ? (
+            <div className="dropDownParamsMenu">
+              <li>
+                <Link to={`/userpage/${user_id}`}>
+                  <span className="FirstLetter">P</span>rofil
+                </Link>
+              </li>
+              <li onClick={() => dispatch({ type: "DISCONNECT" })}>
+                <span className="FirstLetter">D</span>éconnection
+              </li>
+            </div>
+          ) : null}
         </li>
       </ul>
+      <div onClick={() => setBurgerMenu(!burgerMenu)}>
+        <MenuBurger
+          width={"100%"}
+          isOpen={burgerMenu ? false : true}
+          id="MenuBurger"
+        >
+          <ul>
+            <li>
+              <Link to="/newsfeed" onClick={() => setBurgerMenu(!burgerMenu)}>
+                Actus
+              </Link>
+            </li>
+            <li>
+              <Link to="/" onClick={() => setBurgerMenu(!burgerMenu)}>
+                Teams
+              </Link>
+            </li>
+            <li>
+              <Link to="/" onClick={() => setBurgerMenu(!burgerMenu)}>
+                Évènements
+              </Link>
+            </li>
+            <li>
+              <Link to={`/userpage/${user_id}`}>
+                <span className="FirstLetter">P</span>rofil
+              </Link>
+            </li>
+            <li onClick={() => dispatch({ type: "DISCONNECT" })}>
+              Déconnection
+            </li>
+          </ul>
+        </MenuBurger>
+      </div>
     </nav>
   );
 }

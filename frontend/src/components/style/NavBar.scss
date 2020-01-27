@@ -3,11 +3,12 @@
 .main-NavBar {
   font-family: "Sansation";
   background-color: rgb(253, 253, 253);
-  height: 8vh;
+  height: 54px;
   display: flex;
   flex-direction: row;
   align-items: center;
   position: fixed;
+  justify-content: space-between;
   left: 0;
   top: 0;
   width: 100%;
@@ -28,27 +29,46 @@
     }
   }
   ul {
-    position: fixed;
     display: flex;
     justify-content: flex-end;
-    width: 90%;
+    width: 100%;
     .dropDownMenu {
-      margin-top: 4px;
-      padding-left: 8px;
+      margin-top: 110px;
+      padding: 4px;
       background-color: white;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       position: absolute;
       width: 130px;
-      height: 60px;
+      height: 70px;
+    }
+    .dropDownParamsMenu {
+      margin-top: 0px;
+      right: 0px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      position: absolute;
+      width: 150px;
+      height: 70px;
+      padding: 4px;
+    }
+    .dropDown {
+      display: flex;
+      margin-bottom: 3px;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
     }
     li {
       margin-right: 30px;
       font-size: 22px;
       font-weight: 200;
       text-decoration: none;
-
+      cursor: pointer;
       a {
         position: relative;
         display: block;
@@ -88,9 +108,26 @@
         width: 10px;
         margin-left: 2px;
       }
+      button {
+        background: none;
+        .gearIcon {
+          width: 26px;
+          height: 26px;
+          cursor: pointer;
+          background: none;
+        }
+      }
     }
     .FirstLetter {
       color: $mainColor;
+    }
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .main-NavBar {
+    ul {
+      display: none;
     }
   }
 }
