@@ -14,11 +14,14 @@ function NewsFeed() {
   const [offsetPosts, setOffsetPosts] = useState(0);
   const reload = useSelector(state => state.reload);
   const dispatch = useDispatch();
+  const filterResult = posts.filter(post => filters.includes(post.game_id));
+  const [totalPosts, setTotalPosts] = useState(null);
 
   window.onscroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.scrollHeight &&
+      totalPosts >= offsetPosts &&
       posts.length >= 10
     ) {
       setOffsetPosts(offsetPosts + 10);
@@ -26,11 +29,26 @@ function NewsFeed() {
   };
 
   useEffect(() => {
+    if (!totalPosts) {
+      axios.get(`${backend}/api/totalposts`).then(({ data }) => {
+        setTotalPosts(data[0].totalpost);
+      });
+    }
     if (offsetPosts === 0) {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(data);
+        dispatch({ type: "PLUS_TEN" });
       });
-    } else {
+    } else if (
+      filterResult.length < 10 &&
+      filters.length > 0 &&
+      totalPosts >= offsetPosts
+    ) {
+      axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
+        setPosts(posts.concat(data));
+        dispatch({ type: "PLUS_TEN" });
+      });
+    } else if (totalPosts >= offsetPosts) {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(posts.concat(data));
       });
@@ -84,6 +102,11 @@ function NewsFeed() {
               userPseudo={post.pseudo}
             />
           ))}
+      {offsetPosts >= totalPosts ? (
+        <div className="endPageContainer">
+          <div className="endPage">Pas de posts à afficher"</div>
+        </div>
+      ) : null}
       <LiveContainer />
     </div>
   );
