@@ -54,7 +54,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         filters: action.value
-      };  
+      }; 
+    case "DISCONNECT":
+    return {
+      ...state,
+      jwt: null
+    };
     default:
       return newState;
   }
