@@ -27,9 +27,9 @@ function NavBar() {
           </Link>
         </li>
         <li>
-          <a href="#">
+          <Link to="/teams">
             <span className="FirstLetter">T</span>eams
-          </a>
+          </Link>
         </li>
         <li
           className="dropDown"

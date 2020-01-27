@@ -11,15 +11,17 @@ import NewsFeed from "./components/NewsFeed";
 import SearchResult from "./components/SearchResult";
 import UserPage from "./components/UserPage";
 import ContainerEditProfile from "./components/EditProfile/ContainerEditProfile";
+import Teams from "./components/Teams";
+import axios from "axios";
 import Discover from "./components/Discover";
-import Axios from "axios";
+
 
 function App() {
   const jwt = useSelector(state => state.jwt);
   const checkJWT = component => (jwt ? component : <Redirect to="/signin" />);
 
   useEffect(() => {
-    if (jwt) Axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;
+    if (jwt) axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;
   }, [jwt]);
 
   return (
@@ -30,6 +32,7 @@ function App() {
         <Route exact path="/signin" component={SignIn} />
         <Route path="/newsfeed" render={() => checkJWT(<NewsFeed />)} />
         <Route path="/discover" component={Discover} />
+        <Route path="/teams" component={Teams} />
         <Route path="/search" component={SearchResult} />
         <Route path="/userpage/:id" render={() => checkJWT(<UserPage />)} />
         <Route
