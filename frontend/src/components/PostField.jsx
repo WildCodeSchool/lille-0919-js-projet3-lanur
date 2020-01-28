@@ -88,6 +88,7 @@ function PostField() {
         <div className="avatar">
           <img
             className="avatarImg"
+            alt="avatar"
             src="https://pickaface.net/gallery/avatar/unr_fake_180910_2220_9vd5qy.png"
           ></img>
         </div>
@@ -125,7 +126,7 @@ function PostField() {
       </div>
       {message || imagePreviewUrl || game_id !== "noGame" || tags.length ? (
         <div className="preview-container">
-          <div className="preview">Aperçu de votre post:</div>
+          <div className="preview">Aperçu de ton post:</div>
           <Postcard
             image_preview_url={imagePreviewUrl}
             message={message}

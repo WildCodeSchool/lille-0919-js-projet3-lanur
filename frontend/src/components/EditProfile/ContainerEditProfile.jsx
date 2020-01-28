@@ -66,7 +66,7 @@ export default function ContainerEditProfile() {
         </Route>
       </Switch>
       <div className="submit">
-        <button onClick={onSubmit}>Submit your modifications</button>
+        <button onClick={onSubmit}>Valides tes modifications</button>
       </div>
     </div>
   );
