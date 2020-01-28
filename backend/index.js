@@ -37,15 +37,15 @@ app.get("/api/users", (req, res) => {
   );
 });
 
-
 app.get("/api/search/users/", (req, res) => {
   const request = req.query.pseudo;
   db.query(
-    'SELECT id, pseudo, avatar AS user_avatar, team_id from user where pseudo like concat("%"?"%")', request,
+    'SELECT id, pseudo, avatar AS user_avatar, team_id from user where pseudo like concat("%"?"%")',
+    request,
     (err, results) => {
       if (err) {
         res.status(500).send("Erreur lors de la récupération des données");
-        } else {
+      } else {
         res.status(200).json(results);
       }
     }
@@ -137,16 +137,13 @@ app.get(
 
 //Récupérer le nombre total de post
 app.get("/api/totalposts", (req, res) => {
-  db.query(
-    "SELECT count(post.id) as totalpost from post",
-    (err, results) => {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.status(200).json(results);
-      }
+  db.query("SELECT count(post.id) as totalpost from post", (err, results) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).json(results);
     }
-  );
+  });
 });
 
 app.get("/api/gamelist/", (req, res) => {
@@ -171,12 +168,12 @@ app.get("/api/gamelist/:id", (req, res) => {
         res.status(200).json(results);
       }
     }
-  });
+  );
 });
 
 app.post("/api/postimg", upload.single("file"), (req, res) => {
   const formData = req.file;
-  cloudinary.v2.uploader.upload(formData.path, function (err, result) {
+  cloudinary.v2.uploader.upload(formData.path, function(err, result) {
     if (err) {
       res.status(500).send("Erreur lors de la sauvegarde de l'image");
     } else {

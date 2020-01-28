@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
-import "../style/EditProfileStyles/EditRole.scss";
-import axios from "axios";
-import { backend } from "../../conf.js";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import "../style/EditProfileStyles/EditRole.scss";
 
 const Role = () => {
   const user = useSelector(state => state.user);
-  const user_id = useSelector(state => state.user_id);
   const dispatch = useDispatch();
 
   return (

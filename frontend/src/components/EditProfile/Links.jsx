@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
-import "../style/EditProfileStyles/EditLinks.scss";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
-import { backend } from "../../conf.js";
+import "../style/EditProfileStyles/EditLinks.scss";
 
 const Links = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
-  const user_id = useSelector(state => state.user_id);
 
   return (
     <form>

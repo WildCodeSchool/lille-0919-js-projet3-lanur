@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import { useDispatch } from "react-redux";
 import ReactTagInput from "@pathofdev/react-tag-input";
+import { toast } from "react-toastify";
 import "@pathofdev/react-tag-input/build/index.css";
 import "./style/Tag.scss";
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-
 
 function Tag() {
   const [tags, setTags] = useState([]);

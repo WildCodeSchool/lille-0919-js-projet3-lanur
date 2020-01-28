@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "./components/style/ToastContainer.scss";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import axios from "axios";
 import NavBar from "./components/NavBar";
 import Carousel from "./components/Carousel";
 import SignIn from "./components/SignIn";
@@ -12,9 +11,9 @@ import SearchResult from "./components/SearchResult";
 import UserPage from "./components/UserPage";
 import ContainerEditProfile from "./components/EditProfile/ContainerEditProfile";
 import Teams from "./components/Teams";
-import axios from "axios";
 import Discover from "./components/Discover";
-
+import "react-toastify/dist/ReactToastify.css";
+import "./components/style/ToastContainer.scss";
 
 function App() {
   const jwt = useSelector(state => state.jwt);

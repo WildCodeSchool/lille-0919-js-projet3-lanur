@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector  } from "react-redux";
-import { scaleDown as MenuBurger } from "react-burger-menu";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { scaleDown as MenuBurger } from "react-burger-menu";
 import "./style/NavBar.scss";
-import SearchBar from "./SearchBar";
 import "./style/Burger.scss";
 
 function NavBar() {
