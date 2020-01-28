@@ -147,9 +147,23 @@
       font-size: 2em;
       li {
         margin-bottom: 1em;
-        .searchBurger {
-          height: 2em;
-          width: 100%;
+        form {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          height: 4em;
+          .searchInput {
+            height: 2em;
+            margin-bottom: 0.5em;
+            width: 100%;
+            font-size: 0.4em;
+          }
+          .launchSearch {
+            width: 50%;
+            margin: auto;
+            margin-top: 0;
+            font-size: 0.4em;
+          }
         }
       }
     }

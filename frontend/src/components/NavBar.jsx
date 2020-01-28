@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { scaleDown as MenuBurger } from "react-burger-menu";
 import "./style/NavBar.scss";
 import "./style/Burger.scss";
-import SearchBar from "./SearchBar";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { backend } from "../conf.js";
 
 function NavBar() {
   const [displayMenu, setDisplayMenu] = useState(false);
@@ -13,6 +15,28 @@ function NavBar() {
   const [burgerMenu, setBurgerMenu] = useState(false);
   const dispatch = useDispatch();
   const user_id = useSelector(state => state.user_id);
+  const history = useHistory();
+  const [search, setSearch] = useState("");
+  const handleSubmit = e => {
+    e.preventDefault();
+    axios
+      .get(`${backend}/api/search/users/?pseudo=${search}`)
+      .then(function(response) {
+        dispatch({ type: "SEARCH", value: response.data });
+      })
+      .then(() => {
+        setBurgerMenu(false);
+        history.push("/search");
+      })
+      .catch(() => {
+        setBurgerMenu(false);
+        history.push("/search");
+      });
+  };
+
+  const change = e => {
+    setSearch(e.target.value);
+  };
   return (
     <nav className="main-NavBar">
       <h1 onClick={() => setBurgerMenu(false)}>
@@ -25,7 +49,14 @@ function NavBar() {
         <li className="search">
           {displaySearchBar ? (
             <div className="searchbar">
-              <SearchBar />
+              <form className="formSearchBar" onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  placeholder="Cherche un utilisateur avec son pseudo"
+                  value={search}
+                  onChange={e => change(e)}
+                />
+              </form>
             </div>
           ) : null}
           <img
@@ -34,7 +65,7 @@ function NavBar() {
             onClick={() => setDisplaySearchBar(!displaySearchBar)}
           />
         </li>
-        <li onClick={() => setDisplayMenu(!displayMenu)}>
+        <li>
           <Link to="/newsfeed">
             <span className="FirstLetter">A</span>ctus
           </Link>
@@ -132,8 +163,21 @@ function NavBar() {
             <li>
               <Link to={`/userpage/${user_id}`}>Profil</Link>
             </li>
-            <li className="searchBurger">
-              <SearchBar />
+            <li>
+              <form onSubmit={handleSubmit}>
+                <input
+                  className="searchInput"
+                  type="text"
+                  placeholder="Cherche un utilisateur avec son pseudo"
+                  value={search}
+                  onChange={e => change(e)}
+                />
+                <input
+                  className="launchSearch"
+                  type="submit"
+                  value="rechercher"
+                />
+              </form>
             </li>
             <li onClick={() => dispatch({ type: "DISCONNECT" })}>
               Déconnexion
