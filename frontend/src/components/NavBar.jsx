@@ -10,7 +10,7 @@ function NavBar() {
   const [paramsMenu, setParamsMenu] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
   const dispatch = useDispatch();
-  const user_id = useSelector(state => state.user_id);
+  const user_id = useSelector((state) => state.user_id);
   return (
     <nav className="main-NavBar">
       <h1 onClick={() => setBurgerMenu(false)}>
@@ -20,7 +20,7 @@ function NavBar() {
       </h1>
 
       <ul>
-        <li onClick={() => setDisplayMenu(!displayMenu)}>
+        <li>
           <Link to="/newsfeed">
             <span className="FirstLetter">A</span>ctus
           </Link>
@@ -97,7 +97,7 @@ function NavBar() {
               </Link>
             </li>
             <li>
-              <Link to="/" onClick={() => setBurgerMenu(!burgerMenu)}>
+              <Link to="/teams" onClick={() => setBurgerMenu(!burgerMenu)}>
                 Teams
               </Link>
             </li>
@@ -107,12 +107,10 @@ function NavBar() {
               </Link>
             </li>
             <li>
-              <Link to={`/userpage/${user_id}`}>
-                <span className="FirstLetter">P</span>rofil
-              </Link>
+              <Link to={`/userpage/${user_id}`}>Profil</Link>
             </li>
             <li onClick={() => dispatch({ type: "DISCONNECT" })}>
-              Déconnection
+              Déconnexion
             </li>
           </ul>
         </MenuBurger>
