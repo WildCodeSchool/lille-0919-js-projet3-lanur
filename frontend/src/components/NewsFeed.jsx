@@ -57,25 +57,30 @@ function NewsFeed() {
 
   return (
     <div className="main-NewsFeed">
-      <PostField />
-      {posts.map(post => (
-        <Postcard
-          message={post.message}
-          tags={post.tags ? "#" + post.tags.split(" ").join(" #") : null}
-          date={post.date}
-          image_url={post.image_url}
-          game_id={post.game_id}
-          user_avatar={post.user_avatar}
-          id={post.id}
-        />
-      ))}
-      <Filter />
-      {filters.length > 0
-        ? posts
-            .filter(post => filters.includes(post.game_id))
-            .map(post => (
+      <div className="feed">
+        <PostField />
+        <Filter />
+        {filters.length > 0
+          ? posts
+              .filter(post => filters.includes(post.game_id))
+              .map(post => (
+                <Postcard
+                  message={post.message}
+                  date={post.date}
+                  image_url={post.image_url}
+                  game_id={post.game_id}
+                  user_avatar={post.user_avatar}
+                  id={post.id}
+                  user_id={post.user_id}
+                  nblike={post.nbLike}
+                  statuslike={post.liked}
+                  userPseudo={post.pseudo}
+                />
+              ))
+          : posts.map(post => (
               <Postcard
                 message={post.message}
+                tags={post.tags ? "#" + post.tags.split(" ").join(" #") : null}
                 date={post.date}
                 image_url={post.image_url}
                 game_id={post.game_id}
@@ -86,27 +91,13 @@ function NewsFeed() {
                 statuslike={post.liked}
                 userPseudo={post.pseudo}
               />
-            ))
-        : posts.map(post => (
-            <Postcard
-              message={post.message}
-              tags={post.tags ? "#" + post.tags.split(" ").join(" #") : null}
-              date={post.date}
-              image_url={post.image_url}
-              game_id={post.game_id}
-              user_avatar={post.user_avatar}
-              id={post.id}
-              user_id={post.user_id}
-              nblike={post.nbLike}
-              statuslike={post.liked}
-              userPseudo={post.pseudo}
-            />
-          ))}
-      {offsetPosts >= totalPosts ? (
-        <div className="endPageContainer">
-          <div className="endPage">Pas de posts à afficher"</div>
-        </div>
-      ) : null}
+            ))}
+        {offsetPosts >= totalPosts ? (
+          <div className="endPageContainer">
+            <div className="endPage">Pas de posts à afficher"</div>
+          </div>
+        ) : null}
+      </div>
       <LiveContainer />
     </div>
   );
