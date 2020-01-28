@@ -80,7 +80,7 @@ function Form() {
             )}
             {page === 2 ? (
               <button className="validate" onClick={handleSubmit}>
-                Valider!
+                Valider !
               </button>
             ) : (
               ""
@@ -89,7 +89,7 @@ function Form() {
           {page === 1 ? (
             <div className="page1">
               <div className="introText">
-                On a besoin de quelques infos pour démarrer:
+                Nous avons besoin de quelques infos pour démarrer :
               </div>
               <div>
                 {/* Pseudo -------------------------------------------------------------------------------------------- */}
