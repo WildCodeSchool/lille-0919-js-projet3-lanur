@@ -43,6 +43,16 @@
       width: 130px;
       height: 70px;
     }
+    #search {
+      display: flex;
+      flex-direction: row;
+      max-height: 32px;
+      .toggleSearch {
+        width: 0.7em;
+        margin-left: 20px;
+      }
+    }
+
     .dropDownParamsMenu {
       margin-top: 0px;
       right: 0px;

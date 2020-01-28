@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { scaleDown as MenuBurger } from "react-burger-menu";
 import "./style/NavBar.scss";
 import "./style/Burger.scss";
+import SearchBar from "./SearchBar";
 
 function NavBar() {
   const [displayMenu, setDisplayMenu] = useState(false);
+  const [displaySearchBar, setDisplaySearchBar] = useState(false);
   const [paramsMenu, setParamsMenu] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
   const dispatch = useDispatch();
@@ -20,6 +22,18 @@ function NavBar() {
       </h1>
 
       <ul>
+        <li id="search">
+          {displaySearchBar ? (
+            <div className="searchbar">
+              <SearchBar />
+            </div>
+          ) : null}
+          <img
+            className="toggleSearch"
+            src="../images/loupe.svg"
+            onClick={() => setDisplaySearchBar(!displaySearchBar)}
+          />
+        </li>
         <li onClick={() => setDisplayMenu(!displayMenu)}>
           <Link to="/newsfeed">
             <span className="FirstLetter">A</span>ctus
