@@ -65,6 +65,7 @@ function NavBar() {
           <img
             className="toggleSearch"
             src="../images/loupe.svg"
+            alt="Search"
             onClick={() => setDisplaySearchBar(!displaySearchBar)}
           />
         </li>
