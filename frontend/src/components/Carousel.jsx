@@ -9,7 +9,7 @@ export default function Carousel() {
   const content = [
     {
       title: "Samuel N.",
-      role: "Player",
+      role: "Joueur",
       description:
         "Sur Lan'U.R , je peux suivre tous mes joueurs préférés et mieux comprendre le fonctionnement d'une team pro.",
       image:
@@ -17,7 +17,7 @@ export default function Carousel() {
     },
     {
       title: "John C.",
-      role: " Pro Player",
+      role: "Joueur Professionnel",
       description:
         "J'adore Lan'U.R!  Ce réseau me permet de rencontrer d'autres joueurs et de m'entraîner pour passer pro.",
       image:
@@ -33,7 +33,7 @@ export default function Carousel() {
     },
     {
       title: "Robert Valles",
-      role: "Community Manager",
+      role: "Manager de Team",
       description:
         "J'utilise Lan'U.R pour être au courant de tous les événements et les résultats des compétitions d'esport.",
       image:
