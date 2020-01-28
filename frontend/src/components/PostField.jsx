@@ -80,6 +80,7 @@ function PostField() {
         <div className="avatar">
           <img
             className="avatarImg"
+            alt="avatar"
             src="https://pickaface.net/gallery/avatar/unr_fake_180910_2220_9vd5qy.png"
           ></img>
         </div>
