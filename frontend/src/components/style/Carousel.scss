@@ -31,7 +31,7 @@
     padding-bottom: 2vh;
     font-size: 2em;
     font-weight: 900;
-    color: $mainColor;
+    color: white;
   }
 
   h3 {
@@ -72,9 +72,7 @@
   left: 40%;
   width: 20%;
   height: 2em;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 99;
+  margin: auto;
   display: flex;
   border-radius: 15px;
   background-color: $mainColor;
@@ -87,6 +85,6 @@
   cursor: pointer;
 }
 .passer:hover {
-  background-color: $mainColor;
+  background-color: white;
   color: $mainColor;
 }
