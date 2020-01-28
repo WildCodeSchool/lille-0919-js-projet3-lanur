@@ -9,7 +9,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./style/Tag.scss";
 
-
 function PostField() {
   const dispatch = useDispatch();
   const user_id = useSelector(state => state.user_id);
@@ -115,10 +114,7 @@ function PostField() {
           <button type="submit">Poster</button>
         </form>
       </div>
-      {message ||
-      imagePreviewUrl ||
-      tags ||
-      (game_id && game_id !== "noGame") ? (
+      {message || imagePreviewUrl || game_id !== "noGame" ? (
         <div className="preview-container">
           <div className="preview">Aperçu de votre post:</div>
           <Postcard
