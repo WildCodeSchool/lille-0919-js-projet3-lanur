@@ -153,8 +153,7 @@ function Form() {
           {page === 2 ? (
             <div className="page2">
               <div className="introText">
-                Choisis les jeux pour lesquels tu souhaites avoir des news
-                (penses à scroller):
+                Choisis tes jeux favoris (penses à scroller) :
               </div>
               <div className="bigGamePage">
                 <div className="gamePage">

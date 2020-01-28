@@ -44,6 +44,16 @@
       width: 160px;
       height: 10vh;
     }
+    .search {
+      display: flex;
+      flex-direction: row;
+      max-height: 32px;
+      .toggleSearch {
+        width: 0.7em;
+        margin-left: 20px;
+      }
+    }
+
     .dropDownParamsMenu {
       font-size: 1.8vh;
       margin-top: 1.6vh;
@@ -131,6 +141,31 @@
   .main-NavBar {
     ul {
       display: none;
+    }
+    .burger {
+      width: 100%;
+      font-size: 2em;
+      li {
+        margin-bottom: 1em;
+        form {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          height: 4em;
+          .searchInput {
+            height: 2em;
+            margin-bottom: 0.5em;
+            width: 100%;
+            font-size: 0.4em;
+          }
+          .launchSearch {
+            width: 50%;
+            margin: auto;
+            margin-top: 0;
+            font-size: 0.4em;
+          }
+        }
+      }
     }
   }
 }
