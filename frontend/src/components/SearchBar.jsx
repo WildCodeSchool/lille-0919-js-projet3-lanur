@@ -5,7 +5,7 @@ import axios from "axios";
 import { backend } from "../conf.js";
 import { useDispatch } from "react-redux";
 
-function SearchBar(props) {
+function SearchBar() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");

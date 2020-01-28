@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { backend } from "../conf.js";
 import { Image, CloudinaryContext } from "cloudinary-react";
 import axios from "axios";
-import { useSelector, useStore } from "react-redux";
+import { useSelector } from "react-redux";
 import Postcard from "./Postcard";
 
 export default function UserPage() {
@@ -74,7 +74,7 @@ export default function UserPage() {
               <Image publicId={user.avatar} className="avatar" />
             </CloudinaryContext>
           ) : (
-            <img src="/noob.jpg" className="avatar" />
+            <img src="/noob.jpg" alt="avatar" className="avatar" />
           )}
           <div className="info">
             <p>{user.age + " ans"}</p>
@@ -82,7 +82,7 @@ export default function UserPage() {
             <p>
               {user.city}, {user.country}
             </p>
-            <p>Ma bio : {user.bio}</p>
+            <p>Ma description : {user.bio}</p>
             {connectedUserId === paramsUser_id && (
               <Link to="/editprofile">
                 <button>Editer</button>

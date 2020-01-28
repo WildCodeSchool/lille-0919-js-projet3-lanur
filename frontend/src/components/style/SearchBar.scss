@@ -6,3 +6,14 @@
 //     width: 60%;
 //   }
 // }
+
+@media (max-device-width: 740px), screen and (max-width: 740px) {
+  .formSearchBar {
+    width: 80vw;
+
+    .searchBar {
+      width: 100%;
+      font-size: 0.5em;
+    }
+  }
+}

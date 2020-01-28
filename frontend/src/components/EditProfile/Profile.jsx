@@ -42,7 +42,7 @@ const Profile = () => {
 
   return (
     <div className="profile">
-      <h1>Your Profile</h1>
+      <h1>Ton profil</h1>
 
       <form>
         <div className="avatar">
@@ -58,15 +58,15 @@ const Profile = () => {
         </div>
         <div className="infos">
           <div className="infoContainer">
-            <label for="pseudo">Pseudo</label>
+            <label for="pseudo">Pseudo : </label>
             <input type="text" name="pseudo" value={user.pseudo} />
           </div>
           <div className="infoContainer">
-            <label for="firstname">Firstname</label>
+            <label for="firstname">Prénom : </label>
             <input
               type="text"
               name="firstname"
-              placeholder="Firstname"
+              placeholder="Prénom"
               value={user.firstname}
               onChange={e => {
                 dispatch({
@@ -77,11 +77,11 @@ const Profile = () => {
             />
           </div>
           <div className="infoContainer">
-            <label for="lastname">Lastname</label>
+            <label for="lastname">Nom : </label>
             <input
               type="text"
               name="lastname"
-              placeholder="Lastname"
+              placeholder="Nom"
               value={user.lastname}
               onChange={e => {
                 dispatch({
@@ -92,7 +92,7 @@ const Profile = () => {
             />
           </div>
           <div className="infoContainer">
-            <label>Age</label>
+            <label>Age : </label>
             <input
               type="text"
               placeholder="Age"
@@ -106,10 +106,10 @@ const Profile = () => {
             />
           </div>
           <div className="infoContainer">
-            <label>Country</label>
+            <label>Pays : </label>
             <input
               type="text"
-              placeholder="Country"
+              placeholder="Pays"
               value={user.country}
               onChange={e => {
                 dispatch({
@@ -120,10 +120,10 @@ const Profile = () => {
             />
           </div>
           <div className="infoContainer">
-            <label>City</label>
+            <label>Ville : </label>
             <input
               type="text"
-              placeholder="City"
+              placeholder="Ville"
               value={user.city}
               onChange={e => {
                 dispatch({
@@ -134,7 +134,7 @@ const Profile = () => {
             />
           </div>
           <div className="infoContainer">
-            <label htmlFor="genre-select">Genre</label>
+            <label htmlFor="genre-select">Genre : </label>
             <select
               name="genre"
               id="genre-select"
@@ -146,13 +146,13 @@ const Profile = () => {
                 });
               }}
             >
-              <option value="default">-- Please choose your genre --</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
+              <option value="default">-- Séléctionnes ton genre --</option>
+              <option value="male">Masculin</option>
+              <option value="female">Féminin</option>
+              <option value="other">Autre</option>
             </select>
           </div>
-          <p>Your genre will not be visible on the website.</p>
+          <p>Ton genre ne sera pas visible sur notre site.</p>
         </div>
       </form>
     </div>

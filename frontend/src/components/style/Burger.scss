@@ -7,6 +7,9 @@
 }
 
 @media screen and (max-width: 740px), (max-device-width: 740px) {
+  #MenuBurger {
+    display: unset;
+  }
   /* Position and sizing of burger button */
   .bm-burger-button {
     position: fixed;
@@ -15,7 +18,9 @@
     right: 1.5vh;
     top: 2vh;
   }
-
+  .bm-burger-button {
+    display: unset;
+  }
   /* Color/shape of burger icon bars */
   .bm-burger-bars {
     background: #373a47;

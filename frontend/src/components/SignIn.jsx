@@ -39,12 +39,12 @@ const SignIn = () => {
           <span>LAN'</span>U.R
         </h1>
         <h2>
-          Vivons l'<span>E-Sport</span> ensemble
+          Vivons l'<span>Esport</span> ensemble !
         </h2>
       </div>
       <div className="connect">
         <h2>
-          <span>Vous avez</span> un compte ?
+          <span>Tu as</span> un compte ?
         </h2>
         <form
           onSubmit={e => {
@@ -53,10 +53,10 @@ const SignIn = () => {
         >
           {!credentialsState && (
             <p className="wrong">
-              vos informations semblent fausses, veuillez réesayer
+              tes informations semblent fausses, réessaies.
             </p>
           )}
-          <h3>Identifiant</h3>
+          <h3>Identifiant : </h3>
           <input
             type="text"
             value={pseudo}
@@ -66,7 +66,7 @@ const SignIn = () => {
             }}
             className={credentialsState ? "" : "wrong"}
           />
-          <h3>Mot de passe</h3>
+          <h3>Mot de passe : </h3>
           <input
             type="password"
             value={password}
@@ -82,7 +82,7 @@ const SignIn = () => {
           </button>
         </form>
         <h3>
-          Vous n'avez <span>PAS</span> de compte ?
+          Tu n'as <span>PAS</span> encore de compte ?
         </h3>
         <div className="noAccount">
           <button onClick={accountCreation} className="accountCreation">

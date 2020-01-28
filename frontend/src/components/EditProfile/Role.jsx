@@ -8,10 +8,10 @@ const Role = () => {
 
   return (
     <form className="role">
-      <h1>Your role</h1>
+      <h1>Ton rôle</h1>
       <div>
         <div className="infoContainer">
-          <label htmlFor="role-select">Your role</label>
+          <label htmlFor="role-select">Ton rôle</label>
           <select
             name="role"
             id="role-select"
@@ -23,18 +23,18 @@ const Role = () => {
               });
             }}
           >
-            <option value="">-- Please choose your role --</option>
-            <option value="Player">Player</option>
-            <option value="Pro-player">Pro-player</option>
+            <option value="">-- Séléctionnes ton rôle --</option>
+            <option value="Player">Joueur</option>
+            <option value="Pro-player">Joueur Proféssionnel</option>
             <option value="Coach">Coach</option>
-            <option value="Team manager">Team Manager</option>
+            <option value="Team manager">Manager de Team</option>
           </select>
         </div>
         <div className="infoContainer">
-          <label>Your biography</label>
+          <label>Ta description : </label>
           <textarea
             type="text"
-            placeholder="Describe you career"
+            placeholder="Descris ton parcours esport professionnel ou non ! :)"
             value={user.bio}
             onChange={e => {
               dispatch({

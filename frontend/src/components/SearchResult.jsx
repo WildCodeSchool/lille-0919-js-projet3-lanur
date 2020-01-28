@@ -27,13 +27,13 @@ function SearchResult() {
                         />
                       </CloudinaryContext>
                     ) : (
-                      <img src="noob.jpg" className="avatar" />
+                      <img src="noob.jpg" alt="avatar" className="avatar" />
                     )}
                   </div>
                   <div className="infoSection">
-                    <div className="infoResult">Pseudo: {result.pseudo}</div>
+                    <div className="infoResult">Pseudo : {result.pseudo}</div>
                     {result.team_id ? (
-                      <div className="infoResult">Team: {result.team_id}</div>
+                      <div className="infoResult">Team : {result.team_id}</div>
                     ) : null}
                   </div>
                 </div>

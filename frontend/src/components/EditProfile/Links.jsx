@@ -8,10 +8,10 @@ const Links = () => {
 
   return (
     <form>
-      <h1>Your links</h1>
+      <h1>Tes liens vers les autres réseaux</h1>
       <div>
         <div className="infoContainer">
-          <label>Twitch</label>
+          <label> Votre chaîne Twitch</label>
           <input
             className="linkInput"
             type="link"
@@ -26,7 +26,7 @@ const Links = () => {
           />
         </div>
         <div className="infoContainer">
-          <label>Youtube</label>
+          <label>Votre chaîne Youtube : </label>
           <input
             className="linkInput"
             type="link"
@@ -41,7 +41,7 @@ const Links = () => {
           />
         </div>
         <div className="infoContainer">
-          <label>Mixer</label>
+          <label>Votre chaîne Mixer</label>
           <input
             className="linkInput"
             type="link"
@@ -56,7 +56,7 @@ const Links = () => {
           />
         </div>
         <div className="infoContainer">
-          <label>Discord</label>
+          <label>Votre pseudo Discord</label>
           <input
             className="linkInput"
             type="link"

@@ -22,7 +22,7 @@ function NavBar() {
       </h1>
 
       <ul>
-        <li id="search">
+        <li className="search">
           {displaySearchBar ? (
             <div className="searchbar">
               <SearchBar />
@@ -55,10 +55,15 @@ function NavBar() {
           {displayMenu ? (
             <img
               className="triangle"
+              alt=">"
               src="../images/Black_triangle_rotated.svg"
             ></img>
           ) : (
-            <img className="triangle" src="../images/Black_triangle.svg"></img>
+            <img
+              className="triangle"
+              alt="v"
+              src="../images/Black_triangle.svg"
+            ></img>
           )}
           {displayMenu ? (
             <div className="dropDownMenu">
@@ -82,7 +87,11 @@ function NavBar() {
           }}
         >
           <button>
-            <img className="gearIcon" src="../images/gear_logo2.png"></img>
+            <img
+              className="gearIcon"
+              alt="Menu"
+              src="../images/gear_logo2.png"
+            ></img>
           </button>
           {paramsMenu ? (
             <div className="dropDownParamsMenu">
@@ -98,20 +107,20 @@ function NavBar() {
           ) : null}
         </li>
       </ul>
-      <div onClick={() => setBurgerMenu(!burgerMenu)}>
+      <div>
         <MenuBurger
           width={"100%"}
           isOpen={burgerMenu ? false : true}
           id="MenuBurger"
         >
-          <ul>
+          <ul className="burger">
             <li>
               <Link to="/newsfeed" onClick={() => setBurgerMenu(!burgerMenu)}>
                 Actus
               </Link>
             </li>
             <li>
-              <Link to="/" onClick={() => setBurgerMenu(!burgerMenu)}>
+              <Link to="/teams" onClick={() => setBurgerMenu(!burgerMenu)}>
                 Teams
               </Link>
             </li>
@@ -121,12 +130,13 @@ function NavBar() {
               </Link>
             </li>
             <li>
-              <Link to={`/userpage/${user_id}`}>
-                <span className="FirstLetter">P</span>rofil
-              </Link>
+              <Link to={`/userpage/${user_id}`}>Profil</Link>
+            </li>
+            <li className="searchBurger">
+              <SearchBar />
             </li>
             <li onClick={() => dispatch({ type: "DISCONNECT" })}>
-              Déconnection
+              Déconnexion
             </li>
           </ul>
         </MenuBurger>
