@@ -41,10 +41,15 @@ function NavBar() {
           {displayMenu ? (
             <img
               className="triangle"
+              alt=">"
               src="../images/Black_triangle_rotated.svg"
             ></img>
           ) : (
-            <img className="triangle" src="../images/Black_triangle.svg"></img>
+            <img
+              className="triangle"
+              alt="v"
+              src="../images/Black_triangle.svg"
+            ></img>
           )}
           {displayMenu ? (
             <div className="dropDownMenu">
@@ -68,7 +73,11 @@ function NavBar() {
           }}
         >
           <button>
-            <img className="gearIcon" src="../images/gear_logo2.png"></img>
+            <img
+              className="gearIcon"
+              alt="Menu"
+              src="../images/gear_logo2.png"
+            ></img>
           </button>
           {paramsMenu ? (
             <div className="dropDownParamsMenu">

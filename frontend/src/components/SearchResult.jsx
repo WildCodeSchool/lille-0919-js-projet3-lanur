@@ -27,7 +27,7 @@ function SearchResult() {
                         />
                       </CloudinaryContext>
                     ) : (
-                      <img src="noob.jpg" className="avatar" />
+                      <img src="noob.jpg" alt="avatar" className="avatar" />
                     )}
                   </div>
                   <div className="infoSection">
