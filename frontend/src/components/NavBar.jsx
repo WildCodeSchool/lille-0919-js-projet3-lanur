@@ -25,13 +25,12 @@ function NavBar() {
         dispatch({ type: "SEARCH", value: response.data });
       })
       .then(() => {
-        setBurgerMenu(false);
-        history.push("/search");
-      })
-      .catch(() => {
-        setBurgerMenu(false);
         history.push("/search");
       });
+  };
+
+  const handleStateChange = state => {
+    setBurgerMenu(!state.isOpen);
   };
 
   const change = e => {
@@ -49,8 +48,9 @@ function NavBar() {
         <li className="search">
           {displaySearchBar ? (
             <div className="searchbar">
-              <form className="formSearchBar" onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
                 <input
+                  className="formSearchBar"
                   type="text"
                   placeholder="Cherche un utilisateur avec son pseudo"
                   value={search}
@@ -141,26 +141,21 @@ function NavBar() {
       <div>
         <MenuBurger
           width={"100%"}
-          isOpen={burgerMenu ? false : true}
           id="MenuBurger"
+          isOpen={!burgerMenu}
+          onStateChange={state => handleStateChange(state)}
         >
           <ul className="burger">
-            <li>
-              <Link to="/newsfeed" onClick={() => setBurgerMenu(!burgerMenu)}>
-                Actus
-              </Link>
+            <li onClick={() => setBurgerMenu(false)}>
+              <Link to="/newsfeed">Actus</Link>
             </li>
-            <li>
-              <Link to="/teams" onClick={() => setBurgerMenu(!burgerMenu)}>
-                Teams
-              </Link>
+            <li onClick={() => setBurgerMenu(false)}>
+              <Link to="/teams">Teams</Link>
             </li>
-            <li>
-              <Link to="/" onClick={() => setBurgerMenu(!burgerMenu)}>
-                Évènements
-              </Link>
+            <li onClick={() => setBurgerMenu(false)}>
+              <Link to="/">Évènements</Link>
             </li>
-            <li>
+            <li onClick={() => setBurgerMenu(false)}>
               <Link to={`/userpage/${user_id}`}>Profil</Link>
             </li>
             <li>
@@ -176,6 +171,7 @@ function NavBar() {
                   className="launchSearch"
                   type="submit"
                   value="rechercher"
+                  onClick={() => setBurgerMenu(false)}
                 />
               </form>
             </li>
