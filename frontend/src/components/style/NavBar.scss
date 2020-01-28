@@ -3,11 +3,11 @@
 .main-NavBar {
   font-family: "Sansation";
   background-color: rgb(253, 253, 253);
-  height: 54px;
+  height: 8vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  position: fixed;
+  position: sticky;
   justify-content: space-between;
   left: 0;
   top: 0;
@@ -16,7 +16,7 @@
 
   h1 {
     margin-left: 10px;
-    font-size: 30px;
+    font-size: 5vh;
     font-weight: bold;
     a,
     a:visited {
@@ -65,7 +65,7 @@
     }
     li {
       margin-right: 30px;
-      font-size: 22px;
+      font-size: 1.75em;
       font-weight: 200;
       text-decoration: none;
       cursor: pointer;
@@ -124,7 +124,7 @@
   }
 }
 
-@media screen and (max-width: 740px) {
+@media (max-device-width: 740px), screen and (max-width: 740px) {
   .main-NavBar {
     ul {
       display: none;

@@ -1,22 +1,23 @@
 @import "./variables";
 
 .filtercontainer {
-  width: 70vw;
+  width: 100%;
   align-items: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 30px;
   .filterButton {
     display: flex;
-    padding-left: 30px;
     font-family: "Sansation";
     background-color: white;
     color: black;
-    width: calc(70% - 30px);
+    width: 100%;
+    max-width: 750px;
     padding-top: 20px;
     padding-bottom: 20px;
-    min-width: 320px;
-    max-width: 700px;
+    // min-width: 320px;
+    // max-width: 700px;
     height: auto;
     border: $mainColor solid;
     border-radius: 5px;
@@ -26,7 +27,7 @@
     p {
       width: 60%;
       text-align: left;
-      margin-left: 10%;
+      padding-left: 10%;
       margin-top: 10px;
       margin-bottom: 10px;
     }
@@ -40,33 +41,36 @@
 
   .filter {
     display: flex;
-    padding-left: 30px;
     flex-direction: column;
     font-family: "Sansation";
     background-color: white;
     color: black;
-    width: calc(70% - 30px);
+    width: 100%;
+    max-width: 750px;
     padding-top: 20px;
     padding-bottom: 20px;
     height: auto;
     border: $mainColor solid;
     border-radius: 5px;
+    div {
+      padding-left: 20px;
+    }
   }
 }
 
-@media screen and (max-width: 740px) {
-  .filtercontainer {
-    width: 100vw;
-    margin: 30px;
-    .filterButton {
-      width: 90%;
-      padding: 0;
-    }
-    .filter {
-      width: 90%;
-      padding: 0;
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
-  }
-}
+// @media screen and (max-width: 740px) {
+//   .filtercontainer {
+//     width: 100vw;
+//     margin: 30px;
+//     .filterButton {
+//       width: 90%;
+//       padding: 0;
+//     }
+//     .filter {
+//       width: 90%;
+//       padding: 0;
+//       padding-top: 10px;
+//       padding-bottom: 10px;
+//     }
+//   }
+// }

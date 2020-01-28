@@ -12,7 +12,6 @@
   font-style: normal;
   font-weight: 800;
   color: white;
-  margin-top: 4vh;
   span {
     color: $mainColor;
   }
@@ -22,14 +21,14 @@
     background-color: rgba($color: #ffffff, $alpha: 0.5);
     line-height: 65px;
     h1 {
-      font-size: 52px;
+      font-size: 4em;
     }
     h2 {
-      font-size: 46px;
+      font-size: 3em;
     }
   }
   .connect {
-    margin-top: 5%;
+    margin-top: 54px;
     width: 25%;
     min-width: 430px;
     border-radius: 7px;
