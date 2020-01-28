@@ -7,7 +7,7 @@ import GameList from "../GameList";
 import "./style/IdForm.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import { backend } from "../conf.js";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./style/Tag.scss";
 
@@ -80,7 +80,7 @@ function Form() {
             )}
             {page === 2 ? (
               <button className="validate" onClick={handleSubmit}>
-                Valider!
+                Valider !
               </button>
             ) : (
               ""
@@ -89,7 +89,7 @@ function Form() {
           {page === 1 ? (
             <div className="page1">
               <div className="introText">
-                On a besoin de quelques infos pour démarrer :
+                Nous avons besoin de quelques infos pour démarrer :
               </div>
               <div>
                 {/* Pseudo -------------------------------------------------------------------------------------------- */}
