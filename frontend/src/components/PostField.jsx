@@ -3,15 +3,17 @@ import "./style/PostField.scss";
 import axios from "axios";
 import { backend } from "../conf.js";
 import Postcard from "./Postcard";
+import { Image, CloudinaryContext } from "cloudinary-react";
 import { useDispatch, useSelector } from "react-redux";
 import Tag from "./Tag";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./style/Tag.scss";
 
 function PostField() {
   const dispatch = useDispatch();
   const user_id = useSelector(state => state.user_id);
+  const user_avatar = useSelector(state => state.user_avatar);
   const [message, setMessage] = useState("");
   const [file, setFile] = useState(null);
   const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
@@ -80,17 +82,15 @@ function PostField() {
 
   return (
     <div className="postFieldContainer">
-      <ToastContainer
-        position={toast.POSITION.BOTTOM_LEFT}
-        hideProgressBar={true}
-      />
       <div className="postField">
         <div className="avatar">
-          <img
-            className="avatarImg"
-            alt="avatar"
-            src="https://pickaface.net/gallery/avatar/unr_fake_180910_2220_9vd5qy.png"
-          ></img>
+          {user_avatar ? (
+            <CloudinaryContext cloudName="lanur">
+              <Image publicId={user_avatar} className="avatarImg" />
+            </CloudinaryContext>
+          ) : (
+            <img src="/noob.jpg" alt="avatar" className="avatarImg" />
+          )}
         </div>
         <form onSubmit={e => onSubmit(e)}>
           <p>Quoi de neuf aujourd'hui ?</p>
