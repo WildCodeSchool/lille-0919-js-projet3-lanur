@@ -7,7 +7,7 @@ import GameList from "../GameList";
 import "./style/IdForm.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import { backend } from "../conf.js";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./style/Tag.scss";
 
