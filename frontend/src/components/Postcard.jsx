@@ -28,7 +28,7 @@ function Postcard(props) {
     nbLikeUpdate(props.nblike);
   }, [props.statuslike]);
 
-  const handleLike = (like) => {
+  const handleLike = like => {
     axios.put(`${backend}/api/posts/${props.id}/like`, {
       userLike: like ? 1 : 0
     });
@@ -116,9 +116,7 @@ function Postcard(props) {
             {/* section with the content of the post*/}
             <div className="contentpost">
               {/* section with the postcomment*/}
-              <div className="postComment ">
-                {props.id} - {props.message}
-              </div>
+              <div className="postComment ">{props.message}</div>
               {props.image_url ? (
                 <div className="mediaContainer">
                   {/* section with the media*/}
@@ -135,17 +133,20 @@ function Postcard(props) {
             </div>
             <div className="tag">{props.tags}</div>
             {props.id && user_id ? (
-
               <div className="reaction">
-                <div className={like ? "reaction-button-clicked" : "reaction-button"}>
+                <div
+                  className={
+                    like ? "reaction-button-clicked" : "reaction-button"
+                  }
+                >
                   <button
                     onClick={() => {
-                    if (like) nbLikeUpdate(nbLike - 1);
-                    else nbLikeUpdate(nbLike + 1);
-                    handleLike(!like);
-                    setLike(!like);
-                  }}
-                 >
+                      if (like) nbLikeUpdate(nbLike - 1);
+                      else nbLikeUpdate(nbLike + 1);
+                      handleLike(!like);
+                      setLike(!like);
+                    }}
+                  >
                     +1
                   </button>
                 </div>
