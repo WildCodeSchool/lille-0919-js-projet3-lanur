@@ -14,8 +14,6 @@
   width: 100%;
   max-width: 750px;
   margin-bottom: 30px;
-  // min-width: 350px;
-  // max-width: 700px;
   height: auto;
   display: flex;
   border: $mainColor solid;
@@ -45,7 +43,7 @@
   .headpost {
     display: flex;
     width: 90%;
-    font-size: 1.2em;
+    font-size: 1.5em;
     padding-bottom: 10px;
     justify-content: space-between;
     padding-left: 5%;
@@ -58,6 +56,7 @@
     align-items: flex-start;
     width: 100%;
     min-width: 280px;
+
     .contentPost {
       display: flex;
       width: 100%;
@@ -79,10 +78,10 @@
           button {
             color: white;
             background-color: $mainColor;
-            height: 30px;
+            height: 2em;
             width: 100%;
-            max-width: 200px;
-            font-size: 1.2em;
+            max-width: 300px;
+            font-size: 1.5em;
             border-radius: 10px;
           }
         }
@@ -97,10 +96,10 @@
             color: $mainColor;
             background-color: white;
             border: solid 5px;
-            height: 30px;
+            height: 2emx;
             width: 100%;
-            max-width: 200px;
-            font-size: 1.2em;
+            max-width: 300px;
+            font-size: 1.5em;
             border-radius: 10px;
             cursor: pointer;
           }
@@ -132,6 +131,7 @@
         padding: 5%;
         text-align: justify;
         overflow-wrap: break-word;
+        font-size: 1.4em;
       }
       .tag {
         padding: 5%;
@@ -159,7 +159,7 @@
         background-color: $mainColor;
         height: 30px;
         width: 100%;
-        max-width: 200px;
+        // max-width: 200px;
         font-size: 1.2em;
         border-radius: 10px;
       }
@@ -234,10 +234,6 @@
   }
 }
 
-.wpi {
-  border: dashed green;
-}
-
 .react-tag-input__tag {
   position: relative;
   display: flex;
@@ -246,4 +242,55 @@
   line-height: 1;
   background: #e1e1e1;
   border-radius: 3px;
+}
+
+@media (max-device-width: 740px), screen and (max-width: 740px) {
+  .post {
+    width: 100% !important;
+    font-size: 1.4em !important;
+    .imgSection {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      .avatar {
+        height: 150px;
+      }
+      .nbLike {
+        height: 120px;
+        width: 120px;
+        font-size: 2em;
+        border-width: 10px;
+      }
+    }
+  }
+  .reaction-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    button {
+      margin-left: auto;
+      margin-right: auto;
+      color: black;
+      background-color: $mainColor;
+      height: 300px;
+      width: 90% !important;
+      border-radius: 10px;
+    }
+  }
+  .reaction-button-clicked {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    button {
+      margin-left: auto;
+      margin-right: auto;
+      background-color: $mainColor;
+      height: 300px;
+      width: 90% !important;
+      border-radius: 10px;
+    }
+  }
 }
