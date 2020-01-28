@@ -70,10 +70,6 @@ function Form() {
             e.preventDefault();
           }}
         >
-          <ToastContainer
-            position={toast.POSITION.BOTTOM_LEFT}
-            hideProgressBar={true}
-          />
           <div className="buttonContainer">
             {page !== 1 ? (
               <button className="previous" onClick={() => setPage(page - 1)}>
