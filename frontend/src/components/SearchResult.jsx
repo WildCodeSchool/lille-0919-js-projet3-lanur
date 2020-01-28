@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 function SearchResult() {
   const searchResults = useSelector(state => state.searchResults);
-  const history = useHistory();
 
   return (
     <div className="main-search">

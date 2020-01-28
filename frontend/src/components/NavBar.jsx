@@ -26,6 +26,9 @@ function NavBar() {
       })
       .then(() => {
         history.push("/search");
+      })
+      .catch(() => {
+        history.push("/search");
       });
   };
 
