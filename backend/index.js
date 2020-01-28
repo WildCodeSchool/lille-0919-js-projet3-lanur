@@ -94,7 +94,15 @@ app.get(
 
 app.get("/api/user/posts/:id/:offset", (req, res) => {
   db.query(
-    "SELECT post.id, post.user_id, user.avatar as user_avatar, post.game_id, post.message, post.date, post.image_url FROM post JOIN user ON post.user_id = user.id WHERE post.user_id = ? ORDER BY id DESC LIMIT 10 OFFSET ?",
+    "SELECT post.id, post.user_id, user.avatar as user_avatar, post.game_id, post.message, post.date, post.image_url, team.name as team_name \
+    FROM post \
+    JOIN user \
+    ON post.user_id = user.id \
+    LEFT JOIN team \
+    ON user.team_id = team.id \
+    WHERE post.user_id = ? \
+    ORDER BY id DESC \
+    LIMIT 10 OFFSET ?",
     [parseInt(req.params.id), parseInt(req.params.offset)],
     (err, results) => {
       if (err) {
@@ -113,13 +121,15 @@ app.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     db.query(
-      "SELECT post.id, post.circle_id, post.user_id, user.pseudo, post.game_id, post.message, post.date, post.image_url, COUNT(`like`.post_id) AS nbLike, \
+      "SELECT post.id, post.circle_id, post.user_id, user.pseudo, post.game_id, post.message, post.date, post.image_url, team.name as team_name, COUNT(`like`.post_id) AS nbLike, \
     CASE WHEN post.id IN (SELECT `like`.post_id from `like` WHERE `like`.user_id=?) THEN 1 ELSE 0 END AS liked \
     FROM post \
     LEFT JOIN `like` \
     ON post.id=`like`.post_id \
     JOIN user \
     ON post.user_id=user.id \
+    LEFT JOIN team \
+    ON user.team_id = team.id \
     GROUP BY post.id \
     ORDER BY post.id DESC \
     LIMIT 10 OFFSET ?",
