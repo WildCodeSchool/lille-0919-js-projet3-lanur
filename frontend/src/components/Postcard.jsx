@@ -71,7 +71,7 @@ function Postcard(props) {
                 <Image publicId={props.user_avatar} className="avatar" />
               </CloudinaryContext>
             ) : (
-              <img src="/noob.jpg" className="avatar" />
+              <img src="/noob.jpg" alt="avatar" className="avatar" />
             )}
           </div>
           {props.game_id > 0 ? (
@@ -79,6 +79,7 @@ function Postcard(props) {
               <img
                 src={`/games_icons/${props.game_id}.jpg`}
                 className="avatar"
+                alt="Jeu"
               />
             </div>
           ) : null}
@@ -86,6 +87,7 @@ function Postcard(props) {
             <img
               src="https://i.pinimg.com/236x/f6/92/99/f6929980e929991bc8ff186a9aeca8b0.jpg"
               className="avatar"
+              alt="Team"
             />
           </div>
 
@@ -106,7 +108,7 @@ function Postcard(props) {
             {/* section with name and information about the post */}
             <div className="headpost">
               <div>{props.userPseudo}</div>
-              <div>TeamName</div>
+              <div>Nom de Team</div>
               <div>
                 <Moment format="L" date={props.date} />
                 <Moment format="h:mm" date={props.date} />
@@ -127,7 +129,11 @@ function Postcard(props) {
               ) : null}
               {props.image_preview_url ? (
                 <div className="mediaContainer">
-                  <img className="postmedia" src={props.image_preview_url} />
+                  <img
+                    className="postmedia"
+                    alt="preview_image"
+                    src={props.image_preview_url}
+                  />
                 </div>
               ) : null}
             </div>
@@ -151,13 +157,13 @@ function Postcard(props) {
                   </button>
                 </div>
                 <div className="reaction-button">
-                  <button onClick={() => commentClick()}>Comment</button>
+                  <button onClick={() => commentClick()}>Commentaires</button>
                 </div>
               </div>
             ) : null}
             {displayComments && props.id ? (
               <div className="commentContainer">
-                Commentaire
+                Commentaires
                 <textarea
                   type="text"
                   name="message"
@@ -183,7 +189,11 @@ function Postcard(props) {
                               />
                             </CloudinaryContext>
                           ) : (
-                            <img src="noob.jpg" className="avatar" />
+                            <img
+                              src="noob.jpg"
+                              alt="avatar"
+                              className="avatar"
+                            />
                           )}
                         </div>
                         <p>

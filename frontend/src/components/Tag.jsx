@@ -16,7 +16,7 @@ function Tag() {
   return (
     <div className="tag">
       <ReactTagInput
-        placeholder="Tapez et appuyez sur entrée pour ajouter un tag"
+        placeholder="Tapes et appuies sur entrée pour ajouter un tag"
         tags={tags}
         maxTags={8}
         validator={value => {

@@ -36,6 +36,7 @@ const reducer = (state = initialState, action) => {
     case "RESET":
       newState.offsetPosts = 0;
       newState.reload = newState.reload + 1;
+      newState.tags = initialState.tags;
       return newState;
     case "SAVE_JWT":
       return {
@@ -55,17 +56,17 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         filters: action.value
-      };  
+      };
     case "SEARCH":
       return {
-           ...state,
-           searchResults: action.value
-      }; 
+        ...state,
+        searchResults: action.value
+      };
     case "DISCONNECT":
-    return {
-      ...state,
-      jwt: null
-    };
+      return {
+        ...state,
+        jwt: null
+      };
     default:
       return newState;
   }

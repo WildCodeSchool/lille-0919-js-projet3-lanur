@@ -7,7 +7,7 @@ const Games = () => {
 
   return (
     <div className="games">
-      <h1>Your Games</h1>
+      <h1>Tes jeux favoris</h1>
       <ul>
         {GameList.map((game, i) => {
           return (
