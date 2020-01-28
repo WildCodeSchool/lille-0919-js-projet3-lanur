@@ -74,6 +74,22 @@ function Form() {
             position={toast.POSITION.BOTTOM_LEFT}
             hideProgressBar={true}
           />
+          <div className="buttonContainer">
+            {page !== 1 ? (
+              <button className="previous" onClick={() => setPage(page - 1)}>
+                Précédent
+              </button>
+            ) : (
+              ""
+            )}
+            {page === 2 ? (
+              <button className="validate" onClick={handleSubmit}>
+                Valider!
+              </button>
+            ) : (
+              ""
+            )}
+          </div>
           {page === 1 ? (
             <div className="page1">
               <div className="introText">
@@ -153,23 +169,9 @@ function Form() {
           ) : (
             ""
           )}
-          {page !== 1 ? (
-            <button className="button" onClick={() => setPage(page - 1)}>
-              Précédent
-            </button>
-          ) : (
-            ""
-          )}
           {page !== 2 ? (
             <button className="button" onClick={() => setPage(page + 1)}>
               Suivant
-            </button>
-          ) : (
-            ""
-          )}
-          {page === 2 ? (
-            <button className="button" onClick={handleSubmit}>
-              Valider!
             </button>
           ) : (
             ""
