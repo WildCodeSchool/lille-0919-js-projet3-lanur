@@ -16,7 +16,7 @@ function PostField() {
   const [file, setFile] = useState(null);
   const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
   const [gamelist, setGamelist] = useState([]);
-  const [game_id, setGame_id] = useState(null);
+  const [game_id, setGame_id] = useState("noGame");
   const tags = useSelector(state => state.tags);
 
   const notify = () => toast("Post envoyé!");
@@ -53,6 +53,10 @@ function PostField() {
         }
         axios.post(`${backend}/api/posts`, postObject).then(() => {
           dispatch({ type: "RESET" });
+          setMessage("");
+          setFile(null);
+          setImagePreviewUrl(null);
+          setGame_id("noGame");
           notify();
         });
       });
@@ -65,6 +69,10 @@ function PostField() {
       }
       axios.post(`${backend}/api/posts`, postObject).then(() => {
         dispatch({ type: "RESET" });
+        setMessage("");
+        setFile(null);
+        setImagePreviewUrl(null);
+        setGame_id("noGame");
         notify();
       });
     }
@@ -89,6 +97,7 @@ function PostField() {
             type="text"
             name="message"
             placeholder="Exprimez-vous !"
+            value={message}
             onChange={e => {
               setMessage(e.target.value);
             }}
@@ -114,7 +123,7 @@ function PostField() {
           <button type="submit">Poster</button>
         </form>
       </div>
-      {message || imagePreviewUrl || game_id !== "noGame" ? (
+      {message || imagePreviewUrl || game_id !== "noGame" || tags.length ? (
         <div className="preview-container">
           <div className="preview">Aperçu de votre post:</div>
           <Postcard
