@@ -56,12 +56,14 @@ function Form() {
   return (
     <ReactCSSTransitionGroup
       transitionName="formulaire"
+      transitionEnterTimeout={0}
+      transitionLeaveTimeout={0}
       transitionAppear={true}
-      transitionAppearTimeout={1500}
+      transitionAppearTimeout={700}
       transitionEnter={true}
       transitionLeave={true}
     >
-      <container className="formContainer">
+      <div className="formContainer">
         <form
           className="form"
           onSubmit={e => {
@@ -173,7 +175,7 @@ function Form() {
             ""
           )}
         </form>
-      </container>
+      </div>
     </ReactCSSTransitionGroup>
   );
 }
