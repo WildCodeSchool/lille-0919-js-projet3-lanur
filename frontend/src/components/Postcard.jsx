@@ -111,7 +111,6 @@ function Postcard(props) {
               <div>Nom de Team</div>
               <div>
                 <Moment format="L" date={props.date} />
-                <Moment format="h:mm" date={props.date} />
               </div>
             </div>
 
