@@ -1,7 +1,7 @@
 @import "./variables";
 
 .userProfile {
-  height: 92vh;
+  min-height: 100vh;
   color: white;
   background-color: rgba($color: #222222, $alpha: 0.6);
   font-family: $mainFontFamily;

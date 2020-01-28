@@ -93,7 +93,7 @@ function PostField() {
           )}
         </div>
         <form onSubmit={e => onSubmit(e)}>
-          <p>Quoi de neuf aujourd'hui?</p>
+          <p>Quoi de neuf aujourd'hui ?</p>
           <textarea
             type="text"
             name="message"
