@@ -39,7 +39,7 @@ const SignIn = () => {
           <span>LAN'</span>U.R
         </h1>
         <h2>
-          Vivons l'<span>E-Sport</span> ensemble
+          Vivons l'<span>Esport</span> ensemble !
         </h2>
       </div>
       <div className="connect">
@@ -56,7 +56,7 @@ const SignIn = () => {
               vos informations semblent fausses, veuillez réesayer
             </p>
           )}
-          <h3>Identifiant</h3>
+          <h3>Identifiant : </h3>
           <input
             type="text"
             value={pseudo}
@@ -66,7 +66,7 @@ const SignIn = () => {
             }}
             className={credentialsState ? "" : "wrong"}
           />
-          <h3>Mot de passe</h3>
+          <h3>Mot de passe : </h3>
           <input
             type="password"
             value={password}

@@ -31,9 +31,9 @@ function SearchResult() {
                     )}
                   </div>
                   <div className="infoSection">
-                    <div className="infoResult">Pseudo: {result.pseudo}</div>
+                    <div className="infoResult">Pseudo : {result.pseudo}</div>
                     {result.team_id ? (
-                      <div className="infoResult">Team: {result.team_id}</div>
+                      <div className="infoResult">Team : {result.team_id}</div>
                     ) : null}
                   </div>
                 </div>

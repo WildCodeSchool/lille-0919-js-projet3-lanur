@@ -11,7 +11,7 @@ export default function Carousel() {
       title: "Samuel N.",
       role: "Player",
       description:
-        "Sur Lan'U.R , je peux suivre tous mes joueurs préférés et mieux comprendre le foncitonnement d'un Team Pro",
+        "Sur Lan'U.R , je peux suivre tous mes joueurs préférés et mieux comprendre le fonctionnement d'une team pro.",
       image:
         "http://www.influencia.net/data/classes/actualite/actu_6082_image2012rectangle_petite.png"
     },
@@ -19,7 +19,7 @@ export default function Carousel() {
       title: "John C.",
       role: " Pro Player",
       description:
-        "J'adore Lan'U.R!  Ce réseau me permet de rencontrer d'autres joueurs et de m'entraîner pour passer pro",
+        "J'adore Lan'U.R!  Ce réseau me permet de rencontrer d'autres joueurs et de m'entraîner pour passer pro.",
       image:
         "http://www.influencia.net/data/classes/actualite/actu_6082_image2012rectangle_petite.png"
     },
@@ -27,7 +27,7 @@ export default function Carousel() {
       title: "Harry D.",
       role: "Coach",
       description:
-        "Grâce à LAN'U.R j'ai pu rencontrer des joueurs ayant les capacités de devenir professionnel. J'ai pu les accompagner pour rejoindre ma team",
+        "Grâce à LAN'U.R j'ai pu rencontrer des joueurs ayant les capacités de devenir professionnel. J'ai pu les accompagner pour rejoindre ma team.",
       image:
         "http://www.influencia.net/data/classes/actualite/actu_6082_image2012rectangle_petite.png"
     },
@@ -35,7 +35,7 @@ export default function Carousel() {
       title: "Robert Valles",
       role: "Community Manager",
       description:
-        "J'utilise Lan'U.R pour être au courant de tous les évenements et les résultats de chacun des joueurs",
+        "J'utilise Lan'U.R pour être au courant de tous les événements et les résultats des compétitions d'esport.",
       image:
         "http://www.influencia.net/data/classes/actualite/actu_6082_image2012rectangle_petite.png"
     }

@@ -33,31 +33,32 @@
     justify-content: flex-end;
     width: 100%;
     .dropDownMenu {
-      margin-top: 110px;
+      font-size: 1.8vh;
+      margin-top: 17vh;
       padding: 4px;
       background-color: white;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       position: absolute;
-      width: 130px;
-      height: 70px;
+      width: 160px;
+      height: 10vh;
     }
     .dropDownParamsMenu {
-      margin-top: 0px;
+      font-size: 1.8vh;
+      margin-top: 1.6vh;
       right: 0px;
       background-color: white;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       position: absolute;
-      width: 150px;
-      height: 70px;
+      width: 200px;
+      height: 10vh;
       padding: 4px;
     }
     .dropDown {
       display: flex;
-      margin-bottom: 3px;
       flex-direction: row;
       justify-content: center;
       align-items: center;
@@ -69,6 +70,7 @@
       font-weight: 200;
       text-decoration: none;
       cursor: pointer;
+
       a {
         position: relative;
         display: block;
@@ -111,8 +113,9 @@
       button {
         background: none;
         .gearIcon {
-          width: 26px;
-          height: 26px;
+          padding-top: 1.2vh;
+          width: 20px;
+          height: 20px;
           cursor: pointer;
           background: none;
         }
