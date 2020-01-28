@@ -15,15 +15,6 @@
     display: block;
   }
 
-  textarea {
-    height: 4vh;
-    width: 36vw;
-    display: block;
-    border-radius: 7px;
-    text-align: center;
-    font-size: 1.3em;
-  }
-
   form {
     .avatar {
       display: flex;
@@ -41,7 +32,7 @@
       }
       img {
         margin: auto;
-        width: 250px;
+        width: 200px;
       }
       input {
         margin: auto 5vw;

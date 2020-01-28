@@ -26,6 +26,9 @@ function NavBar() {
       })
       .then(() => {
         history.push("/search");
+      })
+      .catch(() => {
+        history.push("/search");
       });
   };
 
@@ -62,6 +65,7 @@ function NavBar() {
           <img
             className="toggleSearch"
             src="../images/loupe.svg"
+            alt="Search"
             onClick={() => setDisplaySearchBar(!displaySearchBar)}
           />
         </li>

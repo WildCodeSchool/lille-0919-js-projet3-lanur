@@ -89,7 +89,7 @@ function Form() {
           {page === 1 ? (
             <div className="page1">
               <div className="introText">
-                On a besoin de quelques infos pour démarrer:
+                On a besoin de quelques infos pour démarrer :
               </div>
               <div>
                 {/* Pseudo -------------------------------------------------------------------------------------------- */}
