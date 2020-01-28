@@ -116,7 +116,7 @@ function PostField() {
       </div>
       {message || imagePreviewUrl || game_id !== "noGame" ? (
         <div className="preview-container">
-          <div className="preview">Aperçu de votre post:</div>
+          <div className="preview">Aperçu de ton post:</div>
           <Postcard
             image_preview_url={imagePreviewUrl}
             message={message}

@@ -106,7 +106,7 @@ function Postcard(props) {
             {/* section with name and information about the post */}
             <div className="headpost">
               <div>{props.userPseudo}</div>
-              <div>TeamName</div>
+              <div>Nom de Team</div>
               <div>
                 <Moment format="L" date={props.date} />
                 <Moment format="h:mm" date={props.date} />
@@ -151,13 +151,13 @@ function Postcard(props) {
                   </button>
                 </div>
                 <div className="reaction-button">
-                  <button onClick={() => commentClick()}>Comment</button>
+                  <button onClick={() => commentClick()}>Commentaires</button>
                 </div>
               </div>
             ) : null}
             {displayComments && props.id ? (
               <div className="commentContainer">
-                Commentaire
+                Commentaires
                 <textarea
                   type="text"
                   name="message"

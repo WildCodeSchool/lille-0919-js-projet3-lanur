@@ -81,7 +81,7 @@ function Form() {
                 {/* Pseudo -------------------------------------------------------------------------------------------- */}
 
                 <div className="inputContainer">
-                  <label className="label">Pseudo</label>
+                  <label className="label">Pseudo : </label>
                   <input
                     className={error === "pseudo" ? "error" : "idInput"}
                     type="text"
@@ -98,7 +98,7 @@ function Form() {
                 {/* email -------------------------------------------------------------------------------------------- */}
 
                 <div className="inputContainer">
-                  <label className="label">E-mail</label>
+                  <label className="label">E-mail : </label>
                   <input
                     className={error === "email" ? "error" : "idInput"}
                     type="email"
@@ -114,7 +114,7 @@ function Form() {
                 {/* Password -------------------------------------------------------------------------------------------- */}
 
                 <div className="inputContainer">
-                  <label className="label">Password</label>
+                  <label className="label">Mot de passe : </label>
                   <input
                     className="idInput"
                     type="password"

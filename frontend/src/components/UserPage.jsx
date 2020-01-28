@@ -82,7 +82,7 @@ export default function UserPage() {
             <p>
               {user.city}, {user.country}
             </p>
-            <p>Ma bio : {user.bio}</p>
+            <p>Ma description : {user.bio}</p>
             {connectedUserId === paramsUser_id && (
               <Link to="/editprofile">
                 <button>Editer</button>

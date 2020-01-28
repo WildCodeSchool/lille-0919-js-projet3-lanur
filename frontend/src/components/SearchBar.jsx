@@ -29,7 +29,7 @@ function SearchBar(props) {
       <input
         className="searchBar"
         type="text"
-        placeholder="Saisissez un pseudo"
+        placeholder="Saisis un pseudo"
         value={search}
         onChange={e => change(e)}
       />
