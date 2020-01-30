@@ -16,11 +16,11 @@ const SignIn = () => {
 
   const handleSubmit = () => {
     axios.post(`${backend}/api/auth/login`, { pseudo, password }).then(
-      (response) => {
+      response => {
         dispatch({ type: "SAVE_JWT", value: response.data });
         history.push("/NewsFeed");
       },
-      (error) => {
+      error => {
         updateCredentialsState(false);
       }
     );
@@ -45,7 +45,7 @@ const SignIn = () => {
       <div className="connect">
         <h2>Tu as un compte ?</h2>
         <form
-          onSubmit={(e) => {
+          onSubmit={e => {
             e.preventDefault();
           }}
         >
@@ -58,7 +58,7 @@ const SignIn = () => {
           <input
             type="text"
             value={pseudo}
-            onChange={(e) => {
+            onChange={e => {
               updateCredentialsState(true);
               pseudoUpdate(e.target.value);
             }}
@@ -68,7 +68,7 @@ const SignIn = () => {
           <input
             type="password"
             value={password}
-            onChange={(e) => {
+            onChange={e => {
               updateCredentialsState(true);
               passwordUpdate(e.target.value);
             }}
@@ -84,7 +84,7 @@ const SignIn = () => {
           <button onClick={accountCreation} className="accountCreation">
             Créer un compte
           </button>
-          <Link to="/Discover">
+          <Link to="/discover">
             <p className="discover">Continuer sans créer de compte</p>
           </Link>
         </div>
