@@ -4,13 +4,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { scaleDown as MenuBurger } from "react-burger-menu";
 import "./style/NavBar.scss";
 import "./style/Burger.scss";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { backend } from "../conf.js";
 
 function NavBar() {
   const [displayMenu, setDisplayMenu] = useState(false);
+  const [displaySearchBar, setDisplaySearchBar] = useState(false);
   const [paramsMenu, setParamsMenu] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
   const dispatch = useDispatch();
-  const user_id = useSelector((state) => state.user_id);
+  const user_id = useSelector(state => state.user_id);
+  const history = useHistory();
+  const [search, setSearch] = useState("");
+  const handleSubmit = e => {
+    e.preventDefault();
+    axios
+      .get(`${backend}/api/search/users/?pseudo=${search}`)
+      .then(function(response) {
+        dispatch({ type: "SEARCH", value: response.data });
+      })
+      .then(() => {
+        history.push("/search");
+      })
+      .catch(() => {
+        history.push("/search");
+      });
+  };
+
+  const handleStateChange = state => {
+    setBurgerMenu(!state.isOpen);
+  };
+
+  const change = e => {
+    setSearch(e.target.value);
+  };
   return (
     <nav className="main-NavBar">
       <h1 onClick={() => setBurgerMenu(false)}>
@@ -20,6 +48,27 @@ function NavBar() {
       </h1>
 
       <ul>
+        <li className="search">
+          {displaySearchBar ? (
+            <div className="searchbar">
+              <form onSubmit={handleSubmit}>
+                <input
+                  className="formSearchBar"
+                  type="text"
+                  placeholder="Cherche un utilisateur avec son pseudo"
+                  value={search}
+                  onChange={e => change(e)}
+                />
+              </form>
+            </div>
+          ) : null}
+          <img
+            className="toggleSearch"
+            src="../images/loupe.svg"
+            alt="Search"
+            onClick={() => setDisplaySearchBar(!displaySearchBar)}
+          />
+        </li>
         <li>
           <Link to="/newsfeed">
             <span className="FirstLetter">A</span>ctus
@@ -93,30 +142,42 @@ function NavBar() {
           ) : null}
         </li>
       </ul>
-      <div onClick={() => setBurgerMenu(!burgerMenu)}>
+      <div>
         <MenuBurger
           width={"100%"}
-          isOpen={burgerMenu ? false : true}
           id="MenuBurger"
+          isOpen={!burgerMenu}
+          onStateChange={state => handleStateChange(state)}
         >
-          <ul>
-            <li>
-              <Link to="/newsfeed" onClick={() => setBurgerMenu(!burgerMenu)}>
-                Actus
-              </Link>
+          <ul className="burger">
+            <li onClick={() => setBurgerMenu(false)}>
+              <Link to="/newsfeed">Actus</Link>
             </li>
-            <li>
-              <Link to="/teams" onClick={() => setBurgerMenu(!burgerMenu)}>
-                Teams
-              </Link>
+            <li onClick={() => setBurgerMenu(false)}>
+              <Link to="/teams">Teams</Link>
             </li>
-            <li>
-              <Link to="/" onClick={() => setBurgerMenu(!burgerMenu)}>
-                Évènements
-              </Link>
+            <li onClick={() => setBurgerMenu(false)}>
+              <Link to="/">Évènements</Link>
             </li>
-            <li>
+            <li onClick={() => setBurgerMenu(false)}>
               <Link to={`/userpage/${user_id}`}>Profil</Link>
+            </li>
+            <li>
+              <form onSubmit={handleSubmit}>
+                <input
+                  className="searchInput"
+                  type="text"
+                  placeholder="Cherche un utilisateur avec son pseudo"
+                  value={search}
+                  onChange={e => change(e)}
+                />
+                <input
+                  className="launchSearch"
+                  type="submit"
+                  value="rechercher"
+                  onClick={() => setBurgerMenu(false)}
+                />
+              </form>
             </li>
             <li onClick={() => dispatch({ type: "DISCONNECT" })}>
               Déconnexion

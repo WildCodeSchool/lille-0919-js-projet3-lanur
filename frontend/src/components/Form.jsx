@@ -7,7 +7,7 @@ import GameList from "../GameList";
 import "./style/IdForm.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import { backend } from "../conf.js";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./style/Tag.scss";
 
@@ -56,26 +56,40 @@ function Form() {
   return (
     <ReactCSSTransitionGroup
       transitionName="formulaire"
+      transitionEnterTimeout={0}
+      transitionLeaveTimeout={0}
       transitionAppear={true}
-      transitionAppearTimeout={1500}
+      transitionAppearTimeout={700}
       transitionEnter={true}
       transitionLeave={true}
     >
-      <container className="formContainer">
+      <div className="formContainer">
         <form
           className="form"
           onSubmit={e => {
             e.preventDefault();
           }}
         >
-          <ToastContainer
-            position={toast.POSITION.BOTTOM_LEFT}
-            hideProgressBar={true}
-          />
+          <div className="buttonContainer">
+            {page !== 1 ? (
+              <button className="previous" onClick={() => setPage(page - 1)}>
+                Précédent
+              </button>
+            ) : (
+              ""
+            )}
+            {page === 2 ? (
+              <button className="validate" onClick={handleSubmit}>
+                Valider !
+              </button>
+            ) : (
+              ""
+            )}
+          </div>
           {page === 1 ? (
             <div className="page1">
               <div className="introText">
-                On a besoin de quelques infos pour démarrer:
+                Nous avons besoin de quelques infos pour démarrer :
               </div>
               <div>
                 {/* Pseudo -------------------------------------------------------------------------------------------- */}
@@ -135,8 +149,7 @@ function Form() {
           {page === 2 ? (
             <div className="page2">
               <div className="introText">
-                Choisis les jeux pour lesquels tu souhaites avoir des news
-                (penses à scroller):
+                Choisis tes jeux favoris (penses à scroller) :
               </div>
               <div className="bigGamePage">
                 <div className="gamePage">
@@ -151,13 +164,6 @@ function Form() {
           ) : (
             ""
           )}
-          {page !== 1 ? (
-            <button className="button" onClick={() => setPage(page - 1)}>
-              Précédent
-            </button>
-          ) : (
-            ""
-          )}
           {page !== 2 ? (
             <button className="button" onClick={() => setPage(page + 1)}>
               Suivant
@@ -165,15 +171,8 @@ function Form() {
           ) : (
             ""
           )}
-          {page === 2 ? (
-            <button className="button" onClick={handleSubmit}>
-              Valider!
-            </button>
-          ) : (
-            ""
-          )}
         </form>
-      </container>
+      </div>
     </ReactCSSTransitionGroup>
   );
 }

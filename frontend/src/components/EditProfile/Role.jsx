@@ -11,7 +11,7 @@ const Role = () => {
       <h1>Ton rôle</h1>
       <div>
         <div className="infoContainer">
-          <label htmlFor="role-select">Ton rôle</label>
+          <label htmlFor="role-select">Ton rôle : </label>
           <select
             name="role"
             id="role-select"

@@ -11,7 +11,7 @@ const Links = () => {
       <h1>Tes liens vers les autres réseaux</h1>
       <div>
         <div className="infoContainer">
-          <label> Votre chaîne Twitch</label>
+          <label> Votre chaîne Twitch :</label>
           <input
             className="linkInput"
             type="link"
@@ -41,7 +41,7 @@ const Links = () => {
           />
         </div>
         <div className="infoContainer">
-          <label>Votre chaîne Mixer</label>
+          <label>Votre chaîne Mixer : </label>
           <input
             className="linkInput"
             type="link"
@@ -56,7 +56,7 @@ const Links = () => {
           />
         </div>
         <div className="infoContainer">
-          <label>Votre pseudo Discord</label>
+          <label>Votre pseudo Discord : </label>
           <input
             className="linkInput"
             type="link"

@@ -16,11 +16,11 @@ const SignIn = () => {
 
   const handleSubmit = () => {
     axios.post(`${backend}/api/auth/login`, { pseudo, password }).then(
-      response => {
+      (response) => {
         dispatch({ type: "SAVE_JWT", value: response.data });
         history.push("/NewsFeed");
       },
-      error => {
+      (error) => {
         updateCredentialsState(false);
       }
     );
@@ -43,24 +43,22 @@ const SignIn = () => {
         </h2>
       </div>
       <div className="connect">
-        <h2>
-          <span>Vous avez</span> un compte ?
-        </h2>
+        <h2>Tu as un compte ?</h2>
         <form
-          onSubmit={e => {
+          onSubmit={(e) => {
             e.preventDefault();
           }}
         >
           {!credentialsState && (
             <p className="wrong">
-              vos informations semblent fausses, veuillez réesayer
+              tes informations semblent fausses, réessaies.
             </p>
           )}
           <h3>Identifiant : </h3>
           <input
             type="text"
             value={pseudo}
-            onChange={e => {
+            onChange={(e) => {
               updateCredentialsState(true);
               pseudoUpdate(e.target.value);
             }}
@@ -70,7 +68,7 @@ const SignIn = () => {
           <input
             type="password"
             value={password}
-            onChange={e => {
+            onChange={(e) => {
               updateCredentialsState(true);
               passwordUpdate(e.target.value);
             }}
@@ -81,9 +79,7 @@ const SignIn = () => {
             Se connecter
           </button>
         </form>
-        <h3>
-          Vous n'avez <span>PAS</span> de compte ?
-        </h3>
+        <h3>Tu n'as pas encore de compte ?</h3>
         <div className="noAccount">
           <button onClick={accountCreation} className="accountCreation">
             Créer un compte

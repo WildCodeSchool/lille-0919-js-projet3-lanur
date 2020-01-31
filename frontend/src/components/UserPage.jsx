@@ -67,6 +67,11 @@ export default function UserPage() {
           ? "Ton profil"
           : "Le profil de " + user.pseudo}
       </h1>
+      {connectedUserId === paramsUser_id && (
+        <Link to="/editprofile">
+          <button>Editer</button>
+        </Link>
+      )}
       {user ? (
         <div className="profile">
           {user.avatar ? (
@@ -83,11 +88,6 @@ export default function UserPage() {
               {user.city}, {user.country}
             </p>
             <p>Ma description : {user.bio}</p>
-            {connectedUserId === paramsUser_id && (
-              <Link to="/editprofile">
-                <button>Editer</button>
-              </Link>
-            )}
           </div>
         </div>
       ) : null}

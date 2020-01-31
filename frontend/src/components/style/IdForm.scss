@@ -20,7 +20,7 @@
     justify-content: center;
     text-align: center;
     font-size: 2em;
-    margin-top: 8vh;
+    margin-top: 1vh;
   }
   .form {
     border: 10px solid $mainColor;
@@ -34,7 +34,25 @@
     align-items: center;
     width: 90vw;
     height: 80vh;
-    margin-top: 5%;
+    position: relative;
+
+    .buttonContainer {
+      display: flex;
+      bottom: 5vh;
+      position: absolute;
+      left: 30vw;
+
+      .previous {
+        position: absolute;
+        margin-top: 10px;
+      }
+
+      .validate {
+        position: absolute;
+        margin-top: 10px;
+        left: 300px;
+      }
+    }
 
     .inputContainer {
       display: flex;
@@ -81,24 +99,6 @@
     }
   }
 
-  .buttonContainer {
-    display: flex;
-    position: fixed;
-    bottom: 10vh;
-    width: 500px;
-    height: 50px;
-
-    .next {
-      position: absolute;
-      left: 300px;
-    }
-
-    .validate {
-      position: absolute;
-      left: 300px;
-    }
-  }
-
   button {
     flex-direction: row;
     width: 200px;
@@ -120,6 +120,13 @@
   .idSelect {
     width: 67%;
   }
+  .formContainer {
+    .form {
+      .buttonContainer {
+        left: 20vw;
+      }
+    }
+  }
 }
 
 @media (max-device-width: 700px) and (min-device-width: 500px) {
@@ -129,7 +136,14 @@
 
   .form {
     height: 60vh;
-    margin-top: 10%;
+  }
+
+  .formContainer {
+    .form {
+      .buttonContainer {
+        left: 20vw;
+      }
+    }
   }
 }
 
@@ -140,6 +154,13 @@
 
   .form {
     height: 60vh;
-    margin-top: 10%;
+  }
+
+  .formContainer {
+    .form {
+      .buttonContainer {
+        left: 20vw;
+      }
+    }
   }
 }

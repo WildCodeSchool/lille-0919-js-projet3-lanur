@@ -7,17 +7,18 @@ $mainColor: #8d20ae;
 .main-search {
   background-color: rgb(39, 39, 39);
   width: 100%;
-  position: absolute;
-  top: 10vh;
-  z-index: -90;
 }
 
 .containerComponent {
   font-family: "Sansation";
   text-decoration: none;
   height: auto;
-  min-height: 90vh;
+  min-height: 92vh;
+  max-width: 60%;
   background-color: rgb(39, 39, 39);
+  margin: auto;
+  font-size: 2em;
+
   h3 {
     font-size: 1.2em;
     margin-top: 20px;
@@ -27,7 +28,7 @@ $mainColor: #8d20ae;
     text-decoration: none;
     margin: auto;
     height: 100%;
-    width: 80vh;
+    width: 80%;
     top: 8vh;
     color: white;
     display: flex;
@@ -45,16 +46,20 @@ $mainColor: #8d20ae;
       border: solid;
       border-color: $mainColor;
       border-width: 2px;
-      height: 200px;
+      max-height: 20vh;
       padding: 5px;
       margin-bottom: 10px;
       align-items: center;
       .imgSection {
         display: flex;
         flex-direction: row;
-        height: auto;
+        height: 100%;
+        width: 25%;
+        align-items: center;
         .avatar {
-          height: 190px;
+          max-width: 90%;
+          max-height: 90%;
+          margin: 5%;
         }
       }
       .infoSection {
@@ -66,6 +71,24 @@ $mainColor: #8d20ae;
         .infoResult {
           text-decoration: none;
           padding-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-device-width: 740px), screen and (max-width: 740px) {
+  .containerComponent {
+    max-width: 90%;
+    .userContainer {
+      margin: auto;
+      .imgSection {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        align-items: center;
+        .avatar {
+          width: 100%;
         }
       }
     }
