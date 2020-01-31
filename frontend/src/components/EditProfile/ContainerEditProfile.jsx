@@ -36,7 +36,7 @@ export default function ContainerEditProfile() {
 
   return (
     <div className="ContainerEditProfile">
-      <ul>
+      <ul className="editNav">
         <li>
           <Link to="/editprofile">Profil</Link>
         </li>

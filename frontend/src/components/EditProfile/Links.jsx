@@ -7,7 +7,7 @@ const Links = () => {
   const user = useSelector(state => state.user);
 
   return (
-    <form>
+    <form className="links">
       <h1>Tes liens vers les autres réseaux</h1>
       <div>
         <div className="infoContainer">
