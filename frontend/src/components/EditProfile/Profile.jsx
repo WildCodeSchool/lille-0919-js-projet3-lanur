@@ -28,16 +28,18 @@ const Profile = () => {
       setFile(selectedFile);
       setImagePreviewUrl(reader.result);
     };
-
     reader.readAsDataURL(selectedFile);
+    handleSubmit();
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = () => {
     // post of profile picture
-    let data = new FormData();
-    data.append("monfichier", file);
-    axios.post(`${backend}/imgupload`, data).then();
+    let imageUpload = new FormData();
+    imageUpload.append("file", file);
+    axios.post(`${backend}/api/postimg`, imageUpload).then(response => {
+      let image_url = response.data.public_id;
+      dispatch({ type: "CHANGE_AVATAR", value: image_url });
+    });
   };
 
   return (

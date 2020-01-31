@@ -48,10 +48,10 @@ function PostField() {
       axios.post(`${backend}/api/postimg`, imageUpload).then(response => {
         let image_url = response.data.public_id;
         let postObject;
-        if (game_id) {
+        if (game_id !== "noGame") {
           postObject = { image_url, message, user_id, game_id, tags };
         } else {
-          postObject = { image_url, message, user_id, tags };
+          postObject = { image_url, message, user_id, tags, game_id: null };
         }
         axios.post(`${backend}/api/posts`, postObject).then(() => {
           dispatch({ type: "RESET" });
@@ -67,7 +67,7 @@ function PostField() {
       if (game_id !== "noGame") {
         postObject = { message, user_id, game_id, tags };
       } else {
-        postObject = { message, user_id, tags };
+        postObject = { message, user_id, tags, game_id: null };
       }
       axios.post(`${backend}/api/posts`, postObject).then(() => {
         dispatch({ type: "RESET" });

@@ -33,15 +33,13 @@ function Discover() {
         .get(`${backend}/api/posts/discover/${offsetPosts}`)
         .then(({ data }) => {
           setPosts(data);
-        })
-        .catch(err => console.log(err));
+        });
     } else {
       axios
         .get(`${backend}/api/posts/discover/${offsetPosts}`)
         .then(({ data }) => {
           setPosts(posts.concat(data));
-        })
-        .catch(err => console.log(err));
+        });
     }
   }, [offsetPosts, reload]);
 

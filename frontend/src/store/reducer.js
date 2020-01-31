@@ -46,6 +46,12 @@ const reducer = (state = initialState, action) => {
         user_avatar: action.value.user.avatar,
         user_pseudo: action.value.user.pseudo
       };
+    case "CHANGE_AVATAR":
+      return {
+        ...state,
+        user_avatar: action.value,
+        user: { ...state.user, avatar: action.value }
+      };
     case "SAVE_PROFILE_DATA":
       newState.user = { ...newState.user, ...action.value };
       return newState;
