@@ -94,14 +94,18 @@ app.get(
 
 app.get("/api/user/posts/:id/:offset", (req, res) => {
   db.query(
-    "SELECT post.id, post.user_id, user.avatar as user_avatar, post.game_id, post.message, post.date, post.image_url, team.name as team_name \
+    "SELECT post.id, post.user_id, user.pseudo, user.avatar as user_avatar, post.game_id, post.message, post.date, post.image_url, team.name as team_name, COUNT(`like`.post_id) AS nbLike, \
+    CASE WHEN post.id IN (SELECT `like`.post_id from `like`) THEN 1 ELSE 0 END AS liked \
     FROM post \
+    LEFT JOIN `like` \
+    ON post.id=`like`.post_id \
     JOIN user \
     ON post.user_id = user.id \
     LEFT JOIN team \
     ON user.team_id = team.id \
     WHERE post.user_id = ? \
-    ORDER BY id DESC \
+    GROUP BY post.id \
+    ORDER BY post.id DESC \
     LIMIT 10 OFFSET ?",
     [parseInt(req.params.id), parseInt(req.params.offset)],
     (err, results) => {
@@ -145,11 +149,9 @@ app.get(
   }
 );
 
-app.get(
-  "/api/posts/discover/:limit",
-  (req, res) => {
-    db.query(
-      "SELECT post.id, post.user_id, user.pseudo, user.avatar as user_avatar, post.game_id, post.message, post.date, post.image_url, team.name as team_name, COUNT(`like`.post_id) AS nbLike \
+app.get("/api/posts/discover/:limit", (req, res) => {
+  db.query(
+    "SELECT post.id, post.user_id, user.pseudo, user.avatar as user_avatar, post.game_id, post.message, post.date, post.image_url, team.name as team_name, COUNT(`like`.post_id) AS nbLike \
     FROM post \
     LEFT JOIN `like` \
     ON post.id=`like`.post_id \
@@ -160,17 +162,16 @@ app.get(
     GROUP BY post.id \
     ORDER BY post.id DESC \
     LIMIT 10 OFFSET ?",
-      [parseInt(req.params.limit)],
-      (err, results) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          res.status(200).json(results);
-        }
+    [parseInt(req.params.limit)],
+    (err, results) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).json(results);
       }
-    );
-  }
-);
+    }
+  );
+});
 
 //Récupérer le nombre total de post
 app.get("/api/totalposts", (req, res) => {
@@ -210,7 +211,7 @@ app.get("/api/gamelist/:id", (req, res) => {
 
 app.post("/api/postimg", upload.single("file"), (req, res) => {
   const formData = req.file;
-  cloudinary.v2.uploader.upload(formData.path, function (err, result) {
+  cloudinary.v2.uploader.upload(formData.path, function(err, result) {
     if (err) {
       res.status(500).send("Erreur lors de la sauvegarde de l'image");
     } else {
@@ -218,7 +219,6 @@ app.post("/api/postimg", upload.single("file"), (req, res) => {
     }
   });
 });
-
 
 app.post("/api/posts", (req, res) => {
   const formData = req.body;
