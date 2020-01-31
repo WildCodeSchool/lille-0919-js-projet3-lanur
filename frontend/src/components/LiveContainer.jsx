@@ -51,6 +51,7 @@ function LiveContainer() {
         {lives.length > 0
           ? lives.map(live => (
               <LiveCard
+                key={live.user_name}
                 streamer_name={live.user_name}
                 stream_title={live.title}
                 viewer_count={live.viewer_count}

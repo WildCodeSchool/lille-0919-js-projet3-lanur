@@ -9,12 +9,12 @@ import { useSelector, useDispatch } from "react-redux";
 import Filter from "./Filter";
 
 function NewsFeed() {
-  const filters = useSelector((state) => state.filters);
+  const filters = useSelector(state => state.filters);
   const [posts, setPosts] = useState([]);
   const [offsetPosts, setOffsetPosts] = useState(0);
-  const reload = useSelector((state) => state.reload);
+  const reload = useSelector(state => state.reload);
   const dispatch = useDispatch();
-  const filterResult = posts.filter((post) => filters.includes(post.game_id));
+  const filterResult = posts.filter(post => filters.includes(post.game_id));
   const [totalPosts, setTotalPosts] = useState(null);
 
   window.onscroll = () => {
@@ -62,8 +62,8 @@ function NewsFeed() {
         <Filter />
         {filters.length > 0
           ? posts
-              .filter((post) => filters.includes(post.game_id))
-              .map((post) => (
+              .filter(post => filters.includes(post.game_id))
+              .map(post => (
                 <Postcard
                   message={post.message}
                   date={post.date}
@@ -78,7 +78,7 @@ function NewsFeed() {
                   userTeam={post.team_name}
                 />
               ))
-          : posts.map((post) => (
+          : posts.map(post => (
               <Postcard
                 message={post.message}
                 tags={post.tags ? "#" + post.tags.split(" ").join(" #") : null}
