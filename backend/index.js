@@ -145,6 +145,34 @@ app.get(
   }
 );
 
+app.get(
+  "/api/posts/discover/:limit",
+  (req, res) => {
+    db.query(
+      "SELECT post.id, post.user_id, user.pseudo, post.game_id, post.message, post.date, post.image_url, team.name as team_name, COUNT(`like`.post_id) AS nbLike \
+    FROM post \
+    LEFT JOIN `like` \
+    ON post.id=`like`.post_id \
+    JOIN user \
+    ON post.user_id=user.id \
+    LEFT JOIN team \
+    ON user.team_id = team.id \
+    GROUP BY post.id \
+    ORDER BY post.id DESC \
+    LIMIT 10 OFFSET ?",
+      [parseInt(req.params.limit)],
+      (err, results) => {
+        if (err) {
+          console.log(err)
+          // res.status(500).send(err);
+        } else {
+          res.status(200).json(results);
+        }
+      }
+    );
+  }
+);
+
 //Récupérer le nombre total de post
 app.get("/api/totalposts", (req, res) => {
   db.query("SELECT count(post.id) as totalpost from post", (err, results) => {
@@ -183,7 +211,7 @@ app.get("/api/gamelist/:id", (req, res) => {
 
 app.post("/api/postimg", upload.single("file"), (req, res) => {
   const formData = req.file;
-  cloudinary.v2.uploader.upload(formData.path, function(err, result) {
+  cloudinary.v2.uploader.upload(formData.path, function (err, result) {
     if (err) {
       res.status(500).send("Erreur lors de la sauvegarde de l'image");
     } else {
