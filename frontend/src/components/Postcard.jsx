@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./style/postcard.scss";
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
+import "moment/locale/fr";
 import { Image, CloudinaryContext } from "cloudinary-react";
 import axios from "axios";
 import { backend } from "../conf.js";
@@ -111,7 +112,7 @@ function Postcard(props) {
               <div>{props.userPseudo}</div>
               <div>{props.userTeam}</div>
               <div>
-                <Moment format="L" date={props.date} />
+                <Moment locale="fr" format="LL" date={props.date} />
               </div>
             </div>
 
@@ -203,7 +204,7 @@ function Postcard(props) {
                       </div>
                     ))
                   ) : (
-                    <p>Pas encore de commentaires. Soit le premier!</p>
+                    <p>Pas encore de commentaire. Soit le premier!</p>
                   )}
                 </div>
               </div>
