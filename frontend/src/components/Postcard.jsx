@@ -90,18 +90,19 @@ function Postcard(props) {
               alt="Team"
             />
           </div>
-
-          <div
-            className="nbLike"
-            onClick={() => {
-              if (like) nbLikeUpdate(nbLike - 1);
-              else nbLikeUpdate(nbLike + 1);
-              handleLike(!like);
-              setLike(!like);
-            }}
-          >
-            +{nbLike}
-          </div>
+          {props.id ? (
+            <div
+              className="nbLike"
+              onClick={() => {
+                if (like) nbLikeUpdate(nbLike - 1);
+                else nbLikeUpdate(nbLike + 1);
+                handleLike(!like);
+                setLike(!like);
+              }}
+            >
+              +{nbLike}
+            </div>
+          ) : null}
         </div>
         <div className="contentPostContainer">
           <div className="contentPost">

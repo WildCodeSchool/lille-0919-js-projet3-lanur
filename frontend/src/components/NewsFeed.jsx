@@ -96,7 +96,7 @@ function NewsFeed() {
             ))}
         {offsetPosts >= totalPosts ? (
           <div className="endPageContainer">
-            <div className="endPage">Pas de posts à afficher"</div>
+            <div className="endPage">Pas de posts à afficher</div>
           </div>
         ) : null}
       </div>
