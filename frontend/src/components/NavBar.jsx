@@ -14,10 +14,10 @@ function NavBar() {
   const [paramsMenu, setParamsMenu] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
   const dispatch = useDispatch();
-  const user_id = useSelector(state => state.user_id);
+  const user_id = useSelector((state) => state.user_id);
   const history = useHistory();
   const [search, setSearch] = useState("");
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .get(`${backend}/api/search/users/?pseudo=${search}`)
@@ -32,11 +32,11 @@ function NavBar() {
       });
   };
 
-  const handleStateChange = state => {
+  const handleStateChange = (state) => {
     setBurgerMenu(!state.isOpen);
   };
 
-  const change = e => {
+  const change = (e) => {
     setSearch(e.target.value);
   };
   return (
@@ -48,7 +48,13 @@ function NavBar() {
       </h1>
 
       <ul>
-        <li className="search">
+        <li
+          className="search"
+          onClick={() => {
+            setParamsMenu(false);
+            setDisplayMenu(false);
+          }}
+        >
           {displaySearchBar ? (
             <div className="searchbar">
               <form onSubmit={handleSubmit}>
@@ -57,7 +63,7 @@ function NavBar() {
                   type="text"
                   placeholder="Cherche un utilisateur avec son pseudo"
                   value={search}
-                  onChange={e => change(e)}
+                  onChange={(e) => change(e)}
                 />
               </form>
             </div>
@@ -147,7 +153,7 @@ function NavBar() {
           width={"100%"}
           id="MenuBurger"
           isOpen={!burgerMenu}
-          onStateChange={state => handleStateChange(state)}
+          onStateChange={(state) => handleStateChange(state)}
         >
           <ul className="burger">
             <li onClick={() => setBurgerMenu(false)}>
@@ -169,7 +175,7 @@ function NavBar() {
                   type="text"
                   placeholder="Cherche un utilisateur avec son pseudo"
                   value={search}
-                  onChange={e => change(e)}
+                  onChange={(e) => change(e)}
                 />
                 <input
                   className="launchSearch"
