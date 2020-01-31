@@ -15,11 +15,11 @@ function Postcard(props) {
   const [comment, setComment] = useState("");
   const [displayComments, setDisplayComments] = useState(false);
   const [comments, setComments] = useState([]);
-  const user_id = useSelector((state) => state.user_id);
+  const user_id = useSelector(state => state.user_id);
   const notifyComment = () => toast("Commentaire envoyé!");
   const wrongComment = () =>
     toast("Oups, impossible d'envoyer un commentaire vide");
-  const commentClick = (id) => {
+  const commentClick = id => {
     setDisplayComments(!displayComments);
     getComments();
   };
@@ -28,7 +28,7 @@ function Postcard(props) {
     nbLikeUpdate(props.nblike);
   }, [props.statuslike]);
 
-  const handleLike = (like) => {
+  const handleLike = like => {
     axios.put(`${backend}/api/posts/${props.id}/like`, {
       userLike: like ? 1 : 0
     });
@@ -38,7 +38,7 @@ function Postcard(props) {
       setComments(data);
     });
   };
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     let commentContent = {
       content: comment,
@@ -46,7 +46,7 @@ function Postcard(props) {
       user_id: user_id
     };
     if (comment) {
-      axios.post(`${backend}/api/comments`, commentContent).then((response) => {
+      axios.post(`${backend}/api/comments`, commentContent).then(response => {
         setComment("");
         notifyComment();
         getComments();
@@ -168,17 +168,17 @@ function Postcard(props) {
                   type="text"
                   name="message"
                   placeholder="Exprimez-vous !"
-                  onChange={(e) => {
+                  onChange={e => {
                     setComment(e.target.value);
                   }}
                   className="commenttext"
                   maxLength="500"
                   value={comment}
                 ></textarea>
-                <button onClick={(e) => onSubmit(e)}>Envoyer</button>
+                <button onClick={e => onSubmit(e)}>Envoyer</button>
                 <div className="comments">
                   {comments.length > 0 ? (
-                    comments.map((comment) => (
+                    comments.map(comment => (
                       <div className="comment">
                         <div>
                           {comment.avatar ? (

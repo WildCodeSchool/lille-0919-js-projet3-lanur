@@ -24,7 +24,7 @@
     flex-direction: column;
     align-items: center;
     .avatar {
-      height: 50px;
+      height: 90px;
       padding: 5px;
     }
     .nbLike {
@@ -120,11 +120,11 @@
           display: flex;
           width: auto;
           max-width: 90%;
-          max-height: 300px;
+          max-height: 400px;
           margin-left: auto;
           margin-right: auto;
-          padding-top: 5%;
-          padding-bottom: 5%;
+          padding-top: 10px;
+          padding-bottom: 10px;
         }
       }
       .postComment {

@@ -121,7 +121,7 @@ app.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     db.query(
-      "SELECT post.id, post.circle_id, post.user_id, user.pseudo, post.game_id, post.message, post.date, post.image_url, team.name as team_name, COUNT(`like`.post_id) AS nbLike, \
+      "SELECT post.id, post.circle_id, post.user_id, user.pseudo, user.avatar as user_avatar, post.game_id, post.message, post.date, post.image_url, team.name as team_name, COUNT(`like`.post_id) AS nbLike, \
     CASE WHEN post.id IN (SELECT `like`.post_id from `like` WHERE `like`.user_id=?) THEN 1 ELSE 0 END AS liked \
     FROM post \
     LEFT JOIN `like` \
@@ -149,7 +149,7 @@ app.get(
   "/api/posts/discover/:limit",
   (req, res) => {
     db.query(
-      "SELECT post.id, post.user_id, user.pseudo, post.game_id, post.message, post.date, post.image_url, team.name as team_name, COUNT(`like`.post_id) AS nbLike \
+      "SELECT post.id, post.user_id, user.pseudo, user.avatar as user_avatar, post.game_id, post.message, post.date, post.image_url, team.name as team_name, COUNT(`like`.post_id) AS nbLike \
     FROM post \
     LEFT JOIN `like` \
     ON post.id=`like`.post_id \
