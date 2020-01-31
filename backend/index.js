@@ -213,12 +213,14 @@ app.post("/api/postimg", upload.single("file"), (req, res) => {
   const formData = req.file;
   cloudinary.v2.uploader.upload(formData.path, function (err, result) {
     if (err) {
+      console.log(err)
       res.status(500).send("Erreur lors de la sauvegarde de l'image");
     } else {
       res.send(result);
     }
   });
 });
+
 
 app.post("/api/posts", (req, res) => {
   const formData = req.body;
