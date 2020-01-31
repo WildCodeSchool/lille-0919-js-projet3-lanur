@@ -163,8 +163,7 @@ app.get(
       [parseInt(req.params.limit)],
       (err, results) => {
         if (err) {
-          console.log(err)
-          // res.status(500).send(err);
+          res.status(500).send(err);
         } else {
           res.status(200).json(results);
         }
@@ -213,7 +212,6 @@ app.post("/api/postimg", upload.single("file"), (req, res) => {
   const formData = req.file;
   cloudinary.v2.uploader.upload(formData.path, function (err, result) {
     if (err) {
-      console.log(err)
       res.status(500).send("Erreur lors de la sauvegarde de l'image");
     } else {
       res.send(result);
