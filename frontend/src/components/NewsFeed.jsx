@@ -38,7 +38,6 @@ function NewsFeed() {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(data);
         dispatch({ type: "PLUS_TEN" });
-        console.log(data);
       });
     } else if (
       filterResult.length < 10 &&
