@@ -41,21 +41,10 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile">
+    <div className="editProfile">
       <h1>Ton profil</h1>
 
-      <form>
-        <div className="avatar">
-          <h1>Avatar</h1>
-          {imagePreviewUrl === "./noob.jpg" ? (
-            <img src={imagePreviewUrl} alt="" />
-          ) : (
-            <CloudinaryContext cloudName="lanur">
-              <Image publicId={user_avatar} />
-            </CloudinaryContext>
-          )}
-          <input type="file" onChange={e => handleImageChange(e)} />
-        </div>
+      <div className="infosAvatar">
         <div className="infos">
           <div className="infoContainer">
             <label for="pseudo">Pseudo : </label>
@@ -154,7 +143,18 @@ const Profile = () => {
           </div>
           <p>Ton genre ne sera pas visible sur notre site.</p>
         </div>
-      </form>
+        <div className="avatar">
+          <h1>Avatar</h1>
+          {imagePreviewUrl === "./noob.jpg" ? (
+            <img src={imagePreviewUrl} alt="" />
+          ) : (
+            <CloudinaryContext cloudName="lanur">
+              <Image publicId={user_avatar} />
+            </CloudinaryContext>
+          )}
+          <input type="file" onChange={e => handleImageChange(e)} />
+        </div>
+      </div>
     </div>
   );
 };

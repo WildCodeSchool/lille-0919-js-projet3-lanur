@@ -1,4 +1,11 @@
 .role {
+  height: 80%;
+  h1 {
+    height: 4%;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 1%;
+  }
   .infoContainer {
     display: flex;
     align-items: center;
@@ -6,11 +13,10 @@
   }
   label {
     font-size: 1.5em;
-    margin: 2vh 0;
+    margin: 2% 0;
     width: 20vw;
     display: block;
   }
-
   textarea {
     height: 4vh;
     width: 36vw;
@@ -18,11 +24,6 @@
     border-radius: 7px;
     text-align: center;
     font-size: 1.3em;
-  }
-
-  h1 {
-    margin: revert;
-    font-size: 3em;
   }
   select {
     width: 36.25vw;

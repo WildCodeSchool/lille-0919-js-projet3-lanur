@@ -17,6 +17,8 @@
   }
   .catchPhrase {
     color: black;
+    margin-top: 50px;
+    margin-bottom: 25px;
     padding: 10px 10px 25px 7px;
     background-color: rgba($color: #ffffff, $alpha: 0.5);
     line-height: 65px;
@@ -28,7 +30,7 @@
     }
   }
   .connect {
-    margin-top: 54px;
+    margin-bottom: 50px;
     width: 25%;
     min-width: 430px;
     border-radius: 7px;
