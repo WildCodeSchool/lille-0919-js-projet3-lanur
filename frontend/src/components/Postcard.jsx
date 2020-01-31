@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./style/postcard.scss";
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
+import "moment/locale/fr";
 import { Image, CloudinaryContext } from "cloudinary-react";
 import axios from "axios";
 import { backend } from "../conf.js";
@@ -15,11 +16,11 @@ function Postcard(props) {
   const [comment, setComment] = useState("");
   const [displayComments, setDisplayComments] = useState(false);
   const [comments, setComments] = useState([]);
-  const user_id = useSelector((state) => state.user_id);
+  const user_id = useSelector(state => state.user_id);
   const notifyComment = () => toast("Commentaire envoyé!");
   const wrongComment = () =>
     toast("Oups, impossible d'envoyer un commentaire vide");
-  const commentClick = (id) => {
+  const commentClick = id => {
     setDisplayComments(!displayComments);
     getComments();
   };
@@ -28,7 +29,7 @@ function Postcard(props) {
     nbLikeUpdate(props.nblike);
   }, [props.statuslike]);
 
-  const handleLike = (like) => {
+  const handleLike = like => {
     axios.put(`${backend}/api/posts/${props.id}/like`, {
       userLike: like ? 1 : 0
     });
@@ -38,7 +39,7 @@ function Postcard(props) {
       setComments(data);
     });
   };
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     let commentContent = {
       content: comment,
@@ -46,7 +47,7 @@ function Postcard(props) {
       user_id: user_id
     };
     if (comment) {
-      axios.post(`${backend}/api/comments`, commentContent).then((response) => {
+      axios.post(`${backend}/api/comments`, commentContent).then(response => {
         setComment("");
         notifyComment();
         getComments();
@@ -111,7 +112,7 @@ function Postcard(props) {
               <div>{props.userPseudo}</div>
               <div>{props.userTeam}</div>
               <div>
-                <Moment format="L" date={props.date} />
+                <Moment locale="fr" format="LL" date={props.date} />
               </div>
             </div>
 
@@ -168,17 +169,17 @@ function Postcard(props) {
                   type="text"
                   name="message"
                   placeholder="Exprimez-vous !"
-                  onChange={(e) => {
+                  onChange={e => {
                     setComment(e.target.value);
                   }}
                   className="commenttext"
                   maxLength="500"
                   value={comment}
                 ></textarea>
-                <button onClick={(e) => onSubmit(e)}>Envoyer</button>
+                <button onClick={e => onSubmit(e)}>Envoyer</button>
                 <div className="comments">
                   {comments.length > 0 ? (
-                    comments.map((comment) => (
+                    comments.map(comment => (
                       <div className="comment">
                         <div>
                           {comment.avatar ? (
@@ -203,7 +204,7 @@ function Postcard(props) {
                       </div>
                     ))
                   ) : (
-                    <p>Pas encore de commentaires. Soit le premier!</p>
+                    <p>Pas encore de commentaire. Soit le premier!</p>
                   )}
                 </div>
               </div>

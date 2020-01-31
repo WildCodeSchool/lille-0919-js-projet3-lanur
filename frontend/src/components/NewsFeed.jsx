@@ -17,7 +17,7 @@ function NewsFeed() {
   const filterResult = posts.filter(post => filters.includes(post.game_id));
   const [totalPosts, setTotalPosts] = useState(null);
 
-  window.onscroll = () => {
+  document.onscroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.scrollHeight &&
