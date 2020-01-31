@@ -17,7 +17,7 @@ function NewsFeed() {
   const filterResult = posts.filter(post => filters.includes(post.game_id));
   const [totalPosts, setTotalPosts] = useState(null);
 
-  window.onscroll = () => {
+  document.onscroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.scrollHeight &&
@@ -38,7 +38,6 @@ function NewsFeed() {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(data);
         dispatch({ type: "PLUS_TEN" });
-        console.log(data);
       });
     } else if (
       filterResult.length < 10 &&
@@ -67,6 +66,9 @@ function NewsFeed() {
               .map(post => (
                 <Postcard
                   message={post.message}
+                  tags={
+                    post.tags ? "#" + post.tags.split(" ").join(" #") : null
+                  }
                   date={post.date}
                   image_url={post.image_url}
                   game_id={post.game_id}
