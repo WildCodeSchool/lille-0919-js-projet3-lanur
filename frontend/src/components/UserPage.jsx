@@ -69,7 +69,7 @@ export default function UserPage() {
       </h1>
       {connectedUserId === paramsUser_id && (
         <Link to="/editprofile">
-          <button>Editer</button>
+          <button className="editButton">Editer</button>
         </Link>
       )}
       {user ? (

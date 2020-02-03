@@ -22,9 +22,7 @@ function Team() {
             return (
               <div className="teams" key={team.name}>
                 <div className="img">
-                  <CloudinaryContext cloudName="teams">
-                    <Image publicId={team.image_team} alt="No image" />
-                  </CloudinaryContext>
+                  <img src={team.image_team} alt="No image" />
                 </div>
                 <div className="teamInfo">
                   <h2>{team.name}</h2>
