@@ -37,7 +37,7 @@ function NewsFeed() {
     if (offsetPosts === 0) {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(data);
-        dispatch({ type: "PLUS_TEN" });
+        setOffsetPosts(offsetPosts + 10);
       });
     } else if (
       filterResult.length < 10 &&
@@ -46,7 +46,7 @@ function NewsFeed() {
     ) {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(posts.concat(data));
-        dispatch({ type: "PLUS_TEN" });
+        setOffsetPosts(offsetPosts + 10);
       });
     } else if (totalPosts >= offsetPosts) {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
