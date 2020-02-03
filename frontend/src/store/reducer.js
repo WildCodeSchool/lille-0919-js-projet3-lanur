@@ -36,7 +36,7 @@ const reducer = (state = initialState, action) => {
     case "RESET":
       newState.offsetPosts = 0;
       newState.reload = newState.reload + 1;
-      newState.tags = initialState.tags;
+      newState.tags = [];
       return newState;
     case "SAVE_JWT":
       return {
