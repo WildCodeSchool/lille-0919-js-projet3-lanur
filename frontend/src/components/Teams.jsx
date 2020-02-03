@@ -20,7 +20,7 @@ function Team() {
       {teams
         ? teams.map(team => {
             return (
-              <div className="teams">
+              <div className="teams" key={team.name}>
                 <div className="img">
                   <CloudinaryContext cloudName="teams">
                     <Image publicId={team.image_team} alt="No image" />

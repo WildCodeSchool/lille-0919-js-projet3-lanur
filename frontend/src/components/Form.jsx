@@ -155,7 +155,11 @@ function Form() {
                 <div className="gamePage">
                   {GameList.map(game => {
                     return (
-                      <GameChoice name={game.name} picture={game.picture} />
+                      <GameChoice
+                        name={game.name}
+                        picture={game.picture}
+                        key={game.name}
+                      />
                     );
                   })}
                 </div>

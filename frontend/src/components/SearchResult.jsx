@@ -15,7 +15,7 @@ function SearchResult() {
           <h3>Résultats de la recherche</h3>
           {searchResults.length > 0 ? (
             searchResults.map(result => (
-              <Link to={`/userpage/${result.id}`}>
+              <Link to={`/userpage/${result.id}`} key={result.id}>
                 <div className="userContainer">
                   <div className="imgSection">
                     {result.user_avatar ? (

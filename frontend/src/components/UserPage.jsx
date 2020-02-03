@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import Postcard from "./Postcard";
 
 export default function UserPage() {
-  const connectedUserId = useSelector((state) => state.user_id);
+  const connectedUserId = useSelector(state => state.user_id);
   const [user, getUser] = useState({
     id: null,
     avatar: null,
@@ -41,7 +41,7 @@ export default function UserPage() {
       .then(({ data }) => {
         getUser(data[0]);
       })
-      .catch((err) => {});
+      .catch(err => {});
   }, [paramsUser_id]);
 
   useEffect(() => {
@@ -92,7 +92,7 @@ export default function UserPage() {
         </div>
       ) : null}
       <div className="posts">
-        {posts.map((post) => (
+        {posts.map(post => (
           <Postcard
             message={post.message}
             tags={post.tags ? "#" + post.tags.split(" ").join(" #") : null}
@@ -105,6 +105,7 @@ export default function UserPage() {
             nblike={post.nbLike}
             statuslike={post.liked}
             userPseudo={post.pseudo}
+            key={post.id}
           />
         ))}
       </div>

@@ -20,6 +20,7 @@ router.post("/signup", (req, res) => {
         return res.status(400).send(err.sqlMessage);
       }
       newUser.password = undefined;
+      newUser.id = results.insertId
       return res.status(201).send({
         user: newUser,
         token: jwt.sign(JSON.stringify(newUser), jwtSecret)

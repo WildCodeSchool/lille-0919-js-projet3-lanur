@@ -43,6 +43,11 @@
       position: absolute;
       width: 160px;
       height: 10vh;
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
     }
     .search {
       display: flex;
@@ -66,6 +71,11 @@
       width: 200px;
       height: 10vh;
       padding: 4px;
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
     }
     .dropDown {
       display: flex;

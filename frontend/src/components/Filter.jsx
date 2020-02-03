@@ -43,7 +43,7 @@ function Filter() {
       {filterDisplay ? (
         <form className="filter">
           {gamelist.map(game => (
-            <div>
+            <div key={game.id}>
               <input
                 id={game.id}
                 type="checkbox"
@@ -51,7 +51,7 @@ function Filter() {
                   insertValue(e);
                 }}
               />
-              <label for={game.id}>{game.name}</label>
+              <label htmlFor={game.id}>{game.name}</label>
             </div>
           ))}
         </form>

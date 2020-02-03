@@ -79,6 +79,7 @@ function NewsFeed() {
                   statuslike={post.liked}
                   userPseudo={post.pseudo}
                   userTeam={post.team_name}
+                  key={post.id}
                 />
               ))
           : posts.map(post => (
@@ -95,6 +96,7 @@ function NewsFeed() {
                 statuslike={post.liked}
                 userPseudo={post.pseudo}
                 userTeam={post.team_name}
+                key={post.id}
               />
             ))}
         {offsetPosts >= totalPosts ? (

@@ -14,10 +14,10 @@ function NavBar() {
   const [paramsMenu, setParamsMenu] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
   const dispatch = useDispatch();
-  const user_id = useSelector((state) => state.user_id);
+  const user_id = useSelector(state => state.user_id);
   const history = useHistory();
   const [search, setSearch] = useState("");
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     axios
       .get(`${backend}/api/search/users/?pseudo=${search}`)
@@ -32,11 +32,11 @@ function NavBar() {
       });
   };
 
-  const handleStateChange = (state) => {
+  const handleStateChange = state => {
     setBurgerMenu(!state.isOpen);
   };
 
-  const change = (e) => {
+  const change = e => {
     setSearch(e.target.value);
   };
   return (
@@ -63,7 +63,7 @@ function NavBar() {
                   type="text"
                   placeholder="Cherche un utilisateur avec son pseudo"
                   value={search}
-                  onChange={(e) => change(e)}
+                  onChange={e => change(e)}
                 />
               </form>
             </div>
@@ -108,16 +108,18 @@ function NavBar() {
           )}
           {displayMenu ? (
             <div className="dropDownMenu">
-              <li>
-                <a href="#">
-                  <span className="FirstLetter">A</span>genda
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span className="FirstLetter">R</span>ésultats
-                </a>
-              </li>
+              <ul>
+                <li>
+                  <a href="#">
+                    <span className="FirstLetter">A</span>genda
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span className="FirstLetter">R</span>ésultats
+                  </a>
+                </li>
+              </ul>
             </div>
           ) : null}
         </li>
@@ -136,14 +138,16 @@ function NavBar() {
           </button>
           {paramsMenu ? (
             <div className="dropDownParamsMenu">
-              <li>
-                <Link to={`/userpage/${user_id}`}>
-                  <span className="FirstLetter">P</span>rofil
-                </Link>
-              </li>
-              <li onClick={() => dispatch({ type: "DISCONNECT" })}>
-                <span className="FirstLetter">D</span>éconnection
-              </li>
+              <ul>
+                <li>
+                  <Link to={`/userpage/${user_id}`}>
+                    <span className="FirstLetter">P</span>rofil
+                  </Link>
+                </li>
+                <li onClick={() => dispatch({ type: "DISCONNECT" })}>
+                  <span className="FirstLetter">D</span>éconnection
+                </li>
+              </ul>
             </div>
           ) : null}
         </li>
@@ -153,7 +157,7 @@ function NavBar() {
           width={"100%"}
           id="MenuBurger"
           isOpen={!burgerMenu}
-          onStateChange={(state) => handleStateChange(state)}
+          onStateChange={state => handleStateChange(state)}
         >
           <ul className="burger">
             <li onClick={() => setBurgerMenu(false)}>
@@ -163,7 +167,7 @@ function NavBar() {
               <Link to="/teams">Teams</Link>
             </li>
             <li onClick={() => setBurgerMenu(false)}>
-              <Link to="/">Évènements</Link>
+              <Link to="/newsfeed">Évènements</Link>
             </li>
             <li onClick={() => setBurgerMenu(false)}>
               <Link to={`/userpage/${user_id}`}>Profil</Link>
@@ -175,7 +179,7 @@ function NavBar() {
                   type="text"
                   placeholder="Cherche un utilisateur avec son pseudo"
                   value={search}
-                  onChange={(e) => change(e)}
+                  onChange={e => change(e)}
                 />
                 <input
                   className="launchSearch"
