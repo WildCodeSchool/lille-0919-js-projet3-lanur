@@ -2,7 +2,7 @@
 
 .ContainerEditProfile {
   color: white;
-  background-color: #222222;
+  background-color: rgba(rgb(34, 34, 34), 0.6);
   font-family: $mainFontFamily;
   height: 92vh;
   .editNav {
@@ -28,6 +28,7 @@
         text-decoration: none;
         font-size: 2em;
         color: white;
+        border-radius: 11px;
       }
       a:hover {
         text-decoration: underline;
