@@ -95,7 +95,7 @@ export default function UserPage() {
         {posts.map(post => (
           <Postcard
             message={post.message}
-            tags={post.tags ? "#" + post.tags.replace(" "," #") : null}
+            tags={post.tags ? "#" + post.tags.replace(/ /g, " #") : null}
             date={post.date}
             image_url={post.image_url}
             game_id={post.game_id}
