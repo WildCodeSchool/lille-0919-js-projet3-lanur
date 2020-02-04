@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from "react";
-import "../style/EditProfileStyles/EditLinks.scss";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
-import { backend } from "../../conf.js";
+import "../style/EditProfileStyles/EditLinks.scss";
 
 const Links = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
-  const user_id = useSelector(state => state.user_id);
 
   return (
-    <form>
-      <h1>Your links</h1>
+    <form className="links">
+      <h1>Tes liens vers les autres réseaux</h1>
       <div>
         <div className="infoContainer">
-          <label>Twitch</label>
+          <label> Votre chaîne Twitch :</label>
           <input
             className="linkInput"
             type="link"
@@ -29,7 +26,7 @@ const Links = () => {
           />
         </div>
         <div className="infoContainer">
-          <label>Youtube</label>
+          <label>Votre chaîne Youtube : </label>
           <input
             className="linkInput"
             type="link"
@@ -44,7 +41,7 @@ const Links = () => {
           />
         </div>
         <div className="infoContainer">
-          <label>Mixer</label>
+          <label>Votre chaîne Mixer : </label>
           <input
             className="linkInput"
             type="link"
@@ -59,7 +56,7 @@ const Links = () => {
           />
         </div>
         <div className="infoContainer">
-          <label>Discord</label>
+          <label>Votre pseudo Discord : </label>
           <input
             className="linkInput"
             type="link"

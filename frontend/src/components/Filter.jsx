@@ -43,15 +43,26 @@ function Filter() {
       {filterDisplay ? (
         <form className="filter">
           {gamelist.map(game => (
-            <div>
-              <input
-                id={game.id}
-                type="checkbox"
-                onChange={e => {
-                  insertValue(e);
-                }}
-              />
-              <label for={game.id}>{game.name}</label>
+            <div key={game.id}>
+              {filters.includes(game.id) ? (
+                <input
+                  id={game.id}
+                  type="checkbox"
+                  onChange={e => {
+                    insertValue(e);
+                  }}
+                  checked
+                />
+              ) : (
+                <input
+                  id={game.id}
+                  type="checkbox"
+                  onChange={e => {
+                    insertValue(e);
+                  }}
+                />
+              )}
+              <label htmlFor={game.id}>{game.name}</label>
             </div>
           ))}
         </form>

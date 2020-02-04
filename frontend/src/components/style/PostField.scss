@@ -1,13 +1,16 @@
 @import "./variables";
 
 .postFieldContainer {
-  width: 70vw;
-  align-items: center;
+  width: 100%;
+  max-width: 750px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 30px;
 }
 .preview-container {
+  width: 100%;
   background-color: $mainColor;
   align-items: center;
   display: flex;
@@ -17,7 +20,7 @@
   font-family: "Sansation";
   padding-top: 10px;
   .preview-text {
-    width: 70vw;
+    width: 70%;
   }
 }
 
@@ -28,14 +31,14 @@
   font-family: "Sansation";
   background-color: white;
   color: black;
-  width: 70%;
+  width: 100%;
   height: auto;
-  min-width: 350px;
-  max-width: 700px;
+  // min-width: 350px;
+  // max-width: 700px;
   border: $mainColor solid;
   border-radius: 5px;
-  margin-left: 8vw;
-  margin: 20px;
+  // margin-left: 8vw;
+  // margin: 20px;
   .avatar {
     display: flex;
     flex-direction: row;
@@ -91,17 +94,4 @@
     border-color: $mainColor;
     cursor: pointer;
   }
-}
-
-@media screen and (max-width: 740px) {
-  .postFieldContainer {
-    width: 100vw;
-    .postField {
-      width: 90%;
-    }
-  }
-}
-
-.wpi {
-  border: dashed green;
 }

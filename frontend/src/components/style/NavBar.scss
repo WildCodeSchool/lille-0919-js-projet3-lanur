@@ -3,11 +3,11 @@
 .main-NavBar {
   font-family: "Sansation";
   background-color: rgb(253, 253, 253);
-  height: 54px;
+  height: 8vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  position: fixed;
+  position: sticky;
   justify-content: space-between;
   left: 0;
   top: 0;
@@ -16,7 +16,7 @@
 
   h1 {
     margin-left: 10px;
-    font-size: 30px;
+    font-size: 5vh;
     font-weight: bold;
     a,
     a:visited {
@@ -33,31 +33,52 @@
     justify-content: flex-end;
     width: 100%;
     .dropDownMenu {
-      margin-top: 110px;
+      font-size: 1.8vh;
+      margin-top: 17vh;
       padding: 4px;
       background-color: white;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       position: absolute;
-      width: 130px;
-      height: 70px;
+      width: 160px;
+      height: 10vh;
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
     }
+    .search {
+      display: flex;
+      flex-direction: row;
+      max-height: 32px;
+      .toggleSearch {
+        width: 0.7em;
+        margin-left: 20px;
+      }
+    }
+
     .dropDownParamsMenu {
-      margin-top: 0px;
+      font-size: 1.8vh;
+      margin-top: 1.6vh;
       right: 0px;
       background-color: white;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       position: absolute;
-      width: 150px;
-      height: 70px;
+      width: 200px;
+      height: 10vh;
       padding: 4px;
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
     }
     .dropDown {
       display: flex;
-      margin-bottom: 3px;
       flex-direction: row;
       justify-content: center;
       align-items: center;
@@ -65,10 +86,11 @@
     }
     li {
       margin-right: 30px;
-      font-size: 22px;
+      font-size: 1.75em;
       font-weight: 200;
       text-decoration: none;
       cursor: pointer;
+
       a {
         position: relative;
         display: block;
@@ -109,10 +131,11 @@
         margin-left: 2px;
       }
       button {
+        margin-top: 4px;
         background: none;
         .gearIcon {
-          width: 26px;
-          height: 26px;
+          width: 22px;
+          height: 22px;
           cursor: pointer;
           background: none;
         }
@@ -124,10 +147,35 @@
   }
 }
 
-@media screen and (max-width: 740px) {
+@media (max-device-width: 740px), screen and (max-width: 740px) {
   .main-NavBar {
     ul {
       display: none;
+    }
+    .burger {
+      width: 100%;
+      font-size: 2em;
+      li {
+        margin-bottom: 1em;
+        form {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          height: 4em;
+          .searchInput {
+            height: 2em;
+            margin-bottom: 0.5em;
+            width: 100%;
+            font-size: 0.4em;
+          }
+          .launchSearch {
+            width: 50%;
+            margin: auto;
+            margin-top: 0;
+            font-size: 0.4em;
+          }
+        }
+      }
     }
   }
 }

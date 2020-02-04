@@ -1,17 +1,17 @@
-import "../style/EditProfileStyles/EditProfile.scss";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { backend } from "../../conf.js";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 import { Image, CloudinaryContext } from "cloudinary-react";
+import { backend } from "../../conf.js";
+import "../style/EditProfileStyles/EditProfile.scss";
 
 const Profile = () => {
   const dispatch = useDispatch();
   const [file, setFile] = useState("https://via.placeholder.com/250");
-  const [imagePreviewUrl, setImagePreviewUrl] = useState("./noob.jpg"); 
+  const [imagePreviewUrl, setImagePreviewUrl] = useState("./noob.jpg");
   const user = useSelector(state => state.user);
   const user_avatar = useSelector(state => state.user_avatar);
- 
+
   useEffect(() => {
     if (user_avatar) {
       setImagePreviewUrl(user_avatar);
@@ -28,45 +28,36 @@ const Profile = () => {
       setFile(selectedFile);
       setImagePreviewUrl(reader.result);
     };
-
     reader.readAsDataURL(selectedFile);
+    handleSubmit();
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = () => {
     // post of profile picture
-    let data = new FormData();
-    data.append("monfichier", file);
-    axios.post(`${backend}/imgupload`, data).then();
+    let imageUpload = new FormData();
+    imageUpload.append("file", file);
+    axios.post(`${backend}/api/postimg`, imageUpload).then(response => {
+      let image_url = response.data.public_id;
+      dispatch({ type: "CHANGE_AVATAR", value: image_url });
+    });
   };
 
   return (
-    <div className="profile">
-      <h1>Your Profile</h1>
+    <div className="editProfile">
+      <h1>Ton profil</h1>
 
-      <form>
-        <div className="avatar">
-          <h1>Avatar</h1>
-            {imagePreviewUrl === "./noob.jpg" ? (
-            <img src={imagePreviewUrl} alt="" />
-          ) : (
-            <CloudinaryContext cloudName="lanur">
-              <Image publicId={user_avatar} />
-            </CloudinaryContext>
-          )}
-          <input type="file" onChange={e => handleImageChange(e)} />
-        </div>
+      <div className="infosAvatar">
         <div className="infos">
           <div className="infoContainer">
-            <label for="pseudo">Pseudo</label>
+            <label for="pseudo">Pseudo : </label>
             <input type="text" name="pseudo" value={user.pseudo} />
           </div>
           <div className="infoContainer">
-            <label for="firstname">Firstname</label>
+            <label for="firstname">Prénom : </label>
             <input
               type="text"
               name="firstname"
-              placeholder="Firstname"
+              placeholder="Prénom"
               value={user.firstname}
               onChange={e => {
                 dispatch({
@@ -77,11 +68,11 @@ const Profile = () => {
             />
           </div>
           <div className="infoContainer">
-            <label for="lastname">Lastname</label>
+            <label for="lastname">Nom : </label>
             <input
               type="text"
               name="lastname"
-              placeholder="Lastname"
+              placeholder="Nom"
               value={user.lastname}
               onChange={e => {
                 dispatch({
@@ -92,7 +83,7 @@ const Profile = () => {
             />
           </div>
           <div className="infoContainer">
-            <label>Age</label>
+            <label>Age : </label>
             <input
               type="text"
               placeholder="Age"
@@ -106,10 +97,10 @@ const Profile = () => {
             />
           </div>
           <div className="infoContainer">
-            <label>Country</label>
+            <label>Pays : </label>
             <input
               type="text"
-              placeholder="Country"
+              placeholder="Pays"
               value={user.country}
               onChange={e => {
                 dispatch({
@@ -120,10 +111,10 @@ const Profile = () => {
             />
           </div>
           <div className="infoContainer">
-            <label>City</label>
+            <label>Ville : </label>
             <input
               type="text"
-              placeholder="City"
+              placeholder="Ville"
               value={user.city}
               onChange={e => {
                 dispatch({
@@ -134,7 +125,7 @@ const Profile = () => {
             />
           </div>
           <div className="infoContainer">
-            <label htmlFor="genre-select">Genre</label>
+            <label htmlFor="genre-select">Genre : </label>
             <select
               name="genre"
               id="genre-select"
@@ -146,15 +137,26 @@ const Profile = () => {
                 });
               }}
             >
-              <option value="default">-- Please choose your genre --</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
+              <option value="default">-- Séléctionnes ton genre --</option>
+              <option value="male">Masculin</option>
+              <option value="female">Féminin</option>
+              <option value="other">Autre</option>
             </select>
           </div>
-          <p>Your genre will not be visible on the website.</p>
+          <p>Ton genre ne sera pas visible sur notre site.</p>
         </div>
-      </form>
+        <div className="avatar">
+          <h1>Avatar</h1>
+          {imagePreviewUrl === "./noob.jpg" ? (
+            <img src={imagePreviewUrl} alt="" />
+          ) : (
+            <CloudinaryContext cloudName="lanur">
+              <Image publicId={user_avatar} />
+            </CloudinaryContext>
+          )}
+          <input type="file" onChange={e => handleImageChange(e)} />
+        </div>
+      </div>
     </div>
   );
 };

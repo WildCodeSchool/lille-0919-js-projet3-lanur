@@ -17,7 +17,7 @@ function NewsFeed() {
   const filterResult = posts.filter(post => filters.includes(post.game_id));
   const [totalPosts, setTotalPosts] = useState(null);
 
-  window.onscroll = () => {
+  document.onscroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.scrollHeight &&
@@ -37,7 +37,7 @@ function NewsFeed() {
     if (offsetPosts === 0) {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(data);
-        dispatch({ type: "PLUS_TEN" });
+        setOffsetPosts(offsetPosts + 10);
       });
     } else if (
       filterResult.length < 10 &&
@@ -46,7 +46,7 @@ function NewsFeed() {
     ) {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(posts.concat(data));
-        dispatch({ type: "PLUS_TEN" });
+        setOffsetPosts(offsetPosts + 10);
       });
     } else if (totalPosts >= offsetPosts) {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
@@ -57,25 +57,35 @@ function NewsFeed() {
 
   return (
     <div className="main-NewsFeed">
-      <PostField />
-      {posts.map(post => (
-        <Postcard
-          message={post.message}
-          tags={post.tags ? "#" + post.tags.split(" ").join(" #") : null}
-          date={post.date}
-          image_url={post.image_url}
-          game_id={post.game_id}
-          user_avatar={post.user_avatar}
-          id={post.id}
-        />
-      ))}
-      <Filter />
-      {filters.length > 0
-        ? posts
-            .filter(post => filters.includes(post.game_id))
-            .map(post => (
+      <div className="feed">
+        <PostField />
+        <Filter />
+        {filters.length > 0
+          ? posts
+              .filter(post => filters.includes(post.game_id))
+              .map(post => (
+                <Postcard
+                  message={post.message}
+                  tags={
+                    post.tags ? "#" + post.tags.replace(/ /g, " #") : null
+                  }
+                  date={post.date}
+                  image_url={post.image_url}
+                  game_id={post.game_id}
+                  user_avatar={post.user_avatar}
+                  id={post.id}
+                  user_id={post.user_id}
+                  nblike={post.nbLike}
+                  statuslike={post.liked}
+                  userPseudo={post.pseudo}
+                  userTeam={post.team_name}
+                  key={post.id}
+                />
+              ))
+          : posts.map(post => (
               <Postcard
                 message={post.message}
+                tags={post.tags ? "#" + post.tags.replace(/ /g, " #") : null}
                 date={post.date}
                 image_url={post.image_url}
                 game_id={post.game_id}
@@ -85,28 +95,16 @@ function NewsFeed() {
                 nblike={post.nbLike}
                 statuslike={post.liked}
                 userPseudo={post.pseudo}
+                userTeam={post.team_name}
+                key={post.id}
               />
-            ))
-        : posts.map(post => (
-            <Postcard
-              message={post.message}
-              tags={post.tags ? "#" + post.tags.split(" ").join(" #") : null}
-              date={post.date}
-              image_url={post.image_url}
-              game_id={post.game_id}
-              user_avatar={post.user_avatar}
-              id={post.id}
-              user_id={post.user_id}
-              nblike={post.nbLike}
-              statuslike={post.liked}
-              userPseudo={post.pseudo}
-            />
-          ))}
-      {offsetPosts >= totalPosts ? (
-        <div className="endPageContainer">
-          <div className="endPage">Pas de posts à afficher"</div>
-        </div>
-      ) : null}
+            ))}
+        {offsetPosts >= totalPosts ? (
+          <div className="endPageContainer">
+            <div className="endPage">Pas de posts à afficher</div>
+          </div>
+        ) : null}
+      </div>
       <LiveContainer />
     </div>
   );

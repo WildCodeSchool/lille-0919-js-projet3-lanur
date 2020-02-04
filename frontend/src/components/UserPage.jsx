@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { backend } from "../conf.js";
 import { Image, CloudinaryContext } from "cloudinary-react";
 import axios from "axios";
-import { useSelector, useStore } from "react-redux";
+import { useSelector } from "react-redux";
 import Postcard from "./Postcard";
 
 export default function UserPage() {
@@ -67,6 +67,11 @@ export default function UserPage() {
           ? "Ton profil"
           : "Le profil de " + user.pseudo}
       </h1>
+      {connectedUserId === paramsUser_id && (
+        <Link to="/editprofile">
+          <button className="editButton">Editer</button>
+        </Link>
+      )}
       {user ? (
         <div className="profile">
           {user.avatar ? (
@@ -74,7 +79,7 @@ export default function UserPage() {
               <Image publicId={user.avatar} className="avatar" />
             </CloudinaryContext>
           ) : (
-            <img src="/noob.jpg" className="avatar" />
+            <img src="/noob.jpg" alt="avatar" className="avatar" />
           )}
           <div className="info">
             <p>{user.age + " ans"}</p>
@@ -82,12 +87,7 @@ export default function UserPage() {
             <p>
               {user.city}, {user.country}
             </p>
-            <p>Ma bio : {user.bio}</p>
-            {connectedUserId === paramsUser_id && (
-              <Link to="/editprofile">
-                <button>Editer</button>
-              </Link>
-            )}
+            <p>Ma description : {user.bio}</p>
           </div>
         </div>
       ) : null}
@@ -95,12 +95,17 @@ export default function UserPage() {
         {posts.map(post => (
           <Postcard
             message={post.message}
+            tags={post.tags ? "#" + post.tags.replace(/ /g, " #") : null}
             date={post.date}
             image_url={post.image_url}
             game_id={post.game_id}
             user_avatar={post.user_avatar}
             id={post.id}
             user_id={post.user_id}
+            nblike={post.nbLike}
+            statuslike={post.liked}
+            userPseudo={post.pseudo}
+            key={post.id}
           />
         ))}
       </div>

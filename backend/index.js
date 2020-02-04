@@ -37,15 +37,15 @@ app.get("/api/users", (req, res) => {
   );
 });
 
-
 app.get("/api/search/users/", (req, res) => {
   const request = req.query.pseudo;
   db.query(
-    'SELECT id, pseudo, avatar AS user_avatar, team_id from user where pseudo like concat("%"?"%")', request,
+    'SELECT id, pseudo, avatar AS user_avatar, team_id from user where pseudo like concat("%"?"%")',
+    request,
     (err, results) => {
       if (err) {
         res.status(500).send("Erreur lors de la récupération des données");
-        } else {
+      } else {
         res.status(200).json(results);
       }
     }
@@ -94,7 +94,19 @@ app.get(
 
 app.get("/api/user/posts/:id/:offset", (req, res) => {
   db.query(
-    "SELECT post.id, post.user_id, user.avatar as user_avatar, post.user_id_team, post.game_id, post.message, post.date, post.image_url FROM post JOIN user ON post.user_id = user.id WHERE post.user_id = ? ORDER BY id DESC LIMIT 10 OFFSET ?",
+    "SELECT post.id, post.user_id, user.pseudo, user.avatar as user_avatar, post.game_id, post.message, post.date, post.image_url, tags, team.name as team_name, COUNT(`like`.post_id) AS nbLike, \
+    CASE WHEN post.id IN (SELECT `like`.post_id from `like`) THEN 1 ELSE 0 END AS liked \
+    FROM post \
+    LEFT JOIN `like` \
+    ON post.id=`like`.post_id \
+    JOIN user \
+    ON post.user_id = user.id \
+    LEFT JOIN team \
+    ON user.team_id = team.id \
+    WHERE post.user_id = ? \
+    GROUP BY post.id \
+    ORDER BY post.id DESC \
+    LIMIT 10 OFFSET ?",
     [parseInt(req.params.id), parseInt(req.params.offset)],
     (err, results) => {
       if (err) {
@@ -113,13 +125,15 @@ app.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     db.query(
-      "SELECT post.id, post.circle_id, post.user_id, user.pseudo, post.user_id_team, post.game_id, post.message, post.date, post.image_url, COUNT(`like`.post_id) AS nbLike, \
+      "SELECT post.id, post.circle_id, post.user_id, user.avatar AS user_avatar, user.pseudo, post.game_id, post.message, post.date, post.image_url, team.name as team_name, tags, COUNT(`like`.post_id) AS nbLike, \
     CASE WHEN post.id IN (SELECT `like`.post_id from `like` WHERE `like`.user_id=?) THEN 1 ELSE 0 END AS liked \
     FROM post \
     LEFT JOIN `like` \
     ON post.id=`like`.post_id \
     JOIN user \
     ON post.user_id=user.id \
+    LEFT JOIN team \
+    ON user.team_id = team.id \
     GROUP BY post.id \
     ORDER BY post.id DESC \
     LIMIT 10 OFFSET ?",
@@ -135,10 +149,20 @@ app.get(
   }
 );
 
-//Récupérer le nombre total de post
-app.get("/api/totalposts", (req, res) => {
+app.get("/api/posts/discover/:limit", (req, res) => {
   db.query(
-    "SELECT count(post.id) as totalpost from post",
+    "SELECT post.id, post.user_id, user.pseudo, user.avatar as user_avatar, post.game_id, post.message, post.date, post.image_url, team.name as team_name, tags, COUNT(`like`.post_id) AS nbLike \
+    FROM post \
+    LEFT JOIN `like` \
+    ON post.id=`like`.post_id \
+    JOIN user \
+    ON post.user_id=user.id \
+    LEFT JOIN team \
+    ON user.team_id = team.id \
+    GROUP BY post.id \
+    ORDER BY post.id DESC \
+    LIMIT 10 OFFSET ?",
+    [parseInt(req.params.limit)],
     (err, results) => {
       if (err) {
         res.status(500).send(err);
@@ -147,6 +171,17 @@ app.get("/api/totalposts", (req, res) => {
       }
     }
   );
+});
+
+//Récupérer le nombre total de post
+app.get("/api/totalposts", (req, res) => {
+  db.query("SELECT count(post.id) as totalpost from post", (err, results) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).json(results);
+    }
+  });
 });
 
 app.get("/api/gamelist/", (req, res) => {
@@ -171,12 +206,12 @@ app.get("/api/gamelist/:id", (req, res) => {
         res.status(200).json(results);
       }
     }
-  });
+  );
 });
 
 app.post("/api/postimg", upload.single("file"), (req, res) => {
   const formData = req.file;
-  cloudinary.v2.uploader.upload(formData.path, function (err, result) {
+  cloudinary.v2.uploader.upload(formData.path, function(err, result) {
     if (err) {
       res.status(500).send("Erreur lors de la sauvegarde de l'image");
     } else {
@@ -273,7 +308,7 @@ app.get("/api/teams", (req, res) => {
   );
 });
 
-app.listen(backendPort, err => {
+app.listen(backendPort, (err) => {
   if (err) {
     throw new Error("Something bad happened...");
   }

@@ -6,10 +6,19 @@ $mainColor: #8d20ae;
 .main-NewsFeed {
   background-color: rgb(39, 39, 39);
   width: 100%;
-  position: absolute;
-  margin-top: 4vh;
-  padding-top: 4vh;
-  z-index: -90;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: space-between;
+  .feed {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 15px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .endPageContainer {
   width: 70vw;
@@ -33,12 +42,5 @@ $mainColor: #8d20ae;
     align-items: center;
     display: flex;
     justify-content: center;
-  }
-}
-@media screen and (max-width: 740px) {
-  .main-NewsFeed {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 }

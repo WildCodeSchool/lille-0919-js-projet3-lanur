@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./style/LiveContainer.scss";
 import axios from "axios";
 import LiveCard from "./LiveCard";
 import { twitch_Client_ID } from "../conf.js";
+import "./style/LiveContainer.scss";
 
 function LiveContainer() {
   const [lives, setLives] = useState([]);
@@ -48,17 +48,17 @@ function LiveContainer() {
         <h2> Live</h2>
       </div>
       <div className="liveContent">
-        {lives.length > 0
-          ? lives.map((live) => (
-              <LiveCard
-                streamer_name={live.user_name}
-                stream_title={live.title}
-                viewer_count={live.viewer_count}
-                user_name={live.user_name}
-                game_id={live.game_id}
-              />
-            ))
-          : null}
+        {lives &&
+          lives.map((live) => (
+            <LiveCard
+              key={live.user_name}
+              streamer_name={live.user_name}
+              stream_title={live.title}
+              viewer_count={live.viewer_count}
+              user_name={live.user_name}
+              game_id={live.game_id}
+            />
+          ))}
       </div>
     </div>
   );

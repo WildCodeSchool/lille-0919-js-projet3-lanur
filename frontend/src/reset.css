@@ -80,6 +80,7 @@ mark,
 audio,
 video,
 button {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   border: 0;
@@ -122,4 +123,13 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+*:focus,
+*:visited,
+*:active,
+*:hover {
+  outline: 0 !important;
+}
+*::-moz-focus-inner {
+  border: 0;
 }

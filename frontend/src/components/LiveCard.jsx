@@ -17,26 +17,23 @@ function LiveCard(props) {
   }, []);
 
   return (
-    <div className="streamingStatus" onClick={toggle}>
+    <div className="streamingStatus" onClick={toggle} title={streamTitle}>
       <Modal isShowing={isShowing} hide={toggle} user_name={props.user_name} />
       {gameId.length > 0 ? (
         <img
           className="blank_game_logo"
+          alt="Logo Jeu"
           src={`/games_icons/${gameId[0].id}.jpg`}
         />
       ) : (
         <div className="blank_game_logo"></div>
       )}
-      <img src="https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c540.png" />
-      <div className="streamCountainer">
-        <div>
-          <span className="streamerName">{props.streamer_name}</span> -{" "}
-          {streamTitle.length > 15 ? (
-            <span title={streamTitle}>{streamTitle.slice(0, 12) + "..."} </span>
-          ) : (
-            streamTitle
-          )}
-        </div>
+      <img
+        src="https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c540.png"
+        alt="Image Stream"
+      />
+      <div className="streamInfo">
+        <span className="streamerName">{props.streamer_name}</span>
         <div className="viewersCount">Viewers : {props.viewer_count}</div>
       </div>
     </div>

@@ -39,13 +39,11 @@ const SignIn = () => {
           <span>LAN'</span>U.R
         </h1>
         <h2>
-          Vivons l'<span>E-Sport</span> ensemble
+          Vivons l'<span>Esport</span> ensemble !
         </h2>
       </div>
       <div className="connect">
-        <h2>
-          <span>Vous avez</span> un compte ?
-        </h2>
+        <h2>Tu as un compte ?</h2>
         <form
           onSubmit={e => {
             e.preventDefault();
@@ -53,10 +51,10 @@ const SignIn = () => {
         >
           {!credentialsState && (
             <p className="wrong">
-              vos informations semblent fausses, veuillez réesayer
+              Tes informations semblent fausses, réessaie.
             </p>
           )}
-          <h3>Identifiant</h3>
+          <h3>Identifiant : </h3>
           <input
             type="text"
             value={pseudo}
@@ -66,7 +64,7 @@ const SignIn = () => {
             }}
             className={credentialsState ? "" : "wrong"}
           />
-          <h3>Mot de passe</h3>
+          <h3>Mot de passe : </h3>
           <input
             type="password"
             value={password}
@@ -81,14 +79,12 @@ const SignIn = () => {
             Se connecter
           </button>
         </form>
-        <h3>
-          Vous n'avez <span>PAS</span> de compte ?
-        </h3>
+        <h3>Tu n'as pas encore de compte ?</h3>
         <div className="noAccount">
           <button onClick={accountCreation} className="accountCreation">
             Créer un compte
           </button>
-          <Link to="/Discover">
+          <Link to="/discover">
             <p className="discover">Continuer sans créer de compte</p>
           </Link>
         </div>

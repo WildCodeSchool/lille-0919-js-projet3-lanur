@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import { useDispatch } from "react-redux";
 import ReactTagInput from "@pathofdev/react-tag-input";
+import { toast } from "react-toastify";
 import "@pathofdev/react-tag-input/build/index.css";
 import "./style/Tag.scss";
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-
 
 function Tag() {
   const [tags, setTags] = useState([]);
@@ -18,7 +16,7 @@ function Tag() {
   return (
     <div className="tag">
       <ReactTagInput
-        placeholder="Tapez et appuyez sur entrée pour ajouter un tag"
+        placeholder="Tape et appuie sur entrée pour ajouter un tag"
         tags={tags}
         maxTags={8}
         validator={value => {

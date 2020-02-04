@@ -28,8 +28,8 @@ const Modal = ({ isShowing, hide, user_name }) =>
           </div>
           <div className="StreamPlayer">
             <iframe
+              title="Stream_Player"
               src={`https://player.twitch.tv/?channel=${user_name}`}
-              frameborder="0"
               allowFullScreen={true}
               scrolling="no"
               height="500px"

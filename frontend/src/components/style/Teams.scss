@@ -1,9 +1,10 @@
 @import "./variables";
 
+body {
+  background-color: black;
+}
 .teamPage {
-  background-color: rgba($color: #222222, $alpha: 0.6);
-  height: 92vh;
-  margin-top: 8vh;
+  min-height: 92vh;
   color: white;
   font-family: $mainFontFamily;
 
@@ -20,22 +21,28 @@
     margin-left: 10vw;
     border-radius: 15px;
     background-color: rgba(245, 245, 245, 0.3);
-    height: 15vh;
+    height: 20vh;
     width: 80vw;
 
     .img {
       margin: auto 2vw;
-      height: 50px;
-      float: left;
+      img {
+        width: 175px;
+        height: 175px;
+        margin-top: 1%;
+      }
     }
     .teamInfo {
       text-align: center;
-      margin-left: 30vw;
       h2 {
         font-size: 2em;
+        margin-top: 2%;
       }
       p {
+        text-align: justify;
         font-size: 1.2em;
+        margin-top: 3%;
+        margin-right: 2%;
       }
     }
   }

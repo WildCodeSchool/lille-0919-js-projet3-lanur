@@ -36,7 +36,7 @@ export default function ContainerEditProfile() {
 
   return (
     <div className="ContainerEditProfile">
-      <ul>
+      <ul className="editNav">
         <li>
           <Link to="/editprofile">Profil</Link>
         </li>
@@ -66,7 +66,7 @@ export default function ContainerEditProfile() {
         </Route>
       </Switch>
       <div className="submit">
-        <button onClick={onSubmit}>Submit your modifications</button>
+        <button onClick={onSubmit}>Valide tes modifications</button>
       </div>
     </div>
   );

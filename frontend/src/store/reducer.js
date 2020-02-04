@@ -36,6 +36,7 @@ const reducer = (state = initialState, action) => {
     case "RESET":
       newState.offsetPosts = 0;
       newState.reload = newState.reload + 1;
+      newState.tags = [];
       return newState;
     case "SAVE_JWT":
       return {
@@ -44,6 +45,12 @@ const reducer = (state = initialState, action) => {
         user_id: action.value.user.id,
         user_avatar: action.value.user.avatar,
         user_pseudo: action.value.user.pseudo
+      };
+    case "CHANGE_AVATAR":
+      return {
+        ...state,
+        user_avatar: action.value,
+        user: { ...state.user, avatar: action.value }
       };
     case "SAVE_PROFILE_DATA":
       newState.user = { ...newState.user, ...action.value };
@@ -55,17 +62,17 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         filters: action.value
-      };  
+      };
     case "SEARCH":
       return {
-           ...state,
-           searchResults: action.value
-      }; 
+        ...state,
+        searchResults: action.value
+      };
     case "DISCONNECT":
-    return {
-      ...state,
-      jwt: null
-    };
+      return {
+        ...state,
+        jwt: null
+      };
     default:
       return newState;
   }

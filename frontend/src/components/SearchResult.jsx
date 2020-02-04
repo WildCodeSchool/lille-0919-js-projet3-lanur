@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 function SearchResult() {
   const searchResults = useSelector(state => state.searchResults);
-  const history = useHistory();
 
   return (
     <div className="main-search">
@@ -16,7 +15,7 @@ function SearchResult() {
           <h3>Résultats de la recherche</h3>
           {searchResults.length > 0 ? (
             searchResults.map(result => (
-              <Link to={`/userpage/${result.id}`}>
+              <Link to={`/userpage/${result.id}`} key={result.id}>
                 <div className="userContainer">
                   <div className="imgSection">
                     {result.user_avatar ? (
@@ -27,13 +26,13 @@ function SearchResult() {
                         />
                       </CloudinaryContext>
                     ) : (
-                      <img src="noob.jpg" className="avatar" />
+                      <img src="noob.jpg" alt="avatar" className="avatar" />
                     )}
                   </div>
                   <div className="infoSection">
-                    <div className="infoResult">Pseudo: {result.pseudo}</div>
+                    <div className="infoResult">Pseudo : {result.pseudo}</div>
                     {result.team_id ? (
-                      <div className="infoResult">Team: {result.team_id}</div>
+                      <div className="infoResult">Team : {result.team_id}</div>
                     ) : null}
                   </div>
                 </div>

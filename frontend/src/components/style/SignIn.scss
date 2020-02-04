@@ -12,24 +12,24 @@
   font-style: normal;
   font-weight: 800;
   color: white;
-  margin-top: 4vh;
   span {
     color: $mainColor;
   }
   .catchPhrase {
     color: black;
-    padding: 10px 10px 25px 7px;
+    padding: 10px 10px 10px 7px;
+    border-radius: 10px;
     background-color: rgba($color: #ffffff, $alpha: 0.5);
     line-height: 65px;
     h1 {
-      font-size: 52px;
+      font-size: 4em;
     }
     h2 {
-      font-size: 46px;
+      font-size: 3em;
     }
   }
   .connect {
-    margin-top: 5%;
+    margin-bottom: 50px;
     width: 25%;
     min-width: 430px;
     border-radius: 7px;
@@ -50,7 +50,7 @@
 
     form {
       padding: 5% 5% 5% 5%;
-      margin-bottom: 10%;
+      margin-bottom: 4%;
       input {
         height: 30px;
         border: 2px solid white;
