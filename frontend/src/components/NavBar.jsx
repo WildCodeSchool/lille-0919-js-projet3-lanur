@@ -145,7 +145,7 @@ function NavBar() {
                   </Link>
                 </li>
                 <li onClick={() => dispatch({ type: "DISCONNECT" })}>
-                  <span className="FirstLetter">D</span>éconnection
+                  <span className="FirstLetter">D</span>éconnexion
                 </li>
               </ul>
             </div>
