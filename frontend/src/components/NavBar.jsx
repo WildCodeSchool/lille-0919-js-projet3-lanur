@@ -21,7 +21,7 @@ function NavBar() {
     e.preventDefault();
     axios
       .get(`${backend}/api/search/users/?pseudo=${search}`)
-      .then(function(response) {
+      .then((response) => {
         dispatch({ type: "SEARCH", value: response.data });
       })
       .then(() => {
