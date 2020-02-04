@@ -29,10 +29,10 @@ const Profile = () => {
       setImagePreviewUrl(reader.result);
     };
     reader.readAsDataURL(selectedFile);
-    handleSubmit();
+    handleSubmit(selectedFile);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = file => {
     // post of profile picture
     let imageUpload = new FormData();
     imageUpload.append("file", file);
