@@ -96,13 +96,13 @@ function NavBar() {
           {displayMenu ? (
             <img
               className="triangle"
-              alt=">"
+              alt="next"
               src="../images/Black_triangle_rotated.svg"
             ></img>
           ) : (
             <img
               className="triangle"
-              alt="v"
+              alt="previous"
               src="../images/Black_triangle.svg"
             ></img>
           )}
