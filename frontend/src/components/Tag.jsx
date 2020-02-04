@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import { toast } from "react-toastify";
 import "@pathofdev/react-tag-input/build/index.css";
 import "./style/Tag.scss";
 
 function Tag() {
-  const [tags, setTags] = useState([]);
+  const tags = useSelector(state => state.tags);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: "TAG", value: tags });
   }, [tags]);
-
   const notify = () => toast("Ne pas utiliser d'espace dans les tags.");
   return (
     <div className="tag">
@@ -25,7 +24,7 @@ function Tag() {
           }
           return notify() && null;
         }}
-        onChange={newTags => setTags(newTags)}
+        onChange={newTags => dispatch({ type: "TAG", value: newTags })}
       />
     </div>
   );
