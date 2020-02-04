@@ -48,18 +48,17 @@ function LiveContainer() {
         <h2> Live</h2>
       </div>
       <div className="liveContent">
-        {lives.length > 0
-          ? lives.map(live => (
-              <LiveCard
-                key={live.user_name}
-                streamer_name={live.user_name}
-                stream_title={live.title}
-                viewer_count={live.viewer_count}
-                user_name={live.user_name}
-                game_id={live.game_id}
-              />
-            ))
-          : null}
+        {lives &&
+          lives.map((live) => (
+            <LiveCard
+              key={live.user_name}
+              streamer_name={live.user_name}
+              stream_title={live.title}
+              viewer_count={live.viewer_count}
+              user_name={live.user_name}
+              game_id={live.game_id}
+            />
+          ))}
       </div>
     </div>
   );
