@@ -55,7 +55,7 @@ function NavBar() {
             setDisplayMenu(false);
           }}
         >
-          {displaySearchBar ? (
+          {displaySearchBar && (
             <div className="searchbar">
               <form onSubmit={handleSubmit}>
                 <input
@@ -67,7 +67,7 @@ function NavBar() {
                 />
               </form>
             </div>
-          ) : null}
+          )}
           <img
             className="toggleSearch"
             src="../images/loupe.svg"
@@ -136,7 +136,7 @@ function NavBar() {
               src="../images/gear_logo2.png"
             ></img>
           </button>
-          {paramsMenu ? (
+          {paramsMenu && (
             <div className="dropDownParamsMenu">
               <ul>
                 <li>
@@ -149,7 +149,7 @@ function NavBar() {
                 </li>
               </ul>
             </div>
-          ) : null}
+          )}
         </li>
       </ul>
       <div>
