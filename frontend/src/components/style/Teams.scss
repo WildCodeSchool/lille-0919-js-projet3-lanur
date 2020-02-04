@@ -21,14 +21,13 @@ body {
     margin-left: 10vw;
     border-radius: 15px;
     background-color: rgba(245, 245, 245, 0.3);
-    height: 20vh;
     width: 80vw;
 
     .img {
       margin: auto 2vw;
       img {
-        width: 175px;
-        height: 175px;
+        max-width: 15vw;
+        max-height: 15vh;
         margin-top: 1%;
       }
     }
@@ -43,6 +42,7 @@ body {
         font-size: 1.2em;
         margin-top: 3%;
         margin-right: 2%;
+        margin-bottom: 2%;
       }
     }
   }
