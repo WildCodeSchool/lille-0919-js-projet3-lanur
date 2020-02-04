@@ -37,7 +37,6 @@ function NewsFeed() {
     if (offsetPosts === 0) {
       axios.get(`${backend}/api/posts/${offsetPosts}`).then(({ data }) => {
         setPosts(data);
-        setOffsetPosts(offsetPosts + 10);
       });
     } else if (
       filterResult.length < 10 &&
@@ -66,9 +65,7 @@ function NewsFeed() {
               .map(post => (
                 <Postcard
                   message={post.message}
-                  tags={
-                    post.tags ? "#" + post.tags.replace(/ /g, " #") : null
-                  }
+                  tags={post.tags ? "#" + post.tags.replace(/ /g, " #") : null}
                   date={post.date}
                   image_url={post.image_url}
                   game_id={post.game_id}
