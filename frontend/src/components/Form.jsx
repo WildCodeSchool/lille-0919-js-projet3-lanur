@@ -71,19 +71,15 @@ function Form() {
           }}
         >
           <div className="buttonContainer">
-            {page !== 1 ? (
+            {page !== 1 && (
               <button className="previous" onClick={() => setPage(page - 1)}>
                 Précédent
               </button>
-            ) : (
-              ""
             )}
-            {page === 2 ? (
+            {page === 2 && (
               <button className="validate" onClick={handleSubmit}>
                 Valider !
               </button>
-            ) : (
-              ""
             )}
           </div>
           {page === 1 ? (
@@ -149,7 +145,7 @@ function Form() {
           {page === 2 ? (
             <div className="page2">
               <div className="introText">
-                Choisis tes jeux favoris (penses à scroller) :
+                Choisis tes jeux favoris (pense à scroller) :
               </div>
               <div className="bigGamePage">
                 <div className="gamePage">

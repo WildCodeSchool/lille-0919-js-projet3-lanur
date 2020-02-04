@@ -22,7 +22,7 @@ function LiveCard(props) {
       {gameId.length > 0 ? (
         <img
           className="blank_game_logo"
-          alt="Logo_Jeu"
+          alt="Logo Jeu"
           src={`/games_icons/${gameId[0].id}.jpg`}
         />
       ) : (
@@ -30,7 +30,7 @@ function LiveCard(props) {
       )}
       <img
         src="https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c540.png"
-        alt="Image_Stream"
+        alt="Image Stream"
       />
       <div className="streamInfo">
         <span className="streamerName">{props.streamer_name}</span>

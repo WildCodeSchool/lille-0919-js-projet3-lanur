@@ -10,7 +10,7 @@ function GameChoice(props) {
         {click && (
           <img
             className="checkbox"
-            alt="jeu_séléctionné"
+            alt="jeu séléctionné"
             src="/pictures/checkboxpurple.png"
           />
         )}

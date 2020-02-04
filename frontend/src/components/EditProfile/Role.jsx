@@ -23,7 +23,7 @@ const Role = () => {
               });
             }}
           >
-            <option value="">-- Séléctionnes ton rôle --</option>
+            <option value="">-- Séléctionne ton rôle --</option>
             <option value="Player">Joueur</option>
             <option value="Pro-player">Joueur Proféssionnel</option>
             <option value="Coach">Coach</option>
