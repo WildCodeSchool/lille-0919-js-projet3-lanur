@@ -51,7 +51,7 @@ const SignIn = () => {
         >
           {!credentialsState && (
             <p className="wrong">
-              tes informations semblent fausses, réessaies.
+              Tes informations semblent fausses, réessaie.
             </p>
           )}
           <h3>Identifiant : </h3>
