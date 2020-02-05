@@ -69,10 +69,7 @@ const reducer = (state = initialState, action) => {
         searchResults: action.value
       };
     case "DISCONNECT":
-      return {
-        ...state,
-        jwt: null
-      };
+      return initialState
     default:
       return newState;
   }
