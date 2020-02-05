@@ -54,12 +54,12 @@ function PostField() {
           postObject = { image_url, message, user_id, tags, game_id: null };
         }
         axios.post(`${backend}/api/posts`, postObject).then(() => {
-          dispatch({ type: "RESET" });
           setMessage("");
           setFile(null);
           setImagePreviewUrl(null);
           setGame_id("noGame");
           notify();
+          dispatch({ type: "RESET" });
         });
       });
     } else if (message) {
@@ -70,12 +70,12 @@ function PostField() {
         postObject = { message, user_id, tags, game_id: null };
       }
       axios.post(`${backend}/api/posts`, postObject).then(() => {
-        dispatch({ type: "RESET" });
         setMessage("");
         setFile(null);
         setImagePreviewUrl(null);
         setGame_id("noGame");
         notify();
+        dispatch({ type: "RESET" });
       });
     }
   };
