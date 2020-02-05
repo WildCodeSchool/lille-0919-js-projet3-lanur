@@ -81,14 +81,18 @@ export default function UserPage() {
           ) : (
             <img src="/noob.jpg" alt="avatar" className="avatar" />
           )}
-          <div className="info">
-            <p>{user.age + " ans"}</p>
-            <p>{user.role}</p>
-            <p>
-              {user.city}, {user.country}
-            </p>
-            <p>Ma description : {user.bio}</p>
-          </div>
+          {user.age || user.role || user.city || user.bio || user.country ? (
+            <div className="info">
+              {user.age && <p>{user.age + " ans"}</p>}
+              <p>{user.role}</p>
+              <p>
+                {user.city} {user.city && user.country && ","} {user.country}
+              </p>
+              <p>Ma description : {user.bio}</p>
+            </div>
+          ) : (
+            <p>Aucune information disponible</p>
+          )}
         </div>
       ) : null}
       <div className="posts">
