@@ -25,7 +25,7 @@ const Role = () => {
           >
             <option value="">-- Séléctionne ton rôle --</option>
             <option value="Player">Joueur</option>
-            <option value="Pro-player">Joueur Proféssionnel</option>
+            <option value="Pro-player">Joueur Professionnel</option>
             <option value="Coach">Coach</option>
             <option value="Team manager">Manager de Team</option>
           </select>
@@ -34,7 +34,7 @@ const Role = () => {
           <label>Ta description : </label>
           <textarea
             type="text"
-            placeholder="Descris ton parcours esport professionnel ou non ! :)"
+            placeholder="Décris ton parcours esport professionnel ou non ! :)"
             value={user.bio}
             onChange={e => {
               dispatch({
